@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MainCameraScr : MonoBehaviour
 {
@@ -13,11 +14,17 @@ public class MainCameraScr : MonoBehaviour
 	public GameObject arrow;
     public bool end_flag = false;
     public bool state_move_flag = false;
-
-	/* --------------------------------------------------
+    public GameObject semitransparentPrefab;
+    private bool prediction_flag = false;
+    private GameObject obj = null;
+    private int time = 0;
+    private float old_angle = 0.0f;
+	private Vector2 force_ = Vector2.zero;
+	//public Text debug_test;
+    /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
-	void Start () {
+    void Start () {
 		Application.targetFrameRate = 60;
 		Camera.main.orthographicSize = 25.0f;
 	}
@@ -39,24 +46,11 @@ public class MainCameraScr : MonoBehaviour
 			Camera.main.orthographicSize -= 1.0f;
 			Debug.Log(Camera.main.orthographicSize);
 		}
-		//int st = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScr>().m_move_st;
-		//if (st == 1 || st == 3) {
+
         if (touch_freeze_flag == false)
         {
-			//if (Input.GetMouseButton(0))
-			//{
-			//    // タップしている間
-			//    // マウスのスクリーン座標取得
-			//    Vector3 mouse_screen_pos = Input.mousePosition;
-			//    mouse_screen_pos.z = transform.position.z - Camera.main.transform.position.z;
-			//    // マウスのワールド座標取得
-			//    Vector3 mouse_world_pos = Camera.main.ScreenToWorldPoint(mouse_screen_pos);
-			//    //// カメラは追いかける
-			//    //Vector3 vec = (mouse_world_pos - transform.position).normalized;
-			//    //vec *= 0.05f;
-			//    //transform.position += new Vector3(vec.x, vec.y, 0.0f);
-			//}
-			if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= 0.1f)
+	
+			if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= 0.8f)
 			{
                 player.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
 				flag = false;
@@ -64,6 +58,14 @@ public class MainCameraScr : MonoBehaviour
             if(end_flag == true && player.GetComponent<Rigidbody2D>().velocity.magnitude <= 0.1f && GetComponent<Manager>().wave_flag == false)
             {
                 state_move_flag = true;
+                GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
+                if (GameObject.FindGameObjectsWithTag("semi") != null)
+                {
+                    foreach (GameObject _obj in a)
+                    {
+                        Destroy(_obj);
+                    }
+                }
             }
             //else
             //{
@@ -102,10 +104,44 @@ public class MainCameraScr : MonoBehaviour
                     //    arrow.GetComponent<SpriteRenderer>().enabled = false;
 
                     //}
-					float ang = Mathf.Atan2(sub.y, sub.x) * Mathf.Rad2Deg;
+                    float temp = sub.magnitude;
+                    float ang = Mathf.Atan2(sub.y, sub.x) * Mathf.Rad2Deg;
+                   
 					float angle = ang - 90.0f;
-					player.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
-				}
+					if ((int)old_angle == (int)ang)
+                    {
+                        if (prediction_flag == false)
+                        {
+                            if (temp > 3)
+                            {
+                                //Debug.Log(temp);
+
+                                prediction_flag = true;
+                                GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
+                                if (GameObject.FindGameObjectsWithTag("semi") != null)
+                                {
+                                    foreach(GameObject _obj in a)
+                                    {
+                                        Destroy(_obj);
+                                    }
+                                }
+                                GameObject obj_h = Instantiate(semitransparentPrefab, player.transform.position, player.transform.rotation);
+                                obj_h.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
+                                force_ = (sub.normalized * 900.0f) * temp * -1;
+                                obj_h.GetComponent<Rigidbody2D>().AddForce(force_);
+                            }
+                        }
+                    }
+                    //Debug.Log((old_angle) - (ang));
+                    float test = old_angle - ang;
+                    if(test > 1.1f || test < -1.1f)
+                    {
+                        prediction_flag = false;
+                    }
+                    player.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
+
+                    old_angle = ang;
+                }
 				if (info == TouchInfo.Ended)
                 {
                     end_flag = true;
@@ -123,8 +159,7 @@ public class MainCameraScr : MonoBehaviour
                     //    temp = 12.0f;
                     //}
 					//スワイプの長さの値を変えれる
-					player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-					player.GetComponent<Rigidbody2D>().AddForce((a.normalized * 900.0f) * temp * -1);
+					player.GetComponent<Rigidbody2D>().AddForce(force_);
 				}
 			}
             //// カメラは追いかける

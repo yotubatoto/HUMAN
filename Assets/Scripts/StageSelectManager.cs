@@ -78,7 +78,11 @@ public class StageSelectManager : MonoBehaviour
             if (info == TouchInfo.Ended)
             {
                 endPos = AppUtil.GetTouchWorldPosition(Camera.main);
-                if (startPos.x > endPos.x)
+				if((int)startPos.x == (int)endPos.x)
+				{
+					TouchObjectFind();
+				}
+                else if (startPos.x > endPos.x)
                 {
                     if (startPos.x - endPos.x <= 0.02)
                     {
@@ -98,10 +102,7 @@ public class StageSelectManager : MonoBehaviour
                     pos.x += 7;
                     flag = false;
                 }
-                else
-                {
-                    TouchObjectFind();
-                }
+               
                 onceFlag = true;
                 touchFlag_ = false;
             }

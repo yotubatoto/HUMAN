@@ -26,6 +26,7 @@ public class Manager : MonoBehaviour
     private Vector2 start_pos;
     public bool wave_flag = false;
     int temp_state = 0;
+    private float count = 0.0f;
     enum MAIN_STATE
     {
         SHOT_1 = 1,
@@ -63,7 +64,7 @@ public class Manager : MonoBehaviour
                 float distCovered = (Time.time - startTime) * speed;
                 float fracJourney = distCovered / journeyLength;
 
-                Camera.main.orthographicSize -= 0.1f;
+                Camera.main.orthographicSize -= 0.3f;
                 if (Camera.main.orthographicSize <= 5.0f)
                 {
                     Camera.main.orthographicSize = 5.0f;
@@ -87,14 +88,16 @@ public class Manager : MonoBehaviour
                 }
                 else if(temp_state == 1)
                 {
-                    float distCovered = (Time.time - startTime) * (speed);
-                    float fracJourney = distCovered / journeyLength;
-                    float time = Time.deltaTime;
-                    transform.position = Vector3.Lerp(transform.position, start_pos, time);
+                    count += 0.02f;
+                    //float distCovered = (Time.time - startTime) * (speed);
+                    //float fracJourney = distCovered / journeyLength;
+                    //float time = Time.deltaTime;
+                    transform.position = Vector3.Lerp(transform.position, start_pos, count);
                     transform.position = new Vector3(transform.position.x, transform.position.y, -10.0f);
                     //Debug.Log(fracJourney);
-                    if (fracJourney >= 0.6f)
+                    if (count >= 1.0f)
                     {
+                        count = 0.0f;
                         Debug.Log("元気");
                         camera_state = 2;
                     }
@@ -122,7 +125,7 @@ public class Manager : MonoBehaviour
         if (shot_state ==(int) MAIN_STATE.SHOT_1)
         {
            Color c =  wave.color;
-           c.a -= 0.005f;
+           c.a -= 0.02f;
            wave.color = c;
            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if(c.a <= 0.0f)
@@ -136,7 +139,6 @@ public class Manager : MonoBehaviour
         {
             if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
             {
-                Debug.Log("3に以降");
                 shot_state = (int)MAIN_STATE.SHOT_3;
             }
         }
@@ -153,7 +155,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.005f;
+            c.a -= 0.02f;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -180,9 +182,11 @@ public class Manager : MonoBehaviour
                 Color cc = wave.color;
                 cc.a = 1;
                 wave.color = cc;
+				Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.005f;
+            c.a -= 0.02f;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -204,7 +208,7 @@ public class Manager : MonoBehaviour
 
     void Fade()
     {
-           filterWhite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, al += 0.01f);
+        filterWhite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, al += 0.01f);
         if (al >= 1)
         {
             SceneManager.LoadScene("StageSelect_Scene");

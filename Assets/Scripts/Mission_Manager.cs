@@ -24,7 +24,7 @@ public class Mission_Manager : MonoBehaviour {
     {
         if (mission_state == (int)MISSION_STATE.STAGE_1_1)
         {
-            clear_flag = Resin_GetNumber(10);
+            clear_flag = Resin_GetNumber(4);
         }
 	}
     bool Resin_GetNumber(int max_resin)

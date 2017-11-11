@@ -107,6 +107,7 @@ public class TitleManager : MonoBehaviour
 				{
                     m_se_source.clip = m_se_start;
 					m_se_source.Play();
+					m_se_source.loop = false;
 				}
 
 				// 次のシーンへ
@@ -130,7 +131,7 @@ public class TitleManager : MonoBehaviour
 			// 次のステージへ
 			if (m_cnt > 200)
 			{
-				filterWhite.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, al += 0.01f);
+				filterWhite.GetComponent<Image>().color = new Color(1, 1, 1, al += 0.01f);
 				if (al >= 1)
 				{
 					SceneManager.LoadScene("StageSelect_Scene");
