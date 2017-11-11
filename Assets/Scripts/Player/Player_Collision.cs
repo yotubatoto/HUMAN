@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Player_Collision : MonoBehaviour {
@@ -22,8 +23,13 @@ public class Player_Collision : MonoBehaviour {
     private int number_of_times = 0;
     public bool bonus_flag = false;
     public GameObject goal;
-	// Use this for initialization
-	void Start () 
+    public GameObject effect_prefab;
+    private bool gimic_coll_flag = false;
+    public float VELOCITY_MAX = 80.0f;
+    public int state = 0;
+
+    // Use this for initialization
+    void Start () 
     {
 
 	}
@@ -31,6 +37,7 @@ public class Player_Collision : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        damp_();
         if (flashing_flag == true)
         {
             GetComponent<PlayerController>().Flashing();
@@ -59,68 +66,120 @@ public class Player_Collision : MonoBehaviour {
             }
         }
 
-        if (bonus_count_flag == true)
+        //if (bonus_count_flag == true)
+        //{
+        //    bonus_count += Time.deltaTime;
+        //    if (bonus_count > 3)
+        //    {
+        //        bonus_count_flag = false;
+        //        bonus_point = 0;
+        //        bonus_count = 0.0f;
+        //        number_of_times = 0;
+        //    }
+        //}
+        //combo_text.text = number_of_times.ToString();
+        //if (gimic_coll_flag)
+        //{
+        //    // サイズカエル処理をします
+
+        //    // gimic_coll_flagをfalseに戻すのは?stateのときかつsizeが1になったら
+        //    if(state == 0)
+        //    {
+        //        //接触したら１から0.5まで値を減らす
+        //        Vector2 scale = transform.localScale;
+        //        scale.x -= 0.1f;
+        //        transform.localScale = scale;
+        //        if(scale.x <= 0.5f)
+        //        {
+        //            scale.x = 0.5f;
+        //            state = 1;
+        //        }
+        //    }
+
+        //    if(state == 1)
+        //    {
+        //        //サイスを0.5から１に値を増やす
+        //        Vector2 scale = transform.localScale;
+        //        scale.x += 0.1f;
+        //        transform.localScale = scale;
+        //        if (scale.x >= 1.0f)
+        //        {
+        //            state = 0;
+        //            scale.x = 1.0f;
+        //            gimic_coll_flag = false;
+        //        }
+        //    }
+
+        //}
+    }
+
+    //public void PlayerSizeChange(float offset)
+    //{
+    //    float sizeX = (GetComponent<Rigidbody2D>().velocity.magnitude) / 20.0f/*(113)*/;
+    //    if (sizeX <= 0.5f)
+    //    {
+    //        sizeX = 0.5f;
+    //    }
+    //    if (sizeX >= 1.0f)
+    //    {
+    //        sizeX = 1.0f;
+    //    }
+    //    sizeX = sizeX + offset;
+    //    transform.localScale = new Vector2(sizeX, transform.localScale.y);
+    //    if (sizeX >= 1.0f)
+    //    {
+    //        sizeX = 1.0f;
+    //        gimic_coll_flag = false;
+    //    }
+    //}
+
+    void damp_()
+    {
+        Vector2 temp = GetComponent<Rigidbody2D>().velocity;
+        if (temp.x > VELOCITY_MAX)
         {
-            bonus_count += Time.deltaTime;
-            if (bonus_count > 3)
-            {
-                bonus_count_flag = false;
-                bonus_point = 0;
-                bonus_count = 0.0f;
-                number_of_times = 0;
-            }
+            temp.x = VELOCITY_MAX;
         }
-        combo_text.text = number_of_times.ToString();
-	}
+        if (temp.x < -VELOCITY_MAX)
+        {
+            temp.x = -VELOCITY_MAX;
+        }
+        if (temp.y > VELOCITY_MAX)
+        {
+            temp.y = VELOCITY_MAX;
+        }
+        if (temp.y < -VELOCITY_MAX)
+        {
+            temp.y = -VELOCITY_MAX;
+        }
+        GetComponent<Rigidbody2D>().velocity = temp;
+    }
+
     void OnCollisionEnter2D(Collision2D coll) 
     {
-        if (coll.gameObject.tag == "Enemy")
-        {
-            GetComponent<Sound_Manager>().SE();
-            flashing_flag = true;
-            Debug.Log("ooooooooo");
-            camera.GetComponent<ShakeCamera>().Shake();
-            
-            item_count -= 1;
-            if (item_count < 0)
-            {
-                item_count = 0;
-            }
-            item_text.text = item_count.ToString();
-            obj = Instantiate(enemy_coll_effect, transform.position, Quaternion.identity) as GameObject;
-        }
-
         if (coll.gameObject.tag == "Gimic")
         {
-
+            gimic_coll_flag = true;
             GetComponent<Sound_Manager>().Resin_SE();
-            if (bonus_count < 3)
-            {
-                bonus_count = 0;
-                number_of_times += 1;
-                if (bonus_count_flag)
-                    bonus_point += 5;
-            }
-            bonus_count_flag = true;
-
-            item_count += bonus_point;
+            //if (bonus_count < 3)
+            //{
+            //    bonus_count = 0;
+            //    number_of_times += 1;
+            //    if (bonus_count_flag)
+            //        bonus_point = 5;
+            //}
+            item_count += 1;
+            //item_count += bonus_point;
             item_text.text = item_count.ToString();
+            Instantiate(effect_prefab, transform.position, Quaternion.identity);
+            //GetComponent<Sound_Manager>().Item_UP_SE();
         }
-        
-
-        
     }
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Time_count_up")
-        {
-            GetComponent<Sound_Manager>().Item_UP_SE();
-            camera.GetComponent<Manager>().rimit_time += 5;
-        }
-
         if (coll.gameObject.tag == "Bonus")
         {
-            bonus_flag = true;
+            bonus_count_flag = true;
 
             GetComponent<Sound_Manager>().Item_UP_SE();
             
@@ -130,6 +189,8 @@ public class Player_Collision : MonoBehaviour {
             if (goal.GetComponent<SpriteRenderer>().color.a >= 1)
             {
                 Debug.Log("ごーーる");
+                Pauser.Resume();
+                //SceneManager.LoadScene("StageSelect_Scene");
             }
         }
         
