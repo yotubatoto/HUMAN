@@ -12,6 +12,7 @@ public class MainCameraScr : MonoBehaviour
     public Vector3 Vec;
 	private bool flag = false;
 	public GameObject arrow;
+    public GameObject circle;
     public bool end_flag = false;
     public bool state_move_flag = false;
     public GameObject semitransparentPrefab;
@@ -20,6 +21,12 @@ public class MainCameraScr : MonoBehaviour
     private int time = 0;
     private float old_angle = 0.0f;
 	private Vector2 force_ = Vector2.zero;
+
+    private float swipe_scale = 0;
+    private Vector2 sub;
+    //どれぐらい引っ張れるか
+    public float VELOCITY_MAX = 10.0f;
+
 	//public Text debug_test;
     /* --------------------------------------------------
 	 * @パラメータ初期化
@@ -78,32 +85,60 @@ public class MainCameraScr : MonoBehaviour
 				{
 					// タッチ開始
 					startPos = AppUtil.GetTouchWorldPosition(Camera.main);
-					Color color = arrow.GetComponent<SpriteRenderer>().color;
-                    arrow.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
+                    circle.transform.position = startPos;
+
+                    Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
+                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
+                    arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
+                    circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.4f);
                     arrow.transform.localScale = new Vector3(1,1, 1);
 
 				}
 				if (info == TouchInfo.Moved)
 				{
-                    Color color = arrow.GetComponent<SpriteRenderer>().color;
 
-                    arrow.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
+                    Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
+                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
+                    arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
 					movePos = AppUtil.GetTouchWorldPosition(Camera.main);
-					Vector2 sub = movePos - startPos;
+					sub = movePos - startPos;
                     // sub.magn大きさ　と　arrowのサイズをいい感じに比例させる
                     // 数値を最大値で悪と0~1の間になる
-                    float testes = sub.magnitude;
-                    if (testes > 12)
-                        testes = 12.0f;
-                    testes = (testes) / 12;
-                    arrow.transform.localScale = new Vector3(testes+0.5f, testes+0.5f, 1.0f);
-
+                    //float testes = sub.magnitude;
+                    //if (testes > 12)
+                    //    testes = 12.0f;
+                    //testes = (testes) / 12;
+                  
                     //if (sub == Vector2.zero)
                     //{
                     //    info = TouchInfo.None;
                     //    arrow.GetComponent<SpriteRenderer>().enabled = false;
 
                     //}
+
+                    //if(sub.magnitude > 20.0f)
+                    //{
+                    //    sub.magnitude = 20.0f;
+                    //}
+                   
+                    if (sub.x > VELOCITY_MAX)
+                    {
+                        sub.x = VELOCITY_MAX;
+                    }
+                    if (sub.x < -VELOCITY_MAX)
+                    {
+                        sub.x = -VELOCITY_MAX;
+                    }
+                    if (sub.y > VELOCITY_MAX)
+                    {
+                        sub.y = VELOCITY_MAX;
+                    }
+                    if (sub.y < -VELOCITY_MAX)
+                    {
+                        sub.y = -VELOCITY_MAX;
+                    }
+                    arrow.transform.localScale = new Vector3(1.0f, sub.magnitude, 1.0f);
+
                     float temp = sub.magnitude;
                     float ang = Mathf.Atan2(sub.y, sub.x) * Mathf.Rad2Deg;
                    
@@ -144,22 +179,28 @@ public class MainCameraScr : MonoBehaviour
                 }
 				if (info == TouchInfo.Ended)
                 {
-                    end_flag = true;
-                    //arrow.GetComponent<SpriteRenderer>().enabled = false;
-                    Color color = arrow.GetComponent<SpriteRenderer>().color;
-                    arrow.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.0f);
-					flag = true;
-					endPos = AppUtil.GetTouchWorldPosition(Camera.main);
-					Vector2 a = endPos - startPos;
-					//Debug.Log(a.magnitude);
-					float temp = 0;
-					temp = a.magnitude;
-                    //if (temp > 12.0f)
-                    //{
-                    //    temp = 12.0f;
-                    //}
-					//スワイプの長さの値を変えれる
-					player.GetComponent<Rigidbody2D>().AddForce(force_);
+                    if (sub.magnitude > 4)
+                    {
+                        end_flag = true;
+                        //arrow.GetComponent<SpriteRenderer>().enabled = false;
+                        Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
+                        arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.0f);
+                       
+                        flag = true;
+                        endPos = AppUtil.GetTouchWorldPosition(Camera.main);
+                        Vector2 a = endPos - startPos;
+                        //Debug.Log(a.magnitude);
+                        float temp = 0;
+                        temp = a.magnitude;
+                        //if (temp > 12.0f)
+                        //{
+                        //    temp = 12.0f;
+                        //}
+                        //スワイプの長さの値を変えれる
+                        player.GetComponent<Rigidbody2D>().AddForce(force_);
+                    }
+                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
+                    circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.0f);
 				}
 			}
             //// カメラは追いかける

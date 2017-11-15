@@ -17,13 +17,14 @@ public class Manager : MonoBehaviour
     private float al;
     public GameObject goal;
     public Text wave;
+    public Text shot;
     public float speed = 0.01F;
     private float startTime;
     Color color;
     private int camera_state = 0;
     private float journeyLength;
     int shot_state = 1;
-    private Vector2 start_pos;
+    public Vector2 start_pos;
     public bool wave_flag = false;
     int temp_state = 0;
     private float count = 0.0f;
@@ -125,6 +126,8 @@ public class Manager : MonoBehaviour
         if (shot_state ==(int) MAIN_STATE.SHOT_1)
         {
            Color c =  wave.color;
+           
+          
            c.a -= 0.02f;
            wave.color = c;
            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
@@ -148,6 +151,7 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 2";
+                shot.text = "2/3";
                 Color cc = wave.color;
                 cc.a = 1;
                 wave.color = cc;
@@ -179,6 +183,7 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 3";
+                shot.text = "3/3";
                 Color cc = wave.color;
                 cc.a = 1;
                 wave.color = cc;

@@ -25,7 +25,7 @@ public class Player_Collision : MonoBehaviour {
     public GameObject goal;
     public GameObject effect_prefab;
     private bool gimic_coll_flag = false;
-    public float VELOCITY_MAX = 80.0f;
+    public float VELOCITY_MAX = 10.0f;
     public int state = 0;
 
     // Use this for initialization
@@ -37,7 +37,7 @@ public class Player_Collision : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        damp_();
+        //damp_();
         if (flashing_flag == true)
         {
             GetComponent<PlayerController>().Flashing();
@@ -190,7 +190,7 @@ public class Player_Collision : MonoBehaviour {
             {
                 Debug.Log("ごーーる");
                 Pauser.Resume();
-                //SceneManager.LoadScene("StageSelect_Scene");
+                SceneManager.LoadScene("StageSelect_Scene");
             }
         }
         

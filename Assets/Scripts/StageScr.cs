@@ -2,6 +2,10 @@
 using System.Collections;
 
 public class StageScr : MonoBehaviour {
+    public GameObject stage_select;
+    public float speed = 2;
+    Vector2 vec; 
+
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +17,7 @@ public class StageScr : MonoBehaviour {
 		
 		// 現在座標の取得
 		Vector3 pos = transform.position;
-
+     
 		// カメラ座標の取得
 		Vector3 cam_pos = GameObject.FindWithTag ("MainCamera").transform.position;
 

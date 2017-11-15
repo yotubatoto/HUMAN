@@ -17,6 +17,7 @@ public class StageSelectManager : MonoBehaviour
     public int itemCount = 0;
     public static bool ST_CLEAR_FLAG;
     public int clear = 0;
+    public float move_speed = 20.5f;
     // Use this for initialization
     void Awake()
     {
@@ -55,7 +56,22 @@ public class StageSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Execute();
+        if (Camera.main.GetComponent<Stage_Controller>().camera_move_state == 0)
+        {
+            Execute();
+        }
+        else if (Camera.main.GetComponent<Stage_Controller>().camera_move_state == 1)
+        {
+            TouchInfo info = AppUtil.GetTouch();
+
+            if (info == TouchInfo.Began)
+            {
+                // タッチ開始
+                //Camera.main.GetComponent<Stage_Controller>().camera_scr = 0.0f;
+                TouchObjectFind("return", 2);
+                TouchObjectFind();
+            }
+        }
     }
 
     void Execute()
@@ -71,6 +87,7 @@ public class StageSelectManager : MonoBehaviour
                 time = 0;
                 touchFlag_ = true;
                 c = 0;
+                Camera.main.GetComponent<Stage_Controller>().camera_scr = 0.0f;
             }
         }
         if (touchFlag_ == true)
@@ -80,26 +97,26 @@ public class StageSelectManager : MonoBehaviour
                 endPos = AppUtil.GetTouchWorldPosition(Camera.main);
 				if((int)startPos.x == (int)endPos.x)
 				{
-					TouchObjectFind();
+					TouchObjectFind("col",1);
 				}
                 else if (startPos.x > endPos.x)
                 {
                     if (startPos.x - endPos.x <= 0.02)
                     {
-                        TouchObjectFind();
+                        TouchObjectFind("col",1);
                     }
                     pos = transform.position;
-                    pos.x -= 7;
+                    pos.x -= move_speed;
                     flag = true;
                 }
                 else if (startPos.x < endPos.x)
                 {
                     if (endPos.x - startPos.x <= 0.02)
                     {
-                        TouchObjectFind();
+                        TouchObjectFind("col",1);
                     }
                     pos = transform.position;
-                    pos.x += 7;
+                    pos.x += move_speed;
                     flag = false;
                 }
                
@@ -111,8 +128,8 @@ public class StageSelectManager : MonoBehaviour
         if (onceFlag == true)
         {
             //Debug.Log(flag);
-            if (!(((transform.position.x >= 0 && transform.position.x < 7) && flag == false)
-                 || ((transform.position.x <= -21) && flag == true)))
+            if (!(((transform.position.x >= 0 && transform.position.x < move_speed) && flag == false)
+                 || ((transform.position.x <= -move_speed*3) && flag == true)))
             {
                 transform.position = Vector3.Lerp(transform.position, pos, c += 0.01f);
                 if (c > 1)
@@ -125,21 +142,37 @@ public class StageSelectManager : MonoBehaviour
     }
 
 
-    void TouchObjectFind()
+    void TouchObjectFind(string name,int move_state)
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
         Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D collition2d = Physics2D.OverlapPoint(point);
 
-        if (int.Parse(collition2d.gameObject.name) - 1 <= clear)
+        //Debug.Log(collition2d.gameObject.name);
+        if(collition2d != null)
         {
-            if (collition2d)
+            if (collition2d.gameObject.name == name)
             {
-                Debug.Log(collition2d.gameObject.name.ToString());
-                SceneManager.LoadScene("Stage_" + collition2d.gameObject.name.ToString() + "_Scene");
+                Camera.main.GetComponent<Stage_Controller>().camera_move_state = move_state;
             }
         }
-        //}
+    }
+
+    void TouchObjectFind()
+    {
+        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D collition2d = Physics2D.OverlapPoint(point);
+
+        //Debug.Log(collition2d.gameObject.name);
+        if (collition2d != null)
+        {
+            if (collition2d.gameObject.name == "_1")
+            {
+                SceneManager.LoadScene("Stage_1_Scene");
+            }
+            if (collition2d.gameObject.name == "_2")
+            {
+                SceneManager.LoadScene("Stage_2_Scene");
+            }
+        }
     }
 }
