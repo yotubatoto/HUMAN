@@ -24,7 +24,7 @@ public class Stage_Controller: MonoBehaviour {
         //　移動処理 
         if (camera_move_state == 1)
         {
-            camera_scr -= 0.03f;
+            camera_scr -= 0.06f;
             transform.position = new Vector3(0.0f, camera_scr, -10.0f);
             if (camera_scr <= -13.5f)
             {
@@ -34,7 +34,7 @@ public class Stage_Controller: MonoBehaviour {
         }
         if (camera_move_state == 2)
         {
-            camera_scr += 0.03f;
+            camera_scr += 0.06f;
             transform.position = new Vector3(0.0f, camera_scr, -10.0f);
             if (camera_scr >= 0)
             {

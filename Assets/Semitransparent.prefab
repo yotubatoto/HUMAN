@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114506032450553694}
   - component: {fileID: 114128374408708424}
   - component: {fileID: 114317587037537090}
+  - component: {fileID: 114265696995064338}
   m_Layer: 11
   m_Name: Semitransparent
   m_TagString: semi
@@ -209,6 +210,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAX_TIME: 1
+--- !u!114 &114265696995064338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1236668700919286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca5f456f13cf1b4489ced7c98536bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delete_time: 1
 --- !u!114 &114317587037537090
 MonoBehaviour:
   m_ObjectHideFlags: 1
