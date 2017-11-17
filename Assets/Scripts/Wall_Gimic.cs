@@ -16,6 +16,8 @@ public class Wall_Gimic : MonoBehaviour {
     private float c_plus = 0.0f;
     public float zoom_speed = 0.5f;
     public Sprite[] light_sprite = new Sprite[2];
+    public float INITIAL_SIZE = 2f;  
+    public float MAX_SIZE = 3f;
 
 
     // Use this for initialization
@@ -31,26 +33,48 @@ public class Wall_Gimic : MonoBehaviour {
         if (size_state == 1)
         {
             s_plus += zoom_speed;
-            transform.localScale = new Vector3(s_plus + 2, s_plus + 2, 0.0f);
-            if((s_plus +2) > 3)
+            transform.localScale = new Vector3(s_plus + INITIAL_SIZE, s_plus + INITIAL_SIZE, 0.0f);
+            if ((s_plus + INITIAL_SIZE) > MAX_SIZE)
             {
                 size_state = 2;
-                s_plus = 2;
+                s_plus = INITIAL_SIZE;
             }
         }
 
-        else if(size_state == 2)
+        else if (size_state == 2)
         {
             s_plus -= zoom_speed;
-            transform.localScale = new Vector3(s_plus + 2, s_plus + 2, 0.0f);
-            if((s_plus + 2) < 2)
+            transform.localScale = new Vector3(s_plus + INITIAL_SIZE, s_plus + INITIAL_SIZE, 0.0f);
+            if ((s_plus + INITIAL_SIZE) < INITIAL_SIZE)
             {
                 size_state = 0;
                 s_plus = 0;
             }
         }
 
-        if(chage_state == 1)
+        //if (size_state == 1)
+        //{
+        //    s_plus += zoom_speed;
+        //    transform.localScale = new Vector3(s_plus + 4, s_plus + 4, 0.0f);
+        //    if ((s_plus + 4) > 6)
+        //    {
+        //        size_state = 2;
+        //        s_plus = 4;
+        //    }
+        //}
+
+        //else if (size_state == 2)
+        //{
+        //    s_plus -= zoom_speed;
+        //    transform.localScale = new Vector3(s_plus +4, s_plus + 4, 0.0f);
+        //    if ((s_plus + 4) < 4)
+        //    {
+        //        size_state = 0;
+        //        s_plus = 0;
+        //    }
+        //}
+
+        if (chage_state == 1)
         {
             if(obj != null)
             {
