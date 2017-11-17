@@ -8,30 +8,98 @@ public class Wall_Gimic : MonoBehaviour {
     private int resin_count = 0;
     public GameObject player;
     private int bonus = 1;
+    private int size_state = 0;
+    private float s_plus = 0.0f;
+    public GameObject chageprefab;
+    private GameObject obj = null;
+    private int chage_state = 0;
+    private float c_plus = 0.0f;
+    public float zoom_speed = 0.5f;
+    public Sprite[] light_sprite = new Sprite[2];
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-		if(player.GetComponent<Player_Collision>().bonus_flag == true)
+        //transform.localScale = new Vector3(100, 100, 1.0f);
+
+        if (size_state == 1)
         {
-            bonus = 5;
+            s_plus += zoom_speed;
+            transform.localScale = new Vector3(s_plus + 2, s_plus + 2, 0.0f);
+            if((s_plus +2) > 3)
+            {
+                size_state = 2;
+                s_plus = 2;
+            }
         }
-	}
+
+        else if(size_state == 2)
+        {
+            s_plus -= zoom_speed;
+            transform.localScale = new Vector3(s_plus + 2, s_plus + 2, 0.0f);
+            if((s_plus + 2) < 2)
+            {
+                size_state = 0;
+                s_plus = 0;
+            }
+        }
+
+        if(chage_state == 1)
+        {
+            if(obj != null)
+            {
+                //c_plus += 0.1f;
+                //obj.transform.localScale = new Vector3(c_plus + 0.2f, c_plus + 0.2f, 0.0f);
+                //Color c = obj.GetComponent<SpriteRenderer>().color;
+                //c.a -= 0.005f;
+                //obj.GetComponent<SpriteRenderer>().color = c;
+                //if (c.a <= 0.0f)
+                //{
+                //    chage_state = 0;
+                //    c_plus = 0;
+                //    Destroy(obj.gameObject);
+                //}
+
+                c_plus += 0.04f;
+                obj.transform.localScale = new Vector3(c_plus + 0.2f, c_plus + 0.2f, 0.0f);
+                Color c = obj.GetComponent<SpriteRenderer>().color;
+                c.a -= 0.02f;
+                obj.GetComponent<SpriteRenderer>().color = c;
+                if (c.a <= 0.0f)
+                {
+                    chage_state = 0;
+                    c_plus = 0;
+                    Destroy(obj.gameObject);
+                }
+            }
+
+        }
+
+        
+
+    }
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Player")
+        if (size_state == 0)
         {
-            //resin_count += 1;
-            int temp = int.Parse(resin_text.text)+(1* bonus);
-            resin_text.text = temp.ToString();
-            bonus = 1;
-            player.GetComponent<Player_Collision>().bonus_flag = false;
-            
+            if (coll.gameObject.tag == "Player")
+            {
+                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+                size_state = 1;
+                if(chage_state == 0)
+                {
+                    Debug.Log("aaa");
+                    obj = Instantiate(chageprefab, transform.position, Quaternion.identity);
+                    chage_state = 1;
+                }
+            }
         }
+
     }
 }
