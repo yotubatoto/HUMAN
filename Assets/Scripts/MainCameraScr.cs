@@ -13,6 +13,8 @@ public class MainCameraScr : MonoBehaviour
 	private bool flag = false;
 	public GameObject arrow;
     public GameObject circle;
+    public GameObject pause;
+    public GameObject pause_black;
     public bool end_flag = false;
     public bool state_move_flag = false;
     public GameObject semitransparentPrefab;
@@ -21,12 +23,13 @@ public class MainCameraScr : MonoBehaviour
     private int time = 0;
     private float old_angle = 0.0f;
 	private Vector2 force_ = Vector2.zero;
+    private int pause_count = 1;
 
     private float swipe_scale = 0;
     private Vector2 sub;
     //どれぐらい引っ張れるか
     public float VELOCITY_MAX = 10.0f;
-
+    private bool pause_freeze_flag = false;
 	//public Text debug_test;
     /* --------------------------------------------------
 	 * @パラメータ初期化
@@ -43,6 +46,14 @@ public class MainCameraScr : MonoBehaviour
 	*/
 	void Update ()
 	{
+
+        TouchInfo _info = AppUtil.GetTouch();
+        if (_info == TouchInfo.Began)
+        {
+            TouchObjectFind("pause");
+        }
+        
+
 		if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			Camera.main.orthographicSize += 1.0f;
@@ -54,160 +65,165 @@ public class MainCameraScr : MonoBehaviour
 			Debug.Log(Camera.main.orthographicSize);
 		}
 
-        if (touch_freeze_flag == false)
+        if (pause_freeze_flag == false)
         {
-	
-			if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= 0.8f)
-			{
-                player.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
-				flag = false;
-			}
-            if(end_flag == true && player.GetComponent<Rigidbody2D>().velocity.magnitude <= 0.1f && GetComponent<Manager>().wave_flag == false)
+
+            if (touch_freeze_flag == false)
             {
-                state_move_flag = true;
-                GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
-                if (GameObject.FindGameObjectsWithTag("semi") != null)
+
+                if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= 0.8f)
                 {
-                    foreach (GameObject _obj in a)
-                    {
-                        Destroy(_obj);
-                    }
+                    player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                    flag = false;
                 }
-            }
-            //else
-            //{
-            //    state_move_flag = false;
-            //}
-			if (flag == false)
-			{
-				TouchInfo info = AppUtil.GetTouch();
-				if (info == TouchInfo.Began)
-				{
-					// タッチ開始
-					startPos = AppUtil.GetTouchWorldPosition(Camera.main);
-                    circle.transform.position = startPos;
-
-                    Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
-                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
-                    arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
-                    circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.4f);
-                    arrow.transform.localScale = new Vector3(1,1, 1);
-
-				}
-				if (info == TouchInfo.Moved)
-				{
-
-                    Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
-                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
-                    arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
-					movePos = AppUtil.GetTouchWorldPosition(Camera.main);
-					sub = movePos - startPos;
-                    // sub.magn大きさ　と　arrowのサイズをいい感じに比例させる
-                    // 数値を最大値で悪と0~1の間になる
-                    //float testes = sub.magnitude;
-                    //if (testes > 12)
-                    //    testes = 12.0f;
-                    //testes = (testes) / 12;
-                  
-                    //if (sub == Vector2.zero)
-                    //{
-                    //    info = TouchInfo.None;
-                    //    arrow.GetComponent<SpriteRenderer>().enabled = false;
-
-                    //}
-
-                    //if(sub.magnitude > 20.0f)
-                    //{
-                    //    sub.magnitude = 20.0f;
-                    //}
-                   
-                    if (sub.x > VELOCITY_MAX)
+                if (end_flag == true && player.GetComponent<Rigidbody2D>().velocity.magnitude <= 0.1f && GetComponent<Manager>().wave_flag == false)
+                {
+                    state_move_flag = true;
+                    GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
+                    if (GameObject.FindGameObjectsWithTag("semi") != null)
                     {
-                        sub.x = VELOCITY_MAX;
-                    }
-                    if (sub.x < -VELOCITY_MAX)
-                    {
-                        sub.x = -VELOCITY_MAX;
-                    }
-                    if (sub.y > VELOCITY_MAX)
-                    {
-                        sub.y = VELOCITY_MAX;
-                    }
-                    if (sub.y < -VELOCITY_MAX)
-                    {
-                        sub.y = -VELOCITY_MAX;
-                    }
-                    arrow.transform.localScale = new Vector3(1.0f, sub.magnitude, 1.0f);
-
-                    float temp = sub.magnitude;
-                    float ang = Mathf.Atan2(sub.y, sub.x) * Mathf.Rad2Deg;
-                   
-					float angle = ang - 90.0f;
-					if ((int)old_angle == (int)ang)
-                    {
-                        if (prediction_flag == false)
+                        foreach (GameObject _obj in a)
                         {
-                            if (temp > 3)
-                            {
-                                //Debug.Log(temp);
-
-                                prediction_flag = true;
-                                GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
-                                if (GameObject.FindGameObjectsWithTag("semi") != null)
-                                {
-                                    foreach(GameObject _obj in a)
-                                    {
-                                        Destroy(_obj);
-                                    }
-                                }
-                                GameObject obj_h = Instantiate(semitransparentPrefab, player.transform.position, player.transform.rotation);
-                                obj_h.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
-                                force_ = (sub.normalized * 900.0f) * temp * -1;
-                                obj_h.GetComponent<Rigidbody2D>().AddForce(force_);
-                            }
+                            Destroy(_obj);
                         }
                     }
-                    //Debug.Log((old_angle) - (ang));
-                    float test = old_angle - ang;
-                    if(test > 1.1f || test < -1.1f)
-                    {
-                        prediction_flag = false;
-                    }
-                    player.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
-
-                    old_angle = ang;
                 }
-				if (info == TouchInfo.Ended)
+                //else
+                //{
+                //    state_move_flag = false;
+                //}
+                if (flag == false)
                 {
-                    if (sub.magnitude > 4)
+                    TouchInfo info = AppUtil.GetTouch();
+                    if (info == TouchInfo.Began)
                     {
-                        end_flag = true;
-                        //arrow.GetComponent<SpriteRenderer>().enabled = false;
+                        // タッチ開始
+                        startPos = AppUtil.GetTouchWorldPosition(Camera.main);
+                        circle.transform.position = startPos;
+
                         Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
-                        arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.0f);
-                       
-                        flag = true;
-                        endPos = AppUtil.GetTouchWorldPosition(Camera.main);
-                        Vector2 a = endPos - startPos;
-                        //Debug.Log(a.magnitude);
-                        float temp = 0;
-                        temp = a.magnitude;
-                        //if (temp > 12.0f)
-                        //{
-                        //    temp = 12.0f;
-                        //}
-                        //スワイプの長さの値を変えれる
-                        player.GetComponent<Rigidbody2D>().AddForce(force_);
+                        Color c_color = circle.GetComponent<SpriteRenderer>().color;
+                        arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
+                        circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.4f);
+                        arrow.transform.localScale = new Vector3(1, 1, 1);
+
                     }
-                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
-                    circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.0f);
-				}
-			}
-            //// カメラは追いかける
-            //Vector3 vec = (player.transform.position - transform.position).normalized;
-            //vec *= 1.0f;
-            //transform.position += new Vector3(vec.x, vec.y, 0.0f);
+                    if (info == TouchInfo.Moved)
+                    {
+
+                        Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
+                        Color circle_color = circle.GetComponent<SpriteRenderer>().color;
+                        arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
+                        movePos = AppUtil.GetTouchWorldPosition(Camera.main);
+                        sub = movePos - startPos;
+                        // sub.magn大きさ　と　arrowのサイズをいい感じに比例させる
+                        // 数値を最大値で悪と0~1の間になる
+                        //float testes = sub.magnitude;
+                        //if (testes > 12)
+                        //    testes = 12.0f;
+                        //testes = (testes) / 12;
+
+                        //if (sub == Vector2.zero)
+                        //{
+                        //    info = TouchInfo.None;
+                        //    arrow.GetComponent<SpriteRenderer>().enabled = false;
+
+                        //}
+
+                        //if(sub.magnitude > 20.0f)
+                        //{
+                        //    sub.magnitude = 20.0f;
+                        //}
+
+                        if (sub.x > VELOCITY_MAX)
+                        {
+                            sub.x = VELOCITY_MAX;
+                        }
+                        if (sub.x < -VELOCITY_MAX)
+                        {
+                            sub.x = -VELOCITY_MAX;
+                        }
+                        if (sub.y > VELOCITY_MAX)
+                        {
+                            sub.y = VELOCITY_MAX;
+                        }
+                        if (sub.y < -VELOCITY_MAX)
+                        {
+                            sub.y = -VELOCITY_MAX;
+                        }
+                        arrow.transform.localScale = new Vector3(1.0f, sub.magnitude, 1.0f);
+
+                        float temp = sub.magnitude;
+                        float ang = Mathf.Atan2(sub.y, sub.x) * Mathf.Rad2Deg;
+
+                        float angle = ang - 90.0f;
+                        if ((int)old_angle == (int)ang)
+                        {
+                            if (prediction_flag == false)
+                            {
+                                if (temp > 3)
+                                {
+                                    //Debug.Log(temp);
+
+                                    prediction_flag = true;
+                                    GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
+                                    if (GameObject.FindGameObjectsWithTag("semi") != null)
+                                    {
+                                        foreach (GameObject _obj in a)
+                                        {
+                                            Destroy(_obj);
+                                        }
+                                    }
+                                    GameObject obj_h = Instantiate(semitransparentPrefab, player.transform.position, player.transform.rotation);
+                                    obj_h.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
+                                    force_ = (sub.normalized * 900.0f) * temp * -1;
+                                    obj_h.GetComponent<Rigidbody2D>().AddForce(force_);
+                                }
+                            }
+                        }
+                        //Debug.Log((old_angle) - (ang));
+                        float test = old_angle - ang;
+                        if (test > 1.1f || test < -1.1f)
+                        {
+                            prediction_flag = false;
+                        }
+                        player.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
+
+                        old_angle = ang;
+                    }
+                    if (info == TouchInfo.Ended)
+                    {
+                        if (sub.magnitude > 4)
+                        {
+                            end_flag = true;
+                            //arrow.GetComponent<SpriteRenderer>().enabled = false;
+                            Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
+                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.0f);
+
+                            flag = true;
+                            endPos = AppUtil.GetTouchWorldPosition(Camera.main);
+                            Vector2 a = endPos - startPos;
+                            //Debug.Log(a.magnitude);
+                            float temp = 0;
+                            temp = a.magnitude;
+                            //if (temp > 12.0f)
+                            //{
+                            //    temp = 12.0f;
+                            //}
+                            //スワイプの長さの値を変えれる
+                            player.GetComponent<Rigidbody2D>().AddForce(force_);
+                        }
+                        Color c_color = circle.GetComponent<SpriteRenderer>().color;
+                        circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.0f);
+                    }
+                }
+                //// カメラは追いかける
+                //Vector3 vec = (player.transform.position - transform.position).normalized;
+                //vec *= 1.0f;
+                //transform.position += new Vector3(vec.x, vec.y, 0.0f);
+            }
         }
+
 		
 
 		// ----------
@@ -232,4 +248,39 @@ public class MainCameraScr : MonoBehaviour
 		// ----------
 		//}
 	}
+
+    void TouchObjectFind(string name)
+    {
+        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D collition2d = Physics2D.OverlapPoint(point);
+
+        //Debug.Log(collition2d.gameObject.name);
+        if (collition2d != null)
+        {
+            if (collition2d.gameObject.name == name)
+            {
+                pause_count += 1;
+                //偶数時がポーズ
+                if (pause_count % 2 == 0)
+                {
+                    pause_freeze_flag = true;
+                    Pauser.Pause();
+                    Color pause_color = new Color(0, 0, 0, 0);
+                    Color pause_ = pause_black.gameObject.GetComponent<SpriteRenderer>().color;
+                    pause_black.GetComponent<SpriteRenderer>().color = 
+                        new Color(pause_color.r, pause_color.g, pause_color.b, 0.7f);
+                }
+                else
+                {
+                    pause_freeze_flag = false;
+                    Pauser.Resume();
+                    Color pause_color = new Color(0, 0, 0, 0);
+                    Color pause_ = pause_black.gameObject.GetComponent<SpriteRenderer>().color;
+                    pause_black.GetComponent<SpriteRenderer>().color = 
+                        new Color(pause_color.r, pause_color.g, pause_color.b, 0.0f);
+                }
+                
+            }
+        }
+    }
 }
