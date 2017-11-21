@@ -28,6 +28,8 @@ public class MainCameraScr : MonoBehaviour
     public float attenuation_speed = 2.0f;
     private int shake_state = 0;
     public float arrow_shake = 0.0f;
+    public GameObject anime;
+    private float end_time = 0.0f;
 
     private float swipe_scale = 0;
     private Vector2 sub;
@@ -42,7 +44,7 @@ public class MainCameraScr : MonoBehaviour
     void Start () {
 		Application.targetFrameRate = 60;
         //カメラのスケール２５
-		Camera.main.orthographicSize = 35.0f;
+		Camera.main.orthographicSize = 25.0f;
 	}
 
 
@@ -106,6 +108,7 @@ public class MainCameraScr : MonoBehaviour
                         // タッチ開始
                         startPos = AppUtil.GetTouchWorldPosition(Camera.main);
                         circle.transform.position = startPos;
+                        anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
                         Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
                         Color c_color = circle.GetComponent<SpriteRenderer>().color;
@@ -163,19 +166,7 @@ public class MainCameraScr : MonoBehaviour
 
                         //arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
 
-                        if (sub.magnitude < 6)
-                        {
-                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
-                        }
-                        if (sub.magnitude > 6)
-                        {
-                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f,1.0f,0.0f,1.0f);
-                        }
-                        if (sub.magnitude > 12)
-                        {
-                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(1.0f,0.0f,0.0f,1.0f);
-
-                        }
+                       
                         Shake_Arrow();
 
                         //Debug.Log(temp);
@@ -216,16 +207,43 @@ public class MainCameraScr : MonoBehaviour
                         player.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
 
                         old_angle = ang;
+
+                        if (sub.magnitude < 6)
+                        {
+                            anime.GetComponent<Animator>().speed = 0.5f;
+                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color
+                                = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                        }
+                        if (sub.magnitude > 6)
+                        {
+                            anime.GetComponent<Animator>().speed = 2.5f;
+                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color
+                                = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+                        }
+                        if (sub.magnitude > 12)
+                        {
+                            anime.GetComponent<Animator>().speed = 5.0f;
+                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color
+                                = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+                            // endにいく
+                            end_time += Time.deltaTime;
+                            if (end_time > 3)
+                            {
+                                info = TouchInfo.Ended;
+                            }
+                        }
                     }
                     if (info == TouchInfo.Ended)
                     {
+                        end_time = 0.0f;
                         if (sub.magnitude > 4)
                         {
                             end_flag = true;
+                            anime.GetComponent<Animator>().speed = 0.5f;
                             //arrow.GetComponent<SpriteRenderer>().enabled = false;
                             Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
                             arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.0f);
-
+                            anime.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                             flag = true;
                             endPos = AppUtil.GetTouchWorldPosition(Camera.main);
                             Vector2 a = endPos - startPos;
