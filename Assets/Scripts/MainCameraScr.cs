@@ -24,18 +24,26 @@ public class MainCameraScr : MonoBehaviour
     private float old_angle = 0.0f;
 	private Vector2 force_ = Vector2.zero;
     private int pause_count = 1;
+    //射出の減衰スピード
+    public float attenuation_speed = 2.0f;
+    private int shake_state = 0;
+    public float arrow_shake = 0.0f;
+    public GameObject anime;
+    private float end_time = 0.0f;
 
     private float swipe_scale = 0;
     private Vector2 sub;
     //どれぐらい引っ張れるか
     public float VELOCITY_MAX = 10.0f;
     private bool pause_freeze_flag = false;
+    private Vector2 arrow_start_pos = Vector2.zero;
 	//public Text debug_test;
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
     void Start () {
 		Application.targetFrameRate = 60;
+        //カメラのスケール２５
 		Camera.main.orthographicSize = 25.0f;
 	}
 
@@ -70,8 +78,8 @@ public class MainCameraScr : MonoBehaviour
 
             if (touch_freeze_flag == false)
             {
-
-                if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= 0.8f)
+                
+                if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= attenuation_speed)
                 {
                     player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                     flag = false;
@@ -100,10 +108,11 @@ public class MainCameraScr : MonoBehaviour
                         // タッチ開始
                         startPos = AppUtil.GetTouchWorldPosition(Camera.main);
                         circle.transform.position = startPos;
+                        anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
                         Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
                         Color c_color = circle.GetComponent<SpriteRenderer>().color;
-                        arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
+                        arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(0.0f,0.0f,1.0f,1.0f);
                         circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.4f);
                         arrow.transform.localScale = new Vector3(1, 1, 1);
 
@@ -113,7 +122,6 @@ public class MainCameraScr : MonoBehaviour
 
                         Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
                         Color circle_color = circle.GetComponent<SpriteRenderer>().color;
-                        arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
                         movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                         sub = movePos - startPos;
                         // sub.magn大きさ　と　arrowのサイズをいい感じに比例させる
@@ -152,8 +160,17 @@ public class MainCameraScr : MonoBehaviour
                             sub.y = -VELOCITY_MAX;
                         }
                         arrow.transform.localScale = new Vector3(1.0f, sub.magnitude, 1.0f);
+                       
 
                         float temp = sub.magnitude;
+
+                        //arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
+
+                       
+                        Shake_Arrow();
+
+                        //Debug.Log(temp);
+
                         float ang = Mathf.Atan2(sub.y, sub.x) * Mathf.Rad2Deg;
 
                         float angle = ang - 90.0f;
@@ -190,16 +207,43 @@ public class MainCameraScr : MonoBehaviour
                         player.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
 
                         old_angle = ang;
+
+                        if (sub.magnitude < 6)
+                        {
+                            anime.GetComponent<Animator>().speed = 0.5f;
+                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color
+                                = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                        }
+                        if (sub.magnitude > 6)
+                        {
+                            anime.GetComponent<Animator>().speed = 2.5f;
+                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color
+                                = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+                        }
+                        if (sub.magnitude > 12)
+                        {
+                            anime.GetComponent<Animator>().speed = 5.0f;
+                            arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color
+                                = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+                            // endにいく
+                            end_time += Time.deltaTime;
+                            if (end_time > 3)
+                            {
+                                info = TouchInfo.Ended;
+                            }
+                        }
                     }
                     if (info == TouchInfo.Ended)
                     {
+                        end_time = 0.0f;
                         if (sub.magnitude > 4)
                         {
                             end_flag = true;
+                            anime.GetComponent<Animator>().speed = 0.5f;
                             //arrow.GetComponent<SpriteRenderer>().enabled = false;
                             Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
                             arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.0f);
-
+                            anime.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                             flag = true;
                             endPos = AppUtil.GetTouchWorldPosition(Camera.main);
                             Vector2 a = endPos - startPos;
@@ -212,6 +256,14 @@ public class MainCameraScr : MonoBehaviour
                             //}
                             //スワイプの長さの値を変えれる
                             player.GetComponent<Rigidbody2D>().AddForce(force_);
+                            GameObject[] aa = GameObject.FindGameObjectsWithTag("semi");
+                            if (GameObject.FindGameObjectsWithTag("semi") != null)
+                            {
+                                foreach (GameObject _obj in aa)
+                                {
+                                    Destroy(_obj);
+                                }
+                            }
                         }
                         Color c_color = circle.GetComponent<SpriteRenderer>().color;
                         circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.0f);
@@ -283,4 +335,36 @@ public class MainCameraScr : MonoBehaviour
             }
         }
     }
+    void Shake_Arrow()
+    {
+        if (sub.magnitude >= 16.0f)
+        {
+            //Debug.Log("aaaa");
+            Vector2 pos = arrow.transform.position;
+            if (shake_state == 0)
+            {
+                arrow_shake += 0.08f;
+                pos.y += arrow_shake;
+                if (arrow_shake > 0.3f)
+                {
+                    shake_state = 1;
+                    arrow_shake = 0.0f;
+                }
+
+            }
+            if (shake_state == 1)
+            {
+                arrow_shake += 0.08f;
+                pos.y -= arrow_shake;
+                if (arrow_shake > 0.3f)
+                {
+                    shake_state = 0;
+                    arrow_shake = 0.0f;
+                }
+
+            }
+            arrow.transform.position = pos;
+        }
+    } 
+
 }
