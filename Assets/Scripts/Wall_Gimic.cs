@@ -19,11 +19,10 @@ public class Wall_Gimic : MonoBehaviour {
     public float INITIAL_SIZE = 2f;  
     public float MAX_SIZE = 3f;
     public int number = 0;
-    private bool light_chenge_flag = false;
+    //private bool light_chenge_flag = false;
     public GameObject explosionprefab;
     private GameObject obj_2;
-
-
+    
     // Use this for initialization
     void Start () {
 		
@@ -33,6 +32,7 @@ public class Wall_Gimic : MonoBehaviour {
 	void Update () 
     {
         //transform.localScale = new Vector3(100, 100, 1.0f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
 
         if (size_state == 1)
         {
@@ -119,14 +119,16 @@ public class Wall_Gimic : MonoBehaviour {
             if (coll.gameObject.tag == "Player")
             {
                 number += 1;
-                light_chenge_flag = true;
+                //light_chenge_flag = true;
 
-                if(number == 2)
+                if (number == 2)
                 {
                     number = 0;
                 }
 
+
                 gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
+
                 size_state = 1;
                 if(chage_state == 0)
                 {
@@ -135,6 +137,7 @@ public class Wall_Gimic : MonoBehaviour {
                     obj_2 = Instantiate(explosionprefab, transform.position, Quaternion.identity);
                     chage_state = 1;
                 }
+
             }
         }
 
