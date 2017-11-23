@@ -22,10 +22,10 @@ public class Mission_Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (mission_state == (int)MISSION_STATE.STAGE_1_1)
-        {
-            clear_flag = Resin_GetNumber(4);
-        }
+        //if (mission_state == (int)MISSION_STATE.STAGE_1_1)
+        //{
+        //    clear_flag = Resin_GetNumber(4);
+        //}
 	}
     bool Resin_GetNumber(int max_resin)
     {
