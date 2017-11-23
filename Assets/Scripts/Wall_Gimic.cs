@@ -22,6 +22,8 @@ public class Wall_Gimic : MonoBehaviour {
     //private bool light_chenge_flag = false;
     public GameObject explosionprefab;
     private GameObject obj_2;
+  
+    
     
     // Use this for initialization
     void Start () {
@@ -56,6 +58,8 @@ public class Wall_Gimic : MonoBehaviour {
             }
         }
 
+
+       
         //if (size_state == 1)
         //{
         //    s_plus += zoom_speed;

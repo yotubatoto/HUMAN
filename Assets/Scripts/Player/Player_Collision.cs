@@ -25,7 +25,7 @@ public class Player_Collision : MonoBehaviour {
     public GameObject goal;
     public GameObject effect_prefab;
     private bool gimic_coll_flag = false;
-    public float VELOCITY_MAX = 10.0f;
+    public float VELOCITY_MAX = 20.0f;
     public int state = 0;
 
     // Use this for initialization
