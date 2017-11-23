@@ -18,6 +18,7 @@ public class StageSelectManager : MonoBehaviour
     public static bool ST_CLEAR_FLAG;
     public int clear = 0;
     public float move_speed = 20.5f;
+    public static string ST_OWNER_NUMBER = "";
     // Use this for initialization
     void Awake()
     {
@@ -29,23 +30,23 @@ public class StageSelectManager : MonoBehaviour
             int gg = i + 1;
             childStage.Add(transform.Find(gg.ToString()).gameObject);
         }
-        itemCount = PlayerPrefs.GetInt("item", 0);
-        clear = PlayerPrefs.GetInt("clear", 0);
-        if (clear == 0)
-        {
-            //クリアカウント０のときステージ２以上をロックしている
-            childStage[1].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-            childStage[2].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-            childStage[3].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-        }
-        if (clear == 1)
-        {
-            // 2ステージ目のアンロック処理をする
-            childStage[2].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-            childStage[3].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-        }
+        //itemCount = PlayerPrefs.GetInt("item", 0);
+        //clear = PlayerPrefs.GetInt("clear", 0);
+        //if (clear == 0)
+        //{
+        //    //クリアカウント０のときステージ２以上をロックしている
+        //    childStage[1].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
+        //    childStage[2].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
+        //    childStage[3].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
+        //}
+        //if (clear == 1)
+        //{
+        //    // 2ステージ目のアンロック処理をする
+        //    childStage[2].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
+        //    childStage[3].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
+        //}
 
-        Debug.Log("アイテムカウント:" + itemCount);
+        //Debug.Log("アイテムカウント:" + itemCount);
     }
     void Start()
     {
@@ -56,6 +57,7 @@ public class StageSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(transform.position);
         if (Camera.main.GetComponent<Stage_Controller>().camera_move_state == 0)
         {
             Execute();
@@ -167,11 +169,19 @@ public class StageSelectManager : MonoBehaviour
         {
             if (collition2d.gameObject.name == "_1")
             {
-                SceneManager.LoadScene("Stage_1_Scene");
+                if((int)transform.position.x == 0)
+                {
+                    ST_OWNER_NUMBER = "1-1";
+                    SceneManager.LoadScene("Stage_1_Scene");
+                }
             }
             if (collition2d.gameObject.name == "_2")
             {
-                SceneManager.LoadScene("Stage_2_Scene");
+                if ((int)transform.position.x == 0)
+                {
+                    ST_OWNER_NUMBER = "1-2";
+                    SceneManager.LoadScene("Stage_1_2_Scene");
+                }
             }
         }
     }

@@ -22,10 +22,20 @@ public class Wall_Gimic : MonoBehaviour {
     //private bool light_chenge_flag = false;
     public GameObject explosionprefab;
     private GameObject obj_2;
-    
+    //点灯時にボヤっとした明るさを表示
+    public GameObject light_up_prefab;
+    private GameObject obj_3;
+    private float u_plus = 0.0f;
+    public int light_state = 0;
+    private GameObject child_circle;
+    public GameObject spark_prefab;
+
+    //private bool light_flag = false;
+
     // Use this for initialization
-    void Start () {
-		
+    void Start ()
+    {
+        child_circle = gameObject.transform.Find("Light").gameObject;
 	}
 	
 	// Update is called once per frame
@@ -107,6 +117,23 @@ public class Wall_Gimic : MonoBehaviour {
                 }
             }
 
+            //if(light_state == 1)
+            //{
+            //    u_plus += 0.005f;
+            //    obj_3.transform.localScale = new Vector3(u_plus + 0.005f, u_plus + 0.005f, 0.0f);
+            //    if(u_plus > 3.0f)
+            //    {
+            //        obj_3.transform.localScale = new Vector3(3.0f, 3.0f, 0);
+            //        light_state = 2;
+            //    }
+            //}
+
+            //else if(light_state == 2)
+            //{
+              
+            //}
+
+
         }
 
         
@@ -126,17 +153,37 @@ public class Wall_Gimic : MonoBehaviour {
                     number = 0;
                 }
 
-
                 gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
-
+                // 灯っている時
+                if(number == 1)
+                {
+                    child_circle.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                else
+                {
+                    child_circle.GetComponent<SpriteRenderer>().enabled = false;
+                }
                 size_state = 1;
                 if(chage_state == 0)
                 {
                     Debug.Log("aaa");
                     obj = Instantiate(chageprefab, transform.position, Quaternion.identity);
-                    obj_2 = Instantiate(explosionprefab, transform.position, Quaternion.identity);
+                    if(number == 0)
+                    {
+                        Instantiate(spark_prefab, transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(explosionprefab, transform.position, Quaternion.identity);
+                    }
                     chage_state = 1;
                 }
+
+                //if (light_state == 0)
+                //{
+                //    obj_3 = Instantiate(light_up_prefab, transform.position, Quaternion.identity);
+                //    light_state = 1;
+                //}
 
             }
         }
