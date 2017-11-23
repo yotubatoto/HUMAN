@@ -31,7 +31,6 @@ public class Wall_Gimic : MonoBehaviour {
     public GameObject spark_prefab;
 
     //private bool light_flag = false;
-
     // Use this for initialization
     void Start ()
     {
@@ -66,6 +65,8 @@ public class Wall_Gimic : MonoBehaviour {
             }
         }
 
+
+       
         //if (size_state == 1)
         //{
         //    s_plus += zoom_speed;

@@ -12,13 +12,14 @@ public class Manager : MonoBehaviour
     private int itemCount = 0;
     private int clearCount = 0;
     public Text time_text;
+    public Text score;
     public Text result_text; 
     public GameObject filterWhite;
     private float al;
     public GameObject goal;
     public Text wave;
     public Text shot;
-    public float speed = 0.01F;
+    public float speed = 0.01f;
     private float startTime;
     Color color;
     private int camera_state = 0;
@@ -35,7 +36,23 @@ public class Manager : MonoBehaviour
         SHOT_3,
         SHOT_4,
         SHOT_5,
-        SHOT_6
+        SHOT_6,
+        SHOT_7,
+        SHOT_8,
+        SHOT_9,
+        SHOT_10,
+        SHOT_11,
+        SHOT_12,
+        SHOT_13,
+        SHOT_14,
+        SHOT_15,
+        SHOT_16,
+        SHOT_17,
+        SHOT_18,
+        SHOT_19,
+        SHOT_20
+
+
     };
     bool once_flag = false;
 
@@ -123,6 +140,7 @@ public class Manager : MonoBehaviour
         }
         Count_Such();
 
+        // Wave1
         if (shot_state ==(int) MAIN_STATE.SHOT_1)
         {
            Color c =  wave.color;
@@ -145,13 +163,15 @@ public class Manager : MonoBehaviour
                 shot_state = (int)MAIN_STATE.SHOT_3;
             }
         }
+        // Wave2
         else if (shot_state == (int)MAIN_STATE.SHOT_3)
         {
             if (once_flag == false)
             {
                 once_flag = true;
                 wave.text = "WAVE 2";
-                shot.text = "2/3";
+                shot.text = "2/10";
+                score.text= " 90";
                 Color cc = wave.color;
                 cc.a = 1;
                 wave.color = cc;
@@ -177,13 +197,16 @@ public class Manager : MonoBehaviour
                 shot_state = (int)MAIN_STATE.SHOT_5;
             }
         }
+        // Wave3
         else if (shot_state == (int)MAIN_STATE.SHOT_5)
         {
             if (once_flag == false)
             {
                 once_flag = true;
                 wave.text = "WAVE 3";
-                shot.text = "3/3";
+                shot.text = "3/10";
+                score.text = " 80";
+
                 Color cc = wave.color;
                 cc.a = 1;
                 wave.color = cc;
@@ -206,7 +229,77 @@ public class Manager : MonoBehaviour
             once_flag = false;
             if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
             {
-                
+                shot_state = (int)MAIN_STATE.SHOT_7;
+            }
+        }
+        // Wave4
+        else if (shot_state == (int)MAIN_STATE.SHOT_7)
+        {
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "WAVE 4";
+                shot.text = "4/10";
+                score.text = " 70";
+
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+            }
+            Color c = wave.color;
+            c.a -= 0.02f;
+            wave.color = c;
+            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
+            if (c.a <= 0.0f)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_8;
+                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
+
+            }
+        }
+        else if (shot_state == (int)MAIN_STATE.SHOT_8)
+        {
+            once_flag = false;
+            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_9;
+            }
+        }
+        // Wave5
+        else if (shot_state == (int)MAIN_STATE.SHOT_9)
+        {
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "WAVE 5";
+                shot.text = "5/10";
+                score.text = " 60";
+
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+            }
+            Color c = wave.color;
+            c.a -= 0.02f;
+            wave.color = c;
+            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
+            if (c.a <= 0.0f)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_10;
+                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
+
+            }
+        }
+        else if (shot_state == (int)MAIN_STATE.SHOT_10)
+        {
+            once_flag = false;
+            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_11;
             }
         }
     }

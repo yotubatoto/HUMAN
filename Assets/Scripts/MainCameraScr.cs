@@ -34,9 +34,11 @@ public class MainCameraScr : MonoBehaviour
     private float swipe_scale = 0;
     private Vector2 sub;
     //どれぐらい引っ張れるか
-    public float VELOCITY_MAX = 10.0f;
+    public float VELOCITY_MAX = 20.0f;
     private bool pause_freeze_flag = false;
     private Vector2 arrow_start_pos = Vector2.zero;
+    public GameObject[] right_obj = new GameObject[17];
+  
 	//public Text debug_test;
     /* --------------------------------------------------
 	 * @パラメータ初期化
@@ -45,6 +47,8 @@ public class MainCameraScr : MonoBehaviour
 		Application.targetFrameRate = 60;
         //カメラのスケール２５
 		Camera.main.orthographicSize = 25.0f;
+        arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 1.0f, 0.0f);
+
 	}
 
 
@@ -60,7 +64,18 @@ public class MainCameraScr : MonoBehaviour
         {
             TouchObjectFind("pause");
         }
-        
+        bool _flag = false;
+        for (int i = 0; i < 17; i++)
+        {
+            if (right_obj[i].GetComponent<Wall_Gimic>().number == 0)
+            {
+                _flag = true;
+            }
+        }
+        if (_flag == false)
+        {
+            GetComponent<Mission_Manager>().clear_flag = true;
+        }
 
 		if (Input.GetKeyDown(KeyCode.RightArrow))
 		{
@@ -100,6 +115,7 @@ public class MainCameraScr : MonoBehaviour
                 //{
                 //    state_move_flag = false;
                 //}
+         
                 if (flag == false)
                 {
                     TouchInfo info = AppUtil.GetTouch();
@@ -142,6 +158,15 @@ public class MainCameraScr : MonoBehaviour
                         //{
                         //    sub.magnitude = 20.0f;
                         //}
+                        //for(int i = 0; i < 10; i++)
+                        //{
+                        //    if(obj[i].GetComponent<Wall_Gimic>().number == 0)
+                        //    {
+
+                        //    }
+                        //}
+
+
 
                         if (sub.x > VELOCITY_MAX)
                         {
@@ -159,7 +184,7 @@ public class MainCameraScr : MonoBehaviour
                         {
                             sub.y = -VELOCITY_MAX;
                         }
-                        arrow.transform.localScale = new Vector3(1.0f, sub.magnitude, 1.0f);
+                        arrow.transform.localScale = new Vector3(2.0f, sub.magnitude, 2.0f);
                        
 
                         float temp = sub.magnitude;
@@ -227,9 +252,11 @@ public class MainCameraScr : MonoBehaviour
                                 = new Color(1.0f, 0.0f, 0.0f, 1.0f);
                             // endにいく
                             end_time += Time.deltaTime;
-                            if (end_time > 3)
+                            if (end_time > 4)
                             {
+                                touch_freeze_flag = true;
                                 info = TouchInfo.Ended;
+                                
                             }
                         }
                     }
