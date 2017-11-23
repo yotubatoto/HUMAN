@@ -28,10 +28,14 @@ public class Player_Collision : MonoBehaviour {
     public float VELOCITY_MAX = 20.0f;
     public int state = 0;
 
+    private int total_item_count = 0;
     // Use this for initialization
     void Start () 
     {
-
+        //if(StageSelectManager.ST_OWNER_NUMBER == "1-1")
+        //{
+        //    total_item_count = Save_Load.Load("1");
+        //}
 	}
 	
 	// Update is called once per frame

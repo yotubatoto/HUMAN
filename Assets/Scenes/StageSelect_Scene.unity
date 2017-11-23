@@ -377,13 +377,14 @@ GameObject:
   m_Component:
   - component: {fileID: 285063646}
   - component: {fileID: 285063645}
+  - component: {fileID: 285063647}
   m_Layer: 0
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &285063645
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -443,6 +444,22 @@ Transform:
   m_Father: {fileID: 1249383449}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &285063647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 285063644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93ca3398a103ff49a447bf195dfd092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage_name_all_clear: 
+  stage_name_clear: []
+  clear_flag: 
+  stage_nmber: 0
+  total_count_stage_name: 
 --- !u!1 &438378988
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,13 +470,14 @@ GameObject:
   m_Component:
   - component: {fileID: 438378990}
   - component: {fileID: 438378989}
+  - component: {fileID: 438378991}
   m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &438378989
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -519,6 +537,23 @@ Transform:
   m_Father: {fileID: 1249383449}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &438378991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 438378988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93ca3398a103ff49a447bf195dfd092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage_name_all_clear: 2
+  stage_name_clear:
+  - 1-1
+  clear_flag: 00000000
+  stage_nmber: 1
+  total_count_stage_name: stage_2_total
 --- !u!1 &786348056
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 924831035}
   - component: {fileID: 924831034}
+  - component: {fileID: 924831036}
   m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
@@ -697,6 +733,23 @@ Transform:
   m_Father: {fileID: 1249383449}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &924831036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924831033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93ca3398a103ff49a447bf195dfd092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage_name_all_clear: 1
+  stage_name_clear:
+  - 1-1
+  clear_flag: 00000000
+  stage_nmber: 1
+  total_count_stage_name: stage_1_total
 --- !u!1 &959380257
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,13 +836,14 @@ GameObject:
   m_Component:
   - component: {fileID: 959434490}
   - component: {fileID: 959434489}
+  - component: {fileID: 959434491}
   m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &959434489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -849,6 +903,22 @@ Transform:
   m_Father: {fileID: 1249383449}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &959434491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 959434488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93ca3398a103ff49a447bf195dfd092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage_name_all_clear: 
+  stage_name_clear: []
+  clear_flag: 
+  stage_nmber: 0
+  total_count_stage_name: 
 --- !u!1 &991361222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1154,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1004068422}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
