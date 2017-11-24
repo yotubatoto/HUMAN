@@ -24,7 +24,9 @@ public class Stage_Controller: MonoBehaviour {
         //　移動処理 
         if (camera_move_state == 1)
         {
+
             camera_scr -= 7.0f* Time.deltaTime;
+
             if (camera_scr <= -13.5f)
             {
                 camera_scr = -13.5f;
