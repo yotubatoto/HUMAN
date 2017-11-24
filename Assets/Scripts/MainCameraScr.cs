@@ -42,7 +42,6 @@ public class MainCameraScr : MonoBehaviour
     public GameObject[] right_obj = new GameObject[6];
     private bool began_flag = false;
 	public GameObject debug_obj;
-	public GameObject debug_coll_obj;
 	//public Text debug_test;
     /* --------------------------------------------------
 	 * @パラメータ初期化
