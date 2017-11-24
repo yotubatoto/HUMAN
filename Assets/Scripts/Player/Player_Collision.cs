@@ -181,6 +181,21 @@ public class Player_Collision : MonoBehaviour {
             //Instantiate(effect_prefab, transform.position, Quaternion.identity);
             //GetComponent<Sound_Manager>().Item_UP_SE();
         }
+        if(coll.gameObject.tag == "Small_Block")
+        {
+            GetComponent<Sound_Manager>().SE();
+        }
+        if (coll.gameObject.tag == "Big_Block")
+        {
+            if(coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1)
+            {
+                GetComponent<Sound_Manager>().SE();
+            }
+            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 2)
+            {
+                GetComponent<Sound_Manager>().Item_UP_SE();
+            }
+        }
     }
     void OnTriggerEnter2D(Collider2D coll)
     {

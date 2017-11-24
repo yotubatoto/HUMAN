@@ -224,7 +224,8 @@ public class MainCameraScr : MonoBehaviour
                                     }
                                     GameObject obj_h = Instantiate(semitransparentPrefab, player.transform.position, player.transform.rotation);
                                     obj_h.transform.eulerAngles = new Vector3(0, 0, 180 + angle);
-                                    force_ = ((sub.normalized * 55000.0f) * temp * -1)*Time.deltaTime;
+                                    //ノーマライズド速度プレイヤーの
+                                    force_ = ((sub.normalized * 50000.0f) * temp * -1)*Time.deltaTime;
                                     obj_h.GetComponent<Rigidbody2D>().AddForce(force_);
                                 }
                             }
@@ -232,7 +233,7 @@ public class MainCameraScr : MonoBehaviour
                         //Debug.Log((old_angle) - (ang));
                         //予測線の出る角度
                         float test = old_angle - ang;
-                        if (test > 0.5f || test < -0.5f)
+                        if (test > 0.7f || test < -0.7f)
                         {
                             prediction_flag = false;
                         }
@@ -240,13 +241,13 @@ public class MainCameraScr : MonoBehaviour
 
                         old_angle = ang;
 
-                        if (sub.magnitude < 6)
+                        if (sub.magnitude < 3)
                         {
                             anime.GetComponent<Animator>().speed = 0.5f;
                             arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color
-                                = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                                = new Color(0.0f, 0.0f, 0.0f, 1.0f);
                         }
-                        if (sub.magnitude > 6)
+                        if (sub.magnitude > 3)
                         {
                             anime.GetComponent<Animator>().speed = 2.5f;
                             arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color
@@ -271,7 +272,7 @@ public class MainCameraScr : MonoBehaviour
                     {
                         began_flag = false;
                         end_time = 0.0f;
-                        if (sub.magnitude > 4)
+                        if (sub.magnitude > 3)
                         {
                             end_flag = true;
                             anime.GetComponent<Animator>().speed = 0.5f;
@@ -291,13 +292,13 @@ public class MainCameraScr : MonoBehaviour
                             //}
                             //スワイプの長さの値を変えれる
                             player.GetComponent<Rigidbody2D>().AddForce(force_);
-                            GameObject[] aa = GameObject.FindGameObjectsWithTag("semi");
-                            if (GameObject.FindGameObjectsWithTag("semi") != null)
+                        }
+                        GameObject[] aa = GameObject.FindGameObjectsWithTag("semi");
+                        if (GameObject.FindGameObjectsWithTag("semi") != null)
+                        {
+                            foreach (GameObject _obj in aa)
                             {
-                                foreach (GameObject _obj in aa)
-                                {
-                                    Destroy(_obj);
-                                }
+                                Destroy(_obj);
                             }
                         }
                         Color c_color = circle.GetComponent<SpriteRenderer>().color;
