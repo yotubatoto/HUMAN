@@ -19,6 +19,7 @@ public class StageSelectManager : MonoBehaviour
     public int clear = 0;
     public float move_speed = 20.5f;
     public static string ST_OWNER_NUMBER = "";
+    private bool se_flag = false;
     // Use this for initialization
     void Awake()
     {
@@ -68,6 +69,7 @@ public class StageSelectManager : MonoBehaviour
 
             if (info == TouchInfo.Began)
             {
+                se_flag = false;
                 // タッチ開始
                 //Camera.main.GetComponent<Stage_Controller>().camera_scr = 0.0f;
                 TouchObjectFind("return", 2);
@@ -83,6 +85,7 @@ public class StageSelectManager : MonoBehaviour
         {
             if (info == TouchInfo.Began)
             {
+                se_flag = false;
                 // タッチ開始
                 startPos = AppUtil.GetTouchWorldPosition(Camera.main);
                 onceFlag = false;
@@ -154,6 +157,12 @@ public class StageSelectManager : MonoBehaviour
         {
             if (collition2d.gameObject.name == name)
             {
+              
+                if (se_flag == false)
+                {
+                    se_flag = true;
+                    GetComponent<Sound_Manager>().Decision_SE();
+                }
                 Camera.main.GetComponent<Stage_Controller>().camera_move_state = move_state;
             }
         }
@@ -172,6 +181,7 @@ public class StageSelectManager : MonoBehaviour
                 if((int)transform.position.x == 0)
                 {
                     ST_OWNER_NUMBER = "1-1";
+                    GetComponent<Sound_Manager>().Stage_Choice_SE();
                     SceneManager.LoadScene("Stage_1_Scene");
                 }
             }

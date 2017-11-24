@@ -185,6 +185,10 @@ public class Player_Collision : MonoBehaviour {
         {
             GetComponent<Sound_Manager>().SE();
         }
+        if (coll.gameObject.tag == "Obstance")
+        {
+            GetComponent<Sound_Manager>().Obstance_SE();
+        }
         if (coll.gameObject.tag == "Big_Block")
         {
             if(coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1)

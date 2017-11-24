@@ -30,6 +30,7 @@ public class MainCameraScr : MonoBehaviour
     public float arrow_shake = 0.0f;
     public GameObject anime;
     private float end_time = 0.0f;
+    private bool pause_se_flag = false;
 
     private float swipe_scale = 0;
     private Vector2 sub;
@@ -351,6 +352,12 @@ public class MainCameraScr : MonoBehaviour
                 //偶数時がポーズ
                 if (pause_count % 2 == 0)
                 {
+
+                    if (pause_se_flag == false)
+                    {
+                        pause_se_flag = true;
+                        GetComponent<Sound_Manager>().pause_SE();
+                    }
                     pause_freeze_flag = true;
                     Pauser.Pause();
                     Color pause_color = new Color(0, 0, 0, 0);
@@ -361,6 +368,7 @@ public class MainCameraScr : MonoBehaviour
                 else
                 {
                     pause_freeze_flag = false;
+                    pause_se_flag = false;
                     Pauser.Resume();
                     Color pause_color = new Color(0, 0, 0, 0);
                     Color pause_ = pause_black.gameObject.GetComponent<Image>().color;
