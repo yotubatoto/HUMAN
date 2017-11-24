@@ -29,6 +29,7 @@ public class Manager : MonoBehaviour
     public bool wave_flag = false;
     int temp_state = 0;
     private float count = 0.0f;
+    private float a_value = 0.01f;
     enum MAIN_STATE
     {
         SHOT_1 = 1,
@@ -89,7 +90,7 @@ public class Manager : MonoBehaviour
            Color c =  wave.color;
            
           
-           c.a -= 0.02f;
+           c.a -= a_value;
            wave.color = c;
            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if(c.a <= 0.0f)
@@ -122,7 +123,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -157,7 +158,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -192,7 +193,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -227,7 +228,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -262,7 +263,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -297,7 +298,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -332,7 +333,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -367,7 +368,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -402,7 +403,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -437,7 +438,7 @@ public class Manager : MonoBehaviour
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
