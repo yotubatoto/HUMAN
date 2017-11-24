@@ -118,22 +118,6 @@ public class Wall_Gimic : MonoBehaviour {
                 }
             }
 
-            //if(light_state == 1)
-            //{
-            //    u_plus += 0.005f;
-            //    obj_3.transform.localScale = new Vector3(u_plus + 0.005f, u_plus + 0.005f, 0.0f);
-            //    if(u_plus > 3.0f)
-            //    {
-            //        obj_3.transform.localScale = new Vector3(3.0f, 3.0f, 0);
-            //        light_state = 2;
-            //    }
-            //}
-
-            //else if(light_state == 2)
-            //{
-              
-            //}
-
 
         }
 
@@ -179,12 +163,6 @@ public class Wall_Gimic : MonoBehaviour {
                     }
                     chage_state = 1;
                 }
-
-                //if (light_state == 0)
-                //{
-                //    obj_3 = Instantiate(light_up_prefab, transform.position, Quaternion.identity);
-                //    light_state = 1;
-                //}
 
             }
         }

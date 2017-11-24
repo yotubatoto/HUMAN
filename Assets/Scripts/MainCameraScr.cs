@@ -37,7 +37,7 @@ public class MainCameraScr : MonoBehaviour
     public float VELOCITY_MAX = 20.0f;
     private bool pause_freeze_flag = false;
     private Vector2 arrow_start_pos = Vector2.zero;
-    public GameObject[] right_obj = new GameObject[17];
+    public GameObject[] right_obj = new GameObject[6];
   
 	//public Text debug_test;
     /* --------------------------------------------------
@@ -65,7 +65,7 @@ public class MainCameraScr : MonoBehaviour
             TouchObjectFind("pause");
         }
         bool _flag = false;
-        for (int i = 0; i < 17; i++)
+        for (int i = 0; i < 6; i++)
         {
             if (right_obj[i].GetComponent<Wall_Gimic>().number == 0)
             {

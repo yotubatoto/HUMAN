@@ -8,7 +8,8 @@ public class hit_multiple_times : MonoBehaviour
     public int number = 0;
     public int break_count = 0;
     public Sprite[] block_sprite = new Sprite[2];
-    public GameObject fireworks_prefab;
+    public GameObject stardust_prefab;
+    public GameObject dust_prefab;
     private GameObject obj;
 
     // Use this for initialization
@@ -40,7 +41,8 @@ public class hit_multiple_times : MonoBehaviour
                 Destroy(gameObject);
             }
 
-            obj = Instantiate(fireworks_prefab, transform.position, Quaternion.identity);
+            obj = Instantiate(stardust_prefab, transform.position, Quaternion.identity);
+            Instantiate(dust_prefab, transform.position, Quaternion.identity);
             gameObject.GetComponent<SpriteRenderer>().sprite = block_sprite[number];
         }
     }
