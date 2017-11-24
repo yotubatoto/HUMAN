@@ -39,7 +39,7 @@ public class MainCameraScr : MonoBehaviour
     private Vector2 arrow_start_pos = Vector2.zero;
 
     public GameObject[] right_obj = new GameObject[6];
-  
+    private bool began_flag = false;
 	//public Text debug_test;
     /* --------------------------------------------------
 	 * @パラメータ初期化
