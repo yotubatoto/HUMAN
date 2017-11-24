@@ -27,7 +27,7 @@ public class Player_Collision : MonoBehaviour {
     private bool gimic_coll_flag = false;
     public float VELOCITY_MAX = 20.0f;
     public int state = 0;
-
+    public int lamp_count = 0;
     private int total_item_count = 0;
     // Use this for initialization
     void Start () 
@@ -172,7 +172,10 @@ public class Player_Collision : MonoBehaviour {
             //    if (bonus_count_flag)
             //        bonus_point = 5;
             //}
+            //レジン取得数
             item_count += 1;
+            //ランプ内部カウント
+            lamp_count += 1;
             //item_count += bonus_point;
             item_text.text = item_count.ToString();
             //Instantiate(effect_prefab, transform.position, Quaternion.identity);

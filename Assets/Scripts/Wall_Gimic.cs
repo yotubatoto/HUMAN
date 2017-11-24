@@ -143,6 +143,7 @@ public class Wall_Gimic : MonoBehaviour {
                 if(number == 1)
                 {
                     child_circle.GetComponent<SpriteRenderer>().enabled = true;
+                    
                 }
                 else
                 {
