@@ -178,7 +178,7 @@ public class Player_Collision : MonoBehaviour {
             lamp_count += 1;
             //item_count += bonus_point;
             item_text.text = item_count.ToString();
-            Instantiate(effect_prefab, transform.position, Quaternion.identity);
+            //Instantiate(effect_prefab, transform.position, Quaternion.identity);
             //GetComponent<Sound_Manager>().Item_UP_SE();
         }
     }

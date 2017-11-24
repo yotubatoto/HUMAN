@@ -6,7 +6,8 @@ public class Break_obj : MonoBehaviour
 {
     //private bool crash_count_flag = false;
     public int count = 0;
-    public GameObject explosionprefab;
+    public GameObject stardust_prefab;
+    public GameObject dust_prefab;
     private GameObject obj;
 
     // Use this for initialization
@@ -25,7 +26,8 @@ public class Break_obj : MonoBehaviour
         if(coll.gameObject.tag == "Player")
         {
             count += 1;
-            obj = Instantiate(explosionprefab, transform.position, Quaternion.identity);
+            obj = Instantiate(stardust_prefab, transform.position, Quaternion.identity);
+            Instantiate(dust_prefab, transform.position, Quaternion.identity);
             //crash_count_flag = true;
             if (count == 1)
             {
