@@ -11,6 +11,7 @@ public class hit_multiple_times : MonoBehaviour
     public GameObject stardust_prefab;
     public GameObject dust_prefab;
     private GameObject obj;
+    public GameObject seedprefab;
 
     // Use this for initialization
     void Start ()
@@ -36,12 +37,17 @@ public class hit_multiple_times : MonoBehaviour
             {
                 number = 0;
             }
-
+            //プレイヤーと２回当たったらオブジェクトを破棄する
             if (break_count == 2)
             {
                 Destroy(gameObject);
+                GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
+                GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text =
+                    GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString();
+                Instantiate(seedprefab, transform.position, Quaternion.identity);
             }
 
+            //オブジェクトが破棄されたらエフェクトを発生させてランタンに光を灯す
             obj = Instantiate(stardust_prefab, transform.position, Quaternion.identity);
             Instantiate(dust_prefab, transform.position, Quaternion.identity);
             gameObject.GetComponent<SpriteRenderer>().sprite = block_sprite[number];

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Break_obj : MonoBehaviour
 {
@@ -10,7 +12,8 @@ public class Break_obj : MonoBehaviour
     public GameObject stardust_prefab;
     public GameObject dust_prefab;
     private GameObject obj;
-   
+
+    public GameObject seed_prefab;
 
     // Use this for initialization
     void Start()
@@ -21,14 +24,13 @@ public class Break_obj : MonoBehaviour
     void Update()
     {
 
-       
+
     }
 
     public void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player")
         {
-            
             //Debug.Log(Camera.main.GetComponent<MainCameraScr>().sub.magnitude);
             //射出後のスピード○○のときは性質変化　弱に変化（赤オブジェ壊せずに跳ね返る）
             if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 20)
@@ -41,9 +43,19 @@ public class Break_obj : MonoBehaviour
             obj = Instantiate(stardust_prefab, transform.position, Quaternion.identity);
             Instantiate(dust_prefab, transform.position, Quaternion.identity);
             //crash_count_flag = true;
-            if (count == 1)
+
+            //プレイヤーと当たったらオブジェクトを破棄する
+            if (count <= 1)
             {
                 Destroy(gameObject);
+                //GameObject.Find("Player").GetComponent<Player_Collision>().combo_count += 1;
+                GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
+                GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text = 
+                    GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
+                Instantiate(seed_prefab, transform.position, Quaternion.identity);                    //seedprefabを生成
+                Debug.Log("生成されました");
+                Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加
+               
             }
             
             

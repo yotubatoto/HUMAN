@@ -49,9 +49,9 @@ public class MainCameraScr : MonoBehaviour
 	public GameObject debug_obj;
     public GameObject[] small;
     public GameObject[] big;
-
     private float _time = 0.0f;
 	//public Text debug_test;
+
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
@@ -101,7 +101,8 @@ public class MainCameraScr : MonoBehaviour
 			Debug.Log(Camera.main.orthographicSize);
 		}
 
-		if (pause_freeze_flag == false) {
+		if (pause_freeze_flag == false)
+        {
 			debug_obj.SetActive (false);
 			if (touch_freeze_flag == false) {
 
@@ -131,7 +132,8 @@ public class MainCameraScr : MonoBehaviour
                 //    }
                 //}
          
-				if (flag == false) {
+				if (flag == false)
+                {
 					TouchInfo info = AppUtil.GetTouch ();
 					if (info == TouchInfo.Began) {
 						// タッチ開始
@@ -229,8 +231,10 @@ public class MainCameraScr : MonoBehaviour
 											Destroy (_obj);
 										}
 									}
-									GameObject obj_h = Instantiate (semitransparentPrefab, player.transform.position, player.transform.rotation);
-									obj_h.transform.eulerAngles = new Vector3 (0, 0, 180 + angle);
+                                    GameObject obj_h = Instantiate (semitransparentPrefab, player.transform.position, player.transform.rotation);
+                                   
+
+                                    obj_h.transform.eulerAngles = new Vector3 (0, 0, 180 + angle);
 									//ノーマライズド速度プレイヤーの
 
                                     //力を固定する45000
@@ -239,9 +243,9 @@ public class MainCameraScr : MonoBehaviour
                                     {
                                         force_ = force_.normalized * 45000;
                                     }
-									obj_h.GetComponent<Rigidbody2D> ().AddForce (force_);
-                                    
+									obj_h.GetComponent<Rigidbody2D> ().AddForce (force_)                             
 								}
+
 							}
 						}
 						//Debug.Log((old_angle) - (ang));

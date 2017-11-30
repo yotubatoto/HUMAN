@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1835419245796568}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.1, y: -13.4, z: 0}
+  m_LocalPosition: {x: 16.2, y: -22.2, z: 0.50778776}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,12 +82,13 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 21300000, guid: 8da26385c7717c748ab0c69b384283c8, type: 3}
-  - {fileID: 21300000, guid: 2f82d0aac00d9a143b5efa11cb43f6bd, type: 3}
+  - {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  - {fileID: 21300000, guid: a571d605ff4e8974591dd501bd0337da, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
+  seedprefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
 --- !u!212 &212018157675073896
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -29,6 +29,10 @@ public class Wall_Gimic : MonoBehaviour {
     public int light_state = 0;
     private GameObject child_circle;
     public GameObject spark_prefab;
+    //ぼんやりする光のサイズを変える
+    private float l_plus = 5.0f;
+
+    private int not_count = 0;
 
     //private bool light_flag = false;
     // Use this for initialization
@@ -41,7 +45,7 @@ public class Wall_Gimic : MonoBehaviour {
 	void Update () 
     {
         //transform.localScale = new Vector3(100, 100, 1.0f);
-        gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
+        //gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
 
         if (size_state == 1)
         {
@@ -133,27 +137,38 @@ public class Wall_Gimic : MonoBehaviour {
                 number += 1;
                 //light_chenge_flag = true;
 
-                if (number > 1)
-                {
-                    number = 1;
-                }
 
-                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+                //if (number == 2)
+                //{
+                //    number = 0;
+                //}
+
+                //gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
                 // 灯っている時
-                if(number == 1)
-                {
-                    child_circle.GetComponent<SpriteRenderer>().enabled = true;
-                    
-                }
+                //if (number == 1)
+                //{
+                //    child_circle.GetComponent<SpriteRenderer>().enabled = true;
+
+                //}
                 //else
                 //{
-                //    child_circle.GetComponent<SpriteRenderer>().enabled = false;
+                //    l_plus += 3.0f;
+                //    if (l_plus > 20.0f)
+                //        l_plus = 20.0f;
+                //    child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
+                //    Debug.Log(l_plus);
                 //}
+                not_count = GameObject.Find("Player").GetComponent<Player_Collision>().item_count;
+
+                GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+            
                 size_state = 1;
+
+                //ランタンにぼやけた光を出す
                 if(chage_state == 0)
                 {
-                    //Debug.Log("aaa");
-                    obj = Instantiate(chageprefab, transform.position, Quaternion.identity);
+                    Debug.Log("aaa");
+                    obj = Instantiate(chageprefab, transform.position, Quaternion.identity);  //ぼやけた光を生成
                     if(number == 0)
                     {
                         Instantiate(spark_prefab, transform.position, Quaternion.identity);
@@ -166,7 +181,95 @@ public class Wall_Gimic : MonoBehaviour {
                 }
 
             }
+
+
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "BlockPiece")
+        {
+
+            if(not_count >= 1)
+            {
+                //seedカウントが1より大きい場合光のレベルが１になる
+              
+                    //ぼやけか光の輪を出す
+                    //レベル1
+                    if (number >= 1)
+                    {
+                        child_circle.GetComponent<SpriteRenderer>().enabled = true;
+                    }
+                    l_plus += 3.0f;                                                          //ぼやけた光の輪に大きさをプラスする
+                    if (l_plus > 8.0f)
+                        l_plus = 8.0f;
+                    child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);   //ぼやけた光の輪の大きさをキープする
+                    Debug.Log(l_plus);
+                    gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];          //ランタンをスイッチONにする
+                Debug.Log("カウント:" + not_count);
+
+            }
+
+
+
+            //レベル2
+            if (not_count >= 2)
+            {
+                l_plus += 3.0f;
+                if (l_plus > 11.0f)
+                    l_plus = 11.0f;
+                child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
+                Debug.Log(l_plus);
+                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+                Debug.Log("カウント:" + not_count);
+
+            }
+
+            //レベル3
+            if (not_count >= 3)
+            {
+                l_plus += 3.0f;
+                if (l_plus > 14.0f)
+                    l_plus = 14.0f;
+                child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
+                Debug.Log(l_plus);
+                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+                Debug.Log("カウント:" + not_count);
+
+            }
+
+
+            //レベル4
+            if (not_count >= 4)
+            {
+                l_plus += 3.0f;
+                if (l_plus > 17.0f)
+                    l_plus = 17.0f;
+                child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
+                Debug.Log(l_plus);
+                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+                Debug.Log("カウント:" + not_count);
+
+            }
+
+
+            //レベル5
+            if (not_count >= 5)
+            {
+                l_plus += 3.0f;
+                if (l_plus > 20.0f)
+                    l_plus = 20.0f;
+                child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
+                Debug.Log(l_plus);
+                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+                Debug.Log("カウント:" + not_count);
+
+            }
+
+
+        }
+    }
+
 }
