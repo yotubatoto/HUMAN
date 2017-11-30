@@ -63,7 +63,22 @@ public class Manager : MonoBehaviour
         SHOT_27,
         SHOT_28,
         SHOT_29,
-        SHOT_30
+        SHOT_30,
+        SHOT_31,
+        SHOT_32,
+        SHOT_33,
+        SHOT_34,
+        SHOT_35,
+        SHOT_36,
+        SHOT_37,
+        SHOT_38,
+        SHOT_39,
+        SHOT_40,
+        SHOT_41,
+        SHOT_42,
+        SHOT_43,
+        SHOT_44
+
 
 
 
@@ -119,8 +134,8 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 2";
-                shot.text = "2/10";
-                score.text= " 90";
+                shot.text = "2/15";
+                score.text= " 140";
                 Color cc = wave.color;
                 cc.a = 1;
                 wave.color = cc;
@@ -156,8 +171,8 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 3";
-                shot.text = "3/10";
-                score.text = " 80";
+                shot.text = "3/15";
+                score.text = " 130";
 
                 Color cc = wave.color;
                 cc.a = 1;
@@ -193,8 +208,8 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 4";
-                shot.text = "4/10";
-                score.text = " 70";
+                shot.text = "4/15";
+                score.text = " 120";
 
                 Color cc = wave.color;
                 cc.a = 1;
@@ -230,8 +245,8 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 5";
-                shot.text = "5/10";
-                score.text = " 60";
+                shot.text = "5/15";
+                score.text = " 110";
 
                 Color cc = wave.color;
                 cc.a = 1;
@@ -268,8 +283,8 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 6";
-                shot.text = "6/10";
-                score.text = " 50";
+                shot.text = "6/15";
+                score.text = " 100";
 
                 Color cc = wave.color;
                 cc.a = 1;
@@ -305,8 +320,8 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 7";
-                shot.text = "7/10";
-                score.text = " 40";
+                shot.text = "7/15";
+                score.text = " 90";
 
                 Color cc = wave.color;
                 cc.a = 1;
@@ -342,8 +357,8 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 8";
-                shot.text = "8/10";
-                score.text = " 30";
+                shot.text = "8/15";
+                score.text = " 80";
 
                 Color cc = wave.color;
                 cc.a = 1;
@@ -379,8 +394,8 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 9";
-                shot.text = "9/10";
-                score.text = " 20";
+                shot.text = "9/15";
+                score.text = " 70";
 
                 Color cc = wave.color;
                 cc.a = 1;
@@ -417,8 +432,8 @@ public class Manager : MonoBehaviour
             {
                 once_flag = true;
                 wave.text = "WAVE 10";
-                shot.text = "10/10";
-                score.text = " 10";
+                shot.text = "10/15";
+                score.text = " 60";
 
                 Color cc = wave.color;
                 cc.a = 1;
@@ -454,9 +469,9 @@ public class Manager : MonoBehaviour
             if (once_flag == false)
             {
                 once_flag = true;
-                //wave.text = "WAVE 11";
-                shot.text = "10/10";
-                score.text = " 0";
+                wave.text = "WAVE 11";
+                shot.text = "11/15";
+                score.text = " 50";
 
                 Color cc = wave.color;
                 cc.a = 1;
@@ -483,6 +498,149 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
             {
                 shot_state = (int)MAIN_STATE.SHOT_23;
+            }
+        }
+        // Wave12
+        else if (shot_state == (int)MAIN_STATE.SHOT_23)
+        {
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "WAVE 12";
+                shot.text = "12/15";
+                score.text = " 40";
+
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+            }
+            Color c = wave.color;
+            c.a -= a_value;
+            wave.color = c;
+            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
+            if (c.a <= 0.0f)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_24;
+                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
+
+            }
+        }
+        else if (shot_state == (int)MAIN_STATE.SHOT_24)
+        {
+            once_flag = false;
+            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_25;
+            }
+        }
+        // Wave13
+        else if (shot_state == (int)MAIN_STATE.SHOT_25)
+        {
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "WAVE 13";
+                shot.text = "13/15";
+                score.text = " 30";
+
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+            }
+            Color c = wave.color;
+            c.a -= a_value;
+            wave.color = c;
+            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
+            if (c.a <= 0.0f)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_26;
+                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
+
+            }
+        }
+        else if (shot_state == (int)MAIN_STATE.SHOT_26)
+        {
+            once_flag = false;
+            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_27;
+            }
+        }
+        // Wave14
+        else if (shot_state == (int)MAIN_STATE.SHOT_27)
+        {
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "WAVE 14";
+                shot.text = "14/15";
+                score.text = " 20";
+
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+            }
+            Color c = wave.color;
+            c.a -= a_value;
+            wave.color = c;
+            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
+            if (c.a <= 0.0f)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_28;
+                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
+
+            }
+        }
+        else if (shot_state == (int)MAIN_STATE.SHOT_28)
+        {
+            once_flag = false;
+            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_29;
+            }
+        }
+        // Wave15
+        else if (shot_state == (int)MAIN_STATE.SHOT_29)
+        {
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "WAVE 15";
+                shot.text = "15/15";
+                score.text = " 10";
+
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+            }
+            Color c = wave.color;
+            c.a -= a_value;
+            wave.color = c;
+            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
+            if (c.a <= 0.0f)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_30;
+                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
+
+            }
+        }
+        else if (shot_state == (int)MAIN_STATE.SHOT_30)
+        {
+            once_flag = false;
+            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_31;
+                score.text = " 0";
+                 
+
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageSelectManager : MonoBehaviour
 {
@@ -16,10 +17,12 @@ public class StageSelectManager : MonoBehaviour
     private List<GameObject> childStage = new List<GameObject>();
     public int itemCount = 0;
     public static bool ST_CLEAR_FLAG;
+    public GameObject now_loading;
     public int clear = 0;
     public float move_speed = 20.5f;
     public static string ST_OWNER_NUMBER = "";
     private bool se_flag = false;
+    Color color;
     // Use this for initialization
     void Awake()
     {
@@ -53,6 +56,7 @@ public class StageSelectManager : MonoBehaviour
     {
 
         //変数「ClearStage」に「CLEARSTAGE」の値を代入しなおす
+       
     }
 
     // Update is called once per frame
@@ -182,7 +186,16 @@ public class StageSelectManager : MonoBehaviour
                 {
                     ST_OWNER_NUMBER = "1-1";
                     GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    SceneManager.LoadScene("Stage_1_Scene");
+                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                    GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().color
+                        = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                  
+                   
+                    
+                      
+                   
+
+                    //SceneManager.LoadScene("Stage_1_Scene");
                 }
             }
             if (collition2d.gameObject.name == "_2")

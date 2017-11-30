@@ -137,6 +137,7 @@ public class Wall_Gimic : MonoBehaviour {
                 number += 1;
                 //light_chenge_flag = true;
 
+
                 //if (number == 2)
                 //{
                 //    number = 0;
@@ -160,7 +161,7 @@ public class Wall_Gimic : MonoBehaviour {
                 not_count = GameObject.Find("Player").GetComponent<Player_Collision>().item_count;
 
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-              
+            
                 size_state = 1;
 
                 //ランタンにぼやけた光を出す

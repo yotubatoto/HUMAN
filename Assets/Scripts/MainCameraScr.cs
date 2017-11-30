@@ -14,6 +14,7 @@ public class MainCameraScr : MonoBehaviour
 	public GameObject arrow;
     public GameObject circle;
     public GameObject pause;
+    private float pause_time = 0.0f;
     public GameObject pause_black;
     public bool end_flag = false;
     public bool state_move_flag = false;
@@ -25,6 +26,9 @@ public class MainCameraScr : MonoBehaviour
 	private Vector2 force_ = Vector2.zero;
 	public float force_velocity = 50000.0f;
     private int pause_count = 1;
+    private int load_count = 1;
+    public GameObject now_loading;
+
     //射出の減衰スピード
     public float attenuation_speed = 2.0f;
     private int shake_state = 0;
@@ -34,7 +38,7 @@ public class MainCameraScr : MonoBehaviour
     private bool pause_se_flag = false;
 
     private float swipe_scale = 0;
-    private Vector2 sub;
+    public Vector2 sub;
     //どれぐらい引っ張れるか
     public float VELOCITY_MAX = 20.0f;
     public bool pause_freeze_flag = false;
@@ -43,9 +47,11 @@ public class MainCameraScr : MonoBehaviour
     public GameObject[] right_obj = new GameObject[6];
     private bool began_flag = false;
 	public GameObject debug_obj;
-   
+    public GameObject[] small;
+    public GameObject[] big;
+    private float _time = 0.0f;
+	//public Text debug_test;
 
-    //public Text debug_test;
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
@@ -53,8 +59,7 @@ public class MainCameraScr : MonoBehaviour
 		Application.targetFrameRate = 60;
         //カメラのスケール２５
         //Camera.main.orthographicSize = 25.0f;
-        arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 1.0f, 0.0f);
-
+        //small = GameObject.FindGameObjectsWithTag("Small_Block");
 	}
 
 
@@ -64,6 +69,9 @@ public class MainCameraScr : MonoBehaviour
 	*/
 	void Update ()
 	{
+        //射出したあとのスピードを測る
+        //Debug.Log(player.GetComponent<Rigidbody2D>().velocity.magnitude);
+
         TouchInfo _info = AppUtil.GetTouch();
         if (_info == TouchInfo.Began)
         {
@@ -99,7 +107,7 @@ public class MainCameraScr : MonoBehaviour
 			if (touch_freeze_flag == false) {
 
 				if (player.GetComponent<Rigidbody2D> ().velocity.magnitude <= attenuation_speed && end_flag == true) {
-					Debug.Log ("fddd");
+                    //Debug.Log ("fddd");
 					player.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
                     state_move_flag = true;
                     flag = false;
@@ -130,14 +138,19 @@ public class MainCameraScr : MonoBehaviour
 					if (info == TouchInfo.Began) {
 						// タッチ開始
 						began_flag = true;
+                        //_time = 0.0f;
 						startPos = AppUtil.GetTouchWorldPosition (Camera.main);
 						circle.transform.position = startPos;
 						anime.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+                        GameObject.Find("arrow").GetComponent<SpriteRenderer>().enabled = true;
 
-						Color color = arrow.transform.Find ("arrow").gameObject.GetComponent<SpriteRenderer> ().color;
+
+						Color color = GameObject.Find ("arrow").GetComponent<SpriteRenderer> ().color;
 						Color c_color = circle.GetComponent<SpriteRenderer> ().color;
-						arrow.transform.Find ("arrow").gameObject.GetComponent<SpriteRenderer> ().color = new Color (0.0f, 0.0f, 1.0f, 1.0f);
-						circle.GetComponent<SpriteRenderer> ().color = new Color (c_color.r, c_color.g, c_color.b, 0.4f);
+                        GameObject.Find("arrow").GetComponent<SpriteRenderer>().color = 
+                            new Color(0.0f, 0.0f, 1.0f, 1.0f);
+						circle.GetComponent<SpriteRenderer> ().color = 
+                            new Color (c_color.r, c_color.g, c_color.b, 0.4f);
 						arrow.transform.localScale = new Vector3 (10.0f, 1, 1);
 
 					}
@@ -146,6 +159,7 @@ public class MainCameraScr : MonoBehaviour
 							info = TouchInfo.Began;
 						}
 						anime.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+
 						Color color = arrow.transform.Find ("arrow").gameObject.GetComponent<SpriteRenderer> ().color;
 						Color circle_color = circle.GetComponent<SpriteRenderer> ().color;
 						movePos = AppUtil.GetTouchWorldPosition (Camera.main);
@@ -222,10 +236,16 @@ public class MainCameraScr : MonoBehaviour
 
                                     obj_h.transform.eulerAngles = new Vector3 (0, 0, 180 + angle);
 									//ノーマライズド速度プレイヤーの
-									force_ = ((sub.normalized * force_velocity) * temp * -1) * Time.deltaTime;
-									obj_h.GetComponent<Rigidbody2D> ().AddForce (force_);
 
-                                }
+                                    //力を固定する45000
+                                    force_ = ((sub.normalized * force_velocity) * temp * -1) * Time.deltaTime;
+                                    if (force_.magnitude > 45000)
+                                    {
+                                        force_ = force_.normalized * 45000;
+                                    }
+									obj_h.GetComponent<Rigidbody2D> ().AddForce (force_)                             
+								}
+
 							}
 						}
 						//Debug.Log((old_angle) - (ang));
@@ -237,20 +257,12 @@ public class MainCameraScr : MonoBehaviour
 						player.transform.eulerAngles = new Vector3 (0, 0, 180 + angle);
 
 						old_angle = ang;
-
-						if (sub.magnitude < 3) {
-							anime.GetComponent<Animator> ().speed = 0.5f;
-							arrow.transform.Find ("arrow").gameObject.GetComponent<SpriteRenderer> ().color
-                                = new Color (0.0f, 0.0f, 0.0f, 1.0f);
-						}
-						if (sub.magnitude > 3) {
-							anime.GetComponent<Animator> ().speed = 2.5f;
-							arrow.transform.Find ("arrow").gameObject.GetComponent<SpriteRenderer> ().color
-                                = new Color (1.0f, 1.0f, 0.0f, 1.0f);
-						}
-						if (sub.magnitude > 12) {
-							anime.GetComponent<Animator> ().speed = 5.0f;
-							arrow.transform.Find ("arrow").gameObject.GetComponent<SpriteRenderer> ().color
+                        //Debug.Log(sub.magnitude);
+                            
+                        //矢印赤
+						if (sub.magnitude > 20) {
+							anime.GetComponent<Animator> ().speed = 3.0f;
+                            GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                                 = new Color (1.0f, 0.0f, 0.0f, 1.0f);
 							// endにいく
 							//end_time += Time.deltaTime;
@@ -261,17 +273,73 @@ public class MainCameraScr : MonoBehaviour
                                 
 							//}
 						}
+                            //矢印イエロー
+                        else if (sub.magnitude > 9)
+                        {
+                            anime.GetComponent<Animator>().speed = 2.0f;
+                            GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
+                                = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+
+                        }
+                        //3より射出パワーが上なら矢印ブルー
+                        else if (sub.magnitude > 3)
+                        {
+                            anime.GetComponent<Animator>().speed = 2.0f;
+                            GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
+                                = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                            
+                        }
+                        else
+                        {   //射出すらできないパワーの時ブラックカラー矢印
+							anime.GetComponent<Animator> ().speed = 1.0f;
+							GameObject.Find ("arrow").GetComponent<SpriteRenderer> ().color
+                                = new Color (0.0f, 0.0f, 0.0f, 1.0f);
+						}
 					}
 					if (info == TouchInfo.Ended) {
+                        //デバッグログ　射出時のパワーを測る
+                        Debug.Log(sub.magnitude);
+
+                        //if (GameObject.Find("Block/block_red (2)").GetComponent<BoxCollider>().)
+
+                        //タップはなしたときスピードによって、障害物を突きにけるか否か。
+                        bool once_flag;
+                        if (sub.magnitude > 15)
+                            once_flag = true;
+                        else
+                            once_flag = false;
+
+                        //スモールブロック配列のトリガーをオンにする
+                        small = GameObject.FindGameObjectsWithTag("Small_Block");
+                        foreach (GameObject obs in small)
+                        {
+                            obs.GetComponent<Collider2D>().isTrigger = once_flag;
+                            //obs.layer = LayerName.None;
+                        }
+
+                        //ビッグブロック配列のトリガーをオンにする
+                        //big = GameObject.FindGameObjectsWithTag("Big_Block");
+                        //foreach (GameObject obs in big)
+                        //{
+                        //    obs.GetComponent<Collider2D>().isTrigger = once_flag;
+                        //    //obs.layer = LayerName.None;
+                        //}
+                      
+                      
+
+
 						began_flag = false;
 						end_time = 0.0f;
+                        //速度が３まで低下したら次のWAVEにいく
 						if (sub.magnitude > 3) {
 							end_flag = true;
-							anime.GetComponent<Animator> ().speed = 0.5f;
+							anime.GetComponent<Animator> ().speed = 1.0f;
 							//arrow.GetComponent<SpriteRenderer>().enabled = false;
-							Color color = arrow.transform.Find ("arrow").gameObject.GetComponent<SpriteRenderer> ().color;
-							arrow.transform.Find ("arrow").gameObject.GetComponent<SpriteRenderer> ().color = new Color (color.r, color.g, color.b, 0.0f);
-							anime.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+							Color color = GameObject.Find ("arrow").GetComponent<SpriteRenderer> ().color;
+                            GameObject.Find("arrow").GetComponent<SpriteRenderer>().color 
+                                = new Color(color.r, color.g, color.b, 0.0f);
+                            GameObject.Find("Player/player_motion").GetComponent<SpriteRenderer>().enabled = false;
+
 							flag = true;
 							endPos = AppUtil.GetTouchWorldPosition (Camera.main);
 							Vector2 a = endPos - startPos;
@@ -284,6 +352,7 @@ public class MainCameraScr : MonoBehaviour
 							//}
 							//スワイプの長さの値を変えれる
 							player.GetComponent<Rigidbody2D> ().AddForce (force_);
+
 						}
 						GameObject[] aa = GameObject.FindGameObjectsWithTag ("semi");
 						if (GameObject.FindGameObjectsWithTag ("semi") != null) {
@@ -305,6 +374,85 @@ public class MainCameraScr : MonoBehaviour
 		{
 			debug_obj.SetActive (true);
 		}
+        //射出パワーが○○かつリジットボディのスピードが０のとき（subは射出時パワー、velocity magniはスピード）
+        if (sub.magnitude > 20 && GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > 0)
+        {
+                //スモールブロック配列のトリガーをオンにする
+
+                    //射出後のスピードを測る
+                     //Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
+
+            //性質変化１２以下になったらタグを外し、中の性質変化に移行する（赤いオブジェ破壊せず跳ね返る）
+                     if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 12)
+                     {
+                         small = GameObject.FindGameObjectsWithTag("Small_Block");
+                         foreach (GameObject obs in small)
+                         {
+                             Debug.Log("iiiii");
+                             obs.GetComponent<Collider2D>().isTrigger = false;
+
+                         }
+                     }
+
+                     else if (sub.magnitude < 7 && GameObject.Find("Player").GetComponent
+                         <Rigidbody2D>().velocity.magnitude > 0)
+                     {
+
+                     }
+
+            //射出パワーが○○かつリジットボディのスピードが０のとき（subは射出時パワー、velocity magniはスピード）
+                     if (sub.magnitude > 20 && GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > 0)
+                     {
+                         //ビッグブロック配列のトリガーをオンにする
+
+                         //射出後のスピードを測る
+                         //Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
+
+                         //性質変化１２以下になったらタグを外し、中の性質変化に移行する（緑オブジェただ跳ね返る）
+                         if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 12)
+                         {
+                             big = GameObject.FindGameObjectsWithTag("Big_Block");
+                             foreach (GameObject obs in big)
+                             {
+                                 //Debug.Log("iiiii");
+                                 obs.GetComponent<Collider2D>().isTrigger = false;
+
+                             }
+                         }
+
+                         else if (sub.magnitude < 7 && GameObject.Find("Player").GetComponent
+                             <Rigidbody2D>().velocity.magnitude > 0)
+                         {
+
+                         }
+                     }
+                                   
+                
+                    //float speed = rb.velocity.magnitude;
+
+                    //obs.layer = LayerName.Default;
+                    //bool f = false;
+                    //obs.GetComponent<Collider2D>().isTrigger = f;
+                    //Debug.Log(obs.GetComponent<Collider2D>().isTrigger);
+
+                
+        }
+     
+        //if (player.GetComponent<Rigidbody2D>().velocity.x < 6)
+        //{
+            
+        //    //スモールブロック配列のトリガーをオンにする
+        //    foreach (GameObject obs in small)
+        //    {
+        //        Debug.Log(obs.layer);
+                        
+        //        obs.layer = LayerName.Default;
+        //        //bool f = false;
+        //        //obs.GetComponent<Collider2D>().isTrigger = f;
+        //        //Debug.Log(obs.GetComponent<Collider2D>().isTrigger);
+
+        //    }
+        //}
 		// ----------
 		// 移動範囲制限
 		// ----------
@@ -326,6 +474,7 @@ public class MainCameraScr : MonoBehaviour
 		}
 		// ----------
 		//}
+
 	}
 
     void TouchObjectFind(string name)
@@ -357,26 +506,43 @@ public class MainCameraScr : MonoBehaviour
                 }
                 else
                 {
-                    pause_freeze_flag = false;
+                    //pause_time += 0.01f;
+                    //if (pause_time > 1)
+                    //{
+                        pause_freeze_flag = false;
+
+                    //}
                     pause_se_flag = false;
                     Pauser.Resume();
                     Color pause_color = new Color(0, 0, 0, 0);
                     Color pause_ = pause_black.gameObject.GetComponent<Image>().color;
                     pause_black.GetComponent<Image>().color = 
                         new Color(pause_color.r, pause_color.g, pause_color.b, 0.0f);
+                }   
+            }
+            if (collition2d.gameObject.name == name)
+            {
+                if (load_count == 1)
+                {
+                    Color pause_color = new Color(0, 0, 0, 0);
+                    Color pause_ = now_loading.gameObject.GetComponent<Image>().color;
+                    now_loading.GetComponent<Image>().color =
+                        new Color(pause_color.r, pause_color.g, pause_color.b, 0.7f);
                 }
                 
             }
         }
+        
+
     }
     void Shake_Arrow()
-    {
-        if (sub.magnitude >= 16.0f)
+    {//引っ張り強さが16以上の時
+        if (sub.magnitude >= 20.0f)
         {
             //Debug.Log("aaaa");
             Vector2 pos = arrow.transform.position;
             if (shake_state == 0)
-            {
+            {//矢印揺れるスピード
                 arrow_shake += 0.08f;
                 pos.y += arrow_shake;
                 if (arrow_shake > 0.3f)
