@@ -101,21 +101,28 @@ public class MainCameraScr : MonoBehaviour
 				if (player.GetComponent<Rigidbody2D> ().velocity.magnitude <= attenuation_speed && end_flag == true) {
 					Debug.Log ("fddd");
 					player.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+                    state_move_flag = true;
+                    flag = false;
+                    GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
+                    if (GameObject.FindGameObjectsWithTag("semi") != null)
+                    {
+                        foreach (GameObject _obj in a)
+                        {
+                            Destroy(_obj);
+                        }
+                    }
 				}
-				if (end_flag == true && player.GetComponent<Rigidbody2D> ().velocity.magnitude <= 0.1f && GetComponent<Manager> ().wave_flag == false) {
-					state_move_flag = true;
-					flag = false;
-					GameObject[] a = GameObject.FindGameObjectsWithTag ("semi");
-					if (GameObject.FindGameObjectsWithTag ("semi") != null) {
-						foreach (GameObject _obj in a) {
-							Destroy (_obj);
-						}
-					}
-				}
-				//else
-				//{
-				//    state_move_flag = false;
-				//}
+                // && GetComponent<Manager> ().wave_flag == false
+                //if (end_flag == true && player.GetComponent<Rigidbody2D> ().velocity.magnitude <= 0.0f ) {
+                //    state_move_flag = true;
+                //    flag = false;
+                //    GameObject[] a = GameObject.FindGameObjectsWithTag ("semi");
+                //    if (GameObject.FindGameObjectsWithTag ("semi") != null) {
+                //        foreach (GameObject _obj in a) {
+                //            Destroy (_obj);
+                //        }
+                //    }
+                //}
          
 				if (flag == false)
                 {

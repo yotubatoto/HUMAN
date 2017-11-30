@@ -92,7 +92,7 @@ public class Manager : MonoBehaviour
             Color c =  wave.color;
            
           
-           c.a -= 0.02f;
+           c.a -= a_value;
            wave.color = c;
            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if(c.a <= 0.0f)
@@ -129,7 +129,7 @@ public class Manager : MonoBehaviour
                 Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -166,7 +166,7 @@ public class Manager : MonoBehaviour
                 //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -203,7 +203,7 @@ public class Manager : MonoBehaviour
                 //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -240,7 +240,7 @@ public class Manager : MonoBehaviour
                 //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -278,7 +278,7 @@ public class Manager : MonoBehaviour
                 //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -315,7 +315,7 @@ public class Manager : MonoBehaviour
                 //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -352,7 +352,7 @@ public class Manager : MonoBehaviour
                 //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -390,7 +390,7 @@ public class Manager : MonoBehaviour
 
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -428,7 +428,7 @@ public class Manager : MonoBehaviour
 
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
@@ -466,7 +466,7 @@ public class Manager : MonoBehaviour
 
             }
             Color c = wave.color;
-            c.a -= 0.02f;
+            c.a -= a_value;
             wave.color = c;
             Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if (c.a <= 0.0f)
