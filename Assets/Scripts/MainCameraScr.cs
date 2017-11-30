@@ -243,7 +243,7 @@ public class MainCameraScr : MonoBehaviour
                                     {
                                         force_ = force_.normalized * 45000;
                                     }
-									obj_h.GetComponent<Rigidbody2D> ().AddForce (force_)                             
+                                    obj_h.GetComponent<Rigidbody2D>().AddForce(force_);                             
 								}
 
 							}
