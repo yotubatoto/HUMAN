@@ -19,6 +19,9 @@ public class TitleManager : MonoBehaviour
 	private int m_cnt;
 	Color m_color;
 	public GameObject filterWhite;
+    public GameObject now_loading;
+    public GameObject title;
+    public Text a;
 	private float al;
 	/* --------------------------------------------------
 	 * @パラメータ初期化
@@ -95,20 +98,32 @@ public class TitleManager : MonoBehaviour
 			if (Input.GetMouseButtonUp(0))
 			{
 
-				// 
-				m_color = transform.Find("TitleLogo").GetComponent<SpriteRenderer>().color;
+                // SE再生
+                if (m_se_source.isPlaying == false)
+                {
 
-				// タップスタートの非表示
+                    m_se_source.clip = m_se_start;
+                    m_se_source.Play();
+                    m_se_source.loop = false;
+                }
+                GameObject.Find("GameMain").GetComponent<Now_Loading>().Load_NextScene_Title();
+                //GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().color 
+                //    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                //GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().sortingOrder = 10000;
+                GameObject.Find("Canvas/Now_Loading").GetComponent<Image>().enabled = true;
+                GameObject.Find("Canvas/title").GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                GameObject.Find("Canvas/tap start").GetComponent<Text>().enabled = false;
+
+
+
+ 
+				//
+				m_color = transform.Find("TitleLogo").GetComponent<SpriteRenderer>().color;
+                
 				GameObject obj = transform.Find("TapStart").gameObject;
 				Destroy(obj);
 
-				// SE再生
-				if (m_se_source.isPlaying == false)
-				{
-                    m_se_source.clip = m_se_start;
-					m_se_source.Play();
-					m_se_source.loop = false;
-				}
+				
 
 				// 次のシーンへ
 				m_scene = 1;
@@ -118,7 +133,9 @@ public class TitleManager : MonoBehaviour
 		}
 		else if (m_scene == 1)
 		{
+
             
+            // タップスタートの非表示
 			// メインシーン導入
 
 			// カウントの加算
@@ -135,6 +152,7 @@ public class TitleManager : MonoBehaviour
 				if (al >= 1)
 				{
 					SceneManager.LoadScene("StageSelect_Scene");
+                   
 				}
 				Debug.Log(al);
 			}

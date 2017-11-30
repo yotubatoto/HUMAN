@@ -133,26 +133,26 @@ public class Wall_Gimic : MonoBehaviour {
                 number += 1;
                 //light_chenge_flag = true;
 
-                if (number == 2)
+                if (number > 1)
                 {
-                    number = 0;
+                    number = 1;
                 }
 
-                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
+                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
                 // 灯っている時
                 if(number == 1)
                 {
                     child_circle.GetComponent<SpriteRenderer>().enabled = true;
                     
                 }
-                else
-                {
-                    child_circle.GetComponent<SpriteRenderer>().enabled = false;
-                }
+                //else
+                //{
+                //    child_circle.GetComponent<SpriteRenderer>().enabled = false;
+                //}
                 size_state = 1;
                 if(chage_state == 0)
                 {
-                    Debug.Log("aaa");
+                    //Debug.Log("aaa");
                     obj = Instantiate(chageprefab, transform.position, Quaternion.identity);
                     if(number == 0)
                     {

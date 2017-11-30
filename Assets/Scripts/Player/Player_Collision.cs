@@ -10,6 +10,7 @@ public class Player_Collision : MonoBehaviour {
     public Text item_text;
     private bool flashing_flag = false;
     public float flashing_time = 0;
+   
     public GameObject camera;
     public GameObject enemy_coll_effect;
     private float delete_count = 0.0f;
@@ -191,13 +192,17 @@ public class Player_Collision : MonoBehaviour {
         }
         if (coll.gameObject.tag == "Big_Block")
         {
+            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0)
+            {
+                GetComponent<Sound_Manager>().SE();
+            }
             if(coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1)
             {
                 GetComponent<Sound_Manager>().SE();
             }
             if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 2)
             {
-                GetComponent<Sound_Manager>().Item_UP_SE();
+                GetComponent<Sound_Manager>().Block_Second_SE();
             }
         }
     }
@@ -207,7 +212,7 @@ public class Player_Collision : MonoBehaviour {
         {
             bonus_count_flag = true;
 
-            GetComponent<Sound_Manager>().Item_UP_SE();
+            GetComponent<Sound_Manager>().Block_Second_SE();
             
         }
         if (coll.gameObject.tag == "Goal") 
@@ -217,6 +222,21 @@ public class Player_Collision : MonoBehaviour {
                 Debug.Log("ごーーる");
                 Pauser.Resume();
                 SceneManager.LoadScene("StageSelect_Scene");
+            }
+        }
+        if (coll.gameObject.tag == "Small_Block")
+        {
+            GetComponent<Sound_Manager>().SE();
+        }
+        if (coll.gameObject.tag == "Big_Block")
+        {
+            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1)
+            {
+                GetComponent<Sound_Manager>().SE();
+            }
+            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 2)
+            {
+                GetComponent<Sound_Manager>().Block_Second_SE();
             }
         }
         

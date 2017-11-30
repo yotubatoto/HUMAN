@@ -9,7 +9,8 @@ public static class LayerName
 	public const int Water = 4;
 	public const int UI = 5;
 	public const int Enemy = 8;
-	public const int Player = 9;
+    public const int Player = 9;
+    public const int None = 11;
 	public const int DefaultMask = 1;
 	public const int TransparentFXMask = 2;
 	public const int IgnoreRaycastMask = 4;

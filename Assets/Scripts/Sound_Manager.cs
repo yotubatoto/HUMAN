@@ -37,7 +37,7 @@ public class Sound_Manager : MonoBehaviour {
         //m_audio.volume = 0.05f;
         m_audio.PlayOneShot(resin_coll_se);
     }
-    public void Item_UP_SE()
+    public void Block_Second_SE()
     {
         //m_audio.volume = 0.05f;
         m_audio.PlayOneShot(block_coll_se);
