@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4261532323880904}
   - component: {fileID: 212940676331824880}
+  - component: {fileID: 114543135933378102}
   m_Layer: 0
   m_Name: Charge
   m_TagString: Untagged
@@ -35,11 +36,22 @@ Transform:
   m_GameObject: {fileID: 1036989336479944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.914769, y: -23.779495, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114543135933378102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1036989336479944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743911584a9544043a135a779e895a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212940676331824880
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -54,7 +66,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 56349583b2460034dacfb3542a4c9f29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +87,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e2fff909e18af9b449c545e3db3401f3, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.443}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

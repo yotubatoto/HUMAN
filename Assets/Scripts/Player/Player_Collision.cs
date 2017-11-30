@@ -29,6 +29,12 @@ public class Player_Collision : MonoBehaviour {
     public int state = 0;
     public int lamp_count = 0;
     private int total_item_count = 0;
+    public GameObject light_prefab;
+    public Vector3 hit_coordinate;
+    //public float life_time = 3.0f;
+    //float time = 0f;
+    //public int combo_count = 0;
+
     // Use this for initialization
     void Start () 
     {
@@ -36,7 +42,8 @@ public class Player_Collision : MonoBehaviour {
         //{
         //    total_item_count = Save_Load.Load("1");
         //}
-	}
+        //time = 0;
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -69,6 +76,8 @@ public class Player_Collision : MonoBehaviour {
                 delete_count = 0.0f;
             }
         }
+
+        //time += Time.deltaTime;
 
         //if (bonus_count_flag == true)
         //{
@@ -161,10 +170,15 @@ public class Player_Collision : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll) 
     {
+       
+
+
         if (coll.gameObject.tag == "Gimic")
         {
             gimic_coll_flag = true;
             GetComponent<Sound_Manager>().Resin_SE();
+
+            hit_coordinate = coll.transform.position;
             //if (bonus_count < 3)
             //{
             //    bonus_count = 0;
@@ -172,14 +186,25 @@ public class Player_Collision : MonoBehaviour {
             //    if (bonus_count_flag)
             //        bonus_point = 5;
             //}
-            //レジン取得数
-            item_count += 1;
+
             //ランプ内部カウント
-            lamp_count += 1;
+            //lamp_count += 1;
+            //レジン取得数
+            //item_count += 1;
+
             //item_count += bonus_point;
-            item_text.text = item_count.ToString();
+            //item_text.text = item_count.ToString();
             //Instantiate(effect_prefab, transform.position, Quaternion.identity);
             //GetComponent<Sound_Manager>().Item_UP_SE();
+
+            GameObject[] seed;
+            seed = GameObject.FindGameObjectsWithTag("BlockPiece");
+
+            foreach (GameObject obs in seed)
+            {
+                obs.GetComponent<Effect_Move>().move_flag = true;
+            }
+
         }
         if(coll.gameObject.tag == "Small_Block")
         {
@@ -200,6 +225,13 @@ public class Player_Collision : MonoBehaviour {
                 GetComponent<Sound_Manager>().Item_UP_SE();
             }
         }
+
+        //if(coll.gameObject.tag == "BlockPiece")
+        //{
+        //    GameObject harumafuji = Instantiate(light_prefab, transform.position, Quaternion.identity);
+        //    Destroy(harumafuji, 3.0f);
+        //}
+
     }
     void OnTriggerEnter2D(Collider2D coll)
     {
@@ -221,5 +253,4 @@ public class Player_Collision : MonoBehaviour {
         }
         
     }
-    
 }

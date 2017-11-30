@@ -29,6 +29,8 @@ public class Manager : MonoBehaviour
     public bool wave_flag = false;
     int temp_state = 0;
     private float count = 0.0f;
+    //ターンとターンの間にオブジェクトを動かす                              
+    public bool move_flag = false;
     enum MAIN_STATE
     {
         SHOT_1 = 1,
@@ -86,7 +88,8 @@ public class Manager : MonoBehaviour
         // Wave1
         if (shot_state ==(int) MAIN_STATE.SHOT_1)
         {
-           Color c =  wave.color;
+            move_flag = false;
+            Color c =  wave.color;
            
           
            c.a -= 0.02f;
@@ -96,7 +99,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_2;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_2)
@@ -104,11 +107,13 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
             {
                 shot_state = (int)MAIN_STATE.SHOT_3;
+                
             }
         }
         // Wave2
         else if (shot_state == (int)MAIN_STATE.SHOT_3)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -120,6 +125,8 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
                 Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -129,7 +136,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_4;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_4)
@@ -143,6 +150,7 @@ public class Manager : MonoBehaviour
         // Wave3
         else if (shot_state == (int)MAIN_STATE.SHOT_5)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -155,6 +163,7 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
 				Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -164,7 +173,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_6;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_6)
@@ -178,6 +187,7 @@ public class Manager : MonoBehaviour
         // Wave4
         else if (shot_state == (int)MAIN_STATE.SHOT_7)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -190,6 +200,7 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
                 Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -199,7 +210,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_8;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_8)
@@ -213,6 +224,7 @@ public class Manager : MonoBehaviour
         // Wave5
         else if (shot_state == (int)MAIN_STATE.SHOT_9)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -225,6 +237,7 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
                 Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -234,6 +247,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_10;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
+                move_flag = true;
 
             }
         }
@@ -248,6 +262,7 @@ public class Manager : MonoBehaviour
         // Wave6
         else if (shot_state == (int)MAIN_STATE.SHOT_11)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -260,6 +275,7 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
                 Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -269,7 +285,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_12;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_12)
@@ -283,6 +299,7 @@ public class Manager : MonoBehaviour
         // Wave7
         else if (shot_state == (int)MAIN_STATE.SHOT_13)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -295,6 +312,7 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
                 Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -304,7 +322,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_14;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_14)
@@ -318,6 +336,7 @@ public class Manager : MonoBehaviour
         // Wave8
         else if (shot_state == (int)MAIN_STATE.SHOT_15)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -330,6 +349,7 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
                 Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -339,7 +359,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_16;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_16)
@@ -353,6 +373,7 @@ public class Manager : MonoBehaviour
         // Wave9
         else if (shot_state == (int)MAIN_STATE.SHOT_17)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -365,6 +386,8 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
                 Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -374,7 +397,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_18;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_18)
@@ -388,6 +411,7 @@ public class Manager : MonoBehaviour
         // Wave10
         else if (shot_state == (int)MAIN_STATE.SHOT_19)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -400,6 +424,8 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
                 Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -409,7 +435,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_20;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_20)
@@ -423,6 +449,7 @@ public class Manager : MonoBehaviour
         // Wave11
         else if (shot_state == (int)MAIN_STATE.SHOT_21)
         {
+            move_flag = false;
             if (once_flag == false)
             {
                 once_flag = true;
@@ -435,6 +462,8 @@ public class Manager : MonoBehaviour
                 wave.color = cc;
                 Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                 Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+
             }
             Color c = wave.color;
             c.a -= 0.02f;
@@ -444,7 +473,7 @@ public class Manager : MonoBehaviour
             {
                 shot_state = (int)MAIN_STATE.SHOT_22;
                 Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-
+                move_flag = true;
             }
         }
         else if (shot_state == (int)MAIN_STATE.SHOT_22)
@@ -456,11 +485,10 @@ public class Manager : MonoBehaviour
             }
         }
 
+        //GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text =
+        //    GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString();
 
 
-
-
-        
 
 
     }
