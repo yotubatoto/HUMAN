@@ -3728,6 +3728,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!4 &62455924 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4276855604642766, guid: 170e349fd41f0b3459c72c3828303657,
+    type: 2}
+  m_PrefabInternal: {fileID: 796170193}
 --- !u!1 &63563480
 GameObject:
   m_ObjectHideFlags: 0
@@ -9097,11 +9102,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1076576384}
---- !u!4 &1084107989 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4108794512410140, guid: 97e5a8e7de362497d88a06d9550a23ad,
-    type: 2}
-  m_PrefabInternal: {fileID: 314783703}
 --- !u!1001 &1090219246
 Prefab:
   m_ObjectHideFlags: 0
@@ -11545,6 +11545,21 @@ Prefab:
       propertyPath: ShapeModule.radiusThickness
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198050566982746702, guid: f12db2714fedd814f8c457bdd98fac0d,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198050566982746702, guid: f12db2714fedd814f8c457bdd98fac0d,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198050566982746702, guid: f12db2714fedd814f8c457bdd98fac0d,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f12db2714fedd814f8c457bdd98fac0d, type: 2}
   m_IsPrefabParent: 0
@@ -12613,7 +12628,7 @@ Transform:
   - {fileID: 2001659984}
   - {fileID: 1659852116}
   - {fileID: 1690948790}
-  - {fileID: 1084107989}
+  - {fileID: 208301005}
   - {fileID: 752723555}
   - {fileID: 207561489}
   - {fileID: 1478274124}
@@ -12916,6 +12931,7 @@ Transform:
   - {fileID: 674575413}
   - {fileID: 130970880}
   - {fileID: 228830949}
+  - {fileID: 62455924}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16704,22 +16720,21 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1520126687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -682, y: 1164, z: 0}
+  m_LocalPosition: {x: -682, y: 1098, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 797950145}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -632, y: 1114}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -732, y: 1048}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1520126689
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114114141036215798, guid: acc973ebd82e48045a00bbc55fbabf4a,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1520126687}
   m_Enabled: 1
@@ -16737,18 +16752,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3da628af168219e479995a2334a11820, type: 3}
-    m_FontSize: 87
+    m_FontSize: 77
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 104
-    m_Alignment: 4
+    m_MinSize: 10
+    m_MaxSize: 77
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SEED:
+  m_Text: 'SEED:'
 --- !u!222 &1520126690
 CanvasRenderer:
   m_ObjectHideFlags: 0
