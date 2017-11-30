@@ -31,6 +31,7 @@ public class Manager : MonoBehaviour
     private float count = 0.0f;
     //ターンとターンの間にオブジェクトを動かす                              
     public bool move_flag = false;
+    float a_value = 0.02f;
     enum MAIN_STATE
     {
         SHOT_1 = 1,
