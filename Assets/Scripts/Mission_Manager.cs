@@ -69,20 +69,20 @@ public class Mission_Manager : MonoBehaviour {
     //    }
     //    return false;
     //}
-    ////ランプの点灯数がマックスになったらステージ遷移
-    //bool Lamp_Lighting_Number(int max_lighting)
-    //{
-    //    int light_count = Playerobj.GetComponent<Player_Collision>().item_count;
+    //ランプの点灯数がマックスになったらステージ遷移
+    bool Lamp_Lighting_Number(int max_lighting)
+    {
+        int light_count = Playerobj.GetComponent<Player_Collision>().item_count;
 
-    //    if (light_count > max_lighting)
-    //    {
-    //        return true;
-    //    }
-    //    return false;
-    //}
-    
-    
-    
+        if (light_count > max_lighting)
+        {
+            return true;
+        }
+        return false;
+    }
 
-    
+
+
+
+
 }

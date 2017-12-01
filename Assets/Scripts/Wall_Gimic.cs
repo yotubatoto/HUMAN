@@ -15,7 +15,7 @@ public class Wall_Gimic : MonoBehaviour {
     private int chage_state = 0;
     private float c_plus = 0.0f;
     public float zoom_speed = 0.5f;
-    public Sprite[] light_sprite = new Sprite[2];
+    public Sprite[] light_sprite = new Sprite[4];
     public float INITIAL_SIZE = 2f;  
     public float MAX_SIZE = 3f;
     public int number = 0;
@@ -34,7 +34,6 @@ public class Wall_Gimic : MonoBehaviour {
     public GameObject spark_prefab;
     //ぼんやりする光のサイズを変える
     private float l_plus = 5.0f;
-
     private int not_count = 0;
 
     //private bool light_flag = false;
@@ -56,27 +55,27 @@ public class Wall_Gimic : MonoBehaviour {
         //transform.localScale = new Vector3(100, 100, 1.0f);
         //gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
 
-        if (size_state == 1)
-        {
-            s_plus += zoom_speed;
-            transform.localScale = new Vector3(s_plus + INITIAL_SIZE, s_plus + INITIAL_SIZE, 0.0f);
-            if ((s_plus + INITIAL_SIZE) > MAX_SIZE)
-            {
-                size_state = 2;
-                s_plus = INITIAL_SIZE;
-            }
-        }
+        //if (size_state == 1)
+        //{
+        //    s_plus += zoom_speed;
+        //    transform.localScale = new Vector3(s_plus + INITIAL_SIZE, s_plus + INITIAL_SIZE, 0.0f);
+        //    if ((s_plus + INITIAL_SIZE) > MAX_SIZE)
+        //    {
+        //        size_state = 2;
+        //        s_plus = INITIAL_SIZE;
+        //    }
+        //}
 
-        else if (size_state == 2)
-        {
-            s_plus -= zoom_speed;
-            transform.localScale = new Vector3(s_plus + INITIAL_SIZE, s_plus + INITIAL_SIZE, 0.0f);
-            if ((s_plus + INITIAL_SIZE) < INITIAL_SIZE)
-            {
-                size_state = 0;
-                s_plus = 0;
-            }
-        }
+        //else if (size_state == 2)
+        //{
+        //    s_plus -= zoom_speed;
+        //    transform.localScale = new Vector3(s_plus + INITIAL_SIZE, s_plus + INITIAL_SIZE, 0.0f);
+        //    if ((s_plus + INITIAL_SIZE) < INITIAL_SIZE)
+        //    {
+        //        size_state = 0;
+        //        s_plus = 0;
+        //    }
+        //}
 
 
        
@@ -131,7 +130,6 @@ public class Wall_Gimic : MonoBehaviour {
                 }
             }
 
-
         }
 
         
@@ -145,7 +143,6 @@ public class Wall_Gimic : MonoBehaviour {
             {
                 //number += 1;
                 //light_chenge_flag = true;
-
 
                 //if (number == 2)
                 //{
@@ -171,7 +168,7 @@ public class Wall_Gimic : MonoBehaviour {
 
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             
-                size_state = 1;
+                //size_state = 1;
 
                 //ランタンにぼやけた光を出す
                 if(chage_state == 0)
@@ -230,11 +227,11 @@ public class Wall_Gimic : MonoBehaviour {
             if (not_count >= 2)
             {
                 l_plus += 3.0f;
-                if (l_plus > 11.0f)
-                    l_plus = 11.0f;
+                if (l_plus > 15.0f)
+                    l_plus = 15.0f;
                 child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
                 Debug.Log(l_plus);
-                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[2];
                 Debug.Log("カウント:" + not_count);
 
             }
@@ -243,42 +240,42 @@ public class Wall_Gimic : MonoBehaviour {
             if (not_count >= 3)
             {
                 l_plus += 3.0f;
-                if (l_plus > 14.0f)
-                    l_plus = 14.0f;
+                if (l_plus > 30.0f)
+                    l_plus = 30.0f;
                 child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
                 Debug.Log(l_plus);
-                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[3];
                 Debug.Log("カウント:" + not_count);
 
             }
 
 
-            //レベル4
-            if (not_count >= 4)
-            {
-                l_plus += 3.0f;
-                if (l_plus > 17.0f)
-                    l_plus = 17.0f;
-                child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
-                Debug.Log(l_plus);
-                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
-                Debug.Log("カウント:" + not_count);
+            ////レベル4
+            //if (not_count >= 4)
+            //{
+            //    l_plus += 3.0f;
+            //    if (l_plus > 17.0f)
+            //        l_plus = 17.0f;
+            //    child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
+            //    Debug.Log(l_plus);
+            //    gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+            //    Debug.Log("カウント:" + not_count);
 
-            }
+            //}
 
 
-            //レベル5
-            if (not_count >= 5)
-            {
-                l_plus += 3.0f;
-                if (l_plus > 20.0f)
-                    l_plus = 20.0f;
-                child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
-                Debug.Log(l_plus);
-                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
-                Debug.Log("カウント:" + not_count);
+            ////レベル5
+            //if (not_count >= 5)
+            //{
+            //    l_plus += 3.0f;
+            //    if (l_plus > 20.0f)
+            //        l_plus = 20.0f;
+            //    child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
+            //    Debug.Log(l_plus);
+            //    gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+            //    Debug.Log("カウント:" + not_count);
 
-            }
+            //}
 
 
         }

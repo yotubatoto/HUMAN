@@ -172,9 +172,6 @@ public class Player_Collision : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll) 
     {
-       
-
-
         if (coll.gameObject.tag == "Gimic")
         {
             gimic_coll_flag = true;
