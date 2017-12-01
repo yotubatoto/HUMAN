@@ -97,7 +97,7 @@ public class MainCameraScr : MonoBehaviour
 		}
 		if (Input.GetKeyDown(KeyCode.LeftArrow))
 		{
-			Camera.main.orthographicSize -= 1.0f;
+			Camera.main.orthographicSize -= 1.0f;  
 			Debug.Log(Camera.main.orthographicSize);
 		}
 

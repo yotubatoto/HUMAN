@@ -57,30 +57,30 @@ public class Mission_Manager : MonoBehaviour {
             }
         }
 	}
-    bool Resin_GetNumber(int max_resin)
-    {
-        int resin_count = Playerobj.GetComponent<Player_Collision>().item_count;
-
-        if (resin_count > max_resin)
-        {
-            return true;
-        }
-        return false;
-    }
-    ////ランプの点灯数がマックスになったらステージ遷移
-    //bool Lamp_Lighting_Number(int max_lighting)
+    //bool Resin_GetNumber(int max_resin)
     //{
-    //    int light_count = Playerobj.GetComponent<Player_Collision>().item_count;
+    //    int resin_count = Playerobj.GetComponent<Player_Collision>().item_count;
 
-    //    if (light_count > max_lighting)
+    //    if (resin_count > max_resin)
     //    {
     //        return true;
     //    }
     //    return false;
     //}
-    
-    
-    
+    //ランプの点灯数がマックスになったらステージ遷移
+    bool Lamp_Lighting_Number(int max_lighting)
+    {
+        int light_count = Playerobj.GetComponent<Player_Collision>().item_count;
 
-    
+        if (light_count > max_lighting)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
 }
