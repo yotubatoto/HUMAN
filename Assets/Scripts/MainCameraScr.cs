@@ -525,7 +525,7 @@ public class MainCameraScr : MonoBehaviour
                 if (load_count == 1)
                 {
                     Color pause_color = new Color(0, 0, 0, 0);
-                    Color pause_ = now_loading.gameObject.GetComponent<Image>().color;
+                    //Color pause_ = now_loading.gameObject.GetComponent<Image>().color;
                     now_loading.GetComponent<Image>().color =
                         new Color(pause_color.r, pause_color.g, pause_color.b, 0.7f);
                 }
