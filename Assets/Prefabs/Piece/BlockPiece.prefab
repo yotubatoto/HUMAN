@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5096826}
   - component: {fileID: 5843592}
   - component: {fileID: 114795829301647262}
+  - component: {fileID: 61613756560904954}
   m_Layer: 0
   m_Name: BlockPiece
   m_TagString: BlockPiece
@@ -124,7 +125,7 @@ Prefab:
   m_IsPrefabParent: 1
 --- !u!61 &61613756560904954
 BoxCollider2D:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190640}
