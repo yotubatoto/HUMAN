@@ -28,7 +28,8 @@ public class Player_Collision : MonoBehaviour {
     private bool gimic_coll_flag = false;
     public float VELOCITY_MAX = 20.0f;
     public int state = 0;
-    public int lamp_count = 0;
+    //現在使ってない12/1日時点
+    //public int lamp_count = 0;
     private int total_item_count = 0;
     public GameObject light_prefab;
     public Vector3 hit_coordinate;

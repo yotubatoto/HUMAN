@@ -33,6 +33,8 @@ public class Mission_Manager : MonoBehaviour {
         //{
         //    clear_flag = Resin_GetNumber(4);
         //}
+
+        //クリア条件を満たしたらカラーをいじっている
         if(clear_flag)
         {
             if (clear_state == 0)

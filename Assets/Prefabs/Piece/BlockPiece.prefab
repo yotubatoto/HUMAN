@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 21202818}
   - component: {fileID: 5096826}
   - component: {fileID: 5843592}
-  - component: {fileID: 11442684}
   - component: {fileID: 114795829301647262}
-  - component: {fileID: 61613756560904954}
   m_Layer: 0
   m_Name: BlockPiece
   m_TagString: BlockPiece
@@ -28,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 58.66053, y: -5.6878424, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,21 +67,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!114 &11442684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32fc14cb3aa158b4d8ddcb63d3762f59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SPEED_MAX: 0.03
-  SPEED_MIN: 0.02
-  m_st: 0
-  m_is_tailpiece: 0
 --- !u!212 &21202818
 SpriteRenderer:
   m_ObjectHideFlags: 1

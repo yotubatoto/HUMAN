@@ -5,7 +5,7 @@ using UnityEngine;
 public class Effect_Move : MonoBehaviour
 {
     private float speed = 50.0f;
-    private float rotationSmooth = 1f;
+    private float rotationSmooth = 2f;
 
     private GameObject Gimic;
     public bool move_flag = false;
@@ -21,7 +21,7 @@ public class Effect_Move : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log(move_flag);
+        //Debug.Log(move_flag);
         if (move_flag == true)
         {
             // プレイヤーがランタンに当たったらseedがランタンのほうを向く
@@ -67,6 +67,8 @@ public class Effect_Move : MonoBehaviour
     {
         if (collision.gameObject.tag == "Gimic")
         {
+
+            
             //Instantiate(light, transform.position, Quaternion.identity);
             //if(time > life_time)
             //{

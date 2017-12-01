@@ -19,6 +19,9 @@ public class Wall_Gimic : MonoBehaviour {
     public float INITIAL_SIZE = 2f;  
     public float MAX_SIZE = 3f;
     public int number = 0;
+    //ランタンをともした数でのフラグ
+    public bool clear_flag = false;
+    private int clear_count = 0;
     //private bool light_chenge_flag = false;
     public GameObject explosionprefab;
     private GameObject obj_2;
@@ -43,6 +46,12 @@ public class Wall_Gimic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+
+        if (clear_count > 2)
+        {
+            clear_flag = true;
+            Debug.Log(clear_flag);
+        }
         //transform.localScale = new Vector3(100, 100, 1.0f);
         //gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
 
@@ -132,7 +141,7 @@ public class Wall_Gimic : MonoBehaviour {
         {
             if (coll.gameObject.tag == "Player")
             {
-                number += 1;
+                //number += 1;
                 //light_chenge_flag = true;
 
                 //if (number == 2)
@@ -155,7 +164,7 @@ public class Wall_Gimic : MonoBehaviour {
                 //    child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
                 //    Debug.Log(l_plus);
                 //}
-                not_count = GameObject.Find("Player").GetComponent<Player_Collision>().item_count;
+                not_count += GameObject.Find("Player").GetComponent<Player_Collision>().item_count;
 
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             
@@ -164,7 +173,7 @@ public class Wall_Gimic : MonoBehaviour {
                 //ランタンにぼやけた光を出す
                 if(chage_state == 0)
                 {
-                    Debug.Log("aaa");
+                    //Debug.Log("aaa");
                     obj = Instantiate(chageprefab, transform.position, Quaternion.identity);  //ぼやけた光を生成
                     if(number == 0)
                     {
@@ -188,23 +197,27 @@ public class Wall_Gimic : MonoBehaviour {
     {
         if (collision.gameObject.tag == "BlockPiece")
         {
-            if (not_count >= 1)
+            Debug.Log("gyy");
+            clear_count += 1;
+
+            //花のオブジェクト生成
+            if(not_count >= 1)
             {
                 //seedカウントが1より大きい場合光のレベルが１になる
               
                     //ぼやけか光の輪を出す
                     //レベル1
-                    if (number >= 1)
-                    {
+                    //if (number >= 1)
+                    //{
                         child_circle.GetComponent<SpriteRenderer>().enabled = true;
-                    }
+                    //}
                     l_plus += 3.0f;                                                          //ぼやけた光の輪に大きさをプラスする
                     if (l_plus > 8.0f)
                         l_plus = 8.0f;
                     child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);   //ぼやけた光の輪の大きさをキープする
                     Debug.Log(l_plus);
                     gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];          //ランタンをスイッチONにする
-                Debug.Log("カウント:" + not_count);
+                //Debug.Log("カウント:" + not_count);
 
             }
 
