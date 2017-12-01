@@ -27,8 +27,10 @@ public class MainCameraScr : MonoBehaviour
 	public float force_velocity = 50000.0f;
     private int pause_count = 1;
     private int load_count = 1;
+    //プレイヤー矢印の大きさ差分
+    public GameObject player_anime_difference;
     public GameObject now_loading;
-
+    Color color;
     //射出の減衰スピード
     public float attenuation_speed = 2.0f;
     private int shake_state = 0;
@@ -44,7 +46,8 @@ public class MainCameraScr : MonoBehaviour
     public bool pause_freeze_flag = false;
     private Vector2 arrow_start_pos = Vector2.zero;
 
-    public GameObject[] right_obj = new GameObject[6];
+    public GameObject[] right_obj = new GameObject[4];
+    
     private bool began_flag = false;
 	public GameObject debug_obj;
     public GameObject[] small;
@@ -77,10 +80,13 @@ public class MainCameraScr : MonoBehaviour
         {
             TouchObjectFind("pause");
         }
+        //射出性質変化 小のとき青のオーラをまとう
+        GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
+       
         bool _flag = false;
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 4; i++)
         {
-            if (right_obj[i].GetComponent<Wall_Gimic>().number == 0)
+            if (right_obj[i].GetComponent<Wall_Gimic>().clear_flag == false)
             {
                 _flag = true;
             }
@@ -288,6 +294,7 @@ public class MainCameraScr : MonoBehaviour
                             GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                                 = new Color(0.0f, 0.0f, 1.0f, 1.0f);
                             
+                            
                         }
                         else
                         {   //射出すらできないパワーの時ブラックカラー矢印
@@ -298,7 +305,7 @@ public class MainCameraScr : MonoBehaviour
 					}
 					if (info == TouchInfo.Ended) {
                         //デバッグログ　射出時のパワーを測る
-                        Debug.Log(sub.magnitude);
+                        //Debug.Log(sub.magnitude);
 
                         //if (GameObject.Find("Block/block_red (2)").GetComponent<BoxCollider>().)
 
@@ -314,8 +321,13 @@ public class MainCameraScr : MonoBehaviour
                         foreach (GameObject obs in small)
                         {
                             obs.GetComponent<Collider2D>().isTrigger = once_flag;
+                            //射出性質変化 強のとき赤のオーラをまとう
+                            GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = true;
                             //obs.layer = LayerName.None;
                         }
+                        
+            
+
 
                         //ビッグブロック配列のトリガーをオンにする
                         //big = GameObject.FindGameObjectsWithTag("Big_Block");
@@ -332,6 +344,7 @@ public class MainCameraScr : MonoBehaviour
 						end_time = 0.0f;
                         //速度が３まで低下したら次のWAVEにいく
 						if (sub.magnitude > 3) {
+
 							end_flag = true;
 							anime.GetComponent<Animator> ().speed = 1.0f;
 							//arrow.GetComponent<SpriteRenderer>().enabled = false;
@@ -374,17 +387,32 @@ public class MainCameraScr : MonoBehaviour
 		{
 			debug_obj.SetActive (true);
 		}
+        
         //射出パワーが○○かつリジットボディのスピードが０のとき（subは射出時パワー、velocity magniはスピード）
         if (sub.magnitude > 20 && GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > 0)
         {
-                //スモールブロック配列のトリガーをオンにする
+            
+            if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 30)
+            {
+                //射出性質変化 強の赤オーラを消し黄のオーラを発生
+                
+                GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = false;
+                GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = true;
 
+            }
+            
+            //スモールブロック配列のトリガーをオンにする
+            
                     //射出後のスピードを測る
                      //Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
 
             //性質変化１２以下になったらタグを外し、中の性質変化に移行する（赤いオブジェ破壊せず跳ね返る）
                      if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 12)
                      {
+                         //射出性質変化 中の黄オーラを消し青のオーラを発生
+
+                         GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = false; ;
+                         GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = true;
                          small = GameObject.FindGameObjectsWithTag("Small_Block");
                          foreach (GameObject obs in small)
                          {
@@ -394,9 +422,10 @@ public class MainCameraScr : MonoBehaviour
                          }
                      }
 
-                     else if (sub.magnitude < 7 && GameObject.Find("Player").GetComponent
-                         <Rigidbody2D>().velocity.magnitude > 0)
+                     else if (sub.magnitude < 7 && GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > 0)
                      {
+                         
+                        
 
                      }
 
@@ -423,7 +452,7 @@ public class MainCameraScr : MonoBehaviour
                          else if (sub.magnitude < 7 && GameObject.Find("Player").GetComponent
                              <Rigidbody2D>().velocity.magnitude > 0)
                          {
-
+                             //なにも書かない　＝　なにもしない
                          }
                      }
                                    
@@ -526,8 +555,8 @@ public class MainCameraScr : MonoBehaviour
                 {
                     Color pause_color = new Color(0, 0, 0, 0);
                     //Color pause_ = now_loading.gameObject.GetComponent<Image>().color;
-                    now_loading.GetComponent<Image>().color =
-                        new Color(pause_color.r, pause_color.g, pause_color.b, 0.7f);
+                //    now_loading.GetComponent<Image>().color =
+                //        new Color(pause_color.r, pause_color.g, pause_color.b, 0.7f);
                 }
                 
             }

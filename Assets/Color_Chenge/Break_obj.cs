@@ -54,7 +54,7 @@ public class Break_obj : MonoBehaviour
                     GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
                 Instantiate(seed_prefab, transform.position, Quaternion.identity);                    //seedprefabを生成
                 Debug.Log("生成されました");
-                Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加
                
             }
             
@@ -74,9 +74,9 @@ public class Break_obj : MonoBehaviour
                 count += 1;
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text =
-                    GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
+                GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
                 Instantiate(seed_prefab, transform.position, Quaternion.identity);                    //seedprefabを生成
-                Debug.Log("生成されました");
+                //Debug.Log("生成されました");
                 Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加
                 obj = Instantiate(stardust_prefab, transform.position, Quaternion.identity);
                 Instantiate(dust_prefab, transform.position, Quaternion.identity);

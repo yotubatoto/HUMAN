@@ -33,6 +33,8 @@ public class Mission_Manager : MonoBehaviour {
         //{
         //    clear_flag = Resin_GetNumber(4);
         //}
+
+        //クリア条件を満たしたらカラーをいじっている
         if(clear_flag)
         {
             if (clear_state == 0)
@@ -57,16 +59,16 @@ public class Mission_Manager : MonoBehaviour {
             }
         }
 	}
-    bool Resin_GetNumber(int max_resin)
-    {
-        int resin_count = Playerobj.GetComponent<Player_Collision>().item_count;
+    //bool Resin_GetNumber(int max_resin)
+    //{
+    //    int resin_count = Playerobj.GetComponent<Player_Collision>().item_count;
 
-        if (resin_count > max_resin)
-        {
-            return true;
-        }
-        return false;
-    }
+    //    if (resin_count > max_resin)
+    //    {
+    //        return true;
+    //    }
+    //    return false;
+    //}
     ////ランプの点灯数がマックスになったらステージ遷移
     //bool Lamp_Lighting_Number(int max_lighting)
     //{
