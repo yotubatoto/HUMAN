@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433904586384740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.4, y: -18.8, z: 0}
+  m_LocalPosition: {x: 28.7, y: -12.3, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4014497277129544}
@@ -84,7 +84,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.09}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -95,7 +95,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
 --- !u!114 &114740447199908492
 MonoBehaviour:
@@ -121,6 +121,7 @@ MonoBehaviour:
   INITIAL_SIZE: 2
   MAX_SIZE: 3
   number: 0
+  clear_flag: 0
   explosionprefab: {fileID: 1257333381210740, guid: 2a51ace81deefc3478563648d6899ab7,
     type: 2}
   light_up_prefab: {fileID: 1771284013451848, guid: f1d383eaa410e5940a6ef49276b8838e,

@@ -31,7 +31,7 @@ public class Manager : MonoBehaviour
     private float count = 0.0f;
     //ターンとターンの間にオブジェクトを動かす                              
     public bool move_flag = false;
-    float a_value = 0.02f;
+    float a_value = 0.03f;
     enum MAIN_STATE
     {
         SHOT_1 = 1,
@@ -665,7 +665,7 @@ public class Manager : MonoBehaviour
         rimit_time -= Time.deltaTime;
         //一時的にテンプ
         int temp = (int)rimit_time;
-        time_text.text = temp.ToString();
+        //time_text.text = temp.ToString();
         if (rimit_time <= 0)
         {
             rimit_time = 0;

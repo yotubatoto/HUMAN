@@ -75,8 +75,8 @@ public class Effect_Move : MonoBehaviour
             //    Destroy(gameObject);
             //}
 
-            Destroy(gameObject);
-            Debug.Log("死にました");
+            //Destroy(gameObject);
+
         }
     }
 }
