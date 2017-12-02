@@ -32,6 +32,7 @@ public class Manager : MonoBehaviour
     //ターンとターンの間にオブジェクトを動かす                              
     public bool move_flag = false;
     float a_value = 0.03f;
+    private bool al_flag = false;
     enum MAIN_STATE
     {
         SHOT_1 = 1,
@@ -110,546 +111,602 @@ public class Manager : MonoBehaviour
           
            c.a -= a_value;
            wave.color = c;
-           Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
             if(c.a <= 0.0f)
             {
-                shot_state = (int)MAIN_STATE.SHOT_2;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
+                //shot_state = (int)MAIN_STATE.SHOT_2;
                 move_flag = true;
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_2)
-        {
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_3;
-                
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 1)
+                {
+                    shot_state = (int)MAIN_STATE.SHOT_2;
+                }
             }
         }
         // Wave2
-        else if (shot_state == (int)MAIN_STATE.SHOT_3)
+        else if (shot_state == (int)MAIN_STATE.SHOT_2)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 2";
-                shot.text = "2/15";
-                score.text= " 140";
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-                Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                al_flag = true;
             }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
+            if(al_flag)
             {
-                shot_state = (int)MAIN_STATE.SHOT_4;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 2";
+                    shot.text = "2/15";
+                    score.text = " 140";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 2 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_3;
+                    }
+                }
             }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_4)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_5;
-            }
+            
         }
         // Wave3
-        else if (shot_state == (int)MAIN_STATE.SHOT_5)
+        else if (shot_state == (int)MAIN_STATE.SHOT_3)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 3";
-                shot.text = "3/15";
-                score.text = " 130";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 3";
+                    shot.text = "3/15";
+                    score.text = " 130";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 3 && 
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_4;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-				Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_6;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_6)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_7;
-            }
         }
         // Wave4
-        else if (shot_state == (int)MAIN_STATE.SHOT_7)
+        else if (shot_state == (int)MAIN_STATE.SHOT_4)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 4";
-                shot.text = "4/15";
-                score.text = " 120";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 4";
+                    shot.text = "4/15";
+                    score.text = " 120";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 4 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_5;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_8;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_8)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_9;
-            }
+
         }
         // Wave5
-        else if (shot_state == (int)MAIN_STATE.SHOT_9)
+        else if (shot_state == (int)MAIN_STATE.SHOT_5)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 5";
-                shot.text = "5/15";
-                score.text = " 110";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 5";
+                    shot.text = "5/15";
+                    score.text = " 110";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 5 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_6;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_10;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
 
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_10)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_11;
-            }
         }
         // Wave6
-        else if (shot_state == (int)MAIN_STATE.SHOT_11)
+        else if (shot_state == (int)MAIN_STATE.SHOT_6)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 6";
-                shot.text = "6/15";
-                score.text = " 100";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 6";
+                    shot.text = "6/15";
+                    score.text = " 100";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 6 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_7;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_12;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_12)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_13;
-            }
+
         }
         // Wave7
-        else if (shot_state == (int)MAIN_STATE.SHOT_13)
+        else if (shot_state == (int)MAIN_STATE.SHOT_7)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 7";
-                shot.text = "7/15";
-                score.text = " 90";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 7";
+                    shot.text = "7/15";
+                    score.text = " 90";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 7 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_8;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_14;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_14)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_15;
-            }
+
         }
         // Wave8
-        else if (shot_state == (int)MAIN_STATE.SHOT_15)
+        else if (shot_state == (int)MAIN_STATE.SHOT_8)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 8";
-                shot.text = "8/15";
-                score.text = " 80";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 8";
+                    shot.text = "8/15";
+                    score.text = " 80";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 8 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_9;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_16;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_16)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_17;
-            }
+
         }
         // Wave9
-        else if (shot_state == (int)MAIN_STATE.SHOT_17)
+        else if (shot_state == (int)MAIN_STATE.SHOT_9)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 9";
-                shot.text = "9/15";
-                score.text = " 70";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 9";
+                    shot.text = "9/15";
+                    score.text = " 70";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 9 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_10;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
 
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_18;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_18)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_19;
-            }
         }
         // Wave10
-        else if (shot_state == (int)MAIN_STATE.SHOT_19)
+        else if (shot_state == (int)MAIN_STATE.SHOT_10)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 10";
-                shot.text = "10/15";
-                score.text = " 60";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 10";
+                    shot.text = "10/15";
+                    score.text = " 60";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 10 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_11;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
 
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_20;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_20)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_21;
-            }
         }
         // Wave11
-        else if (shot_state == (int)MAIN_STATE.SHOT_21)
+        else if (shot_state == (int)MAIN_STATE.SHOT_11)
         {
-            move_flag = false;
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 11";
-                shot.text = "11/15";
-                score.text = " 50";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 11";
+                    shot.text = "11/15";
+                    score.text = " 50";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 11 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_12;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
 
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_22;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
-                move_flag = true;
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_22)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_23;
-            }
         }
         // Wave12
-        else if (shot_state == (int)MAIN_STATE.SHOT_23)
+        else if (shot_state == (int)MAIN_STATE.SHOT_12)
         {
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 12";
-                shot.text = "12/15";
-                score.text = " 40";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 12";
+                    shot.text = "12/15";
+                    score.text = " 40";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 12 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_13;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_24;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
 
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_24)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_25;
-            }
         }
         // Wave13
-        else if (shot_state == (int)MAIN_STATE.SHOT_25)
+        else if (shot_state == (int)MAIN_STATE.SHOT_13)
         {
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 13";
-                shot.text = "13/15";
-                score.text = " 30";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 13";
+                    shot.text = "13/15";
+                    score.text = " 30";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 13 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_14;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_26;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
 
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_26)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_27;
-            }
         }
         // Wave14
-        else if (shot_state == (int)MAIN_STATE.SHOT_27)
+        else if (shot_state == (int)MAIN_STATE.SHOT_14)
         {
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 14";
-                shot.text = "14/15";
-                score.text = " 20";
+                al_flag = true;
+            }
+            if (al_flag)
+            {
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 14";
+                    shot.text = "14/15";
+                    score.text = " 20";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 14 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_15;
+                    }
+                }
+            }
 
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-            }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_28;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
 
-            }
-        }
-        else if (shot_state == (int)MAIN_STATE.SHOT_28)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_29;
-            }
         }
         // Wave15
-        else if (shot_state == (int)MAIN_STATE.SHOT_29)
+        else if (shot_state == (int)MAIN_STATE.SHOT_15)
         {
-            if (once_flag == false)
+            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
-                once_flag = true;
-                wave.text = "WAVE 15";
-                shot.text = "15/15";
-                score.text = " 10";
-
-                Color cc = wave.color;
-                cc.a = 1;
-                wave.color = cc;
-                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
-                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                al_flag = true;
             }
-            Color c = wave.color;
-            c.a -= a_value;
-            wave.color = c;
-            Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = true;
-            if (c.a <= 0.0f)
+            if (al_flag)
             {
-                shot_state = (int)MAIN_STATE.SHOT_30;
-                Camera.main.GetComponent<MainCameraScr>().touch_freeze_flag = false;
+                move_flag = false;
+                if (once_flag == false)
+                {
+                    once_flag = true;
+                    wave.text = "WAVE 15";
+                    shot.text = "15/15";
+                    score.text = " 10";
+                    Color cc = wave.color;
+                    cc.a = 1;
+                    wave.color = cc;
+                    Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                    Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                }
+                Color c = wave.color;
+                c.a -= a_value;
+                wave.color = c;
+                if (c.a <= 0.0f)
+                {
+                    move_flag = true;
+                    if (Camera.main.GetComponent<MainCameraScr>().number_count >= 15 &&
+                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                    {
+                        al_flag = false;
+                        once_flag = false;
+                        shot_state = (int)MAIN_STATE.SHOT_16;
+                        score.text = " 0";
 
+                    }
+                }
             }
         }
-        else if (shot_state == (int)MAIN_STATE.SHOT_30)
-        {
-            once_flag = false;
-            if (Camera.main.GetComponent<MainCameraScr>().state_move_flag == true)
-            {
-                shot_state = (int)MAIN_STATE.SHOT_31;
-                score.text = " 0";
-                 
-
-            }
-        }
-
-        //GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text =
-        //    GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString();
-
-
-
-
     }
 
     void Fade()
