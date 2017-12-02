@@ -46,12 +46,12 @@ public class Wall_Gimic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-
-        if (clear_count > 2)
+        //クリアするためのカウント　ここをかえることでランプレベルが○○のときクリアになる
+        if (clear_count != 0)
         {
             clear_flag = true;
-            Debug.Log(clear_flag);
         }
+        //Debug.Log(clear_count);
         //transform.localScale = new Vector3(100, 100, 1.0f);
         //gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
 
@@ -197,7 +197,7 @@ public class Wall_Gimic : MonoBehaviour {
     {
         if (collision.gameObject.tag == "BlockPiece")
         {
-            Debug.Log("gyy");
+            //Debug.Log("gyy");
             clear_count += 1;
 
             //花のオブジェクト生成
@@ -215,7 +215,7 @@ public class Wall_Gimic : MonoBehaviour {
                     if (l_plus > 8.0f)
                         l_plus = 8.0f;
                     child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);   //ぼやけた光の輪の大きさをキープする
-                    Debug.Log(l_plus);
+                    //Debug.Log(l_plus);
                     gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];          //ランタンをスイッチONにする
                 //Debug.Log("カウント:" + not_count);
 
@@ -230,9 +230,9 @@ public class Wall_Gimic : MonoBehaviour {
                 if (l_plus > 15.0f)
                     l_plus = 15.0f;
                 child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
-                Debug.Log(l_plus);
+                //Debug.Log(l_plus);
                 gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[2];
-                Debug.Log("カウント:" + not_count);
+                //Debug.Log("カウント:" + not_count);
 
             }
 
@@ -243,9 +243,9 @@ public class Wall_Gimic : MonoBehaviour {
                 if (l_plus > 30.0f)
                     l_plus = 30.0f;
                 child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
-                Debug.Log(l_plus);
+                //Debug.Log(l_plus);
                 gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[3];
-                Debug.Log("カウント:" + not_count);
+                //Debug.Log("カウント:" + not_count);
 
             }
 
@@ -277,6 +277,7 @@ public class Wall_Gimic : MonoBehaviour {
 
             //}
 
+            Destroy(collision.gameObject);
 
         }
     }

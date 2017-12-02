@@ -46,13 +46,18 @@ public class MainCameraScr : MonoBehaviour
     public bool pause_freeze_flag = false;
     private Vector2 arrow_start_pos = Vector2.zero;
 
-    public GameObject[] right_obj = new GameObject[4];
+    //ランプの数
+    private GameObject[] right_obj;
     
     private bool began_flag = false;
 	public GameObject debug_obj;
     public GameObject[] small;
     public GameObject[] big;
     private float _time = 0.0f;
+    //ライト点灯のカウントを数える（クリア条件につながる）　ランプレベルにかかわらず
+    //クリアランプのレベルはWall gimic Csのクリアカウントをいじる
+    private int right_count = 0;
+
 	//public Text debug_test;
 
     /* --------------------------------------------------
@@ -62,7 +67,8 @@ public class MainCameraScr : MonoBehaviour
 		Application.targetFrameRate = 60;
         //カメラのスケール２５
         //Camera.main.orthographicSize = 25.0f;
-        //small = GameObject.FindGameObjectsWithTag("Small_Block");
+        right_obj = GameObject.FindGameObjectsWithTag("Gimic");
+        right_count = right_obj.Length;
 	}
 
 
@@ -84,7 +90,7 @@ public class MainCameraScr : MonoBehaviour
         GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
        
         bool _flag = false;
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < right_count; i++)
         {
             if (right_obj[i].GetComponent<Wall_Gimic>().clear_flag == false)
             {
@@ -156,7 +162,7 @@ public class MainCameraScr : MonoBehaviour
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color = 
                             new Color(0.0f, 0.0f, 1.0f, 1.0f);
 						circle.GetComponent<SpriteRenderer> ().color = 
-                            new Color (c_color.r, c_color.g, c_color.b, 0.4f);
+                            new Color (c_color.r, c_color.g, c_color.b, 1.0f);
 						arrow.transform.localScale = new Vector3 (10.0f, 1, 1);
 
 					}
@@ -416,9 +422,7 @@ public class MainCameraScr : MonoBehaviour
                          small = GameObject.FindGameObjectsWithTag("Small_Block");
                          foreach (GameObject obs in small)
                          {
-                             Debug.Log("iiiii");
                              obs.GetComponent<Collider2D>().isTrigger = false;
-
                          }
                      }
 
