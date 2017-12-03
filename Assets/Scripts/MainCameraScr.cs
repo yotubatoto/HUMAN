@@ -73,6 +73,10 @@ public class MainCameraScr : MonoBehaviour
     // 性質変化の現在の状態 =>enableがfalseの場合0、青だと１、黄色だと２、赤だと３
     public int characteristic_change_state = 0;
 	//public Text debug_test;
+    private bool test_flag = false;
+    private float t_x, t_y = 0.0f;
+   /* public GameObject Afterimage_prefab; */  //残像のプレファブ変数
+                                           //public Text debug_test;
 
     /* --------------------------------------------------
 	 * @パラメータ初期化
@@ -129,6 +133,7 @@ public class MainCameraScr : MonoBehaviour
                     // タッチ開始
                     test_flag = false;
                     began_flag = true;
+                    test_flag = false;
                     //_time = 0.0f;
                     startPos = AppUtil.GetTouchWorldPosition(Camera.main);
                     circle.transform.position = startPos;
@@ -310,6 +315,11 @@ public class MainCameraScr : MonoBehaviour
                         if (x_y < VELOCITY_MAX * VELOCITY_MAX)
                             test_flag = false;
                     }
+
+                    //Debug.Log(x_y);
+                    //Debug.Log("x" + sub.x);
+                    //Debug.Log("y" + sub.y);
+
                     arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, 2.0f);
 
                     Shake_Arrow();
@@ -500,10 +510,13 @@ public class MainCameraScr : MonoBehaviour
                     GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
                     if (GameObject.FindGameObjectsWithTag("semi") != null)
                     {
+                       
                         foreach (GameObject _obj in a)
                         {
                             Destroy(_obj);
                         }
+                        //GameObject obj_a = Instantiate(Afterimage_prefab, transform.position, transform.rotation);  //プレイヤーが打ち出された後残像を生成
+                        //Debug.Log("aa");
                     }
                     if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 3)
                     {
@@ -511,9 +524,10 @@ public class MainCameraScr : MonoBehaviour
                     }
                     main_move_state = 0;
                 }
+               
             }
         }
-       
+
         Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
         // 性質変化
         Change();
