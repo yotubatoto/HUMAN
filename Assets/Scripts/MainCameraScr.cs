@@ -372,7 +372,7 @@ public class MainCameraScr : MonoBehaviour
 
                     }
                     //3より射出パワーが上なら矢印ブルー
-                    else if (sub.magnitude > 3)
+                    else if (sub.magnitude > 3.0f)
                     {
                         anime.GetComponent<Animator>().speed = 2.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
@@ -395,7 +395,7 @@ public class MainCameraScr : MonoBehaviour
                     began_flag = false;
                     end_time = 0.0f;
                     //速度が３まで低下したら次のWAVEにいく
-                    if (sub.magnitude > 3)
+                    if (sub.magnitude > 3.0f)
                     {
                         number_count += 1;
                         end_flag = true;
@@ -441,8 +441,6 @@ public class MainCameraScr : MonoBehaviour
             // 打ち出した後
             else if (main_move_state == 2)
             {
-                
-               
                 if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= attenuation_speed)
                 {
                     //射出性質変化 小のとき青のオーラをまとう

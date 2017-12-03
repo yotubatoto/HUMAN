@@ -166,7 +166,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 2 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -207,7 +207,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 3 && 
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -248,7 +248,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 4 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -290,7 +290,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 5 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -332,7 +332,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 6 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -374,7 +374,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 7 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -416,7 +416,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 8 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -458,7 +458,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 9 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -500,7 +500,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 10 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -542,7 +542,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 11 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -584,7 +584,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 12 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -626,7 +626,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 13 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -668,7 +668,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 14 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -710,7 +710,7 @@ public class Manager : MonoBehaviour
                 {
                     move_flag = true;
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 15 &&
-                        player.GetComponent<Rigidbody2D>().velocity.magnitude >= 22.0f)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
                     {
                         al_flag = false;
                         once_flag = false;
