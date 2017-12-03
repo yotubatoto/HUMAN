@@ -24,7 +24,17 @@ public class MainCameraScr : MonoBehaviour
     private int time = 0;
     private float old_angle = 0.0f;
 	private Vector2 force_ = Vector2.zero;
-	public float force_velocity = 50000.0f;
+	public float force_velocity = 40000.0f;
+    public float nature_change_yellow;
+    public float nature_change_blue;
+
+    private bool test_flag = false;
+
+
+    private float t_x, t_y = 0.0f;
+
+     
+     
     private int pause_count = 1;
     private int load_count = 1;
     //プレイヤー矢印の大きさ差分
@@ -42,6 +52,7 @@ public class MainCameraScr : MonoBehaviour
     private float swipe_scale = 0;
     public Vector2 sub;
     //どれぐらい引っ張れるか
+    //ここをいじると連動してVELO＿MAGNIも落ちる
     public float VELOCITY_MAX = 20.0f;
     public bool pause_freeze_flag = false;
     private Vector2 arrow_start_pos = Vector2.zero;
@@ -59,6 +70,8 @@ public class MainCameraScr : MonoBehaviour
     private int right_count = 0;
     public int main_move_state = 0;
     public int number_count = 0;
+    // 性質変化の現在の状態 =>enableがfalseの場合0、青だと１、黄色だと２、赤だと３
+    public int characteristic_change_state = 0;
 	//public Text debug_test;
 
     /* --------------------------------------------------
@@ -82,7 +95,7 @@ public class MainCameraScr : MonoBehaviour
         //Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
         small = GameObject.FindGameObjectsWithTag("Small_Block");
         
-        Debug.Log("main_move_state: " + main_move_state);
+        //Debug.Log("main_move_state: " + main_move_state);
         bool _flag = false;
         for (int i = 0; i < right_count; i++)
         {
@@ -114,6 +127,7 @@ public class MainCameraScr : MonoBehaviour
                 if (info == TouchInfo.Began)
                 {
                     // タッチ開始
+                    test_flag = false;
                     began_flag = true;
                     //_time = 0.0f;
                     startPos = AppUtil.GetTouchWorldPosition(Camera.main);
@@ -145,24 +159,7 @@ public class MainCameraScr : MonoBehaviour
                     Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                     sub = movePos - startPos;
-
-                    if (sub.x > VELOCITY_MAX)
-                    {
-                        sub.x = VELOCITY_MAX;
-                    }
-                    if (sub.x < -VELOCITY_MAX)
-                    {
-                        sub.x = -VELOCITY_MAX;
-                    }
-                    if (sub.y > VELOCITY_MAX)
-                    {
-                        sub.y = VELOCITY_MAX;
-                    }
-                    if (sub.y < -VELOCITY_MAX)
-                    {
-                        sub.y = -VELOCITY_MAX;
-                    }
-                    arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, 2.0f);
+                    arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, .0f);
 
 
                     float temp = sub.magnitude;
@@ -202,9 +199,9 @@ public class MainCameraScr : MonoBehaviour
 
                                 //力を固定する45000
                                 force_ = ((sub.normalized * force_velocity) * temp * -1) * Time.deltaTime;
-                                if (force_.magnitude > 45000)
+                                if (force_.magnitude > 40000)
                                 {
-                                    force_ = force_.normalized * 45000;
+                                    force_ = force_.normalized * 40000;
                                 }
                                 obj_h.GetComponent<Rigidbody2D>().AddForce(force_);
                             }
@@ -272,29 +269,48 @@ public class MainCameraScr : MonoBehaviour
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                     sub = movePos - startPos;
 
-                    if (sub.x > VELOCITY_MAX)
-                    {
-                        sub.x = VELOCITY_MAX;
-                    }
-                    if (sub.x < -VELOCITY_MAX)
-                    {
-                        sub.x = -VELOCITY_MAX;
-                    }
-                    if (sub.y > VELOCITY_MAX)
-                    {
-                        sub.y = VELOCITY_MAX;
-                    }
-                    if (sub.y < -VELOCITY_MAX)
-                    {
-                        sub.y = -VELOCITY_MAX;
-                    }
-                    arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, 2.0f);
-
-
                     float temp = sub.magnitude;
 
                     //arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
-
+                    //float x = sub.x * sub.x;
+                    //float y = sub.y * sub.y;
+                    //float x_y = x + y;
+                    //if (test_flag == false)
+                    //
+                    //    if (x_y > VELOCITY_MAX * VELOCITY_MAX)
+                    //    {
+                    //        t_x = sub.x;
+                    //        t_y = sub.y;
+                    //        test_flag = true;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    sub.x = t_x;
+                    //    sub.y = t_y;
+                    //    if (x_y < VELOCITY_MAX * VELOCITY_MAX)
+                    //        test_flag = false;
+                    //}
+                    float x = sub.x * sub.x;
+                    float y = sub.y * sub.y;
+                    float x_y = x + y;
+                    if (test_flag == false)
+                    {
+                        if (x_y > VELOCITY_MAX * VELOCITY_MAX)
+                        {
+                            t_x = sub.x;
+                            t_y = sub.y;
+                            test_flag = true;
+                        }
+                    }
+                    else
+                    {
+                        sub.x = t_x;
+                        sub.y = t_y;
+                        if (x_y < VELOCITY_MAX * VELOCITY_MAX)
+                            test_flag = false;
+                    }
+                    arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, 2.0f);
 
                     Shake_Arrow();
 
@@ -328,9 +344,9 @@ public class MainCameraScr : MonoBehaviour
 
                                 //力を固定する45000
                                 force_ = ((sub.normalized * force_velocity) * temp * -1) * Time.deltaTime;
-                                if (force_.magnitude > 45000)
+                                if (force_.magnitude > 40000)
                                 {
-                                    force_ = force_.normalized * 45000;
+                                    force_ = force_.normalized * 40000;
                                 }
                                 obj_h.GetComponent<Rigidbody2D>().AddForce(force_);
                             }
@@ -350,7 +366,7 @@ public class MainCameraScr : MonoBehaviour
                     //Debug.Log(sub.magnitude);
 
                     //矢印赤
-                    if (sub.magnitude > 20)
+                    if (sub.magnitude > 14)
                     {
                         anime.GetComponent<Animator>().speed = 3.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
@@ -384,13 +400,31 @@ public class MainCameraScr : MonoBehaviour
                 {
                     //デバッグログ　射出時のパワーを測る
                     //Debug.Log(sub.magnitude);
-
+                    //float x = sub.x * sub.x;
+                    //float y = sub.y * sub.y;
+                    //float x_y = x + y;
+                    //if (test_flag == false)
+                    //{
+                    //    if (x_y > VELOCITY_MAX * VELOCITY_MAX)
+                    //    {
+                    //        t_x = sub.x;
+                    //        t_y = sub.y;
+                    //        test_flag = true;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    sub.x = t_x;
+                    //    sub.y = t_y;
+                    //    if (x_y < VELOCITY_MAX * VELOCITY_MAX)
+                    //        test_flag = false;
+                    //}
                     //タップはなしたときスピードによって、障害物を突きにけるか否か。
-                    bool once_flag;
-                    if (sub.magnitude > 15)
-                        once_flag = true;
-                    else
-                        once_flag = false;
+                    //bool once_flag;
+                    //if (sub.magnitude > 15)
+                    //    once_flag = true;
+                    //else
+                    //    once_flag = false;
 
                     //スモールブロック配列のトリガーをオンにする
                     //small = GameObject.FindGameObjectsWithTag("Small_Block");
@@ -400,15 +434,16 @@ public class MainCameraScr : MonoBehaviour
                     //速度が３まで低下したら次のWAVEにいく
                     if (sub.magnitude > 3)
                     {
-                        foreach (GameObject obs in small)
-                        {
-                            obs.GetComponent<Collider2D>().isTrigger = once_flag;
-                            //射出性質変化 強のとき赤のオーラをまとう
-                            //GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = false;
-                            //GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
-                            //GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = false;
-                            //obs.layer = LayerName.None;
-                        }
+                        Debug.Log("sub.ma" + sub.magnitude);
+                        //foreach (GameObject obs in small)
+                        //{
+                        //    obs.GetComponent<Collider2D>().isTrigger = once_flag;
+                        //    //射出性質変化 強のとき赤のオーラをまとう
+                        //    //GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = false;
+                        //    //GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
+                        //    //GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = false;
+                        //    //obs.layer = LayerName.None;
+                        //}
                         number_count += 1;
                         end_flag = true;
                         anime.GetComponent<Animator>().speed = 1.0f;
@@ -453,6 +488,8 @@ public class MainCameraScr : MonoBehaviour
             // 打ち出した後
             else if (main_move_state == 2)
             {
+                
+               
                 if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= attenuation_speed)
                 {
                     //射出性質変化 小のとき青のオーラをまとう
@@ -468,6 +505,10 @@ public class MainCameraScr : MonoBehaviour
                             Destroy(_obj);
                         }
                     }
+                    if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 3)
+                    {
+                        main_move_state = 0;
+                    }
                     main_move_state = 0;
                 }
             }
@@ -482,11 +523,13 @@ public class MainCameraScr : MonoBehaviour
     {
         if(main_move_state == 2)
         {
-            if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > 23 &&
-                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 50)
-            {
-                //射出性質変化 強の赤オーラを消し青のオーラを発生
+            //if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > nature_change_blue &&
 
+               if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < nature_change_blue)
+            {
+                characteristic_change_state = 1;
+                //射出性質変化 中小のオーラを消し青のオーラを発生
+                
                 GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = false;
                 GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = false;
                 GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = true;
@@ -495,11 +538,12 @@ public class MainCameraScr : MonoBehaviour
                     obs.GetComponent<Collider2D>().isTrigger = false;
                 }
             }
-            else if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > 50 &&
-                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 77)
+            else if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > nature_change_blue &&
+                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < nature_change_yellow)
             {
-                //射出性質変化 強の赤オーラを消し黄のオーラを発生
-
+                characteristic_change_state = 2;
+                //射出性質変化 赤青オーラを消し黄のオーラを発生
+                
                 GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = false;
                 GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = true;
                 GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
@@ -508,9 +552,11 @@ public class MainCameraScr : MonoBehaviour
                     obs.GetComponent<Collider2D>().isTrigger = false;
                 }
             }
-            else if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > 77)
+   
+            else if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > nature_change_yellow)
             {
-                //射出性質変化 強の赤オーラを消し赤のオーラを発生
+                characteristic_change_state = 3;
+                //射出性質変化 赤のオーラを発生
 
                 GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = true;
                 GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = false;
@@ -525,6 +571,7 @@ public class MainCameraScr : MonoBehaviour
         }
         else
         {
+            characteristic_change_state = 0;
             GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = false;
             GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
             GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = false;
@@ -590,8 +637,8 @@ public class MainCameraScr : MonoBehaviour
 
     }
     void Shake_Arrow()
-    {//引っ張り強さが16以上の時
-        if (sub.magnitude >= 20.0f)
+    {//引っ張り強さが20以上の時
+        if (sub.magnitude >= 14.0f)
         {
             //Debug.Log("aaaa");
             Vector2 pos = arrow.transform.position;
