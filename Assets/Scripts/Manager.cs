@@ -113,10 +113,11 @@ public class Manager : MonoBehaviour
             move_flag = false;
             Color c =  wave.color;
 
+            trun_alfa -= 0.01f;
             Color color = GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color;
             GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
                         new Color(1.0f, 1.0f, 1.0f,  trun_alfa);
-            trun_alfa -= 0.01f;
+            
            
            c.a -= a_value;
            wave.color = c;
