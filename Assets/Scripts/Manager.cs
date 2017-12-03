@@ -33,6 +33,10 @@ public class Manager : MonoBehaviour
     public bool move_flag = false;
     float a_value = 0.03f;
     private bool al_flag = false;
+
+    //public GameObject turn;
+    private float trun_alfa = 0.01f;
+    private float trun_speed = -0.01f;
     enum MAIN_STATE
     {
         SHOT_1 = 1,
@@ -95,6 +99,7 @@ public class Manager : MonoBehaviour
         journeyLength = Vector2.Distance(transform.position,goal.transform.position);
         itemCount = PlayerPrefs.GetInt("item", 0);
         clearCount = PlayerPrefs.GetInt("clear", 0);
+        
     }
     
     // Update is called once per frame
@@ -107,8 +112,12 @@ public class Manager : MonoBehaviour
         {
             move_flag = false;
             Color c =  wave.color;
+
+            Color color = GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color;
+            GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
+                        new Color(1.0f, 1.0f, 1.0f,  trun_alfa);
+            trun_alfa -= 0.01f;
            
-          
            c.a -= a_value;
            wave.color = c;
             if(c.a <= 0.0f)
@@ -134,12 +143,16 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 2";
+                    wave.text = " 2";
                     shot.text = "2/15";
                     score.text = " 140";
+                    //GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color -= Time.deltaTime; 
                     Color cc = wave.color;
+                    Color aa = wave.color;
+                    aa.a = 1;
                     cc.a = 1;
                     wave.color = cc;
+                    wave.color = aa;
                     Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
@@ -175,7 +188,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 3";
+                    wave.text = " 3";
                     shot.text = "3/15";
                     score.text = " 130";
                     Color cc = wave.color;
@@ -216,7 +229,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 4";
+                    wave.text = " 4";
                     shot.text = "4/15";
                     score.text = " 120";
                     Color cc = wave.color;
@@ -258,7 +271,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 5";
+                    wave.text = " 5";
                     shot.text = "5/15";
                     score.text = " 110";
                     Color cc = wave.color;
@@ -300,7 +313,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 6";
+                    wave.text = " 6";
                     shot.text = "6/15";
                     score.text = " 100";
                     Color cc = wave.color;
@@ -342,7 +355,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 7";
+                    wave.text = " 7";
                     shot.text = "7/15";
                     score.text = " 90";
                     Color cc = wave.color;
@@ -384,7 +397,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 8";
+                    wave.text = " 8";
                     shot.text = "8/15";
                     score.text = " 80";
                     Color cc = wave.color;
@@ -426,7 +439,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 9";
+                    wave.text = " 9";
                     shot.text = "9/15";
                     score.text = " 70";
                     Color cc = wave.color;
@@ -468,7 +481,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 10";
+                    wave.text = " 10";
                     shot.text = "10/15";
                     score.text = " 60";
                     Color cc = wave.color;
@@ -510,7 +523,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 11";
+                    wave.text = " 11";
                     shot.text = "11/15";
                     score.text = " 50";
                     Color cc = wave.color;
@@ -552,7 +565,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 12";
+                    wave.text = " 12";
                     shot.text = "12/15";
                     score.text = " 40";
                     Color cc = wave.color;
@@ -594,7 +607,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 13";
+                    wave.text = " 13";
                     shot.text = "13/15";
                     score.text = " 30";
                     Color cc = wave.color;
@@ -636,7 +649,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 14";
+                    wave.text = " 14";
                     shot.text = "14/15";
                     score.text = " 20";
                     Color cc = wave.color;
@@ -678,7 +691,7 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = "WAVE 15";
+                    wave.text = " 15";
                     shot.text = "15/15";
                     score.text = " 10";
                     Color cc = wave.color;

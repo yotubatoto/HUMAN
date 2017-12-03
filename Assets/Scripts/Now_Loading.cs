@@ -15,7 +15,7 @@ public class Now_Loading : MonoBehaviour
     public void LoadNextScene()
     {
         //LoadingUi.SetActive(true);
-        StartCoroutine(LoadScene("Stage_1_Scene"));
+        StartCoroutine(LoadScene("Stage_" +StageSelectManager.ST_OWNER_NUMBER +"_Scene"));
     }
     public void Load_NextScene_Title()
     {
