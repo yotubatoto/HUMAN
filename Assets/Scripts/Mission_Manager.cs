@@ -53,6 +53,11 @@ public class Mission_Manager : MonoBehaviour {
                 if(c.a > 1.0f)
                 {
                     c.a = 1.0f;
+
+                    if (PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER) == 0)
+                    {
+                        PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER, 1);
+                    }
                     SceneManager.LoadScene("StageSelect_Scene");
                 }
                 fade.color = c;

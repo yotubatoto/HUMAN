@@ -26,6 +26,23 @@ public class StageSelectManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        //PlayerPrefs.SetInt("1_2",0);
+        //ST_OWNER_NUMBER = "";
+
+        if (PlayerPrefs.GetInt("1_1")==1)
+        {
+            Debug.Log("1_1クリアしている");
+        }
+        if (PlayerPrefs.GetInt("1_2") == 1)
+        {
+            Debug.Log("1_2クリアしている");
+            GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+        }
+        else
+        {
+            GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+        }
         //PlayerPrefs.SetInt("item", 0);
         //PlayerPrefs.SetInt("clear", 0);
 
@@ -184,27 +201,21 @@ public class StageSelectManager : MonoBehaviour
             {
                 if((int)transform.position.x == 0)
                 {
-                    ST_OWNER_NUMBER = "1-1";
+                    ST_OWNER_NUMBER = "1_1";
                     GetComponent<Sound_Manager>().Stage_Choice_SE();
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                  
-                   
-                    
-                      
-                   
-
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
             }
             if (collition2d.gameObject.name == "_2")
             {
-                if ((int)transform.position.x == 0)
-                {
-                    ST_OWNER_NUMBER = "1-2";
-                    SceneManager.LoadScene("Stage_1_2_Scene");
-                }
+                ST_OWNER_NUMBER = "1_2";
+                GetComponent<Sound_Manager>().Stage_Choice_SE();
+                now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().color
+                    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
         }
     }
