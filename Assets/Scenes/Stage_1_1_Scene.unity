@@ -3993,7 +3993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &143499249
 Transform:
   m_ObjectHideFlags: 0
@@ -5390,20 +5390,23 @@ MonoBehaviour:
   state_move_flag: 0
   semitransparentPrefab: {fileID: 1236668700919286, guid: 6631d009f627bbb4c9d6ca97e1f797bb,
     type: 2}
-  force_velocity: 45000
+  force_velocity: 25000
+  nature_change_yellow: 50
+  nature_change_blue: 15
   player_anime_difference: {fileID: 0}
   now_loading: {fileID: 0}
   attenuation_speed: 2
   arrow_shake: 0
   anime: {fileID: 3901750}
   sub: {x: 0, y: 0}
-  VELOCITY_MAX: 5
+  VELOCITY_MAX: 15
   pause_freeze_flag: 0
   debug_obj: {fileID: 1261079040}
   small: []
   big: []
   main_move_state: 0
   number_count: 0
+  characteristic_change_state: 0
 --- !u!114 &513097386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6053,7 +6056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &797950145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7367,7 +7370,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1136769093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.069525, y: -4.4309893, z: 0.3192033}
+  m_LocalPosition: {x: 5.1, y: -6.9, z: 0.3192033}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 3901753}
@@ -7470,7 +7473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1196537256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8429,7 +8432,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1456634981}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.081861, y: -8.672781, z: -0.0882043}
+  m_LocalPosition: {x: -32.1, y: -2.9, z: -0.0882043}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 369509850}
@@ -9094,7 +9097,7 @@ MonoBehaviour:
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seedprefab: {fileID: 1689365585234094, guid: dc6b9246cd5fc6545a7bf83d62cb1149, type: 2}
+  seedprefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
 --- !u!212 &1728783598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10143,7 +10146,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1990758447}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

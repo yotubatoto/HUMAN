@@ -32,10 +32,17 @@ public class Break_obj : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             //Debug.Log(Camera.main.GetComponent<MainCameraScr>().sub.magnitude);
-            //射出後のスピード○○のときは性質変化　弱に変化（赤オブジェ壊せずに跳ね返る）
-            if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 20)
+            //射出後のスピード○○のときは性質変化　弱に変化(青)（赤オブジェ壊せずに跳ね返る）
+            //if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 20)
+            //{
+            //    //何もしない
+            //    return;
+            //}
+            if (GameObject.Find("Main Camera").GetComponent<MainCameraScr>().characteristic_change_state == 1 ||
+                GameObject.Find("Main Camera").GetComponent<MainCameraScr>().characteristic_change_state == 0)
             {
                 //何もしない
+                Debug.Log("きてる");
                 return;
             }
 
@@ -66,8 +73,8 @@ public class Break_obj : MonoBehaviour
     {
         if (coll.gameObject.tag == "Player")
         {   //パワーが○○以下のとき破壊される
-
-            if (GameObject.Find("Main Camera").GetComponent<MainCameraScr>().sub.magnitude > 15)
+            // if (GameObject.Find("Main Camera").GetComponent<MainCameraScr>().sub.magnitude > 15)
+            if (GameObject.Find("Main Camera").GetComponent<MainCameraScr>().characteristic_change_state >= 2)
             {
                 //GameObject.Find("Block/block_red (2)").GetComponent<BoxCollider>().isTrigger 
                 
