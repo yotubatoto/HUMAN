@@ -216,7 +216,10 @@ public class Wall_Gimic : MonoBehaviour {
                         l_plus = 8.0f;
                     child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);   //ぼやけた光の輪の大きさをキープする
                     //Debug.Log(l_plus);
-                    gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];          //ランタンをスイッチONにする
+                    gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
+                //ランタンをスイッチONにする
+                    Instantiate(explosionprefab, transform.position, Quaternion.identity);
+                
                 //Debug.Log("カウント:" + not_count);
 
             }
