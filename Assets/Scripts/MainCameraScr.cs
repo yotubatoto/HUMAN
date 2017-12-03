@@ -59,7 +59,10 @@ public class MainCameraScr : MonoBehaviour
     private int right_count = 0;
     public int main_move_state = 0;
     public int number_count = 0;
-	//public Text debug_test;
+    private bool test_flag = false;
+    private float t_x, t_y = 0.0f;
+   /* public GameObject Afterimage_prefab; */  //残像のプレファブ変数
+                                           //public Text debug_test;
 
     /* --------------------------------------------------
 	 * @パラメータ初期化
@@ -115,6 +118,7 @@ public class MainCameraScr : MonoBehaviour
                 {
                     // タッチ開始
                     began_flag = true;
+                    test_flag = false;
                     //_time = 0.0f;
                     startPos = AppUtil.GetTouchWorldPosition(Camera.main);
                     circle.transform.position = startPos;
@@ -146,22 +150,25 @@ public class MainCameraScr : MonoBehaviour
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                     sub = movePos - startPos;
 
-                    if (sub.x > VELOCITY_MAX)
-                    {
-                        sub.x = VELOCITY_MAX;
-                    }
-                    if (sub.x < -VELOCITY_MAX)
-                    {
-                        sub.x = -VELOCITY_MAX;
-                    }
-                    if (sub.y > VELOCITY_MAX)
-                    {
-                        sub.y = VELOCITY_MAX;
-                    }
-                    if (sub.y < -VELOCITY_MAX)
-                    {
-                        sub.y = -VELOCITY_MAX;
-                    }
+                    //float x = sub.x * sub.x;
+                    //float y = sub.y * sub.y;
+                    //float x_y = x + y;
+                    //if (test_flag == false)
+                    //{
+                    //    if (x_y > VELOCITY_MAX * VELOCITY_MAX)
+                    //    {
+                    //        t_x = sub.x;
+                    //        t_y = sub.y;
+                    //        test_flag = true;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    sub.x = t_x;
+                    //    sub.y = t_y;
+                    //    if (x_y < VELOCITY_MAX * VELOCITY_MAX)
+                    //        test_flag = false;
+                    //}
                     arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, 2.0f);
 
 
@@ -272,22 +279,30 @@ public class MainCameraScr : MonoBehaviour
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                     sub = movePos - startPos;
 
-                    if (sub.x > VELOCITY_MAX)
+                    float x = sub.x * sub.x;
+                    float y = sub.y * sub.y;
+                    float x_y = x + y;
+                    if (test_flag == false)
                     {
-                        sub.x = VELOCITY_MAX;
+                        if (x_y > VELOCITY_MAX * VELOCITY_MAX)
+                        {
+                            t_x = sub.x;
+                            t_y = sub.y;
+                            test_flag = true;
+                        }
                     }
-                    if (sub.x < -VELOCITY_MAX)
+                    else
                     {
-                        sub.x = -VELOCITY_MAX;
+                        sub.x = t_x;
+                        sub.y = t_y;
+                        if (x_y < VELOCITY_MAX * VELOCITY_MAX)
+                            test_flag = false;
                     }
-                    if (sub.y > VELOCITY_MAX)
-                    {
-                        sub.y = VELOCITY_MAX;
-                    }
-                    if (sub.y < -VELOCITY_MAX)
-                    {
-                        sub.y = -VELOCITY_MAX;
-                    }
+
+                    //Debug.Log(x_y);
+                    //Debug.Log("x" + sub.x);
+                    //Debug.Log("y" + sub.y);
+
                     arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, 2.0f);
 
 
@@ -463,16 +478,20 @@ public class MainCameraScr : MonoBehaviour
                     GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
                     if (GameObject.FindGameObjectsWithTag("semi") != null)
                     {
+                       
                         foreach (GameObject _obj in a)
                         {
                             Destroy(_obj);
                         }
+                        //GameObject obj_a = Instantiate(Afterimage_prefab, transform.position, transform.rotation);  //プレイヤーが打ち出された後残像を生成
+                        //Debug.Log("aa");
                     }
                     main_move_state = 0;
                 }
+               
             }
         }
-       
+
         Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
         // 性質変化
         Change();

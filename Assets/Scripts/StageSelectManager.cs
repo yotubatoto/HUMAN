@@ -23,26 +23,31 @@ public class StageSelectManager : MonoBehaviour
     public static string ST_OWNER_NUMBER = "";
     private bool se_flag = false;
     Color color;
+    public GameObject pop_obj;
+    TouchInfo info;
     // Use this for initialization
     void Awake()
     {
         //PlayerPrefs.SetInt("1_2",0);
         //ST_OWNER_NUMBER = "";
 
-        if (PlayerPrefs.GetInt("1_1")==1)
-        {
-            Debug.Log("1_1クリアしている");
-        }
-        if (PlayerPrefs.GetInt("1_2") == 1)
-        {
-            Debug.Log("1_2クリアしている");
-            GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        //if (PlayerPrefs.GetInt("1_1")==1)
+        //{
+        //    Debug.Log("1_1クリアしている");
+        //}
+        //if (PlayerPrefs.GetInt("1_2") == 1)
+        //{
+        //    Debug.Log("1_2クリアしている");
+        //    GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-        }
-        else
-        {
-            GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-        }
+        //}
+        //else
+        //{
+        //    if(GameObject.Find("_2") != null)
+        //    {
+        //        GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+        //    }
+        //}
         //PlayerPrefs.SetInt("item", 0);
         //PlayerPrefs.SetInt("clear", 0);
 
@@ -51,23 +56,6 @@ public class StageSelectManager : MonoBehaviour
             int gg = i + 1;
             childStage.Add(transform.Find(gg.ToString()).gameObject);
         }
-        //itemCount = PlayerPrefs.GetInt("item", 0);
-        //clear = PlayerPrefs.GetInt("clear", 0);
-        //if (clear == 0)
-        //{
-        //    //クリアカウント０のときステージ２以上をロックしている
-        //    childStage[1].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-        //    childStage[2].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-        //    childStage[3].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-        //}
-        //if (clear == 1)
-        //{
-        //    // 2ステージ目のアンロック処理をする
-        //    childStage[2].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-        //    childStage[3].GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f, 1.0f);
-        //}
-
-        //Debug.Log("アイテムカウント:" + itemCount);
     }
     void Start()
     {
@@ -79,29 +67,42 @@ public class StageSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        info = AppUtil.GetTouch();
         //Debug.Log(transform.position);
-        if (Camera.main.GetComponent<Stage_Controller>().camera_move_state == 0)
-        {
-            Execute();
-        }
-        else if (Camera.main.GetComponent<Stage_Controller>().camera_move_state == 1)
-        {
-            TouchInfo info = AppUtil.GetTouch();
+        Execute();
+        //TouchInfo info = AppUtil.GetTouch();
 
-            if (info == TouchInfo.Began)
+        //if (info == TouchInfo.Began)
+        //{
+        //    se_flag = false;
+        //    // タッチ開始
+        //    //Camera.main.GetComponent<Stage_Controller>().camera_scr = 0.0f;
+        //    //TouchObjectFind("return", 2);
+        //    //TouchObjectFind();
+        //}
+        if (pop_obj.gameObject.activeSelf == true)
+        {
+            if(info == TouchInfo.Began)
             {
-                se_flag = false;
-                // タッチ開始
-                //Camera.main.GetComponent<Stage_Controller>().camera_scr = 0.0f;
-                TouchObjectFind("return", 2);
-                TouchObjectFind();
+                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+                if(collition2d != null)
+                {
+                    if(collition2d.gameObject.name == "_1" || collition2d.gameObject.name == "_2" ||
+                        collition2d.gameObject.name == "_3")
+                    {
+                        TouchObjectFind();
+                    }
+                }
+                else
+                {
+                    pop_obj.SetActive(false);
+                }
             }
         }
     }
 
     void Execute()
     {
-        TouchInfo info = AppUtil.GetTouch();
         if (onceFlag == false || time > 0.4f)
         {
             if (info == TouchInfo.Began)
@@ -178,21 +179,27 @@ public class StageSelectManager : MonoBehaviour
         {
             if (collition2d.gameObject.name == name)
             {
-              
                 if (se_flag == false)
                 {
                     se_flag = true;
                     GetComponent<Sound_Manager>().Decision_SE();
+                    if(name == "col")
+                    {
+                        if(pop_obj.gameObject.activeSelf == false)
+                        {
+                            pop_obj.SetActive(true);
+                        }
+                    }
                 }
-                Camera.main.GetComponent<Stage_Controller>().camera_move_state = move_state;
+                //Camera.main.GetComponent<Stage_Controller>().camera_move_state = move_state;
             }
         }
     }
 
     void TouchObjectFind()
     {
-        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Collider2D collition2d = Physics2D.OverlapPoint(point);
+        //Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
 
         //Debug.Log(collition2d.gameObject.name);
         if (collition2d != null)
