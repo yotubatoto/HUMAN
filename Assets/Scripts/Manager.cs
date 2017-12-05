@@ -85,7 +85,6 @@ public class Manager : MonoBehaviour
     //public GameObject turn;
     private float trun_alfa = 1.0f;
     private int trun_state = 0;
-
     bool once_flag = false;
 
 
@@ -94,7 +93,7 @@ public class Manager : MonoBehaviour
     {
         start_pos = transform.position;
         startTime = Time.time;
-        journeyLength = Vector2.Distance(transform.position,goal.transform.position);
+        //journeyLength = Vector2.Distance(transform.position, goal.transform.position);
         itemCount = PlayerPrefs.GetInt("item", 0);
         clearCount = PlayerPrefs.GetInt("clear", 0);
         
@@ -114,15 +113,11 @@ public class Manager : MonoBehaviour
             
             Color trun_color = GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color;
             //ターンは画像なのでターン開始時アルファをいじる
-            if (trun_state == 0)
-            {
+            
+            
                 GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
                         new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                 trun_alfa -= 0.04f;
-               
-            }
-
-            trun_alfa -= 0.01f;
             Color color = GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color;
             GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
                         new Color(1.0f, 1.0f, 1.0f,  trun_alfa);
@@ -166,7 +161,7 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                   
                     wave.text = " 2";
-                    shot.text = "2  15";
+                    shot.text = "2";
                     score.text = " 140";
                     //ターンのアルファ初期化
                     GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
@@ -196,7 +191,7 @@ public class Manager : MonoBehaviour
                    
 
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 2 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         Debug.Log("aaa" + hit_flower);
                         al_flag = false;
@@ -230,7 +225,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 3";
-                    shot.text = "3  15";
+                    shot.text = "3";
                     score.text = " 130";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -250,7 +245,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
 
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 3 && 
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -282,7 +277,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 4";
-                    shot.text = "4  15";
+                    shot.text = "4";
                     score.text = " 120";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -302,7 +297,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                     
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 4 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -333,7 +328,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 5";
-                    shot.text = "5  15";
+                    shot.text = "5";
                     score.text = " 110";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -354,7 +349,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 5 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                        
                         al_flag = false;
@@ -387,7 +382,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 6";
-                    shot.text = "6  15";
+                    shot.text = "6";
                     score.text = " 100";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -408,7 +403,7 @@ public class Manager : MonoBehaviour
 
                     
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 6 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         
                         al_flag = false;
@@ -441,7 +436,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 7";
-                    shot.text = "7  15";
+                    shot.text = "7";
                     score.text = " 90";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -462,7 +457,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                     
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 7 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                        
                         al_flag = false;
@@ -495,7 +490,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 8";
-                    shot.text = "8  15";
+                    shot.text = "8";
                     score.text = " 80";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -516,7 +511,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 8 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         al_flag = false;
                         once_flag = false;
@@ -548,7 +543,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 9";
-                    shot.text = "9  15";
+                    shot.text = "9";
                     score.text = " 70";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -569,7 +564,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 9 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                        
                         al_flag = false;
@@ -602,7 +597,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 10";
-                    shot.text = "10  15";
+                    shot.text = "10";
                     score.text = " 60";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -624,7 +619,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 10 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         
                         al_flag = false;
@@ -657,7 +652,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 11";
-                    shot.text = "11  15";
+                    shot.text = "11";
                     score.text = " 50";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -678,7 +673,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                   
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 11 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         
                         al_flag = false;
@@ -711,7 +706,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 12";
-                    shot.text = "12  15";
+                    shot.text = "12";
                     score.text = " 40";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -732,7 +727,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                     
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 12 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         
                         al_flag = false;
@@ -765,7 +760,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 13";
-                    shot.text = "13  15";
+                    shot.text = "13";
                     score.text = " 30";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -786,7 +781,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 13 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                        
                         al_flag = false;
@@ -819,7 +814,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 14";
-                    shot.text = "14  15";
+                    shot.text = "14";
                     score.text = " 20";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -840,7 +835,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 14 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         Debug.Log(hit_flower);
                         al_flag = false;
@@ -873,7 +868,7 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 15";
-                    shot.text = "15  15";
+                    shot.text = "15";
                     score.text = " 10";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -894,7 +889,7 @@ public class Manager : MonoBehaviour
                     move_flag = true;
                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 15 &&
-                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 2)
+                        Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         
                         al_flag = false;
