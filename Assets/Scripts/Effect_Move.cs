@@ -25,11 +25,12 @@ public class Effect_Move : MonoBehaviour
         if (move_flag == true)
         {
             // プレイヤーがランタンに当たったらseedがランタンのほうを向く
-            Vector3 unko1 = GameObject.Find("Player").GetComponent<Player_Collision>().hit_coordinate;
-            Vector3 unko2 = transform.position;
-            unko1.z = unko2.z;
-            Quaternion targetRotation = Quaternion.LookRotation(unko1 - unko2);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmooth);
+                Vector3 unko1 = GameObject.Find("Player").GetComponent<Player_Collision>().hit_coordinate;
+                Vector3 unko2 = transform.position;
+                unko1.z = unko2.z;
+                Quaternion targetRotation = Quaternion.LookRotation(unko1 - unko2);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmooth);
+            
 
             // 前方に進む
             transform.Translate(Vector3.forward * speed * Time.deltaTime);

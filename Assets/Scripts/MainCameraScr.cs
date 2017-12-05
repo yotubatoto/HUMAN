@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+
 
 public class MainCameraScr : MonoBehaviour
 {
@@ -47,6 +50,7 @@ public class MainCameraScr : MonoBehaviour
     //ここをいじると連動してVELO＿MAGNIも落ちる
     public float VELOCITY_MAX = 20.0f;
     public bool pause_freeze_flag = false;
+    public GameObject retry;
     private Vector2 arrow_start_pos = Vector2.zero;
 
     //ランプの数
@@ -69,8 +73,10 @@ public class MainCameraScr : MonoBehaviour
     private float t_x, t_y = 0.0f;
 	public GameObject finger_circle;
 	public float MAX_DISTANCE = 25.0f;
-   /* public GameObject Afterimage_prefab; */  //残像のプレファブ変数
-                                           //public Text debug_test;
+    public GameObject retry_obj;
+    private float delay_time = 0.0f;
+    /* public GameObject Afterimage_prefab; */  //残像のプレファブ変数
+                                                //public Text debug_test;
 
     /* --------------------------------------------------
 	 * @パラメータ初期化
@@ -90,6 +96,8 @@ public class MainCameraScr : MonoBehaviour
 	*/
 	void Update ()
 	{
+        
+
         //Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
         small = GameObject.FindGameObjectsWithTag("Small_Block");
         
@@ -108,12 +116,22 @@ public class MainCameraScr : MonoBehaviour
         }
 
         TouchInfo info = AppUtil.GetTouch();
-        if (info == TouchInfo.Began)
+        if(pause_black.gameObject.activeSelf == false)
         {
-            TouchObjectFind("pause");
+            if (info == TouchInfo.Began)
+            {
+                Debug.Log("sss");
+                TouchObjectFind("pause");
+                TouchObjectSearch(name);
+                delay_time = 0.0f;
+            }
         }
+      
         if(pause_freeze_flag == false)
         {
+
+          
+
             // 射出していないとき
             if (main_move_state == 0)
             {
@@ -122,8 +140,13 @@ public class MainCameraScr : MonoBehaviour
                 //GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = false;
                 //GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
                 //GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = false;
+
+                
+
                 if (info == TouchInfo.Began)
                 {
+                    
+
                     test_flag = false;
                     began_flag = true;
                     test_flag = false;
@@ -146,6 +169,9 @@ public class MainCameraScr : MonoBehaviour
                         new Color(c_color.r, c_color.g, c_color.b, 1.0f);
                     arrow.transform.localScale = new Vector3(10.0f, 1, 1);
                     // スワイプし始めたら状態を移行する
+
+                   
+
                 }
                 if (info == TouchInfo.Moved)
                 {
@@ -469,9 +495,81 @@ public class MainCameraScr : MonoBehaviour
             }
         }
 
-//        Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
-        // 性質変化
-        Change();
+        if (pause_black.gameObject.activeSelf == true)
+        {
+            TouchInfo t_info = AppUtil.GetTouch();
+            delay_time += Time.deltaTime;
+            if (t_info == TouchInfo.Began)
+            {
+                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+
+                if (collition2d != null)
+                {
+                    Debug.Log(collition2d.gameObject.name);
+
+                    if (collition2d.gameObject.name == "Retry")
+                    {
+                        SceneManager.LoadScene("Stage_" + "1_1" + "_Scene");
+                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                    }
+                    else if(collition2d.gameObject.name == "Select")
+                    {
+                        SceneManager.LoadScene("StageSelect_Scene");
+                    }
+                    else if(collition2d.gameObject.name == "pause" && delay_time >= 0.5f)
+                    {
+                        delay_time = 0.0f;
+                        pause_black.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+            //    {
+            //if(pause_freeze_flag == true) 
+            //{
+            //    TouchInfo info_retry = AppUtil.GetTouch();
+
+
+
+            //    if (retry_obj.gameObject.activeSelf == true)
+            //    {
+            //            if (info_retry == TouchInfo.Began)
+            //            {
+            //            Vector2 tapPoint   = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //            Collider2D collition2d  = Physics2D.OverlapPoint(tapPoint);
+            //            if (collition2d)
+            //            {
+            //                RaycastHit2D hitObjects  = Physics2D.Raycast(tapPoint, -Vector2.up);
+            //                if (hitObjects)
+            //                {
+            //                    Debug.Log("hit object is " + hitObjects.collider.gameObject.name);
+            //                }
+            //            }
+            //            ////if (retry_obj.activeSelf == true)
+            //            ////{
+            //            ////    Debug.Log("ppp");
+            //            //Collider2D collition2 = Physics2D.OverlapPoint(Input.mousePosition);
+            //            //if (collition2 != null)
+            //            //{
+            //            //    Debug.Log("キターー");
+            //            //    if (collition2.gameObject.name == "Retry")
+            //            //    {
+            //            //      SceneManager.LoadScene("Title_Scene");
+            //            //    }
+
+            //            //}
+
+            //        }
+            //        //TouchObjectFind("pause");
+            //        //TouchObjectFind("Retry");
+            //        //GameObject.Find("Retry").GetComponent<Image>.enabled = false;
+
+            //    }
+            //}
+
+            //        Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
+            // 性質変化
+            Change();
 	}
 
 	private float CalcRadian(Vector3 from, Vector3 to) 
@@ -543,7 +641,7 @@ public class MainCameraScr : MonoBehaviour
 
     void TouchObjectFind(string name)
     {
-        //Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
 
         //Debug.Log(collition2d.gameObject.name);
@@ -562,11 +660,18 @@ public class MainCameraScr : MonoBehaviour
                         GetComponent<Sound_Manager>().pause_SE();
                     }
                     pause_freeze_flag = true;
+
+                   
+
+
                     Pauser.Pause();
-                    Color pause_color = new Color(0, 0, 0, 0);
-                    Color pause_ = pause_black.gameObject.GetComponent<Image>().color;
-                    pause_black.GetComponent<Image>().color = 
-                        new Color(pause_color.r, pause_color.g, pause_color.b, 0.7f);
+                    //Color pause_color = new Color(0, 0, 0, 0);
+                    pause_black.gameObject.SetActive(true);
+                    //Color pause_ = pause_black.gameObject.GetComponent<Image>().color;
+                    //pause_black.GetComponent<Image>().color = 
+                    //    new Color(pause_color.r, pause_color.g, pause_color.b, 0.7f);
+                    //GameObject.Find("Retry").GetComponent<Image>().enabled = true;
+                    //GameObject.Find("Select").GetComponent<Image>().enabled = true;
                 }
                 else
                 {
@@ -578,11 +683,19 @@ public class MainCameraScr : MonoBehaviour
                     //}
                     pause_se_flag = false;
                     Pauser.Resume();
-                    Color pause_color = new Color(0, 0, 0, 0);
-                    Color pause_ = pause_black.gameObject.GetComponent<Image>().color;
-                    pause_black.GetComponent<Image>().color = 
-                        new Color(pause_color.r, pause_color.g, pause_color.b, 0.0f);
-                }   
+                    pause_black.gameObject.SetActive(false);
+
+                    //Color pause_color = new Color(0, 0, 0, 0);
+                    //Color pause_ = pause_black.gameObject.GetComponent<Image>().color;
+                    //pause_black.GetComponent<Image>().color = 
+                    //    new Color(pause_color.r, pause_color.g, pause_color.b, 0.0f);
+                    //GameObject.Find("Retry").GetComponent<Image>().enabled = false;
+                    //GameObject.Find("Select").GetComponent<Image>().enabled = false;
+
+
+                }
+
+
             }
             if (collition2d.gameObject.name == name)
             {
@@ -595,8 +708,12 @@ public class MainCameraScr : MonoBehaviour
                 }
                 
             }
+
+            //Debug.Log(collition2d.gameObject.name);
+
+            
         }
-        
+
 
     }
     void Shake_Arrow()
@@ -629,6 +746,31 @@ public class MainCameraScr : MonoBehaviour
             }
             arrow.transform.position = pos;
         }
-    } 
+    }
 
+    void TouchObjectSearch(string name)
+    {
+        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D collition2d = Physics2D.OverlapPoint(point);
+
+        Application.Quit();
+
+        if (collition2d != null)
+        {
+            if (collition2d.gameObject.name == name)
+            {
+                    Debug.Log("aaa");
+                    Application.Quit();
+                    if(name == "pause")
+                    {
+                        if (retry_obj.gameObject.activeSelf == false)
+                        {
+                            retry_obj.SetActive(true);
+                        }
+                    }
+                       
+            }
+        }
+
+    }
 }
