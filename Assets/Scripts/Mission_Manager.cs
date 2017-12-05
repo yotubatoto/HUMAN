@@ -25,27 +25,34 @@ public class Mission_Manager : MonoBehaviour {
 	bool[] once_flag = new bool[3];
 	int clear_number = 0;
 	float stage_select_count = 0.0f;
-	// Use this for initialization
-	void Start () 
+    public int MAX_SHOT = 1;
+    public GameObject gameOver_obj;
+    private float delay_time = 0.0f;
+
+    // Use this for initialization
+    void Start () 
     {
 		mainSource = Camera.main.gameObject.GetComponent<MainCameraScr> ();
 		for(int i=0;i<3;i++)
 		{
 			once_flag [i] = false;
 		}
+
+       
 	}
 
 	
 	// Update is called once per frame
 	void Update () 
     {
+        Mission_Lose();
         //if (mission_state == (int)MISSION_STATE.STAGE_1_1)
         //{
         //    clear_flag = Resin_GetNumber(4);
         //}
-//		clear_flag = true;
+        //clear_flag = true;
         //クリア条件を満たしたらカラーをいじっている
-        if(clear_flag)
+        if (clear_flag)
         {
 			if (clear_state == 0) {
 				clear_text.enabled = true;
@@ -108,7 +115,7 @@ public class Mission_Manager : MonoBehaviour {
 					new Color (0, 0, 0, 1);
 				TouchInfo info = AppUtil.GetTouch();
 				if (info == TouchInfo.Began) {
-					clear_state = 3;
+					//clear_state = 3;
 				}
 			}
             if (clear_state == 3)
@@ -128,7 +135,37 @@ public class Mission_Manager : MonoBehaviour {
                 fade.color = c;
             }
         }
-	}
+
+        if (gameOver_obj.gameObject.activeSelf == true)
+        {
+            TouchInfo t_info = AppUtil.GetTouch();
+            delay_time += Time.deltaTime;
+            if (t_info == TouchInfo.Began)
+            {
+                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+
+                if (collition2d != null)
+                {
+                    Debug.Log(collition2d.gameObject.name);
+
+                    if (collition2d.gameObject.name == "retry")
+                    {
+                        SceneManager.LoadScene("Stage_" + "1_1" + "_Scene");
+                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "stageselect")
+                    {
+                        SceneManager.LoadScene("StageSelect_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "pause" && delay_time >= 0.5f)
+                    {
+                        delay_time = 0.0f;
+                        gameOver_obj.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+    }
 
     //ランプの点灯数がマックスになったらステージ遷移
     bool Lamp_Lighting_Number(int max_lighting)
@@ -172,10 +209,56 @@ public class Mission_Manager : MonoBehaviour {
 	bool Mission_3()
 	{
 		GameObject[] obj = GameObject.FindGameObjectsWithTag ("Small_Block");
-		if (obj.Length == 0) 
+		GameObject[] obj_2 = GameObject.FindGameObjectsWithTag ("Big_Block");
+        if (obj.Length == 0 && obj_2.Length == 0) 
 		{
 			return true;
 		}
 		return false;
 	}
+
+    //ゲームオーバー時にゲームオーバー画面表示しステージセレクト画面に戻る
+    void Mission_Lose()
+    {
+       if(Camera.main.GetComponent<Manager>().shot_state - 1 > MAX_SHOT)
+        {
+            Debug.Log("打数でクリアできなかった");
+            gameOver_obj.gameObject.SetActive(true);
+        }
+       if(Mission_3())
+        {
+            // 全部壊れてる
+            if(Mission_1(1) == false)
+            {
+                Debug.Log("全部壊れていてかつ光ってないものありでクリアできませんでした");
+                gameOver_obj.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void TouchObjectSearch(string name)
+    {
+        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D collition2d = Physics2D.OverlapPoint(point);
+
+        Application.Quit();
+
+        if (collition2d != null)
+        {
+            if (collition2d.gameObject.name == name)
+            {
+                Debug.Log("aaa");
+                Application.Quit();
+                if (name == "retry")
+                {
+                    if (gameOver_obj.gameObject.activeSelf == false)
+                    {
+                        gameOver_obj.SetActive(true);
+                    }
+                }
+
+            }
+        }
+
+    }
 }
