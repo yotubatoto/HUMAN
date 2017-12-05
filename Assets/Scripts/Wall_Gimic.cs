@@ -21,7 +21,7 @@ public class Wall_Gimic : MonoBehaviour {
     public int number = 0;
     //ランタンをともした数でのフラグ
     public bool clear_flag = false;
-    private int clear_count = 0;
+	public int clear_count = 0;
     //private bool light_chenge_flag = false;
     public GameObject explosionprefab;
     private GameObject obj_2;
@@ -34,7 +34,7 @@ public class Wall_Gimic : MonoBehaviour {
     public GameObject spark_prefab;
     //ぼんやりする光のサイズを変える
     private float l_plus = 5.0f;
-    public int not_count = 0;
+    private int not_count = 0;
 
     //private bool light_flag = false;
     // Use this for initialization
@@ -46,7 +46,6 @@ public class Wall_Gimic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-
         //クリアするためのカウント　ここをかえることでランプレベルが○○のときクリアになる
         if (clear_count != 0)
         {
@@ -200,10 +199,9 @@ public class Wall_Gimic : MonoBehaviour {
         {
             //Debug.Log("gyy");
             clear_count += 1;
-            GameObject.Find("Main Camera").GetComponent<Manager>().hit_flower = true;
-            Debug.Log(GameObject.Find("Main Camera").GetComponent<Manager>().hit_flower);
+
             //花のオブジェクト生成
-            if (not_count >= 1)
+            if(not_count >= 1)
             {
                 //seedカウントが1より大きい場合光のレベルが１になる
               
@@ -222,6 +220,8 @@ public class Wall_Gimic : MonoBehaviour {
                 //ランタンをスイッチONにする
                     Instantiate(explosionprefab, transform.position, Quaternion.identity);
                 
+                //Debug.Log("カウント:" + not_count);
+
             }
 
 
@@ -236,6 +236,7 @@ public class Wall_Gimic : MonoBehaviour {
                 //Debug.Log(l_plus);
                 gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[2];
                 //Debug.Log("カウント:" + not_count);
+
             }
 
             //レベル3
@@ -248,6 +249,7 @@ public class Wall_Gimic : MonoBehaviour {
                 //Debug.Log(l_plus);
                 gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[3];
                 //Debug.Log("カウント:" + not_count);
+
             }
 
 
