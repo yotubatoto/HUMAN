@@ -20,7 +20,7 @@ public class StageSelectManager : MonoBehaviour
     public GameObject now_loading;
     public int clear = 0;
     public float move_speed = 20.5f;
-    public static string ST_OWNER_NUMBER = "";
+	public static string ST_OWNER_NUMBER = "";
     private bool se_flag = false;
     Color color;
     public GameObject pop_obj;
@@ -82,6 +82,113 @@ public class StageSelectManager : MonoBehaviour
         //}
         if (pop_obj.gameObject.activeSelf == true)
         {
+			if (transform.position.x == 0) 
+			{
+				if (PlayerPrefs.GetInt ("1_1star") == 0) 
+				{
+					GameObject.Find ("_1/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					GameObject.Find ("_1/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					GameObject.Find ("_1/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+				}
+				if (PlayerPrefs.GetInt ("1_1star") == 1) 
+				{
+					GameObject.Find ("_1/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+					GameObject.Find ("_1/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					GameObject.Find ("_1/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+				}
+				if (PlayerPrefs.GetInt ("1_1star") == 2) 
+				{
+					GameObject.Find ("_1/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+					GameObject.Find ("_1/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+					GameObject.Find ("_1/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+				}
+				if (PlayerPrefs.GetInt ("1_1star") == 3) 
+				{
+					GameObject.Find ("_1/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+					GameObject.Find ("_1/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+					GameObject.Find ("_1/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+				}
+
+				if (PlayerPrefs.GetInt ("1_2star") == 0) 
+				{
+					GameObject.Find ("_2/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					GameObject.Find ("_2/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					GameObject.Find ("_2/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+				}
+				if (PlayerPrefs.GetInt ("1_2star") == 1) {
+					GameObject.Find ("_2/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+					GameObject.Find ("_2/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					GameObject.Find ("_2/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+				}
+				
+					if (PlayerPrefs.GetInt ("1_2star") == 2) {
+						GameObject.Find ("_2/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+						GameObject.Find ("_2/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+						GameObject.Find ("_2/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					}
+					if (PlayerPrefs.GetInt ("1_2star") == 3) {
+						GameObject.Find ("_2/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+						GameObject.Find ("_2/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+						GameObject.Find ("_2/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+					}
+
+					if (PlayerPrefs.GetInt ("1_3star") == 0) {
+						GameObject.Find ("_3/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+						GameObject.Find ("_3/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+						GameObject.Find ("_3/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					}
+					if (PlayerPrefs.GetInt ("1_3star") == 1) {
+						GameObject.Find ("_3/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+						GameObject.Find ("_3/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+						GameObject.Find ("_3/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					}
+					if (PlayerPrefs.GetInt ("1_3star") == 2) {
+						GameObject.Find ("_3/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+						GameObject.Find ("_3/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+						GameObject.Find ("_3/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 0);
+					}
+					if (PlayerPrefs.GetInt ("1_3star") == 3) {
+						GameObject.Find ("_3/Star_1").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+						GameObject.Find ("_3/Star_2").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+						GameObject.Find ("_3/Star_3").gameObject.GetComponent<Image> ().color =
+						new Color (1, 1, 1, 1);
+					}
+			}
             if(info == TouchInfo.Began)
             {
                 Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);

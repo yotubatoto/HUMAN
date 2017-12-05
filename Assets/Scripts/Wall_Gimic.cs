@@ -21,7 +21,7 @@ public class Wall_Gimic : MonoBehaviour {
     public int number = 0;
     //ランタンをともした数でのフラグ
     public bool clear_flag = false;
-    private int clear_count = 0;
+	public int clear_count = 0;
     //private bool light_chenge_flag = false;
     public GameObject explosionprefab;
     private GameObject obj_2;

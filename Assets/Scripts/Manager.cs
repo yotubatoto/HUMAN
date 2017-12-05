@@ -4,7 +4,54 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+enum MAIN_STATE
+{
+	SHOT_1 = 1,
+	SHOT_2,
+	SHOT_3,
+	SHOT_4,
+	SHOT_5,
+	SHOT_6,
+	SHOT_7,
+	SHOT_8,
+	SHOT_9,
+	SHOT_10,
+	SHOT_11,
+	SHOT_12,
+	SHOT_13,
+	SHOT_14,
+	SHOT_15,
+	SHOT_16,
+	SHOT_17,
+	SHOT_18,
+	SHOT_19,
+	SHOT_20,
+	SHOT_21,
+	SHOT_22,
+	SHOT_23,
+	SHOT_24,
+	SHOT_25,
+	SHOT_26,
+	SHOT_27,
+	SHOT_28,
+	SHOT_29,
+	SHOT_30,
+	SHOT_31,
+	SHOT_32,
+	SHOT_33,
+	SHOT_34,
+	SHOT_35,
+	SHOT_36,
+	SHOT_37,
+	SHOT_38,
+	SHOT_39,
+	SHOT_40,
+	SHOT_41,
+	SHOT_42,
+	SHOT_43,
+	SHOT_44
 
+};
 public class Manager : MonoBehaviour
 {
     public GameObject player;
@@ -24,7 +71,7 @@ public class Manager : MonoBehaviour
     Color color;
     private int camera_state = 0;
     private float journeyLength;
-    int shot_state = 1;
+    public int shot_state = 1;
     public Vector2 start_pos;
     public bool wave_flag = false;
     int temp_state = 0;
@@ -33,63 +80,11 @@ public class Manager : MonoBehaviour
     public bool move_flag = false;
     float a_value = 0.03f;
     private bool al_flag = false;
-    
-   
+    public bool hit_flower = false;  //光の種とランタンが当たったを調べる
 
     //public GameObject turn;
     private float trun_alfa = 1.0f;
-  
-    enum MAIN_STATE
-    {
-        SHOT_1 = 1,
-        SHOT_2,
-        SHOT_3,
-        SHOT_4,
-        SHOT_5,
-        SHOT_6,
-        SHOT_7,
-        SHOT_8,
-        SHOT_9,
-        SHOT_10,
-        SHOT_11,
-        SHOT_12,
-        SHOT_13,
-        SHOT_14,
-        SHOT_15,
-        SHOT_16,
-        SHOT_17,
-        SHOT_18,
-        SHOT_19,
-        SHOT_20,
-        SHOT_21,
-        SHOT_22,
-        SHOT_23,
-        SHOT_24,
-        SHOT_25,
-        SHOT_26,
-        SHOT_27,
-        SHOT_28,
-        SHOT_29,
-        SHOT_30,
-        SHOT_31,
-        SHOT_32,
-        SHOT_33,
-        SHOT_34,
-        SHOT_35,
-        SHOT_36,
-        SHOT_37,
-        SHOT_38,
-        SHOT_39,
-        SHOT_40,
-        SHOT_41,
-        SHOT_42,
-        SHOT_43,
-        SHOT_44
-
-
-
-
-    };
+    private int trun_state = 0;
     bool once_flag = false;
 
 
@@ -107,12 +102,13 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Count_Such();
-
+        //Count_Such();
+        Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag);
         // Wave1
         if (shot_state ==(int) MAIN_STATE.SHOT_1)
         {
             move_flag = false;
+            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
             Color c =  wave.color;
             
             Color trun_color = GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color;
@@ -122,30 +118,31 @@ public class Manager : MonoBehaviour
                 GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
                         new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                 trun_alfa -= 0.04f;
-            
-
-          
-
-
-
-            trun_alfa -= 0.01f;
             Color color = GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color;
             GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
                         new Color(1.0f, 1.0f, 1.0f,  trun_alfa);
-            
-
            
-           c.a -= a_value;
+
+            c.a -= a_value;
            wave.color = c;
             if(c.a <= 0.0f && trun_alfa <= 0.0f)
             {
+                Debug.Log(hit_flower);
                 //shot_state = (int)MAIN_STATE.SHOT_2;
                 move_flag = true;
+                
                 if (Camera.main.GetComponent<MainCameraScr>().number_count >= 1)
                 {
                     shot_state = (int)MAIN_STATE.SHOT_2;
+                    if (hit_flower == true)
+                    {
+                        GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        hit_flower = false;
+                    }
                 }
             }
+
+           
         }
         // Wave2
         else if (shot_state == (int)MAIN_STATE.SHOT_2)
@@ -154,9 +151,9 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-              
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
             }
-            if(al_flag)
+            if (al_flag)
             {
                 move_flag = false;
                 if (once_flag == false)
@@ -178,6 +175,7 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                    
                 }
                 Color c = wave.color;
                 //ターンアルファへらす
@@ -190,16 +188,26 @@ public class Manager : MonoBehaviour
                 if (c.a <= 0.0f && trun_alfa <= 0.0f)
                 {
                     move_flag = true;
+                   
+
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 2 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                        Debug.Log("aaa" + hit_flower);
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_3;
+                        //光の種とランタンが当たったらtrueになる
+                        if (hit_flower == true)
+                        {
+                            Debug.Log("unko");
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
-            
+           
         }
         // Wave3
         else if (shot_state == (int)MAIN_STATE.SHOT_3)
@@ -207,6 +215,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -224,23 +234,32 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                   
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
                     move_flag = true;
+
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 3 && 
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_4;
+                        if (hit_flower == true)
+                        {
+                            Debug.Log(hit_flower);
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
-
+           
         }
         // Wave4
         else if (shot_state == (int)MAIN_STATE.SHOT_4)
@@ -248,6 +267,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -265,23 +286,30 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                   
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
                     move_flag = true;
+                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 4 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_5;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
-
 
         }
         // Wave5
@@ -290,6 +318,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -307,24 +337,34 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                    
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                  
                     move_flag = true;
+                   
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 5 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                       
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_6;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
 
-
+           
         }
         // Wave6
         else if (shot_state == (int)MAIN_STATE.SHOT_6)
@@ -332,6 +372,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -349,24 +391,34 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                    
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
                     move_flag = true;
+
+                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 6 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                        
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_7;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
 
-
+           
         }
         // Wave7
         else if (shot_state == (int)MAIN_STATE.SHOT_7)
@@ -374,6 +426,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -391,24 +445,34 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                    
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                   
                     move_flag = true;
+                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 7 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                       
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_8;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
 
-
+          
         }
         // Wave8
         else if (shot_state == (int)MAIN_STATE.SHOT_8)
@@ -416,6 +480,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -433,24 +499,33 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                   
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                   
                     move_flag = true;
+                   
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 8 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_9;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
 
-
+           
         }
         // Wave9
         else if (shot_state == (int)MAIN_STATE.SHOT_9)
@@ -458,6 +533,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -475,24 +552,34 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                    
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                    
                     move_flag = true;
+                   
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 9 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                       
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_10;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
 
-
+            
         }
         // Wave10
         else if (shot_state == (int)MAIN_STATE.SHOT_10)
@@ -500,6 +587,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -517,23 +606,34 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+                   
                 }
                 Color c = wave.color;
+                
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                   
                     move_flag = true;
+                   
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 10 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                        
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_11;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
-
+          
 
         }
         // Wave11
@@ -542,6 +642,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -559,24 +661,34 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                   
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                    
                     move_flag = true;
+                  
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 11 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                        
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_12;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
 
-
+            
         }
         // Wave12
         else if (shot_state == (int)MAIN_STATE.SHOT_12)
@@ -584,6 +696,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -601,24 +715,34 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                    
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                   
                     move_flag = true;
+                    
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 12 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                        
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_13;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
 
-
+            
         }
         // Wave13
         else if (shot_state == (int)MAIN_STATE.SHOT_13)
@@ -626,6 +750,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -643,23 +769,33 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                  
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                   
                     move_flag = true;
+                   
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 13 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                       
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_14;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
-
+           
 
         }
         // Wave14
@@ -668,6 +804,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -685,23 +823,33 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                   
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                    
                     move_flag = true;
+                   
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 14 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                        Debug.Log(hit_flower);
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_15;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                     }
                 }
             }
-
+            
 
         }
         // Wave15
@@ -710,6 +858,8 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
             }
             if (al_flag)
             {
@@ -727,24 +877,35 @@ public class Manager : MonoBehaviour
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
                     //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
                     //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+                   
                 }
                 Color c = wave.color;
+
                 c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
+                   
                     move_flag = true;
+                   
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 15 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                        
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_16;
+                        if (hit_flower == true)
+                        {
+                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                            hit_flower = false;
+                        }
                         score.text = " 0";
 
                     }
                 }
             }
+            
         }
     }
 
