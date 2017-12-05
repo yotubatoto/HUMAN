@@ -332,7 +332,7 @@ public class MainCameraScr : MonoBehaviour
 
 					Shake_Arrow();
 					float temp = sub.magnitude;
-					Debug.Log (sub);
+					//Debug.Log (sub);
                     float ang = Mathf.Atan2(sub.y, sub.x) * Mathf.Rad2Deg;
 
                     float angle = ang - 90.0f;
