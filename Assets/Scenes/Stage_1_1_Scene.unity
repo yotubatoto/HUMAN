@@ -268,11 +268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &46713593
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4286,11 +4284,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &291814442
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4442,9 +4438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1680f3376d564b4791555f815fdefb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 4
+  state: 0
   MAX_SPEED_X: -0.05
-  MAX_SPEED_Y: 0.5
+  MAX_SPEED_Y: -0.05
 --- !u!61 &334354409
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4599,11 +4595,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &391651441
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4706,11 +4700,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &411624900
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4840,13 +4832,11 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
-  - {fileID: 21300000, guid: a571d605ff4e8974591dd501bd0337da, type: 3}
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seedprefab: {fileID: 1689365585234094, guid: dc6b9246cd5fc6545a7bf83d62cb1149, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seedprefab: {fileID: 0}
 --- !u!212 &430051792
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5131,11 +5121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &460398164
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5280,19 +5268,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1136769093}
-  rimit_time: 800
+  rimit_time: 60
   time_text: {fileID: 0}
   result_text: {fileID: 0}
-  filterWhite: {fileID: 0}
-  goal: {fileID: 1637897304}
+  filterWhite: {fileID: 1251853176}
+  goal: {fileID: 0}
   wave: {fileID: 187174233}
   shot: {fileID: 1258110538}
-  score: {fileID: 1076576386}
-  speed: 1
+  score: {fileID: 0}
+  speed: 0.01
   start_pos: {x: 0, y: 0}
   wave_flag: 0
   move_flag: 0
-  trun_over: []
 --- !u!124 &513097381
 Behaviour:
   m_ObjectHideFlags: 0
@@ -5382,26 +5369,26 @@ MonoBehaviour:
   state_move_flag: 0
   semitransparentPrefab: {fileID: 1236668700919286, guid: 6631d009f627bbb4c9d6ca97e1f797bb,
     type: 2}
-  force_velocity: 200
-  nature_change_yellow: 100
-  nature_change_blue: 30
-  player_anime_difference: {fileID: 0}
+  force_velocity: 40000
+  nature_change_yellow: 0
+  nature_change_blue: 0
+  player_anime_difference: {fileID: 1707482636}
   now_loading: {fileID: 0}
-  attenuation_speed: 4
+  attenuation_speed: 2
   arrow_shake: 0
-  anime: {fileID: 3901750}
+  anime: {fileID: 0}
   sub: {x: 0, y: 0}
   temp: 0
-  VELOCITY_MAX: 40
+  VELOCITY_MAX: 20
   pause_freeze_flag: 0
-  debug_obj: {fileID: 1261079040}
+  debug_obj: {fileID: 0}
   small: []
   big: []
   main_move_state: 0
   number_count: 0
   characteristic_change_state: 0
-  finger_circle: {fileID: 1498265722}
-  MAX_DISTANCE: 20
+  finger_circle: {fileID: 0}
+  MAX_DISTANCE: 25
   CHANGE_COLOR_DELAY_COUNT: 0.5
 --- !u!114 &513097386
 MonoBehaviour:
@@ -5414,8 +5401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c70bac518c32944abe8e0990147221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shake_decay: 0.005
-  coef_shake_intensity: 0.2
+  shake_decay: 0.002
+  coef_shake_intensity: 0.3
 --- !u!81 &513097387
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5437,7 +5424,7 @@ MonoBehaviour:
   Playerobj: {fileID: 1136769093}
   mission_state: 0
   clear_flag: 0
-  clear_text: {fileID: 1634632250}
+  clear_text: {fileID: 0}
   fade: {fileID: 1251853178}
 --- !u!82 &513097389
 AudioSource:
@@ -5530,14 +5517,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced0973ba1c43fe4f974f056aa4b9977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_coll_se: {fileID: 0}
-  resin_coll_se: {fileID: 0}
-  block_coll_se: {fileID: 0}
-  gimic_coll_se: {fileID: 0}
-  choice_coll_se: {fileID: 0}
-  decision_coll_se: {fileID: 0}
+  enemy_coll_se: {fileID: 8300000, guid: 6930bd686c3cbf64c93f657d9d0c5741, type: 3}
+  resin_coll_se: {fileID: 8300000, guid: fe1e3444d7ca5844fac77b527c9e06db, type: 3}
+  block_coll_se: {fileID: 8300000, guid: f59832d2777a3e94493dd1f0baf9ba79, type: 3}
+  gimic_coll_se: {fileID: 8300000, guid: 8245544f9fc17ea479c8d00a65b59a5d, type: 3}
+  choice_coll_se: {fileID: 8300000, guid: edeba27d6b8cc8b448d8b919b3bd6c58, type: 3}
+  decision_coll_se: {fileID: 8300000, guid: a79bbb5244e4a464fbccf4d465c330ea, type: 3}
   pause_coll_se: {fileID: 8300000, guid: 05b96b3c30b1eb94aa1e9cd541f6e0b4, type: 3}
-  obstance_coll_se: {fileID: 0}
+  obstance_coll_se: {fileID: 8300000, guid: bf75e666464cddf479b61051c8194f77, type: 3}
 --- !u!1 &515379243
 GameObject:
   m_ObjectHideFlags: 0
@@ -5599,11 +5586,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &549912900
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5706,11 +5691,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &553708438
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6534,9 +6517,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1680f3376d564b4791555f815fdefb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 4
+  state: 0
   MAX_SPEED_X: -0.05
-  MAX_SPEED_Y: 0.5
+  MAX_SPEED_Y: -0.05
 --- !u!61 &1024044215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6718,13 +6701,11 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
-  - {fileID: 21300000, guid: a571d605ff4e8974591dd501bd0337da, type: 3}
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seedprefab: {fileID: 1689365585234094, guid: dc6b9246cd5fc6545a7bf83d62cb1149, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seedprefab: {fileID: 0}
 --- !u!212 &1066381449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6895,11 +6876,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &1102858994
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7181,14 +7160,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced0973ba1c43fe4f974f056aa4b9977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_coll_se: {fileID: 8300000, guid: 8245544f9fc17ea479c8d00a65b59a5d, type: 3}
-  resin_coll_se: {fileID: 8300000, guid: edeba27d6b8cc8b448d8b919b3bd6c58, type: 3}
-  block_coll_se: {fileID: 8300000, guid: d532e882a2b088f4cbdd78483d7d6bc7, type: 3}
-  gimic_coll_se: {fileID: 8300000, guid: bf75e666464cddf479b61051c8194f77, type: 3}
+  enemy_coll_se: {fileID: 0}
+  resin_coll_se: {fileID: 0}
+  block_coll_se: {fileID: 0}
+  gimic_coll_se: {fileID: 0}
   choice_coll_se: {fileID: 0}
   decision_coll_se: {fileID: 0}
   pause_coll_se: {fileID: 0}
-  obstance_coll_se: {fileID: 8300000, guid: 4710c1860ba77574da928eb2720a05b7, type: 3}
+  obstance_coll_se: {fileID: 0}
 --- !u!212 &1136769095
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7247,21 +7226,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item_count: 0
-  item_text: {fileID: 92264604}
+  item_text: {fileID: 0}
   flashing_time: 0
-  camera: {fileID: 513097379}
-  enemy_coll_effect: {fileID: 173482, guid: 16304a795dbff4fcfbc1f247a7f43357, type: 2}
+  camera: {fileID: 0}
+  enemy_coll_effect: {fileID: 0}
   point_line_obj:
   - {fileID: 0}
   - {fileID: 0}
   combo_text: {fileID: 0}
   bonus_flag: 0
-  goal: {fileID: 1637897304}
+  goal: {fileID: 0}
   effect_prefab: {fileID: 0}
   VELOCITY_MAX: 20
   state: 0
-  light_prefab: {fileID: 1036989336479944, guid: c6f6c748928cdbe4e884c6b4f81f5490,
-    type: 2}
+  light_prefab: {fileID: 0}
   hit_coordinate: {x: 0, y: 0, z: 0}
 --- !u!114 &1136769097
 MonoBehaviour:
@@ -7275,7 +7253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d3b6d6138d04bcaa5911f118cb931c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 1136769095}
+  sp: {fileID: 0}
 --- !u!82 &1136769098
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7584,11 +7562,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &1217441736
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7756,7 +7732,7 @@ RectTransform:
   m_GameObject: {fileID: 1258110536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 101.3, y: 701.9, z: 1.2916055}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 0}
   m_Children: []
   m_Father: {fileID: 515379244}
   m_RootOrder: 0
@@ -8091,13 +8067,11 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
-  - {fileID: 21300000, guid: a571d605ff4e8974591dd501bd0337da, type: 3}
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seedprefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seedprefab: {fileID: 0}
 --- !u!212 &1310574302
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8185,11 +8159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &1378639645
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8292,11 +8264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &1413342752
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8451,11 +8421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &1456634983
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8755,11 +8723,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &1500089744
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9254,13 +9220,11 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
-  - {fileID: 21300000, guid: a571d605ff4e8974591dd501bd0337da, type: 3}
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seedprefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seedprefab: {fileID: 0}
 --- !u!212 &1728783598
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9596,7 +9560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1680f3376d564b4791555f815fdefb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 5
+  state: 0
   MAX_SPEED_X: -0.05
   MAX_SPEED_Y: -0.05
 --- !u!1 &1834320532
@@ -9814,13 +9778,11 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
-  - {fileID: 21300000, guid: a571d605ff4e8974591dd501bd0337da, type: 3}
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seedprefab: {fileID: 1689365585234094, guid: dc6b9246cd5fc6545a7bf83d62cb1149, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seedprefab: {fileID: 0}
 --- !u!212 &1837337605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10122,9 +10084,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1680f3376d564b4791555f815fdefb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 4
+  state: 0
   MAX_SPEED_X: -0.05
-  MAX_SPEED_Y: 0.5
+  MAX_SPEED_Y: -0.05
 --- !u!61 &1859734378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10308,8 +10270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1680f3376d564b4791555f815fdefb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 5
-  MAX_SPEED_X: 0.5
+  state: 0
+  MAX_SPEED_X: -0.05
   MAX_SPEED_Y: -0.05
 --- !u!1 &1974632785
 GameObject:
@@ -10494,11 +10456,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  stardust_prefab: {fileID: 0}
+  dust_prefab: {fileID: 0}
+  seed_prefab: {fileID: 0}
 --- !u!58 &1993289584
 CircleCollider2D:
   m_ObjectHideFlags: 0

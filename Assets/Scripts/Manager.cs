@@ -33,8 +33,7 @@ public class Manager : MonoBehaviour
     public bool move_flag = false;
     float a_value = 0.03f;
     private bool al_flag = false;
-    //ターンを規定数超えたらゲームオーバー
-    public GameObject[] trun_over;
+    
    
 
     //public GameObject turn;
@@ -99,7 +98,7 @@ public class Manager : MonoBehaviour
     {
         start_pos = transform.position;
         startTime = Time.time;
-        journeyLength = Vector2.Distance(transform.position,goal.transform.position);
+        //journeyLength = Vector2.Distance(transform.position, goal.transform.position);
         itemCount = PlayerPrefs.GetInt("item", 0);
         clearCount = PlayerPrefs.GetInt("clear", 0);
         
