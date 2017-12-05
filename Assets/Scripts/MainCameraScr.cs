@@ -50,7 +50,7 @@ public class MainCameraScr : MonoBehaviour
     private Vector2 arrow_start_pos = Vector2.zero;
 
     //ランプの数
-    private GameObject[] right_obj;
+	public GameObject[] right_obj;
     
     private bool began_flag = false;
 	public GameObject debug_obj;
@@ -59,7 +59,7 @@ public class MainCameraScr : MonoBehaviour
     private float _time = 0.0f;
     //ライト点灯のカウントを数える（クリア条件につながる）　ランプレベルにかかわらず
     //クリアランプのレベルはWall gimic Csのクリアカウントをいじる
-    private int right_count = 0;
+	public int right_count = 0;
     public int main_move_state = 0;
     public int number_count = 0;
     // 性質変化の現在の状態 =>enableがfalseの場合0、青だと１、黄色だと２、赤だと３

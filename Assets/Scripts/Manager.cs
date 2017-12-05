@@ -4,7 +4,54 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+enum MAIN_STATE
+{
+	SHOT_1 = 1,
+	SHOT_2,
+	SHOT_3,
+	SHOT_4,
+	SHOT_5,
+	SHOT_6,
+	SHOT_7,
+	SHOT_8,
+	SHOT_9,
+	SHOT_10,
+	SHOT_11,
+	SHOT_12,
+	SHOT_13,
+	SHOT_14,
+	SHOT_15,
+	SHOT_16,
+	SHOT_17,
+	SHOT_18,
+	SHOT_19,
+	SHOT_20,
+	SHOT_21,
+	SHOT_22,
+	SHOT_23,
+	SHOT_24,
+	SHOT_25,
+	SHOT_26,
+	SHOT_27,
+	SHOT_28,
+	SHOT_29,
+	SHOT_30,
+	SHOT_31,
+	SHOT_32,
+	SHOT_33,
+	SHOT_34,
+	SHOT_35,
+	SHOT_36,
+	SHOT_37,
+	SHOT_38,
+	SHOT_39,
+	SHOT_40,
+	SHOT_41,
+	SHOT_42,
+	SHOT_43,
+	SHOT_44
 
+};
 public class Manager : MonoBehaviour
 {
     public GameObject player;
@@ -24,7 +71,7 @@ public class Manager : MonoBehaviour
     Color color;
     private int camera_state = 0;
     private float journeyLength;
-    int shot_state = 1;
+    public int shot_state = 1;
     public Vector2 start_pos;
     public bool wave_flag = false;
     int temp_state = 0;
@@ -38,57 +85,7 @@ public class Manager : MonoBehaviour
     //public GameObject turn;
     private float trun_alfa = 1.0f;
     private int trun_state = 0;
-    enum MAIN_STATE
-    {
-        SHOT_1 = 1,
-        SHOT_2,
-        SHOT_3,
-        SHOT_4,
-        SHOT_5,
-        SHOT_6,
-        SHOT_7,
-        SHOT_8,
-        SHOT_9,
-        SHOT_10,
-        SHOT_11,
-        SHOT_12,
-        SHOT_13,
-        SHOT_14,
-        SHOT_15,
-        SHOT_16,
-        SHOT_17,
-        SHOT_18,
-        SHOT_19,
-        SHOT_20,
-        SHOT_21,
-        SHOT_22,
-        SHOT_23,
-        SHOT_24,
-        SHOT_25,
-        SHOT_26,
-        SHOT_27,
-        SHOT_28,
-        SHOT_29,
-        SHOT_30,
-        SHOT_31,
-        SHOT_32,
-        SHOT_33,
-        SHOT_34,
-        SHOT_35,
-        SHOT_36,
-        SHOT_37,
-        SHOT_38,
-        SHOT_39,
-        SHOT_40,
-        SHOT_41,
-        SHOT_42,
-        SHOT_43,
-        SHOT_44
 
-
-
-
-    };
     bool once_flag = false;
 
 
@@ -106,7 +103,7 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Count_Such();
+//        Count_Such();
 
         // Wave1
         if (shot_state ==(int) MAIN_STATE.SHOT_1)
