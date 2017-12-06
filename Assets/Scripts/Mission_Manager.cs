@@ -45,8 +45,13 @@ public class Mission_Manager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () 
-    {
-        Mission_Lose();
+    {   
+        //打ち出した後打数内でクリアできなかった場合
+        if (GetComponent<MainCameraScr>().main_move_state == 0)
+        {
+            Mission_Lose();
+
+        }
         //if (mission_state == (int)MISSION_STATE.STAGE_1_1)
         //{
         //    clear_flag = Resin_GetNumber(4);
@@ -139,7 +144,7 @@ public class Mission_Manager : MonoBehaviour {
 				TouchInfo info = AppUtil.GetTouch();
 				if (info == TouchInfo.Began) {
                     clear_state = 3;
-                }
+				}
 			}
             if (clear_state == 3)
             {
@@ -201,12 +206,12 @@ public class Mission_Manager : MonoBehaviour {
                 {
                     Debug.Log(collition2d.gameObject.name);
 
-                    if (collition2d.gameObject.name == "retry")
+                    if (collition2d.gameObject.name == "retry_2")
                     {
                         SceneManager.LoadScene("Stage_" + "1_2" + "_Scene");
                         //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
                     }
-                    else if (collition2d.gameObject.name == "stageselect")
+                    else if (collition2d.gameObject.name == "stageselect_2")
                     {
                         SceneManager.LoadScene("StageSelect_Scene");
                     }
@@ -231,12 +236,12 @@ public class Mission_Manager : MonoBehaviour {
                 {
                     Debug.Log(collition2d.gameObject.name);
 
-                    if (collition2d.gameObject.name == "retry")
+                    if (collition2d.gameObject.name == "retry_3")
                     {
                         SceneManager.LoadScene("Stage_" + "1_3" + "_Scene");
                         //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
                     }
-                    else if (collition2d.gameObject.name == "stageselect")
+                    else if (collition2d.gameObject.name == "stageselect_3")
                     {
                         SceneManager.LoadScene("StageSelect_Scene");
                     }
@@ -303,7 +308,7 @@ public class Mission_Manager : MonoBehaviour {
     //ゲームオーバー時にゲームオーバー画面表示しステージセレクト画面に戻る
     void Mission_Lose()
     {
-       if(Camera.main.GetComponent<Manager>().shot_state - 1 > MAX_SHOT)
+       if(Camera.main.GetComponent<Manager>().shot_state -1 > MAX_SHOT)
         {
             Debug.Log("打数でクリアできなかった");
             gameOver_obj.gameObject.SetActive(true);
