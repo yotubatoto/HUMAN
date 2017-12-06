@@ -9,7 +9,9 @@ public class Effect_Move : MonoBehaviour
 
     private GameObject Gimic;
     public bool move_flag = false;
-   
+    private bool once_flag = false;
+    Quaternion targetRotation;
+    Vector2 vel = Vector2.zero;
 
     // Use this for initialization
     void Start ()
@@ -24,16 +26,22 @@ public class Effect_Move : MonoBehaviour
         //Debug.Log(move_flag);
         if (move_flag == true)
         {
-            // プレイヤーがランタンに当たったらseedがランタンのほうを向く
-                Vector3 unko1 = GameObject.Find("Player").GetComponent<Player_Collision>().hit_coordinate;
-                Vector3 unko2 = transform.position;
-                unko1.z = unko2.z;
-                Quaternion targetRotation = Quaternion.LookRotation(unko1 - unko2);
+            if(once_flag == false)
+            {
+                once_flag = true;
+                // プレイヤーがランタンに当たったらseedがランタンのほうを向く
+                Vector2 unko1 = GameObject.Find("Player").GetComponent<Player_Collision>().hit_coordinate;
+                Vector2 unko2 = transform.position;
+                vel = unko1 - unko2;
+                //unko1.z = unko2.z;
+                //targetRotation = Quaternion.LookRotation(unko1 - unko2);
+            }
+           
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmooth);
             
 
             // 前方に進む
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            transform.Translate(vel.normalized * speed * Time.deltaTime);
         }
 
 
