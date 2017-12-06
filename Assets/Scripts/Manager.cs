@@ -111,15 +111,15 @@ public class Manager : MonoBehaviour
             //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
             Color c =  wave.color;
             
-            Color trun_color = GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color;
+            Color trun_color = GameObject.Find("turn_flame").GetComponent<Image>().color;
             //ターンは画像なのでターン開始時アルファをいじる
             
             
-                GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
                         new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                 trun_alfa -= 0.04f;
-            Color color = GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color;
-            GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
+            Color color = GameObject.Find("turn_flame").GetComponent<Image>().color;
+            GameObject.Find("turn_flame").GetComponent<Image>().color =
                         new Color(1.0f, 1.0f, 1.0f,  trun_alfa);
            
 
@@ -164,7 +164,7 @@ public class Manager : MonoBehaviour
                     shot.text = "2";
                     score.text = " 140";
                     //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
                         new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                     trun_alfa = 1.0f;
                     Color cc = wave.color;
@@ -179,7 +179,7 @@ public class Manager : MonoBehaviour
                 }
                 Color c = wave.color;
                 //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                 trun_alfa -= 0.05f;
 
@@ -227,7 +227,7 @@ public class Manager : MonoBehaviour
                     wave.text = " 3";
                     shot.text = "3";
                     //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
                         new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                     trun_alfa = 1.0f;
                     score.text = " 130";
@@ -242,7 +242,7 @@ public class Manager : MonoBehaviour
                 }
                 Color c = wave.color;
                 //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                 trun_alfa -= 0.05f;
 
