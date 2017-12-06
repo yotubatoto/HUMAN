@@ -162,7 +162,6 @@ public class MainCameraScr : MonoBehaviour
             {
                 Debug.Log("sss");
                 TouchObjectFind("pause");
-                TouchObjectSearch(name);
                 delay_time = 0.0f;
             }
         }
