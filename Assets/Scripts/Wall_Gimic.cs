@@ -280,7 +280,7 @@ public class Wall_Gimic : MonoBehaviour {
 
             //}
 
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
 
         }
     }
