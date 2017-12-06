@@ -72,7 +72,8 @@ public class MainCameraScr : MonoBehaviour
     //ライト点灯のカウントを数える（クリア条件につながる）　ランプレベルにかかわらず
     //クリアランプのレベルはWall gimic Csのクリアカウントをいじる
 	public int right_count = 0;
-    public int main_move_state = 0;
+        // ゲームスタート時　-1 //射出していないとき　0　タッチして触れているとき 1（ふれたまま　打ち出した後　2
+    public int main_move_state = -1;
     public int number_count = 0;
     // 性質変化の現在の状態 =>enableがfalseの場合0、青だと１、黄色だと２、赤だと３
     public int characteristic_change_state = 0;
@@ -91,16 +92,21 @@ public class MainCameraScr : MonoBehaviour
     public GameObject retry_obj;
     private float delay_time = 0.0f;
 
+    //ゲームスタート時のフェード
+    public GameObject game_filter;
+    private float filter_time = 1.0f;
+    private bool game_start_flag = false;
+
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
-    void Start () {
+    void Start () 
+    {
 		Application.targetFrameRate = 60;
         //カメラのスケール２５
         //Camera.main.orthographicSize = 25.0f;
         right_obj = GameObject.FindGameObjectsWithTag("Gimic");
         right_count = right_obj.Length;
-       
 
 	}
 
@@ -111,6 +117,27 @@ public class MainCameraScr : MonoBehaviour
 	*/
 	void Update ()
 	{
+        if (main_move_state == 0)
+        {
+
+           
+          ////ゲームスタート時のフィルターを少しずつフェードさせる
+          //  GameObject.Find("Game_Filter").GetComponent<Image>().enabled = true;
+
+          //  Color color = GameObject.Find("Game_Filter").GetComponent<Image>().color;
+          //  GameObject.Find("Game_Filter").GetComponent<Image>().color =
+          //              new Color(1.0f, 1.0f, 1.0f, filter_time);
+          //  filter_time -= 0.02f;
+           
+          //  if(color == new Color (1.0f,1.0f,1.0f,0.0f))
+          //  {
+          //      main_move_state = 0;
+                
+          //  }
+				
+        }
+     
+
         Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
         small = GameObject.FindGameObjectsWithTag("Small_Block");
         
@@ -633,112 +660,52 @@ public class MainCameraScr : MonoBehaviour
                 }
             }
         }
-
-        if (pause_black.gameObject.activeSelf == true)
-        {
-            TouchInfo t_info = AppUtil.GetTouch();
-            delay_time += Time.deltaTime;
-            if (t_info == TouchInfo.Began)
-            {
-                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
-
-                if (collition2d != null)
-                {
-                    Debug.Log(collition2d.gameObject.name);
-
-                    if (collition2d.gameObject.name == "Retry")
-                    {
-                        SceneManager.LoadScene("Stage_" + "1_2" + "_Scene");
-                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
-                    }
-                    else if (collition2d.gameObject.name == "Select")
-                    {
-                        SceneManager.LoadScene("StageSelect_Scene");
-                    }
-                    else if (collition2d.gameObject.name == "pause" && delay_time >= 0.5f)
-                    {
-                        delay_time = 0.0f;
-                        pause_black.gameObject.SetActive(false);
-                    }
-                }
-            }
-        }
-
-        if (pause_black.gameObject.activeSelf == true)
-        {
-            TouchInfo t_info = AppUtil.GetTouch();
-            delay_time += Time.deltaTime;
-            if (t_info == TouchInfo.Began)
-            {
-                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
-
-                if (collition2d != null)
-                {
-                    Debug.Log(collition2d.gameObject.name);
-
-                    if (collition2d.gameObject.name == "Retry")
-                    {
-                        SceneManager.LoadScene("Stage_" + "1_3" + "_Scene");
-                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
-                    }
-                    else if (collition2d.gameObject.name == "Select")
-                    {
-                        SceneManager.LoadScene("StageSelect_Scene");
-                    }
-                    else if (collition2d.gameObject.name == "pause" && delay_time >= 0.5f)
-                    {
-                        delay_time = 0.0f;
-                        pause_black.gameObject.SetActive(false);
-                    }
-                }
-            }
-        }
-        //    {
-        //if(pause_freeze_flag == true) 
-        //{
-        //    TouchInfo info_retry = AppUtil.GetTouch();
+            //    {
+            //if(pause_freeze_flag == true) 
+            //{
+            //    TouchInfo info_retry = AppUtil.GetTouch();
 
 
 
-        //    if (retry_obj.gameObject.activeSelf == true)
-        //    {
-        //            if (info_retry == TouchInfo.Began)
-        //            {
-        //            Vector2 tapPoint   = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //            Collider2D collition2d  = Physics2D.OverlapPoint(tapPoint);
-        //            if (collition2d)
-        //            {
-        //                RaycastHit2D hitObjects  = Physics2D.Raycast(tapPoint, -Vector2.up);
-        //                if (hitObjects)
-        //                {
-        //                    Debug.Log("hit object is " + hitObjects.collider.gameObject.name);
-        //                }
-        //            }
-        //            ////if (retry_obj.activeSelf == true)
-        //            ////{
-        //            ////    Debug.Log("ppp");
-        //            //Collider2D collition2 = Physics2D.OverlapPoint(Input.mousePosition);
-        //            //if (collition2 != null)
-        //            //{
-        //            //    Debug.Log("キターー");
-        //            //    if (collition2.gameObject.name == "Retry")
-        //            //    {
-        //            //      SceneManager.LoadScene("Title_Scene");
-        //            //    }
+            //    if (retry_obj.gameObject.activeSelf == true)
+            //    {
+            //            if (info_retry == TouchInfo.Began)
+            //            {
+            //            Vector2 tapPoint   = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //            Collider2D collition2d  = Physics2D.OverlapPoint(tapPoint);
+            //            if (collition2d)
+            //            {
+            //                RaycastHit2D hitObjects  = Physics2D.Raycast(tapPoint, -Vector2.up);
+            //                if (hitObjects)
+            //                {
+            //                    Debug.Log("hit object is " + hitObjects.collider.gameObject.name);
+            //                }
+            //            }
+            //            ////if (retry_obj.activeSelf == true)
+            //            ////{
+            //            ////    Debug.Log("ppp");
+            //            //Collider2D collition2 = Physics2D.OverlapPoint(Input.mousePosition);
+            //            //if (collition2 != null)
+            //            //{
+            //            //    Debug.Log("キターー");
+            //            //    if (collition2.gameObject.name == "Retry")
+            //            //    {
+            //            //      SceneManager.LoadScene("Title_Scene");
+            //            //    }
 
-        //            //}
+            //            //}
 
-        //        }
-        //        //TouchObjectFind("pause");
-        //        //TouchObjectFind("Retry");
-        //        //GameObject.Find("Retry").GetComponent<Image>.enabled = false;
+            //        }
+            //        //TouchObjectFind("pause");
+            //        //TouchObjectFind("Retry");
+            //        //GameObject.Find("Retry").GetComponent<Image>.enabled = false;
 
-        //    }
-        //}
+            //    }
+            //}
 
-        //        Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
-        // 性質変化
-        Change();
+            //        Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
+            // 性質変化
+            Change();
 	}
 
 	private float CalcRadian(Vector3 from, Vector3 to) 
@@ -861,13 +828,15 @@ public class MainCameraScr : MonoBehaviour
                 //偶数時がポーズ
                 if (pause_count % 2 == 0)
                 {
+                    //Pauser.Resume();
+
 
                     if (pause_se_flag == false)
                     {
                         pause_se_flag = true;
                         GetComponent<Sound_Manager>().pause_SE();
                     }
-                   
+
                     pause_freeze_flag = true;
 
                    
