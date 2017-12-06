@@ -37,7 +37,7 @@ public class Player_Collision : MonoBehaviour {
     //float time = 0f;
     //public int combo_count = 0;
     public bool touch_flag = false;  //最初に当たったランタンに光の種が行くようにする
-
+    public string coll_name;
 
     // Use this for initialization
     void Start () 
@@ -203,7 +203,7 @@ public class Player_Collision : MonoBehaviour {
 
             GameObject[] seed;
             seed = GameObject.FindGameObjectsWithTag("BlockPiece");
-
+            coll_name = coll.gameObject.name;
             foreach (GameObject obs in seed)
             {
                 obs.GetComponent<Effect_Move>().move_flag = true;

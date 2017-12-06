@@ -7838,6 +7838,7 @@ MonoBehaviour:
     type: 2}
   hit_coordinate: {x: 0, y: 0, z: 0}
   touch_flag: 0
+  coll_name: 
 --- !u!114 &1136769097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9614,7 +9615,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1433904586384740, guid: 97e5a8e7de362497d88a06d9550a23ad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114740447199908492, guid: 97e5a8e7de362497d88a06d9550a23ad,
         type: 2}
@@ -12642,11 +12643,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4108794512410140, guid: 97e5a8e7de362497d88a06d9550a23ad, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 28.7
+      value: 19.7
       objectReference: {fileID: 0}
     - target: {fileID: 4108794512410140, guid: 97e5a8e7de362497d88a06d9550a23ad, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -12.3
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4108794512410140, guid: 97e5a8e7de362497d88a06d9550a23ad, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12678,7 +12679,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1433904586384740, guid: 97e5a8e7de362497d88a06d9550a23ad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97e5a8e7de362497d88a06d9550a23ad, type: 2}

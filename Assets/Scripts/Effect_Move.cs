@@ -12,7 +12,8 @@ public class Effect_Move : MonoBehaviour
     private bool once_flag = false;
     Quaternion targetRotation;
     Vector2 vel = Vector2.zero;
-
+    Vector2 unko1 = Vector2.zero;
+    string coll_name;
     // Use this for initialization
     void Start ()
     {
@@ -30,10 +31,11 @@ public class Effect_Move : MonoBehaviour
             {
                 once_flag = true;
                 // プレイヤーがランタンに当たったらseedがランタンのほうを向く
-                Vector2 unko1 = GameObject.Find("Player").GetComponent<Player_Collision>().hit_coordinate;
+                unko1 = GameObject.Find("Player").GetComponent<Player_Collision>().hit_coordinate;
                 Vector2 unko2 = transform.position;
                 vel = unko1 - unko2;
                 //unko1.z = unko2.z;
+                coll_name = GameObject.Find("Player").GetComponent<Player_Collision>().coll_name;
                 //targetRotation = Quaternion.LookRotation(unko1 - unko2);
             }
            
@@ -74,10 +76,13 @@ public class Effect_Move : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+  
         if (collision.gameObject.tag == "Gimic")
         {
-
-            
+            if (move_flag && coll_name == collision.gameObject.name)
+            {
+                Destroy(gameObject);
+            }
             //Instantiate(light, transform.position, Quaternion.identity);
             //if(time > life_time)
             //{
