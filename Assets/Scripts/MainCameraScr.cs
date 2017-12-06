@@ -102,7 +102,7 @@ public class MainCameraScr : MonoBehaviour
 	*/
     void Start () 
     {
-		Application.targetFrameRate = 60;
+		//Application.targetFrameRate = 60;
         //カメラのスケール２５
         //Camera.main.orthographicSize = 25.0f;
         right_obj = GameObject.FindGameObjectsWithTag("Gimic");
