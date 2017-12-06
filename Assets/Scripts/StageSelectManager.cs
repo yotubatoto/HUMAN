@@ -331,6 +331,15 @@ public class StageSelectManager : MonoBehaviour
                 GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().color
                     = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
+
+            if (collition2d.gameObject.name == "_3")
+            {
+                ST_OWNER_NUMBER = "1_3";
+                GetComponent<Sound_Manager>().Stage_Choice_SE();
+                now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().color
+                    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            }
         }
     }
 }

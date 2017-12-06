@@ -165,6 +165,66 @@ public class Mission_Manager : MonoBehaviour {
                 }
             }
         }
+
+        if (gameOver_obj.gameObject.activeSelf == true)
+        {
+            TouchInfo t_info = AppUtil.GetTouch();
+            delay_time += Time.deltaTime;
+            if (t_info == TouchInfo.Began)
+            {
+                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+
+                if (collition2d != null)
+                {
+                    Debug.Log(collition2d.gameObject.name);
+
+                    if (collition2d.gameObject.name == "retry")
+                    {
+                        SceneManager.LoadScene("Stage_" + "1_2" + "_Scene");
+                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "stageselect")
+                    {
+                        SceneManager.LoadScene("StageSelect_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "pause" && delay_time >= 0.5f)
+                    {
+                        delay_time = 0.0f;
+                        gameOver_obj.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+
+        if (gameOver_obj.gameObject.activeSelf == true)
+        {
+            TouchInfo t_info = AppUtil.GetTouch();
+            delay_time += Time.deltaTime;
+            if (t_info == TouchInfo.Began)
+            {
+                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+
+                if (collition2d != null)
+                {
+                    Debug.Log(collition2d.gameObject.name);
+
+                    if (collition2d.gameObject.name == "retry")
+                    {
+                        SceneManager.LoadScene("Stage_" + "1_3" + "_Scene");
+                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "stageselect")
+                    {
+                        SceneManager.LoadScene("StageSelect_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "pause" && delay_time >= 0.5f)
+                    {
+                        delay_time = 0.0f;
+                        gameOver_obj.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
     }
 
     //ランプの点灯数がマックスになったらステージ遷移

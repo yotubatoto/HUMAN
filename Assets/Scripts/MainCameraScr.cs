@@ -633,52 +633,112 @@ public class MainCameraScr : MonoBehaviour
                 }
             }
         }
-            //    {
-            //if(pause_freeze_flag == true) 
-            //{
-            //    TouchInfo info_retry = AppUtil.GetTouch();
+
+        if (pause_black.gameObject.activeSelf == true)
+        {
+            TouchInfo t_info = AppUtil.GetTouch();
+            delay_time += Time.deltaTime;
+            if (t_info == TouchInfo.Began)
+            {
+                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+
+                if (collition2d != null)
+                {
+                    Debug.Log(collition2d.gameObject.name);
+
+                    if (collition2d.gameObject.name == "Retry")
+                    {
+                        SceneManager.LoadScene("Stage_" + "1_2" + "_Scene");
+                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "Select")
+                    {
+                        SceneManager.LoadScene("StageSelect_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "pause" && delay_time >= 0.5f)
+                    {
+                        delay_time = 0.0f;
+                        pause_black.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+
+        if (pause_black.gameObject.activeSelf == true)
+        {
+            TouchInfo t_info = AppUtil.GetTouch();
+            delay_time += Time.deltaTime;
+            if (t_info == TouchInfo.Began)
+            {
+                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+
+                if (collition2d != null)
+                {
+                    Debug.Log(collition2d.gameObject.name);
+
+                    if (collition2d.gameObject.name == "Retry")
+                    {
+                        SceneManager.LoadScene("Stage_" + "1_3" + "_Scene");
+                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "Select")
+                    {
+                        SceneManager.LoadScene("StageSelect_Scene");
+                    }
+                    else if (collition2d.gameObject.name == "pause" && delay_time >= 0.5f)
+                    {
+                        delay_time = 0.0f;
+                        pause_black.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+        //    {
+        //if(pause_freeze_flag == true) 
+        //{
+        //    TouchInfo info_retry = AppUtil.GetTouch();
 
 
 
-            //    if (retry_obj.gameObject.activeSelf == true)
-            //    {
-            //            if (info_retry == TouchInfo.Began)
-            //            {
-            //            Vector2 tapPoint   = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //            Collider2D collition2d  = Physics2D.OverlapPoint(tapPoint);
-            //            if (collition2d)
-            //            {
-            //                RaycastHit2D hitObjects  = Physics2D.Raycast(tapPoint, -Vector2.up);
-            //                if (hitObjects)
-            //                {
-            //                    Debug.Log("hit object is " + hitObjects.collider.gameObject.name);
-            //                }
-            //            }
-            //            ////if (retry_obj.activeSelf == true)
-            //            ////{
-            //            ////    Debug.Log("ppp");
-            //            //Collider2D collition2 = Physics2D.OverlapPoint(Input.mousePosition);
-            //            //if (collition2 != null)
-            //            //{
-            //            //    Debug.Log("キターー");
-            //            //    if (collition2.gameObject.name == "Retry")
-            //            //    {
-            //            //      SceneManager.LoadScene("Title_Scene");
-            //            //    }
+        //    if (retry_obj.gameObject.activeSelf == true)
+        //    {
+        //            if (info_retry == TouchInfo.Began)
+        //            {
+        //            Vector2 tapPoint   = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //            Collider2D collition2d  = Physics2D.OverlapPoint(tapPoint);
+        //            if (collition2d)
+        //            {
+        //                RaycastHit2D hitObjects  = Physics2D.Raycast(tapPoint, -Vector2.up);
+        //                if (hitObjects)
+        //                {
+        //                    Debug.Log("hit object is " + hitObjects.collider.gameObject.name);
+        //                }
+        //            }
+        //            ////if (retry_obj.activeSelf == true)
+        //            ////{
+        //            ////    Debug.Log("ppp");
+        //            //Collider2D collition2 = Physics2D.OverlapPoint(Input.mousePosition);
+        //            //if (collition2 != null)
+        //            //{
+        //            //    Debug.Log("キターー");
+        //            //    if (collition2.gameObject.name == "Retry")
+        //            //    {
+        //            //      SceneManager.LoadScene("Title_Scene");
+        //            //    }
 
-            //            //}
+        //            //}
 
-            //        }
-            //        //TouchObjectFind("pause");
-            //        //TouchObjectFind("Retry");
-            //        //GameObject.Find("Retry").GetComponent<Image>.enabled = false;
+        //        }
+        //        //TouchObjectFind("pause");
+        //        //TouchObjectFind("Retry");
+        //        //GameObject.Find("Retry").GetComponent<Image>.enabled = false;
 
-            //    }
-            //}
+        //    }
+        //}
 
-            //        Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
-            // 性質変化
-            Change();
+        //        Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
+        // 性質変化
+        Change();
 	}
 
 	private float CalcRadian(Vector3 from, Vector3 to) 

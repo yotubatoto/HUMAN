@@ -22,6 +22,7 @@ public class Now_Loading : MonoBehaviour
         StartCoroutine(LoadScene("StageSelect_Scene"));
     }
 
+
     IEnumerator LoadScene(string scene_name)
     {
         async = SceneManager.LoadSceneAsync(scene_name);
