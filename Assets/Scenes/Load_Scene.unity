@@ -204,9 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 988587d2389067b4eada09a7b8fbecbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadingUi: {fileID: 0}
-  Slider: {fileID: 0}
-  fade: {fileID: 0}
+  now_loading: {fileID: 0}
 --- !u!1 &249042167
 GameObject:
   m_ObjectHideFlags: 0

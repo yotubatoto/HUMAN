@@ -226,6 +226,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 3";
                     shot.text = "3";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 130";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -237,6 +241,10 @@ public class Manager : MonoBehaviour
                    
                 }
                 Color c = wave.color;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
 
                 c.a -= a_value;
                 wave.color = c;
