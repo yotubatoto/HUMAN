@@ -28,6 +28,7 @@ public class Mission_Manager : MonoBehaviour {
     public int MAX_SHOT = 1;
     public GameObject gameOver_obj;
     private float delay_time = 0.0f;
+    private bool clear_once_flag = false;
 
     // Use this for initialization
     void Start () 
@@ -74,39 +75,61 @@ public class Mission_Manager : MonoBehaviour {
 				= mission_text [2];
 				GameObject.Find ("Score_Number").gameObject.GetComponent<Text> ().text = 
 					(Camera.main.GetComponent<Manager> ().shot_state - 1).ToString ();
-				if (Mission_1 (2)) {
-					GameObject.Find ("Mission_1/Context").gameObject.GetComponent<Text> ().color
-					= new Color (0, 0, 0, 1);
-					if (once_flag [0] == false) {
-						clear_number += 1;
-					}
-				} else {
-					GameObject.Find ("Mission_1/Context").gameObject.GetComponent<Text> ().color
-					= new Color (0, 0, 0, 0.3f);
-				}
-				if (Mission_2 (10)) {
-					GameObject.Find ("Mission_2/Context").gameObject.GetComponent<Text> ().color
-					= new Color (0, 0, 0, 1);
-					if (once_flag [1] == false) {
-						clear_number += 1;
-					}
-				} else {
-					GameObject.Find ("Mission_2/Context").gameObject.GetComponent<Text> ().color
-					= new Color (0, 0, 0, 0.3f);
-				}
-				if (Mission_3 ()) {
-					GameObject.Find ("Mission_3/Context").gameObject.GetComponent<Text> ().color
-					= new Color (0, 0, 0, 1);
-					if (once_flag [2] == false) {
-						clear_number += 1;
-					}
-				} else {
-					GameObject.Find ("Mission_3/Context").gameObject.GetComponent<Text> ().color
-					= new Color (0, 0, 0, 0.3f);
-				}
-				PlayerPrefs.SetInt (StageSelectManager.ST_OWNER_NUMBER + "star", clear_number);
-				stage_select_count += Time.deltaTime;
-				if (stage_select_count > 5) {
+                if(clear_once_flag == false)
+                {
+                    clear_once_flag = true;
+                    if (Mission_1(2))
+                    {
+                        GameObject.Find("Mission_1/Context").gameObject.GetComponent<Text>().color
+                        = new Color(0, 0, 0, 1);
+                        if (once_flag[0] == false)
+                        {
+                            clear_number += 1;
+                        }
+                    }
+                    else
+                    {
+                        GameObject.Find("Mission_1/Context").gameObject.GetComponent<Text>().color
+                        = new Color(0, 0, 0, 0.3f);
+                    }
+                    if (Mission_2(10))
+                    {
+                        GameObject.Find("Mission_2/Context").gameObject.GetComponent<Text>().color
+                        = new Color(0, 0, 0, 1);
+                        if (once_flag[1] == false)
+                        {
+                            clear_number += 1;
+                        }
+                    }
+                    else
+                    {
+                        GameObject.Find("Mission_2/Context").gameObject.GetComponent<Text>().color
+                        = new Color(0, 0, 0, 0.3f);
+                    }
+                    if (Mission_3())
+                    {
+                        GameObject.Find("Mission_3/Context").gameObject.GetComponent<Text>().color
+                        = new Color(0, 0, 0, 1);
+                        if (once_flag[2] == false)
+                        {
+                            clear_number += 1;
+                        }
+                    }
+                    else
+                    {
+                        GameObject.Find("Mission_3/Context").gameObject.GetComponent<Text>().color
+                        = new Color(0, 0, 0, 0.3f);
+                    }
+                }
+
+                //Debug.Log("クリアナンバー" + clear_number);
+                if (clear_number >= PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "star"))
+                {
+                    PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER + "star", clear_number);
+                    Debug.Log("PlayerPrefsmdayo"+PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "star"));
+                }
+                stage_select_count += Time.deltaTime;
+				if (stage_select_count > 3) {
 					clear_state = 2;
 				}
 			} else if (clear_state == 2) 
@@ -115,8 +138,8 @@ public class Mission_Manager : MonoBehaviour {
 					new Color (0, 0, 0, 1);
 				TouchInfo info = AppUtil.GetTouch();
 				if (info == TouchInfo.Began) {
-					//clear_state = 3;
-				}
+                    clear_state = 3;
+                }
 			}
             if (clear_state == 3)
             {
