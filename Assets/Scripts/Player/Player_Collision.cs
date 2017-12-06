@@ -178,11 +178,11 @@ public class Player_Collision : MonoBehaviour {
         if (coll.gameObject.tag == "Gimic")
         {
             gimic_coll_flag = true;
-            touch_flag = true;
-            Debug.Log(touch_flag);
+            //touch_flag = true;
+            //Debug.Log(touch_flag);
             GetComponent<Sound_Manager>().Resin_SE();
 
-            //hit_coordinate = coll.transform.position;
+            hit_coordinate = coll.transform.position;
             //if (bonus_count < 3)
             //{
             //    bonus_count = 0;
@@ -209,13 +209,13 @@ public class Player_Collision : MonoBehaviour {
                 obs.GetComponent<Effect_Move>().move_flag = true;
             }
 
-            //最初にプレイヤーとランタンが当たったか
-            if (touch_flag == false)
-            {
-                Debug.Log("vvv");
-                touch_flag = true;
-                hit_coordinate = coll.transform.position;
-            }
+            ////最初にプレイヤーとランタンが当たったか
+            //if (touch_flag == false)
+            //{
+            //    Debug.Log("vvv");
+            //    touch_flag = true;
+            //    hit_coordinate = coll.transform.position;
+            //}
 
 
 

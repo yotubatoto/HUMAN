@@ -103,12 +103,12 @@ public class Manager : MonoBehaviour
     void Update()
     {
         //Count_Such();
-        Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag);
+        //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag);
         // Wave1
         if (shot_state ==(int) MAIN_STATE.SHOT_1)
         {
             move_flag = false;
-            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
             Color c =  wave.color;
             
             Color trun_color = GameObject.Find("turn_flame").GetComponent<SpriteRenderer>().color;
@@ -127,18 +127,18 @@ public class Manager : MonoBehaviour
            wave.color = c;
             if(c.a <= 0.0f && trun_alfa <= 0.0f)
             {
-                Debug.Log(hit_flower);
+                //Debug.Log(hit_flower);
                 //shot_state = (int)MAIN_STATE.SHOT_2;
                 move_flag = true;
                 
                 if (Camera.main.GetComponent<MainCameraScr>().number_count >= 1)
                 {
                     shot_state = (int)MAIN_STATE.SHOT_2;
-                    if (hit_flower == true)
-                    {
-                        GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                        hit_flower = false;
-                    }
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
                 }
             }
 
@@ -151,7 +151,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
             }
             if (al_flag)
             {
@@ -193,17 +193,17 @@ public class Manager : MonoBehaviour
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 2 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
-                        Debug.Log("aaa" + hit_flower);
+                        //Debug.Log("aaa" + hit_flower);
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_3;
                         //光の種とランタンが当たったらtrueになる
-                        if (hit_flower == true)
-                        {
-                            Debug.Log("unko");
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    Debug.Log("unko");
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -215,7 +215,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -250,12 +250,12 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_4;
-                        if (hit_flower == true)
-                        {
-                            Debug.Log(hit_flower);
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    Debug.Log(hit_flower);
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -267,7 +267,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -302,11 +302,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_5;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -318,7 +318,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -355,11 +355,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_6;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -372,7 +372,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -409,11 +409,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_7;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -426,7 +426,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -463,11 +463,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_8;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -480,7 +480,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -516,11 +516,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_9;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -533,7 +533,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -570,11 +570,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_10;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -587,7 +587,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -625,11 +625,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_11;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -642,7 +642,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -679,11 +679,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_12;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -696,7 +696,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -733,11 +733,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_13;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -750,7 +750,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -787,11 +787,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_14;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -804,7 +804,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -837,15 +837,15 @@ public class Manager : MonoBehaviour
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 14 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
-                        Debug.Log(hit_flower);
+                        //Debug.Log(hit_flower);
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_15;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                     }
                 }
             }
@@ -858,7 +858,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
-                GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
             if (al_flag)
@@ -895,11 +895,11 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_16;
-                        if (hit_flower == true)
-                        {
-                            GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                            hit_flower = false;
-                        }
+                        //if (hit_flower == true)
+                        //{
+                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                        //    hit_flower = false;
+                        //}
                         score.text = " 0";
 
                     }
