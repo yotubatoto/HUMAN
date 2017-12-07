@@ -23,6 +23,8 @@ public class TitleManager : MonoBehaviour
     public GameObject title;
     public Text a;
 	private float al;
+	private Image tap;
+	private int state = 0;
 	/* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
@@ -38,6 +40,7 @@ public class TitleManager : MonoBehaviour
 		m_cnt = 0;
 		al = 0;
 		// 
+		tap = GameObject.Find("Tap").gameObject.GetComponent<Image>();
 	}
 
 
@@ -47,7 +50,13 @@ public class TitleManager : MonoBehaviour
 	*/
 	void Update()
 	{
-
+		// エスケープキー取得
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			// アプリケーション終了
+			Application.Quit();
+			return;
+		}
 		// ----------------------
 		// ※デバック※
 		// ----------------------
@@ -60,7 +69,7 @@ public class TitleManager : MonoBehaviour
 			m_score = 0;
 		}
 		// ----------------------
-
+		state = _Utility.Flashing(tap,0.5f,state);
 		// 
 		Vector3 c_pos = GameObject.FindGameObjectWithTag("MainCamera").transform.position;
 		transform.position = new Vector3(c_pos.x, c_pos.y, 0.0f);
@@ -112,10 +121,6 @@ public class TitleManager : MonoBehaviour
                 //GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().sortingOrder = 10000;
                 GameObject.Find("Canvas/Now_Loading").GetComponent<Image>().enabled = true;
                 GameObject.Find("Canvas/title").GetComponent<Image>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-                GameObject.Find("Canvas/tap start").GetComponent<Text>().enabled = false;
-
-
-
  
 				//
 				m_color = transform.Find("TitleLogo").GetComponent<SpriteRenderer>().color;

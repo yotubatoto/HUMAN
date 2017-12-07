@@ -69,6 +69,13 @@ public class StageSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		// エスケープキー取得
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			// アプリケーション終了
+			Application.Quit();
+			return;
+		}
 		//GameObject.Find ("debug_text").gameObject.GetComponent<Text> ().text = ((int)transform.position.x).ToString ();
         info = AppUtil.GetTouch();
         Debug.Log(transform.position);
