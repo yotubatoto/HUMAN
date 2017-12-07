@@ -73,7 +73,7 @@ public class MainCameraScr : MonoBehaviour
     //クリアランプのレベルはWall gimic Csのクリアカウントをいじる
 	public int right_count = 0;
         // ゲームスタート時　-1 //射出していないとき　0　タッチして触れているとき 1（ふれたまま　打ち出した後　2
-    public int main_move_state = -1;
+    public int main_move_state = -2;
     public int number_count = 0;
     // 性質変化の現在の状態 =>enableがfalseの場合0、青だと１、黄色だと２、赤だと３
     public int characteristic_change_state = 0;
@@ -91,11 +91,13 @@ public class MainCameraScr : MonoBehaviour
     public float CHANGE_COLOR_DELAY_COUNT = 0.5f;
     public GameObject retry_obj;
     private float delay_time = 0.0f;
+    private bool gamestart_al_flag = false;
 
     //ゲームスタート時のフェード
     public GameObject game_filter;
     private float filter_time = 1.0f;
     private bool game_start_flag = false;
+    private float gamestart_al = 0.0f;
 
     /* --------------------------------------------------
 	 * @パラメータ初期化
@@ -116,7 +118,44 @@ public class MainCameraScr : MonoBehaviour
 	 * @毎フレーム更新
 	*/
 	void Update ()
-	{
+	{   //スタート時にホワイトから透明に
+        if (main_move_state == -2)
+        {
+            //ゲーム開始時フェードを済ませてからターンとターンナンバーのアルファをいじる。
+            Color c = GameObject.Find("Fade").GetComponent<Image>().color;
+            c.a -= 0.02f;
+            if (c.a <= 0.0f)
+            {
+                main_move_state = -1;
+                c.a = 0;
+            }
+            GameObject.Find("Fade").GetComponent<Image>().color = c;
+            
+        }
+        //ゲームスタート画像を徐々に遷移
+        if (main_move_state == -1)
+        {
+            if(gamestart_al_flag == false)
+            {
+                gamestart_al += 0.02f;
+                if (gamestart_al >= 1.0f)
+                {
+                    gamestart_al = 1.0f;
+                    gamestart_al_flag = true;
+                }
+            }
+            else
+            {
+                gamestart_al -= 0.02f;
+
+                if(gamestart_al <= 0.0f)
+                {
+                    main_move_state = 0;
+                }
+            }
+            GameObject.Find("GameStart").GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, gamestart_al);
+        }
+
         if (main_move_state == 0)
         {
 
