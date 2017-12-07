@@ -61,7 +61,7 @@ public class StageSelectManager : MonoBehaviour
     {
         //PlayerPrefs.SetInt("1_1" + "star", 0);
         //変数「ClearStage」に「CLEARSTAGE」の値を代入しなおす
-
+        
     }
 
     // Update is called once per frame
