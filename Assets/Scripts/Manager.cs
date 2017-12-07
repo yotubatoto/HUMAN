@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 enum MAIN_STATE
 {
-	SHOT_1 = 1,
+    SHOT_0 = 0,
+	SHOT_1,
 	SHOT_2,
 	SHOT_3,
 	SHOT_4,
@@ -71,7 +72,7 @@ public class Manager : MonoBehaviour
     Color color;
     private int camera_state = 0;
     private float journeyLength;
-    public int shot_state = 1;
+    public int shot_state = 0;
     public Vector2 start_pos;
     public bool wave_flag = false;
     int temp_state = 0;
@@ -104,21 +105,25 @@ public class Manager : MonoBehaviour
     {
         //Count_Such();
         //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag);
+        if(shot_state == (int) MAIN_STATE.SHOT_0)
+        {
+            if(Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            {
+                shot_state = (int)MAIN_STATE.SHOT_1;
+            }
+        }
         // Wave1
         if (shot_state ==(int) MAIN_STATE.SHOT_1)
         {
             move_flag = false;
+            GameObject.Find("turn_flame").GetComponent<Image>().enabled = true;
+            GameObject.Find("Turn_Number").GetComponent<Text>().enabled = true;
             //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
             Color c =  wave.color;
-            
             Color trun_color = GameObject.Find("turn_flame").GetComponent<Image>().color;
             //ターンは画像なのでターン開始時アルファをいじる
             
-            
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                 trun_alfa -= 0.04f;
-            Color color = GameObject.Find("turn_flame").GetComponent<Image>().color;
             GameObject.Find("turn_flame").GetComponent<Image>().color =
                         new Color(1.0f, 1.0f, 1.0f,  trun_alfa);
            
