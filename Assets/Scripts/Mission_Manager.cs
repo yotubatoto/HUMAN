@@ -10,7 +10,7 @@ public class Mission_Manager : MonoBehaviour {
     public int mission_state = 0;
     public bool clear_flag = false;
     private int clear_state = 0;
-    public Text clear_text;
+    public Image clear_text;
     private float clear_time = 0.0f;
     public Image fade;
     enum MISSION_STATE
@@ -29,7 +29,9 @@ public class Mission_Manager : MonoBehaviour {
     public GameObject gameOver_obj;
     private float delay_time = 0.0f;
     private bool clear_once_flag = false;
-
+	public GameObject[] star_obj = new GameObject[3];
+	private int MAX_TURN = 15;
+	public int LIMIT_TURN = 10;
     // Use this for initialization
     void Start () 
     {
@@ -38,8 +40,8 @@ public class Mission_Manager : MonoBehaviour {
 		{
 			once_flag [i] = false;
 		}
-
-       
+		GameObject.Find ("Trun_Limit").gameObject.GetComponent<Text> ().text = LIMIT_TURN.ToString ();
+		MAX_TURN =  int.Parse(GameObject.Find ("Trun_Limit").gameObject.GetComponent<Text> ().text);
 	}
 
 	
@@ -56,74 +58,52 @@ public class Mission_Manager : MonoBehaviour {
         //{
         //    clear_flag = Resin_GetNumber(4);
         //}
-        //clear_flag = true;
+//        clear_flag = true;
         //クリア条件を満たしたらカラーをいじっている
         if (clear_flag)
         {
+			Camera.main.GetComponent<MainCameraScr> ().pause_freeze_flag = true;
 			if (clear_state == 0) {
-				clear_text.enabled = true;
-				Color c = clear_text.GetComponent<Text> ().color;
-				c.a += 0.05f;
+//				clear_text.enabled = true;
+				Color c = clear_text.color;
+				c.a += 0.01f;
 				if (c.a >= 1.0f) {
 					c.a = 1.0f;
 					clear_state = 1;
 				}
-				clear_text.GetComponent<Text> ().color = c;
+				clear_text.color = c;
 			} else if (clear_state == 1) {
-				clear_text.enabled = false;
+				clear_text.color = new Color(1,1,1,0);
 				clear_pop.SetActive (true);
-				GameObject.Find ("Mission_1/Context").gameObject.GetComponent<Text> ().text
-				= mission_text [0];
-				GameObject.Find ("Mission_2/Context").gameObject.GetComponent<Text> ().text
-				= mission_text [1];
-				GameObject.Find ("Mission_3/Context").gameObject.GetComponent<Text> ().text
-				= mission_text [2];
-				GameObject.Find ("Score_Number").gameObject.GetComponent<Text> ().text = 
+			
+				GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
 					(Camera.main.GetComponent<Manager> ().shot_state - 1).ToString ();
                 if(clear_once_flag == false)
                 {
                     clear_once_flag = true;
                     if (Mission_1(2))
                     {
-                        GameObject.Find("Mission_1/Context").gameObject.GetComponent<Text>().color
-                        = new Color(0, 0, 0, 1);
+						star_obj [2].SetActive (true);
                         if (once_flag[0] == false)
                         {
                             clear_number += 1;
                         }
                     }
-                    else
+					if (Mission_2(MAX_TURN))
                     {
-                        GameObject.Find("Mission_1/Context").gameObject.GetComponent<Text>().color
-                        = new Color(0, 0, 0, 0.3f);
-                    }
-                    if (Mission_2(10))
-                    {
-                        GameObject.Find("Mission_2/Context").gameObject.GetComponent<Text>().color
-                        = new Color(0, 0, 0, 1);
+						star_obj [0].SetActive (true);
                         if (once_flag[1] == false)
                         {
                             clear_number += 1;
                         }
                     }
-                    else
-                    {
-                        GameObject.Find("Mission_2/Context").gameObject.GetComponent<Text>().color
-                        = new Color(0, 0, 0, 0.3f);
-                    }
                     if (Mission_3())
                     {
-                        GameObject.Find("Mission_3/Context").gameObject.GetComponent<Text>().color
-                        = new Color(0, 0, 0, 1);
+						star_obj [1].SetActive (true);
                         if (once_flag[2] == false)
                         {
                             clear_number += 1;
                         }
-                    }
-                    else
-                    {
-                        GameObject.Find("Mission_3/Context").gameObject.GetComponent<Text>().color
-                        = new Color(0, 0, 0, 0.3f);
                     }
                 }
 
@@ -139,6 +119,7 @@ public class Mission_Manager : MonoBehaviour {
 				}
 			} else if (clear_state == 2) 
 			{
+				
 				GameObject.Find ("Touch").gameObject.GetComponent<Text> ().color = 
 					new Color (0, 0, 0, 1);
 				TouchInfo info = AppUtil.GetTouch();
@@ -329,14 +310,14 @@ public class Mission_Manager : MonoBehaviour {
         Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D collition2d = Physics2D.OverlapPoint(point);
 
-        Application.Quit();
+//        Application.Quit();
 
         if (collition2d != null)
         {
             if (collition2d.gameObject.name == name)
             {
                 Debug.Log("aaa");
-                Application.Quit();
+//                Application.Quit();
                 if (name == "retry")
                 {
                     if (gameOver_obj.gameObject.activeSelf == false)

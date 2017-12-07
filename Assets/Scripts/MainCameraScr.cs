@@ -138,7 +138,7 @@ public class MainCameraScr : MonoBehaviour
         }
      
 
-        Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
+//        Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
         small = GameObject.FindGameObjectsWithTag("Small_Block");
         
         //Debug.Log("main_move_state: " + main_move_state);
