@@ -25,7 +25,7 @@ public class Mission_Manager : MonoBehaviour {
 	bool[] once_flag = new bool[3];
 	int clear_number = 0;
 	float stage_select_count = 0.0f;
-    public int MAX_SHOT = 1;
+//    public int MAX_SHOT = 1;
     public GameObject gameOver_obj;
     private float delay_time = 0.0f;
     private bool clear_once_flag = false;
@@ -289,7 +289,7 @@ public class Mission_Manager : MonoBehaviour {
     //ゲームオーバー時にゲームオーバー画面表示しステージセレクト画面に戻る
     void Mission_Lose()
     {
-       if(Camera.main.GetComponent<Manager>().shot_state -1 > MAX_SHOT)
+		if(Camera.main.GetComponent<Manager>().shot_state -1 > LIMIT_TURN)
         {
             Debug.Log("打数でクリアできなかった");
             gameOver_obj.gameObject.SetActive(true);
