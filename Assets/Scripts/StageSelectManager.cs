@@ -25,6 +25,8 @@ public class StageSelectManager : MonoBehaviour
     Color color;
     public GameObject pop_obj;
     TouchInfo info;
+	public Text[] left = new Text[3];
+	public Text[] right = new Text[3];
     // Use this for initialization
     void Awake()
     {
@@ -78,6 +80,10 @@ public class StageSelectManager : MonoBehaviour
 
 			if((int)transform.position.x <= -35.0f)
 			{
+				for (int i = 0; i < 3; i++) {
+					left[i].text = "3";
+					right[i].text = (i+1).ToString();
+				}
 				// 3-1
 				if (PlayerPrefs.GetInt("3_1star") == 0)
 				{
@@ -156,6 +162,10 @@ public class StageSelectManager : MonoBehaviour
 			}
 			else if ((int)transform.position.x <= -20.0f && (int)transform.position.x > -30.0f)
 			{
+				for (int i = 0; i < 3; i++) {
+					left[i].text = "2";
+					right[i].text = (i+1).ToString();
+				}
 				// 2-1
 				if (PlayerPrefs.GetInt("2_1star") == 0)
 				{
@@ -234,6 +244,10 @@ public class StageSelectManager : MonoBehaviour
 			}
 			else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
             {
+				for (int i = 0; i < 3; i++) {
+					left[i].text = "1";
+					right[i].text = (i+1).ToString();
+				}
                 // 1-1
                 if (PlayerPrefs.GetInt("1_1star") == 0)
                 {
