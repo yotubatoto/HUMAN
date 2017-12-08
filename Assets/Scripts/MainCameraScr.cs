@@ -99,6 +99,7 @@ public class MainCameraScr : MonoBehaviour
     private float gamestart_al = 0.0f;
 	public Sprite change_sp;
 	private Sprite ini_sp;
+
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
