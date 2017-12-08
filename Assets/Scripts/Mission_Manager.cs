@@ -41,8 +41,8 @@ public class Mission_Manager : MonoBehaviour {
 		{
 			once_flag [i] = false;
 		}
-		turn_limit.GetComponent<Text> ().text = LIMIT_TURN.ToString ();
-		MAX_TURN =  int.Parse(turn_limit.gameObject.GetComponent<Text> ().text);
+        turn_limit.GetComponent<Text>().text = LIMIT_TURN.ToString();
+        MAX_TURN = int.Parse(turn_limit.gameObject.GetComponent<Text>().text);
 //		GameObject.Find ("Debug/Text").gameObject.GetComponent<Text> ().text = MAX_TURN.ToString ();
 	}
 
