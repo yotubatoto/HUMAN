@@ -837,7 +837,7 @@ public class MainCameraScr : MonoBehaviour
                     if (pause_se_flag == false)
                     {
                         pause_se_flag = true;
-                        GetComponent<Sound_Manager>().pause_SE();
+                        GetComponent<Sound_Manager>().SE();
                     }
 
                     pause_freeze_flag = true;
