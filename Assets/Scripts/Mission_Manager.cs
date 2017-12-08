@@ -43,6 +43,7 @@ public class Mission_Manager : MonoBehaviour {
 		}
 		turn_limit.GetComponent<Text> ().text = LIMIT_TURN.ToString ();
 		MAX_TURN =  int.Parse(turn_limit.gameObject.GetComponent<Text> ().text);
+//		GameObject.Find ("Debug/Text").gameObject.GetComponent<Text> ().text = MAX_TURN.ToString ();
 	}
 
 	

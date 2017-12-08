@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -143,8 +143,8 @@ Transform:
   - {fileID: 1166130585}
   - {fileID: 1676422210}
   - {fileID: 1845265704}
-  m_Father: {fileID: 509940242}
-  m_RootOrder: 7
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3901750
 GameObject:
@@ -5187,7 +5187,6 @@ Transform:
   - {fileID: 369509850}
   - {fileID: 138379277}
   - {fileID: 1136769101}
-  - {fileID: 1688146}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5356,8 +5355,8 @@ MonoBehaviour:
   finger_circle: {fileID: 0}
   MAX_DISTANCE: 25
   CHANGE_COLOR_DELAY_COUNT: 0.5
-  retry_obj: {fileID: 858804202}
   game_filter: {fileID: 1395105659}
+  change_sp: {fileID: 21300000, guid: 9840abed72ce9ee4c865ebacaaa66123, type: 3}
 --- !u!114 &513097386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5392,15 +5391,20 @@ MonoBehaviour:
   Playerobj: {fileID: 1136769093}
   mission_state: 0
   clear_flag: 0
-  clear_text: {fileID: 1634632250}
+  clear_text: {fileID: 0}
   fade: {fileID: 1251853178}
   clear_pop: {fileID: 306013721}
   mission_text:
   - "\u3059\u3079\u3066\u306E\u30E9\u30F3\u30BF\u30F3\u5149\u91CF\uFF12\u4EE5\u4E0A\u3067\u30AF\u30EA\u30A2"
   - "\uFF11\uFF10\u6253\u4EE5\u5185\u3067\u30AF\u30EA\u30A2"
   - "\u30D6\u30ED\u30C3\u30AF\u5168\u7834\u58CA"
-  MAX_SHOT: 1
   gameOver_obj: {fileID: 82725932}
+  star_obj:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  LIMIT_TURN: 10
+  turn_limit: {fileID: 795165880}
 --- !u!82 &513097389
 AudioSource:
   m_ObjectHideFlags: 0

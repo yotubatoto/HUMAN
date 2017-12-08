@@ -25,32 +25,11 @@ public class StageSelectManager : MonoBehaviour
     Color color;
     public GameObject pop_obj;
     TouchInfo info;
+	public Text[] left = new Text[3];
+	public Text[] right = new Text[3];
     // Use this for initialization
     void Awake()
     {
-        //PlayerPrefs.SetInt("1_2",0);
-        //ST_OWNER_NUMBER = "";
-
-        //if (PlayerPrefs.GetInt("1_1")==1)
-        //{
-        //    Debug.Log("1_1クリアしている");
-        //}
-        //if (PlayerPrefs.GetInt("1_2") == 1)
-        //{
-        //    Debug.Log("1_2クリアしている");
-        //    GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-        //}
-        //else
-        //{
-        //    if(GameObject.Find("_2") != null)
-        //    {
-        //        GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-        //    }
-        //}
-        //PlayerPrefs.SetInt("item", 0);
-        //PlayerPrefs.SetInt("clear", 0);
-
         for (int i = 0; i < transform.childCount; i++)
         {
             int gg = i + 1;
@@ -67,17 +46,30 @@ public class StageSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		// エスケープキー取得
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			// アプリケーション終了
+			Application.Quit();
+			return;
+		}
 		//GameObject.Find ("debug_text").gameObject.GetComponent<Text> ().text = ((int)transform.position.x).ToString ();
         info = AppUtil.GetTouch();
         Debug.Log(transform.position);
-        Execute();
-    
+		if (now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f)
+		{
+			Execute ();
+		}
         if (pop_obj.gameObject.activeSelf == true)
         {
             Debug.Log(PlayerPrefs.GetInt("1_1star"));
 
 			if((int)transform.position.x <= -35.0f)
 			{
+				for (int i = 0; i < 3; i++) {
+					left[i].text = "3";
+					right[i].text = (i+1).ToString();
+				}
 				// 3-1
 				if (PlayerPrefs.GetInt("3_1star") == 0)
 				{
@@ -156,6 +148,10 @@ public class StageSelectManager : MonoBehaviour
 			}
 			else if ((int)transform.position.x <= -20.0f && (int)transform.position.x > -30.0f)
 			{
+				for (int i = 0; i < 3; i++) {
+					left[i].text = "2";
+					right[i].text = (i+1).ToString();
+				}
 				// 2-1
 				if (PlayerPrefs.GetInt("2_1star") == 0)
 				{
@@ -234,6 +230,10 @@ public class StageSelectManager : MonoBehaviour
 			}
 			else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
             {
+				for (int i = 0; i < 3; i++) {
+					left[i].text = "1";
+					right[i].text = (i+1).ToString();
+				}
                 // 1-1
                 if (PlayerPrefs.GetInt("1_1star") == 0)
                 {
@@ -311,29 +311,27 @@ public class StageSelectManager : MonoBehaviour
                 }
             }
 
-  
+			if (now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f) 
+			{
+				if (info == TouchInfo.Began)
+				{
+					Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+					if(collition2d != null)
+					{
+						if(collition2d.gameObject.name == "_1" || collition2d.gameObject.name == "_2" ||
+							collition2d.gameObject.name == "_3")
+						{
+							TouchObjectFind();
+						}
+					}
+					else
+					{
+						pop_obj.SetActive(false);
+					}
 
-           
 
-
-            if (info == TouchInfo.Began)
-            {
-                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
-                if(collition2d != null)
-                {
-                    if(collition2d.gameObject.name == "_1" || collition2d.gameObject.name == "_2" ||
-                        collition2d.gameObject.name == "_3")
-                    {
-                        TouchObjectFind();
-                    }
-                }
-                else
-                {
-                    pop_obj.SetActive(false);
-                }
-               
-         
-            }
+				}
+			}
         }
     }
 

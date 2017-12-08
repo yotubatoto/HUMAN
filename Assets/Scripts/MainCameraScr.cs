@@ -268,21 +268,20 @@ public class MainCameraScr : MonoBehaviour
                     test_flag = false;
                     //_time = 0.0f;
                     startPos = AppUtil.GetTouchWorldPosition(Camera.main);
-                    circle.transform.position = startPos;
-//					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,0,0,1);
-//					finger_circle.gameObject.transform.position = AppUtil.GetTouchWorldPosition(Camera.main);
-//					finger_circle.gameObject.transform.position = new Vector3 (startPos.x,
+					circle.transform.position = (Vector2)AppUtil.GetTouchWorldPosition (Camera.main);
+					circle.GetComponent<SpriteRenderer>().color = new Color(0,1,0,1);
+					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,0,0,1);
+					finger_circle.gameObject.transform.position = AppUtil.GetTouchWorldPosition(Camera.main);
 //						startPos.y, 0);
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     GameObject.Find("arrow").GetComponent<SpriteRenderer>().enabled = true;
 
 
                     Color color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
-                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
+//                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
                     GameObject.Find("arrow").GetComponent<SpriteRenderer>().color =
                         new Color(0.0f, 0.0f, 1.0f, 1.0f);
-                    circle.GetComponent<SpriteRenderer>().color =
-                        new Color(c_color.r, c_color.g, c_color.b, 1.0f);
+
                     arrow.transform.localScale = new Vector3(10.0f, 1, 1);
                     // スワイプし始めたら状態を移行する
 
@@ -291,9 +290,6 @@ public class MainCameraScr : MonoBehaviour
                 }
                 if (info == TouchInfo.Moved)
                 {
-//					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,0,0,1);
-//					finger_circle.gameObject.transform.position = AppUtil.GetTouchWorldPosition(Camera.main);
-//					finger_circle.gameObject.transform.position = new Vector3 (sub.x,sub.y, 0);
                     end_flag = false;
                     main_move_state = 1;
                     //if (began_flag == false)
@@ -303,7 +299,7 @@ public class MainCameraScr : MonoBehaviour
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
                     Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
-                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
+//                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                     sub = movePos - startPos;
                     arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, .0f);
@@ -423,9 +419,6 @@ public class MainCameraScr : MonoBehaviour
 
                 if (info == TouchInfo.Moved)
                 {			
-//					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,0,0,1);
-//					finger_circle.gameObject.transform.position = AppUtil.GetTouchWorldPosition(Camera.main);
-//					finger_circle.gameObject.transform.position = new Vector3 (sub.x,sub.y, 0);
                     //if (began_flag == false)
                     //{
                     //    info = TouchInfo.Began;
@@ -433,22 +426,26 @@ public class MainCameraScr : MonoBehaviour
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
                     Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
-                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
+//                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
-                    sub = movePos - startPos;
-
+					sub = movePos - startPos;
                     //Debug.Log(temp);
 					// ここでdumpをやっている
+					Debug.Log(startPos);
 					float radius = Vector2.Distance(startPos,movePos);
-					if (radius > MAX_DISTANCE) 
-					{
-						float radian = CalcRadian(
+					if (radius > MAX_DISTANCE) {
+						float radian = CalcRadian (
 							startPos, 
-							movePos
-						);
+							               movePos
+						               );
 						float x = MAX_DISTANCE * Mathf.Cos (radian);
 						float y = MAX_DISTANCE * Mathf.Sin (radian);
-						sub = new Vector2(x,y);
+						sub = new Vector2 (x, y);
+						finger_circle.gameObject.transform.position = new Vector3 (startPos.x+x, startPos.y+y, 0);
+					}
+					else
+					{
+						finger_circle.gameObject.transform.position = movePos;
 					}
 
 					arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 4.0f, 2.0f);
@@ -540,7 +537,8 @@ public class MainCameraScr : MonoBehaviour
                 }
                 if (info == TouchInfo.Ended)
                 {
-//					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,0,0,0);
+					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,0,0,0);
+					circle.GetComponent<SpriteRenderer> ().color = new Color(0.0f,0,0,0);
                     //デバッグログ　射出時のパワーを測る
                     //bonus_color_red = 0;
                     began_flag = false;
@@ -663,8 +661,8 @@ public class MainCameraScr : MonoBehaviour
                             Destroy(_obj);
                         }
                     }
-                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
-                    circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.0f);
+//                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
+//                    circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.0f);
                 }
 
                 // 画面から指を離したら状態を移行
