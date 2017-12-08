@@ -507,6 +507,7 @@ public class StageSelectManager : MonoBehaviour
 				{
 					ST_OWNER_NUMBER = "3_3";
 					GetComponent<Sound_Manager>().Stage_Choice_SE();
+                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
 					now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
 					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
 					//SceneManager.LoadScene("Stage_1_Scene");

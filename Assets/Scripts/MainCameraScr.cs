@@ -104,6 +104,7 @@ public class MainCameraScr : MonoBehaviour
 	*/
     void Start () 
     {
+        Time.timeScale = 1.0f;
 		//Application.targetFrameRate = 60;
         //カメラのスケール２５
         //Camera.main.orthographicSize = 25.0f;
@@ -226,7 +227,9 @@ public class MainCameraScr : MonoBehaviour
 					else if(collition2d.gameObject.name == "pause")
 					{
 						pause_freeze_flag = false;
-						Pauser.Resume ();
+                        //Pauser.Resume ();
+                        //時間をもどす
+                        Time.timeScale = 1.0f;
 						delay_time = 0.0f;
 						pause_black.gameObject.SetActive(false);
 						image.sprite = ini_sp;
@@ -827,7 +830,8 @@ public class MainCameraScr : MonoBehaviour
                 if (pause_count % 2 == 0)
                 {
                     //Pauser.Resume();
-
+                    //時間を止める
+                    Time.timeScale = 0.0f;
 
                     if (pause_se_flag == false)
                     {
@@ -837,7 +841,7 @@ public class MainCameraScr : MonoBehaviour
 
                     pause_freeze_flag = true;
 
-                    Pauser.Pause();
+                    //Pauser.Pause();
                     //Color pause_color = new Color(0, 0, 0, 0);
                     pause_black.gameObject.SetActive(true);
                     //Color pause_ = pause_black.gameObject.GetComponent<Image>().color;
@@ -846,28 +850,6 @@ public class MainCameraScr : MonoBehaviour
                     //GameObject.Find("Retry").GetComponent<Image>().enabled = true;
                     //GameObject.Find("Select").GetComponent<Image>().enabled = true;
                 }
-//                else
-//                {
-//                    //pause_time += 0.01f;
-//                    //if (pause_time > 1)
-//                    //{
-//                        pause_freeze_flag = false;
-//
-//                    //}
-//                    pause_se_flag = false;
-//                    Pauser.Resume();
-//                    pause_black.gameObject.SetActive(false);
-//
-//                    //Color pause_color = new Color(0, 0, 0, 0);
-//                    //Color pause_ = pause_black.gameObject.GetComponent<Image>().color;
-//                    //pause_black.GetComponent<Image>().color = 
-//                    //    new Color(pause_color.r, pause_color.g, pause_color.b, 0.0f);
-//                    //GameObject.Find("Retry").GetComponent<Image>().enabled = false;
-//                    //GameObject.Find("Select").GetComponent<Image>().enabled = false;
-//
-//
-//                }
-
 
             }
             if (collition2d.gameObject.name == name)
