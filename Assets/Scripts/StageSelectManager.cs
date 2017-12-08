@@ -30,29 +30,6 @@ public class StageSelectManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        //PlayerPrefs.SetInt("1_2",0);
-        //ST_OWNER_NUMBER = "";
-
-        //if (PlayerPrefs.GetInt("1_1")==1)
-        //{
-        //    Debug.Log("1_1クリアしている");
-        //}
-        //if (PlayerPrefs.GetInt("1_2") == 1)
-        //{
-        //    Debug.Log("1_2クリアしている");
-        //    GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-        //}
-        //else
-        //{
-        //    if(GameObject.Find("_2") != null)
-        //    {
-        //        GameObject.Find("_2").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-        //    }
-        //}
-        //PlayerPrefs.SetInt("item", 0);
-        //PlayerPrefs.SetInt("clear", 0);
-
         for (int i = 0; i < transform.childCount; i++)
         {
             int gg = i + 1;
@@ -79,8 +56,10 @@ public class StageSelectManager : MonoBehaviour
 		//GameObject.Find ("debug_text").gameObject.GetComponent<Text> ().text = ((int)transform.position.x).ToString ();
         info = AppUtil.GetTouch();
         Debug.Log(transform.position);
-        Execute();
-    
+		if (now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f)
+		{
+			Execute ();
+		}
         if (pop_obj.gameObject.activeSelf == true)
         {
             Debug.Log(PlayerPrefs.GetInt("1_1star"));
@@ -332,29 +311,27 @@ public class StageSelectManager : MonoBehaviour
                 }
             }
 
-  
+			if (now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f) 
+			{
+				if (info == TouchInfo.Began)
+				{
+					Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+					if(collition2d != null)
+					{
+						if(collition2d.gameObject.name == "_1" || collition2d.gameObject.name == "_2" ||
+							collition2d.gameObject.name == "_3")
+						{
+							TouchObjectFind();
+						}
+					}
+					else
+					{
+						pop_obj.SetActive(false);
+					}
 
-           
 
-
-            if (info == TouchInfo.Began)
-            {
-                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
-                if(collition2d != null)
-                {
-                    if(collition2d.gameObject.name == "_1" || collition2d.gameObject.name == "_2" ||
-                        collition2d.gameObject.name == "_3")
-                    {
-                        TouchObjectFind();
-                    }
-                }
-                else
-                {
-                    pop_obj.SetActive(false);
-                }
-               
-         
-            }
+				}
+			}
         }
     }
 
