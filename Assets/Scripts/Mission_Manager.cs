@@ -35,6 +35,7 @@ public class Mission_Manager : MonoBehaviour {
 	private int MAX_TURN = 15;
 	public int LIMIT_TURN = 10;
 	public GameObject turn_limit;
+	public int CLEAR_LAMP_LEVEL = 1;
     // Use this for initialization
     void Start () 
     {
@@ -107,7 +108,7 @@ public class Mission_Manager : MonoBehaviour {
                 if(clear_once_flag == false)
                 {
                     clear_once_flag = true;
-                    if (Mission_1(2))
+					if (Mission_1(CLEAR_LAMP_LEVEL))
                     {
 						star_obj [2].SetActive (true);
                         if (once_flag[0] == false)
@@ -190,7 +191,7 @@ public class Mission_Manager : MonoBehaviour {
 		bool _flag = false;
 		for (int i = 0; i < mainSource.right_count; i++)
 		{
-			if (mainSource.right_obj[i].GetComponent<Wall_Gimic>().clear_count <= clear)
+			if (mainSource.right_obj[i].GetComponent<Wall_Gimic>().clear_count < clear)
 			{
 				_flag = true;
 			}
