@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5434,7 +5434,7 @@ MonoBehaviour:
   mission_state: 0
   clear_flag: 0
   clear_text: {fileID: 1781381251}
-  fade: {fileID: 0}
+  fade: {fileID: 1352777952}
   clear_pop: {fileID: 65980141}
   mission_text:
   - "\u3059\u3079\u3066\u306E\u30E9\u30F3\u30BF\u30F3\u5149\u91CF\uFF12\u4EE5\u4E0A\u3067\u30AF\u30EA\u30A2"
@@ -9865,6 +9865,12 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224719964186508532, guid: ef5e1339fd3bcf44589f30b2bacb19f5,
     type: 2}
   m_PrefabInternal: {fileID: 1352777950}
+--- !u!114 &1352777952 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114718193117402858, guid: ef5e1339fd3bcf44589f30b2bacb19f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1352777950}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!4 &1358104067 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4566344714785840, guid: b0cbf2e331539c14e990aad627c211c7,
