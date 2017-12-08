@@ -280,6 +280,7 @@ public class Manager : MonoBehaviour
             if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 al_flag = true;
+              
                 //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
             }
@@ -292,6 +293,10 @@ public class Manager : MonoBehaviour
                     wave.text = " 4";
                     shot.text = "4";
                     score.text = " 120";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     Color cc = wave.color;
                     cc.a = 1;
                     wave.color = cc;
@@ -302,8 +307,14 @@ public class Manager : MonoBehaviour
                    
                 }
                 Color c = wave.color;
+              
+                  
 
                 c.a -= a_value;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
@@ -342,6 +353,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 5";
                     shot.text = "5";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 110";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -355,6 +370,10 @@ public class Manager : MonoBehaviour
                 Color c = wave.color;
 
                 c.a -= a_value;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
@@ -396,6 +415,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 6";
                     shot.text = "6";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 100";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -407,6 +430,10 @@ public class Manager : MonoBehaviour
                     
                 }
                 Color c = wave.color;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
 
                 c.a -= a_value;
                 wave.color = c;
@@ -450,6 +477,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 7";
                     shot.text = "7";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 90";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -461,6 +492,10 @@ public class Manager : MonoBehaviour
                     
                 }
                 Color c = wave.color;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
 
                 c.a -= a_value;
                 wave.color = c;
@@ -504,6 +539,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 8";
                     shot.text = "8";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 80";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -515,6 +554,11 @@ public class Manager : MonoBehaviour
                    
                 }
                 Color c = wave.color;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
+
 
                 c.a -= a_value;
                 wave.color = c;
@@ -557,6 +601,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 9";
                     shot.text = "9";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 70";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -570,6 +618,10 @@ public class Manager : MonoBehaviour
                 Color c = wave.color;
 
                 c.a -= a_value;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
@@ -611,6 +663,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 10";
                     shot.text = "10";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 60";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -625,6 +681,10 @@ public class Manager : MonoBehaviour
                 Color c = wave.color;
                 
                 c.a -= a_value;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
@@ -666,6 +726,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 11";
                     shot.text = "11";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 50";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -677,8 +741,12 @@ public class Manager : MonoBehaviour
                    
                 }
                 Color c = wave.color;
-
+               
                 c.a -= a_value;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
@@ -720,6 +788,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 12";
                     shot.text = "12";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 40";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -731,6 +803,10 @@ public class Manager : MonoBehaviour
                     
                 }
                 Color c = wave.color;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
 
                 c.a -= a_value;
                 wave.color = c;
@@ -774,6 +850,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 13";
                     shot.text = "13";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 30";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -786,7 +866,12 @@ public class Manager : MonoBehaviour
                 }
                 Color c = wave.color;
 
+
                 c.a -= a_value;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
@@ -828,6 +913,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 14";
                     shot.text = "14";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
+                   
                     score.text = " 20";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -841,6 +931,10 @@ public class Manager : MonoBehaviour
                 Color c = wave.color;
 
                 c.a -= a_value;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
@@ -882,6 +976,10 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 15";
                     shot.text = "15";
+                    //ターンのアルファ初期化
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    trun_alfa = 1.0f;
                     score.text = " 10";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -895,6 +993,10 @@ public class Manager : MonoBehaviour
                 Color c = wave.color;
 
                 c.a -= a_value;
+                //ターンアルファへらす
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                trun_alfa -= 0.05f;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
