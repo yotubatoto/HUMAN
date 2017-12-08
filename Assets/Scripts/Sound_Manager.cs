@@ -67,4 +67,5 @@ public class Sound_Manager : MonoBehaviour {
         m_audio.PlayOneShot(obstance_coll_se);
 
     }
+   
 }

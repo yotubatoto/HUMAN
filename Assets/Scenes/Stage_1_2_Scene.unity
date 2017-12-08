@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5350,7 +5350,7 @@ MonoBehaviour:
   mission_state: 0
   clear_flag: 0
   clear_text: {fileID: 1547561533}
-  fade: {fileID: 0}
+  fade: {fileID: 1813864448}
   clear_pop: {fileID: 624471977}
   mission_text:
   - "\u3059\u3079\u3066\u306E\u30E9\u30F3\u30BF\u30F3\u5149\u91CF\uFF12\u4EE5\u4E0A\u3067\u30AF\u30EA\u30A2"
@@ -10228,6 +10228,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef5e1339fd3bcf44589f30b2bacb19f5, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1813864448 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114718193117402858, guid: ef5e1339fd3bcf44589f30b2bacb19f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1813864447}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1832349378
 GameObject:
   m_ObjectHideFlags: 0
