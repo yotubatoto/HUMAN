@@ -12,6 +12,8 @@ public class Mission_Manager : MonoBehaviour {
     private int clear_state = 0;
     public Image clear_text;
     private float clear_time = 0.0f;
+    //ステージクリアしたら（ステージクリアのテキストが表示される時間）
+    private float clear_count = 0.0f;
     public Image fade;
     enum MISSION_STATE
     {
@@ -56,6 +58,17 @@ public class Mission_Manager : MonoBehaviour {
             Mission_Lose();
 
         }
+        TouchInfo _info = AppUtil.GetTouch();
+        //gameOver_obj.SetActive(true);
+        if(_info == TouchInfo.Began)
+        {
+            TouchObjectSearch();
+        }
+        if(gameOver_obj.activeSelf)
+        {
+            Camera.main.GetComponent<MainCameraScr>().pause_freeze_flag = true;
+            GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+        }
         //if (mission_state == (int)MISSION_STATE.STAGE_1_1)
         //{
         //    clear_flag = Resin_GetNumber(4);
@@ -74,7 +87,18 @@ public class Mission_Manager : MonoBehaviour {
 					clear_state = 1;
 				}
 				clear_text.color = c;
-			} else if (clear_state == 1) {
+			}
+            else if(clear_state == 1)
+            {
+                //ステージクリアしたら（ステージクリアのテキストが表示される時間）
+                clear_count += Time.deltaTime;
+                if (clear_count > 1.0f)
+                {
+                    clear_state = 2;
+                }
+            }
+            else if (clear_state == 2) 
+            {
 				clear_text.color = new Color(1,1,1,0);
 				clear_pop.SetActive (true);
 			
@@ -117,19 +141,19 @@ public class Mission_Manager : MonoBehaviour {
                 }
                 stage_select_count += Time.deltaTime;
 				if (stage_select_count > 3) {
-					clear_state = 2;
+					clear_state = 3;
 				}
-			} else if (clear_state == 2) 
+			} else if (clear_state == 3) 
 			{
 				
 				GameObject.Find ("Touch").gameObject.GetComponent<Text> ().color = 
 					new Color (0, 0, 0, 1);
 				TouchInfo info = AppUtil.GetTouch();
 				if (info == TouchInfo.Began) {
-                    clear_state = 3;
+                    clear_state = 4;
 				}
 			}
-            if (clear_state == 3)
+            if (clear_state == 4)
             {
                 Color c = fade.color;
                 c.a += 0.02f;
@@ -191,8 +215,9 @@ public class Mission_Manager : MonoBehaviour {
 	bool Mission_3()
 	{
 		GameObject[] obj = GameObject.FindGameObjectsWithTag ("Small_Block");
-		GameObject[] obj_2 = GameObject.FindGameObjectsWithTag ("Big_Block");
-        if (obj.Length == 0 && obj_2.Length == 0) 
+        GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
+        GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
+        if (obj.Length == 0 && obj_2.Length == 0 && obj_3.Length == 0) 
 		{
 			return true;
 		}
@@ -202,10 +227,12 @@ public class Mission_Manager : MonoBehaviour {
     //ゲームオーバー時にゲームオーバー画面表示しステージセレクト画面に戻る
     void Mission_Lose()
     {
-		if(Camera.main.GetComponent<Manager>().shot_state -1 > LIMIT_TURN)
+        if (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) > LIMIT_TURN)
         {
+            GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = LIMIT_TURN.ToString();
             Debug.Log("打数でクリアできなかった");
             gameOver_obj.gameObject.SetActive(true);
+            Time.timeScale = 0.0f;
         }
        if(Mission_3())
         {
@@ -213,34 +240,36 @@ public class Mission_Manager : MonoBehaviour {
             if(Mission_1(1) == false)
             {
                 Debug.Log("全部壊れていてかつ光ってないものありでクリアできませんでした");
-                gameOver_obj.gameObject.SetActive(false);
+                gameOver_obj.gameObject.SetActive(true);
+                Time.timeScale = 0.0f;
             }
         }
     }
 
-//    void TouchObjectSearch(string name)
-//    {
-//        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-//        Collider2D collition2d = Physics2D.OverlapPoint(point);
-//
-////        Application.Quit();
-//
-//        if (collition2d != null)
-//        {
-//            if (collition2d.gameObject.name == name)
-//            {
-//                Debug.Log("aaa");
-////                Application.Quit();
-//                if (name == "retry")
-//                {
-//                    if (gameOver_obj.gameObject.activeSelf == false)
-//                    {
-//                        gameOver_obj.SetActive(true);
-//                    }
-//                }
-//
-//            }
-//        }
-//
-//    }
+    void TouchObjectSearch()
+    {
+        Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+
+
+        if (collition2d != null)
+        {
+            Debug.Log(collition2d.gameObject.name);
+            if (collition2d.gameObject.name == "retry")
+            {
+
+                if (gameOver_obj.gameObject.activeSelf)
+                {
+                    SceneManager.LoadScene("Stage_"+StageSelectManager.ST_OWNER_NUMBER+"_Scene");
+                }
+            }
+            if (collition2d.gameObject.name == "stageselect")
+            {
+                if (gameOver_obj.gameObject.activeSelf)
+                {
+                    SceneManager.LoadScene("StageSelect_Scene");
+                }
+            }
+        }
+
+    }
 }

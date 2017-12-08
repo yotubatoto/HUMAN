@@ -217,8 +217,8 @@ public class MainCameraScr : MonoBehaviour
 
 					if (collition2d.gameObject.name == "Retry")
 					{
-						SceneManager.LoadScene("Stage_" + "1_1" + "_Scene");
-						//SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                        //SceneManager.LoadScene("Stage_" + "1_1" + "_Scene");
+                        SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
 					}
 					else if(collition2d.gameObject.name == "Stage_Select")
 					{
