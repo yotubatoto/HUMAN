@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Description_Manager : MonoBehaviour {
 
 	// Use this for initialization
-	public Image[] ima = new Image[4];
+	public Image[] ima = new Image[2];
 	public GameObject now_loading;
 	public Image left;
 	public Image right;
@@ -26,7 +26,7 @@ public class Description_Manager : MonoBehaviour {
 			Application.Quit();
 			return;
 		}
-		if (count >= 4)
+		if (count >= 2)
 			count = 4;
 		TouchInfo info = AppUtil.GetTouch ();
 		if (info == TouchInfo.Began) 
@@ -56,8 +56,8 @@ public class Description_Manager : MonoBehaviour {
 				{
 					ima [0].enabled = true;
 					ima [1].enabled = false;
-					ima [2].enabled = false;
-					ima [3].enabled = false;
+//					ima [2].enabled = false;
+//					ima [3].enabled = false;
 					right.enabled = true;
 					left.enabled = false;
 				}
@@ -65,29 +65,29 @@ public class Description_Manager : MonoBehaviour {
 				{
 					ima [0].enabled = false;
 					ima [1].enabled = true;
-					ima [2].enabled = false;
-					ima [3].enabled = false;
-					right.enabled = true;
-					left.enabled = true;
-				}
-				if (count == 2) 
-				{
-					ima [0].enabled = false;
-					ima [1].enabled = false;
-					ima [2].enabled = true;
-					ima [3].enabled = false;
-					right.enabled = true;
-					left.enabled = true;
-				}
-				if (count == 3) 
-				{
-					ima [0].enabled = false;
-					ima [1].enabled = false;
-					ima [2].enabled = false;
-					ima [3].enabled = true;
+//					ima [2].enabled = false;
+//					ima [3].enabled = false;
 					right.enabled = false;
 					left.enabled = true;
 				}
+//				if (count == 2) 
+//				{
+//					ima [0].enabled = false;
+//					ima [1].enabled = false;
+////					ima [2].enabled = true;
+////					ima [3].enabled = false;
+//					right.enabled = true;
+//					left.enabled = true;
+//				}
+//				if (count == 3) 
+//				{
+//					ima [0].enabled = false;
+//					ima [1].enabled = false;
+//					ima [2].enabled = false;
+////					ima [3].enabled = true;
+//					right.enabled = false;
+//					left.enabled = true;
+//				}
 
 				if (collition2d.gameObject.name == "Next")
 				{
