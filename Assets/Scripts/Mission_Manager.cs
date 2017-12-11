@@ -102,8 +102,9 @@ public class Mission_Manager : MonoBehaviour {
             {
 				clear_text.color = new Color(1,1,1,0);
 				clear_pop.SetActive (true);
-			
-				GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
+                GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+
+                GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
 					(Camera.main.GetComponent<Manager> ().shot_state - 1).ToString ();
                 if(clear_once_flag == false)
                 {
