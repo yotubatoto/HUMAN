@@ -150,7 +150,7 @@ public class Mission_Manager : MonoBehaviour {
 				GameObject.Find ("Touch").gameObject.GetComponent<Text> ().color = 
 					new Color (0, 0, 0, 1);
 				TouchInfo info = AppUtil.GetTouch();
-				if (info == TouchInfo.Began) {
+				if (info == TouchInfo.Ended) {
                     clear_state = 4;
 				}
 			}
