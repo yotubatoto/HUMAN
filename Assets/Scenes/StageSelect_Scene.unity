@@ -269,12 +269,12 @@ Prefab:
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -62
+      value: -62.00009
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
@@ -304,17 +304,17 @@ Prefab:
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -62
+      value: -62.00009
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
@@ -363,6 +363,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1521321153762686, guid: c7c5191f5ee09446f8ddb7fe549a0bd6, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.441244
+      objectReference: {fileID: 0}
+    - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.441244
+      objectReference: {fileID: 0}
+    - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.441244
+      objectReference: {fileID: 0}
+    - target: {fileID: 114656986111544448, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
+        type: 2}
+      propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -651,6 +671,31 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224689001080780198, guid: 6fae11e4bc42940fc9b0a21facf281ac,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224616861176298222, guid: 6fae11e4bc42940fc9b0a21facf281ac,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847210820762278, guid: 6fae11e4bc42940fc9b0a21facf281ac,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224192570680547374, guid: 6fae11e4bc42940fc9b0a21facf281ac,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224855691839655106, guid: 6fae11e4bc42940fc9b0a21facf281ac,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6fae11e4bc42940fc9b0a21facf281ac, type: 2}
@@ -1228,8 +1273,8 @@ RectTransform:
   - {fileID: 1097728880}
   - {fileID: 1617410322}
   - {fileID: 539511514}
-  - {fileID: 1054510001}
   - {fileID: 1179580728}
+  - {fileID: 1054510001}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2401,7 +2446,7 @@ RectTransform:
   m_Children:
   - {fileID: 1286453273}
   m_Father: {fileID: 786348060}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3211,6 +3256,7 @@ MonoBehaviour:
   title: {fileID: 0}
   a: {fileID: 0}
   tap_speed: 0
+  title_count: 0
 --- !u!82 &1756493054
 AudioSource:
   m_ObjectHideFlags: 0

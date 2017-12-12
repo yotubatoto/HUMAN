@@ -708,6 +708,7 @@ public class MainCameraScr : MonoBehaviour
                         main_move_state = 0;
                     }
                     main_move_state = 0;
+                    
                 }
                
             }

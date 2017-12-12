@@ -26,6 +26,7 @@ public class TitleManager : MonoBehaviour
 	private Image tap;
 	private int state = 0;
     public float tap_speed;
+    public float title_count = 0.0f;
 	/* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
@@ -52,47 +53,59 @@ public class TitleManager : MonoBehaviour
 	*/
 	void Update()
 	{
+        //実機の場合のみ○○秒連打防止
+#if !UNITY_EDITOR
+        title_count += Time.deltaTime;
+        if (title_count < 1.0f)
+            return;
+#endif
         //マルチタッチ無効
         Input.multiTouchEnabled = false;
 
-		// エスケープキー取得
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			// アプリケーション終了
-			Application.Quit();
-			return;
-		}
-		// ----------------------
+        // エスケープキー取得
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // アプリケーション終了
+            Application.Quit();
+            return;
+        }
+        // ----------------------
         //タップトゥスタートの透明、不透明　値など
-		state = _Utility.Flashing(tap,tap_speed,state);
+        state = _Utility.Flashing(tap, tap_speed, state);
 
-		// ------------------------------
-		// シーン遷移
-		// ------------------------------
-		if (m_scene == 0) {
-			// マウスをクリックしたならば
-			if (Input.GetMouseButtonUp (0)) {
+        // ------------------------------
+        // シーン遷移
+        // ------------------------------
+        if (m_scene == 0)
+        {
+            // マウスをクリックしたならば
+            if (Input.GetMouseButtonUp(0))
+            {
+                    
+                // SE再生
+                if (m_se_source.isPlaying == false)
+                {
 
-				// SE再生
-				if (m_se_source.isPlaying == false) {
+                    m_se_source.clip = m_se_start;
+                    m_se_source.Play();
+                    m_se_source.loop = false;
+                }
+                GameObject.Find("GameMain").GetComponent<Now_Loading>().Load_NextScene_Des();
+                //GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().color 
+                //    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                //GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().sortingOrder = 10000;
+                now_loading.GetComponent<Image>().enabled = true;
+                // 次のシーンへ
+                m_scene = 1;
 
-					m_se_source.clip = m_se_start;
-					m_se_source.Play ();
-					m_se_source.loop = false;
-				}
-				GameObject.Find ("GameMain").GetComponent<Now_Loading> ().Load_NextScene_Des ();
-				//GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().color 
-				//    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-				//GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().sortingOrder = 10000;
-				now_loading.GetComponent<Image> ().enabled = true;
-				// 次のシーンへ
-				m_scene = 1;
-               
-			}
+            }
 
-		}
-		else if (m_scene == 1) 
-		{
-		}
-	}
+        }
+        else if (m_scene == 1)
+        {
+
+        }
+    }
+
+      
 }
