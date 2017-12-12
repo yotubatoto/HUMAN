@@ -84,7 +84,7 @@ public class Manager : MonoBehaviour
     public bool hit_flower = false;  //光の種とランタンが当たったを調べる
 
     //public GameObject turn;
-    private float trun_alfa = 1.0f;
+    public float trun_alfa = 1.0f;
     private int trun_state = 0;
     bool once_flag = false;
 
