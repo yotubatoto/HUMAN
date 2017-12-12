@@ -25,12 +25,14 @@ public class TitleManager : MonoBehaviour
 	private float al;
 	private Image tap;
 	private int state = 0;
+    public float tap_speed;
 	/* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
 	void Start()
 	{
-
+        //マルチタッチ無効
+        Input.multiTouchEnabled = false;
 		// パラメータ初期化
 		m_scene = 0;
 		m_past_scene = 0;
@@ -50,6 +52,9 @@ public class TitleManager : MonoBehaviour
 	*/
 	void Update()
 	{
+        //マルチタッチ無効
+        Input.multiTouchEnabled = false;
+
 		// エスケープキー取得
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -58,7 +63,8 @@ public class TitleManager : MonoBehaviour
 			return;
 		}
 		// ----------------------
-		state = _Utility.Flashing(tap,0.5f,state);
+        //タップトゥスタートの透明、不透明　値など
+		state = _Utility.Flashing(tap,tap_speed,state);
 
 		// ------------------------------
 		// シーン遷移

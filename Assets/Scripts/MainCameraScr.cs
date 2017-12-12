@@ -99,12 +99,16 @@ public class MainCameraScr : MonoBehaviour
     private float gamestart_al = 0.0f;
 	public Sprite change_sp;
 	private Sprite ini_sp;
+   
 
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
-    void Start () 
+    void Start ()
     {
+        //マルチタッチ無効
+        Input.multiTouchEnabled = false;
+        
         Time.timeScale = 1.0f;
 		//Application.targetFrameRate = 60;
         //カメラのスケール２５
@@ -123,7 +127,10 @@ public class MainCameraScr : MonoBehaviour
 	 * @毎フレーム更新
 	*/
 	void Update ()
-	{   //スタート時にホワイトから透明に
+	{
+
+       
+        //スタート時にホワイトから透明に
         if (main_move_state == -2)
         {
             //ゲーム開始時フェードを済ませてからターンとターンナンバーのアルファをいじる。
