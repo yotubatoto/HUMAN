@@ -24,10 +24,12 @@ public class StageSelectManager : MonoBehaviour
     private bool se_flag = false;
     Color color;
     public GameObject pop_obj;
+    public GameObject choice;
     TouchInfo info;
 	public Text[] left = new Text[3];
 	public Text[] right = new Text[3];
-    // Use this for initialization
+
+    
     void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -38,14 +40,19 @@ public class StageSelectManager : MonoBehaviour
     }
     void Start()
     {
+
         //PlayerPrefs.SetInt("1_1" + "star", 0);
         //変数「ClearStage」に「CLEARSTAGE」の値を代入しなおす
+        //マルチタッチ無効
+        Input.multiTouchEnabled = false;
 		Time.timeScale = 1.0f;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
 		// エスケープキー取得
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -60,6 +67,10 @@ public class StageSelectManager : MonoBehaviour
 		{
 			Execute ();
 		}
+
+		
+		
+
         if (pop_obj.gameObject.activeSelf == true)
         {
             Debug.Log(PlayerPrefs.GetInt("1_1star"));
@@ -335,7 +346,7 @@ public class StageSelectManager : MonoBehaviour
         }
     }
 
-    void Execute()
+   public void Execute()
     {
         if (onceFlag == false || time > 0.6f)
         {
@@ -358,7 +369,13 @@ public class StageSelectManager : MonoBehaviour
                 endPos = AppUtil.GetTouchWorldPosition(Camera.main);
 				if((int)startPos.x == (int)endPos.x)
 				{
-					TouchObjectFind("col",1);
+                    TouchObjectFind("col", 1);
+                    TouchObjectFind("vector_right", 1);
+                    TouchObjectFind("vector_right(1)", 1);
+                    TouchObjectFind("vector_left", 1);
+                    TouchObjectFind("vector_left(1)", 1);
+
+
 				}
                 else if (startPos.x > endPos.x)
                 {
@@ -392,7 +409,8 @@ public class StageSelectManager : MonoBehaviour
             if (!(((transform.position.x >= 0 && transform.position.x < move_speed) && flag == false)
                  || ((transform.position.x <= -move_speed*2) && flag == true)))
             {
-                transform.position = Vector3.Lerp(transform.position, pos, c += 0.01f);
+                //スワイプスピードカメラ
+                transform.position = Vector3.Lerp(transform.position, pos, c += 0.1f);
                 if (c > 1)
                 {
                     c = 1;
@@ -409,24 +427,37 @@ public class StageSelectManager : MonoBehaviour
         Collider2D collition2d = Physics2D.OverlapPoint(point);
 
         //Debug.Log(collition2d.gameObject.name);
-        if(collition2d != null)
-        {
-            if (collition2d.gameObject.name == name)
+        
+            if (collition2d != null)
             {
-                if (se_flag == false)
+                if (collition2d.gameObject.name == name)
                 {
-                    se_flag = true;
-                    GetComponent<Sound_Manager>().Decision_SE();
-                    if(name == "col")
+                    if (se_flag == false)
                     {
-                        if(pop_obj.gameObject.activeSelf == false)
+                        se_flag = true;
+                        GetComponent<Sound_Manager>().Decision_SE();
+                        if (name == "col")
                         {
-                            pop_obj.SetActive(true);
+                            if (pop_obj.gameObject.activeSelf == false)
+                            {
+                                pop_obj.SetActive(true);
+                            }
                         }
+
+                        if (name == "vector_right" || name == "vector_right(1)" || name == "vector_left" || name == "vector_left(1)")
+                        {
+                            Debug.Log("YFYyuf");
+                        }
+                        
                     }
+                    
+                    
+                    //Camera.main.GetComponent<Stage_Controller>().camera_move_state = move_state;
                 }
-                //Camera.main.GetComponent<Stage_Controller>().camera_move_state = move_state;
-            }
+        
+
+        
+            
         }
     }
 
@@ -439,6 +470,7 @@ public class StageSelectManager : MonoBehaviour
         //Debug.Log(collition2d.gameObject.name);
         if (collition2d != null)
         {
+
             if (collition2d.gameObject.name == "_1")
             {
                 Debug.Log(transform.position);
@@ -531,7 +563,9 @@ public class StageSelectManager : MonoBehaviour
 					//SceneManager.LoadScene("Stage_1_Scene");
 				}
               
+              
             }
         }
     }
+
 }

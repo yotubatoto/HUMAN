@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Description_Manager : MonoBehaviour {
 
 	// Use this for initialization
@@ -10,15 +11,18 @@ public class Description_Manager : MonoBehaviour {
 	public GameObject now_loading;
 	public Image left;
 	public Image right;
+    
 	int count = 0;
 	void Start () 
 	{
-		
+        //マルチタッチ無効
+        Input.multiTouchEnabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+       
 		// エスケープキー取得
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -89,6 +93,7 @@ public class Description_Manager : MonoBehaviour {
 //					left.enabled = true;
 //				}
 
+                
 				if (collition2d.gameObject.name == "Next")
 				{
 					GameObject.Find ("GameMain").GetComponent<Now_Loading> ().Load_NextScene_Title ();
