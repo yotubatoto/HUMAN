@@ -20,9 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4993165367648702}
   - component: {fileID: 212363384219497182}
+  - component: {fileID: 61197333622503534}
+  - component: {fileID: 114165384538132142}
   m_Layer: 0
   m_Name: block_green_new
-  m_TagString: Untagged
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,13 +35,59 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1051216449555676}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.386776, y: -15.860703, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -65.3, y: -6.6, z: -0.0390625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61197333622503534
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051216449555676}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.97, y: 2.97}
+    newSize: {x: 2.97, y: 2.97}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.97, y: 2.97}
+  m_EdgeRadius: 0
+--- !u!114 &114165384538132142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051216449555676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  - {fileID: 21300000, guid: a571d605ff4e8974591dd501bd0337da, type: 3}
+  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
+    type: 2}
+  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
+    type: 2}
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &212363384219497182
 SpriteRenderer:
   m_ObjectHideFlags: 1
