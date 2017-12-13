@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 
 
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 
 public class MainCameraScr : MonoBehaviour
@@ -73,7 +73,7 @@ public class MainCameraScr : MonoBehaviour
     //クリアランプのレベルはWall gimic Csのクリアカウントをいじる
 	public int right_count = 0;
         // ゲームスタート時　-1 //射出していないとき　0　タッチして触れているとき 1（ふれたまま　打ち出した後　2
-    public int main_move_state = -2;
+    public int main_move_state = -3;
     public int number_count = 0;
     // 性質変化の現在の状態 =>enableがfalseの場合0、青だと１、黄色だと２、赤だと３
     public int characteristic_change_state = 0;
@@ -100,6 +100,8 @@ public class MainCameraScr : MonoBehaviour
 	public Sprite change_sp;
 	private Sprite ini_sp;
 
+    public GameObject mission_obj;  //ゲームスタート前のミッション表示
+
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
@@ -123,22 +125,38 @@ public class MainCameraScr : MonoBehaviour
 	 * @毎フレーム更新
 	*/
 	void Update ()
-	{   //スタート時にホワイトから透明に
-        if (main_move_state == -2)
+	{
+        TouchInfo info_m = AppUtil.GetTouch();
+
+
+        //スタート時にホワイトから透明に
+        if (main_move_state == -3)
         {
             //ゲーム開始時フェードを済ませてからターンとターンナンバーのアルファをいじる。
             Color c = GameObject.Find("Fade").GetComponent<Image>().color;
             c.a -= 0.02f;
             if (c.a <= 0.0f)
             {
-                main_move_state = -1;
+                main_move_state = -2;
                 c.a = 0;
             }
             GameObject.Find("Fade").GetComponent<Image>().color = c;
-            
         }
+        
+
+        else if (main_move_state == -2)
+        {
+            mission_obj.SetActive(true);
+            if (info_m == TouchInfo.Ended)
+            {
+            main_move_state = -1;                mission_obj.SetActive(false);
+            }
+
+        }
+
+
         //ゲームスタート画像を徐々に遷移
-        if (main_move_state == -1)
+       else if (main_move_state == -1)
         {
             if(gamestart_al_flag == false)
             {
@@ -158,10 +176,12 @@ public class MainCameraScr : MonoBehaviour
                     main_move_state = 0;
                 }
             }
+
+           
             GameObject.Find("GameStart").GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, gamestart_al);
         }
 
-        if (main_move_state == 0)
+       if (main_move_state == 0)
         {
 
            
@@ -180,9 +200,9 @@ public class MainCameraScr : MonoBehaviour
           //  }
 				
         }
-     
 
-//        Debug.Log(GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
+
+        Debug.Log("ベロシティマグに"+GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
         small = GameObject.FindGameObjectsWithTag("Small_Block");
         
         //Debug.Log("main_move_state: " + main_move_state);
@@ -296,6 +316,7 @@ public class MainCameraScr : MonoBehaviour
                 {
                     end_flag = false;
                     main_move_state = 1;
+
                     //if (began_flag == false)
                     //{
                     //    info = TouchInfo.Began;
@@ -422,7 +443,8 @@ public class MainCameraScr : MonoBehaviour
             {
 
                 if (info == TouchInfo.Moved)
-                {			
+                {
+
                     //if (began_flag == false)
                     //{
                     //    info = TouchInfo.Began;
@@ -433,10 +455,12 @@ public class MainCameraScr : MonoBehaviour
 //                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
 					sub = movePos - startPos;
+                    Debug.Log("サブ" + sub.magnitude);
+
                     //Debug.Log(temp);
-					// ここでdumpをやっている
-					Debug.Log(startPos);
-					float radius = Vector2.Distance(startPos,movePos);
+                    // ここでdumpをやっている
+                    //Debug.Log(startPos);
+                    float radius = Vector2.Distance(startPos,movePos);
 					if (radius > MAX_DISTANCE) {
 						float radian = CalcRadian (
 							startPos, 
@@ -538,6 +562,7 @@ public class MainCameraScr : MonoBehaviour
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(0.0f, 0.0f, 0.0f, 1.0f);
                     }
+
                 }
                 if (info == TouchInfo.Ended)
                 {
@@ -549,7 +574,11 @@ public class MainCameraScr : MonoBehaviour
                     end_time = 0.0f;
                     bonus_color_red = 0.0f;
                     bonus_color_yellow = 0.0f;
-                   
+
+                    anime.GetComponent<Animator>().speed = 1.0f;
+                    GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
+                        = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+
                     //速度が３まで低下したら次のWAVEにいく
                     if (sub.magnitude > 3.0f)
                     {                       
