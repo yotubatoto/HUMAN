@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Description_Manager : MonoBehaviour {
 
 	// Use this for initialization
@@ -10,15 +11,19 @@ public class Description_Manager : MonoBehaviour {
 	public GameObject now_loading;
 	public Image left;
 	public Image right;
+    private bool transition = false;
+    
 	int count = 0;
 	void Start () 
 	{
-		
+        //マルチタッチ無効
+        Input.multiTouchEnabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+       
 		// エスケープキー取得
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -89,11 +94,16 @@ public class Description_Manager : MonoBehaviour {
 //					left.enabled = true;
 //				}
 
-				if (collition2d.gameObject.name == "Next")
-				{
-					GameObject.Find ("GameMain").GetComponent<Now_Loading> ().Load_NextScene_Title ();
-					now_loading.GetComponent<Image> ().enabled = true;
-					GetComponent<Sound_Manager> ().Resin_SE();
+                //ステセレ呼び出しかつ、連打防止
+				if (collition2d.gameObject.name == "Next"　&& transition == false)
+                {
+                        GameObject.Find("GameMain").GetComponent<Now_Loading>().Load_NextScene_Title();
+                        now_loading.GetComponent<Image>().enabled = true;
+                        GetComponent<Sound_Manager>().Resin_SE();
+                        GameObject.Find("Right").GetComponent<BoxCollider2D>().enabled = false;                    
+                        GameObject.Find("Left").GetComponent<BoxCollider2D>().enabled = false;                    
+                        transition = true;
+					
 				}
 			}
 		}

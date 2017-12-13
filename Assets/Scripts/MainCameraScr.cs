@@ -99,14 +99,18 @@ public class MainCameraScr : MonoBehaviour
     private float gamestart_al = 0.0f;
 	public Sprite change_sp;
 	private Sprite ini_sp;
+   
 
     public GameObject mission_obj;  //ゲームスタート前のミッション表示
 
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
-    void Start () 
+    void Start ()
     {
+        //マルチタッチ無効
+        Input.multiTouchEnabled = false;
+        
         Time.timeScale = 1.0f;
 		//Application.targetFrameRate = 60;
         //カメラのスケール２５
@@ -730,6 +734,7 @@ public class MainCameraScr : MonoBehaviour
                         main_move_state = 0;
                     }
                     main_move_state = 0;
+                    
                 }
                
             }
