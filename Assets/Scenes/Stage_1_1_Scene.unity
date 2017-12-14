@@ -642,6 +642,23 @@ Prefab:
       propertyPath: item_text
       value: 
       objectReference: {fileID: 92264604}
+    - target: {fileID: 1082513429720518, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212855505636676446, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117121372341736, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117121372341736, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
   m_IsPrefabParent: 0
@@ -858,6 +875,8 @@ MonoBehaviour:
   game_filter: {fileID: 0}
   change_sp: {fileID: 21300000, guid: 9840abed72ce9ee4c865ebacaaa66123, type: 3}
   mission_obj: {fileID: 2042917890}
+  hold: {x: 3.4028235e+38, y: 3.4028235e+38}
+  touch_time: 0
 --- !u!114 &513097386
 MonoBehaviour:
   m_ObjectHideFlags: 0
