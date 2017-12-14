@@ -106,8 +106,8 @@ public class Mission_Manager : MonoBehaviour {
 				clear_pop.SetActive (true);
                 GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
 
-                GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
-					(Camera.main.GetComponent<Manager> ().shot_state - 1).ToString ();
+     //           GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
+					//(Camera.main.GetComponent<Manager> ().shot_state - 1).ToString ();        //この処理をManagerように変えて入れる
                 if(clear_once_flag == false)
                 {
                     clear_once_flag = true;
@@ -222,7 +222,7 @@ public class Mission_Manager : MonoBehaviour {
 
 	bool Mission_2(int n)
 	{
-		int temp =Camera.main.GetComponent<Manager> ().shot_state -1;
+		int temp =Camera.main.GetComponent<Manager> ().shot_state - 1;   
 		if(temp <= n)
 		{
 			return true;
