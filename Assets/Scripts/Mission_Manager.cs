@@ -36,6 +36,7 @@ public class Mission_Manager : MonoBehaviour {
 	public int LIMIT_TURN = 10;
 	public GameObject turn_limit;
 	public int CLEAR_LAMP_LEVEL = 1;
+    public GameObject Result_obj;
     // Use this for initialization
     void Start () 
     {
@@ -83,9 +84,10 @@ public class Mission_Manager : MonoBehaviour {
 //				clear_text.enabled = true;
 				Color c = clear_text.color;
 				c.a += 0.01f;
-				if (c.a >= 1.0f) {
+                GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+                if (c.a >= 1.0f) {
 					c.a = 1.0f;
-					clear_state = 1;
+                    clear_state = 1;
 				}
 				clear_text.color = c;
 			}
@@ -102,8 +104,9 @@ public class Mission_Manager : MonoBehaviour {
             {
 				clear_text.color = new Color(1,1,1,0);
 				clear_pop.SetActive (true);
-			
-				GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
+                GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+
+                GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
 					(Camera.main.GetComponent<Manager> ().shot_state - 1).ToString ();
                 if(clear_once_flag == false)
                 {
@@ -150,25 +153,39 @@ public class Mission_Manager : MonoBehaviour {
 				GameObject.Find ("Touch").gameObject.GetComponent<Text> ().color = 
 					new Color (0, 0, 0, 1);
 				TouchInfo info = AppUtil.GetTouch();
-				if (info == TouchInfo.Began) {
+				if (info == TouchInfo.Ended) {
                     clear_state = 4;
 				}
 			}
             if (clear_state == 4)
             {
-                Color c = fade.color;
-                c.a += 0.02f;
-                if(c.a > 1.0f)
-                {
-                    c.a = 1.0f;
+                //Color c = fade.color;
+                //c.a += 0.02f;
+                //if(c.a > 1.0f)
+                //{
+                //    c.a = 1.0f;
 
-                    if (PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER) == 0)
-                    {
-                        PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER, 1);
-                    }
-                    SceneManager.LoadScene("StageSelect_Scene");
-                }
-                fade.color = c;
+                //    if (PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER) == 0)
+                //    {
+                //        PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER, 1);
+                //    }
+                //    SceneManager.LoadScene("StageSelect_Scene");
+                //}
+                //fade.color = c;
+                //TouchInfo info = AppUtil.GetTouch();
+
+                Debug.Log("yeeeh");
+                clear_pop.SetActive(false);
+
+                Result_obj.gameObject.SetActive(true);
+            }
+        }
+
+        if(Result_obj.gameObject.activeSelf == true)
+        {
+            if (_info == TouchInfo.Ended)
+            {
+                TouchObjectCheck();
             }
         }
 			
@@ -269,6 +286,33 @@ public class Mission_Manager : MonoBehaviour {
                 {
                     SceneManager.LoadScene("StageSelect_Scene");
                 }
+            }
+        }
+
+    }
+
+    void TouchObjectCheck()
+    {
+        Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+
+
+        if (collition2d != null)
+        {
+            Debug.Log(collition2d.gameObject.name);
+            if (collition2d.gameObject.name == "Retry_result")
+            {
+                Debug.Log(StageSelectManager.ST_OWNER_NUMBER);
+                //if (gameOver_obj.gameObject.activeSelf)
+                //{
+                    SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                //}
+            }
+            if (collition2d.gameObject.name == "Stage_Select_result")
+            {
+                //if (gameOver_obj.gameObject.activeSelf)
+                //{
+                    SceneManager.LoadScene("StageSelect_Scene");
+                //}
             }
         }
 
