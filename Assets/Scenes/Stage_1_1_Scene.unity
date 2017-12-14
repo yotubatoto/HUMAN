@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -607,11 +607,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4680471053858716, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -33.7
+      value: -28.09
       objectReference: {fileID: 0}
     - target: {fileID: 4680471053858716, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -17.67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680471053858716, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -759,6 +759,7 @@ MonoBehaviour:
   wave_flag: 0
   move_flag: 0
   hit_flower: 0
+  trun_alfa: 1
 --- !u!124 &513097381
 Behaviour:
   m_ObjectHideFlags: 0
@@ -849,7 +850,7 @@ MonoBehaviour:
   semitransparentPrefab: {fileID: 1236668700919286, guid: 6631d009f627bbb4c9d6ca97e1f797bb,
     type: 2}
   force_velocity: 200
-  nature_change_yellow: 100
+  nature_change_yellow: 103
   nature_change_blue: 30
   player_anime_difference: {fileID: 0}
   now_loading: {fileID: 0}
@@ -870,7 +871,7 @@ MonoBehaviour:
   number_count: 0
   characteristic_change_state: 0
   finger_circle: {fileID: 1498265722}
-  MAX_DISTANCE: 25
+  MAX_DISTANCE: 20
   CHANGE_COLOR_DELAY_COUNT: 0.5
   game_filter: {fileID: 0}
   change_sp: {fileID: 21300000, guid: 9840abed72ce9ee4c865ebacaaa66123, type: 3}
@@ -2434,6 +2435,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1826057064567740, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
   m_IsPrefabParent: 0
@@ -3535,7 +3540,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4276640474776470, guid: a28c490f6fab87a40af04b551a363f79, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.2582078
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4276640474776470, guid: a28c490f6fab87a40af04b551a363f79, type: 2}
       propertyPath: m_LocalPosition.z
