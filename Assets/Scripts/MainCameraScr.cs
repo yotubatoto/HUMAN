@@ -329,11 +329,11 @@ public class MainCameraScr : MonoBehaviour
                     //_time = 0.0f;
                     startPos = AppUtil.GetTouchWorldPosition(Camera.main);
                     circle.transform.position = (Vector2)AppUtil.GetTouchWorldPosition(Camera.main);
-                    circle.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+                    circle.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
                     finger_circle.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0, 0, 1);
                     finger_circle.gameObject.transform.position = AppUtil.GetTouchWorldPosition(Camera.main);
                     //						startPos.y, 0);
-                    anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    anime.gameObject.GetComponent<SpriteRenderer>().enabled = false; ;
                     GameObject.Find("arrow").GetComponent<SpriteRenderer>().enabled = true;
 
 
@@ -400,6 +400,7 @@ public class MainCameraScr : MonoBehaviour
                         big_one.a = 1.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color = big_one;
                         transition_flag = true;
+                       
                     }
 
                     end_flag = false;
@@ -558,6 +559,8 @@ public class MainCameraScr : MonoBehaviour
 
                 if (info == TouchInfo.Moved)
                 {
+                    
+                    circle.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
 
                     //if (began_flag == false)
                     //{
@@ -816,7 +819,7 @@ public class MainCameraScr : MonoBehaviour
                             if (temp > 19.5f - 3.83333f)
                             {
                                 GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
-                                 ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.017f/** Time.deltaTime;*/;
+                                 ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.018f/** Time.deltaTime;*/;
                             }
                                
                            
@@ -828,7 +831,7 @@ public class MainCameraScr : MonoBehaviour
                          else 
                             {
                                 GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
-                                ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.015f/** Time.deltaTime;*/;
+                                ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.022f/** Time.deltaTime;*/;
                             }
 
 
