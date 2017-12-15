@@ -741,7 +741,7 @@ public class MainCameraScr : MonoBehaviour
                     touch_time = Time.time - touch_time;
                     Debug.Log(touch_time);
 
-                    if(touch_time < 0.5f)
+                    if(touch_time < 0.3f)
                     {
                         //number_count += 1;
                         end_flag = true;
