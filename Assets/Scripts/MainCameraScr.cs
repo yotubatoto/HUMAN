@@ -105,6 +105,20 @@ public class MainCameraScr : MonoBehaviour
 	public Sprite change_sp;
 	private Sprite ini_sp;
     //遷移フラグ押しっぱなし防止
+
+    //操作説明のオブジェ
+    public GameObject manual_0;
+    public GameObject manual_1;
+    public GameObject manual_2;
+    public GameObject manual_3;
+    public GameObject manual_4;
+    public GameObject manual_5;
+    public GameObject manual_6;
+    public GameObject manual_7;
+    public GameObject manual_8;
+    public GameObject manual_9;
+
+
     private bool transition_flag = false;
 
     void Awake()
@@ -130,7 +144,8 @@ public class MainCameraScr : MonoBehaviour
         mainCamera.orthographicSize = deviceSize * deviceScale;
 
     }
-    public GameObject mission_obj;  //ゲームスタート前のミッション表示
+    public GameObject mission_obj;
+    //ゲームスタート前のミッション表示
     public Vector2 hold = new Vector2(float.MaxValue, float.MaxValue);   //矢印がプレイヤーの座標から動かないようにする
     public float touch_time = 0.0f;
     //public float check_time = 0.0f;
@@ -188,11 +203,13 @@ public class MainCameraScr : MonoBehaviour
 
         else if (main_move_state == -2)
         {
-            mission_obj.SetActive(true);
+            //mission_obj.SetActive(true);
+            manual_0.SetActive(true);
             if (info_m == TouchInfo.Ended)
             {
                 main_move_state = -1;
-                mission_obj.SetActive(false);
+                manual_0.SetActive(false);
+                //mission_obj.SetActive(false);
             }
 
         }
