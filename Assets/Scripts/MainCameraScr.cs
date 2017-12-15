@@ -107,16 +107,8 @@ public class MainCameraScr : MonoBehaviour
     //遷移フラグ押しっぱなし防止
 
     //操作説明のオブジェ
-    public GameObject manual_0;
-    public GameObject manual_1;
-    public GameObject manual_2;
-    public GameObject manual_3;
-    public GameObject manual_4;
-    public GameObject manual_5;
-    public GameObject manual_6;
-    public GameObject manual_7;
-    public GameObject manual_8;
-    public GameObject manual_9;
+    public GameObject[] manual = new GameObject[10];
+
 
 
     private bool transition_flag = false;
@@ -149,6 +141,7 @@ public class MainCameraScr : MonoBehaviour
     public Vector2 hold = new Vector2(float.MaxValue, float.MaxValue);   //矢印がプレイヤーの座標から動かないようにする
     public float touch_time = 0.0f;
     //public float check_time = 0.0f;
+    private string st_owner = null;
 
 
     /* --------------------------------------------------
@@ -156,6 +149,10 @@ public class MainCameraScr : MonoBehaviour
 	*/
     void Start ()
     {
+        //string a = "よろしく";
+        if(StageSelectManager.ST_OWNER_NUMBER != null)
+            st_owner = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
+        //Debug.Log(b);
         //マルチタッチ無効
         Input.multiTouchEnabled = false;
         
@@ -203,13 +200,44 @@ public class MainCameraScr : MonoBehaviour
 
         else if (main_move_state == -2)
         {
-            //mission_obj.SetActive(true);
-            manual_0.SetActive(true);
+            int temp = 0;
+            if(st_owner != null)
+            {
+                if (st_owner == "1")
+                {
+                    //チュートリアル画像を表示する
+                    for (int i = 1; i <= 10; i++)
+                    {
+                        if (StageSelectManager.ST_OWNER_NUMBER == ("1_" + i.ToString()))
+                        {
+                            manual[i - 1].SetActive(true);
+                            temp = i;
+                        }
+                    }
+                }
+                else
+                {
+                    mission_obj.SetActive(true);
+                }
+            }
+            else
+            {
+                mission_obj.SetActive(true);
+            }
+            //manual_0.SetActive(true);
             if (info_m == TouchInfo.Ended)
             {
+                
                 main_move_state = -1;
-                manual_0.SetActive(false);
-                //mission_obj.SetActive(false);
+                //manual_0.SetActive(false);
+                if(st_owner != null && st_owner == "1")
+                {
+                    manual[temp - 1].SetActive(false);
+                }
+                else
+                {
+                    mission_obj.SetActive(false);
+                }
             }
 
         }

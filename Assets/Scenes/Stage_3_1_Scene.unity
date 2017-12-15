@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3820,8 +3820,7 @@ Prefab:
 RectTransform:
   m_PrefabParentObject: {fileID: 224218256661634654, guid: 7e6ef5b2858a94f2fa9918f1745cc9af,
     type: 2}
-  m_PrefabInternal: {fileID: 1582448662}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_PrefabInternal: {fileID: 196794396}
 --- !u!1001 &248276373
 Prefab:
   m_ObjectHideFlags: 0
@@ -3977,7 +3976,7 @@ Prefab:
     - target: {fileID: 224042577130226386, guid: 4b3229c6c743446c4966f519370fc904,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 224042577130226386, guid: 4b3229c6c743446c4966f519370fc904,
         type: 2}
@@ -4367,8 +4366,8 @@ MonoBehaviour:
   result_text: {fileID: 0}
   filterWhite: {fileID: 0}
   goal: {fileID: 0}
-  wave: {fileID: 1389676069}
-  shot: {fileID: 221545648}
+  wave: {fileID: 1814904852}
+  shot: {fileID: 1622262465}
   score: {fileID: 1076576386}
   speed: 1
   shot_state: 0
@@ -4492,6 +4491,17 @@ MonoBehaviour:
   CHANGE_COLOR_DELAY_COUNT: 0.5
   game_filter: {fileID: 0}
   change_sp: {fileID: 21300000, guid: 9840abed72ce9ee4c865ebacaaa66123, type: 3}
+  manual:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   mission_obj: {fileID: 1083240467}
   hold: {x: 3.4028235e+38, y: 3.4028235e+38}
   touch_time: 0
@@ -4542,7 +4552,7 @@ MonoBehaviour:
   - {fileID: 1635891344}
   - {fileID: 1635891343}
   LIMIT_TURN: 10
-  turn_limit: {fileID: 1111315952976478, guid: d4ff2aef3be3ba44696e9e76093c44a1, type: 2}
+  turn_limit: {fileID: 1712993147}
   CLEAR_LAMP_LEVEL: 1
   Result_obj: {fileID: 248276375}
 --- !u!82 &513097389
@@ -4873,7 +4883,7 @@ RectTransform:
   - {fileID: 1261079041}
   - {fileID: 1196537256}
   - {fileID: 1635891342}
-  - {fileID: 267801040}
+  - {fileID: 196794397}
   - {fileID: 1536279193}
   - {fileID: 1231299946}
   - {fileID: 503366530}
@@ -4882,8 +4892,9 @@ RectTransform:
   - {fileID: 592981472}
   - {fileID: 248276374}
   - {fileID: 1083240468}
-  - {fileID: 1288374984}
+  - {fileID: 1582448663}
   - {fileID: 2010660967}
+  - {fileID: 267801040}
   m_Father: {fileID: 1688146}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6781,12 +6792,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224785613849098440, guid: 54971dce59e5dff4b880113c4d37b848,
     type: 2}
   m_PrefabInternal: {fileID: 1500573019}
---- !u!114 &1389676069 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114252112139230258, guid: b2701509b8761234699c064b76ed38fc,
-    type: 2}
-  m_PrefabInternal: {fileID: 521213601}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1426230765
 Prefab:
   m_ObjectHideFlags: 0
@@ -7468,6 +7473,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6b41622a1c81664c9e612d475a161b9, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &1582448663 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224515394636205610, guid: f6b41622a1c81664c9e612d475a161b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1582448662}
 --- !u!1001 &1592104372
 Prefab:
   m_ObjectHideFlags: 0
@@ -7514,6 +7524,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df21435018601864183870030abd8c1c, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1622262465 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114150163182330778, guid: f6b41622a1c81664c9e612d475a161b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1582448662}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1635891341
 Prefab:
   m_ObjectHideFlags: 0
@@ -7875,6 +7891,17 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 840398729}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1 &1712993147 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1923101445415706, guid: f6b41622a1c81664c9e612d475a161b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1582448662}
+--- !u!114 &1814904852 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114252112139230258, guid: b2701509b8761234699c064b76ed38fc,
+    type: 2}
+  m_PrefabInternal: {fileID: 521213601}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1834320532
 GameObject:
   m_ObjectHideFlags: 0
