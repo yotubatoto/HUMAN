@@ -87,7 +87,8 @@ public class StageSelectManager : MonoBehaviour
         info = AppUtil.GetTouch();
         Debug.Log(transform.position);
 		if (now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f)
-		{
+        {
+            //Debug.Log("aaaaa");
 			Execute ();
 		}
 
@@ -96,7 +97,7 @@ public class StageSelectManager : MonoBehaviour
 
         if (pop_obj.gameObject.activeSelf == true)
         {
-            Debug.Log(PlayerPrefs.GetInt("1_1star"));
+            //Debug.Log(PlayerPrefs.GetInt("1_1star"));
 
 			if((int)transform.position.x <= -35.0f)
 			{
