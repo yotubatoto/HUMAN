@@ -19,40 +19,21 @@ public class TitleManager : MonoBehaviour
 	private int m_cnt;
 	Color m_color;
 	public GameObject filterWhite;
+    public GameObject nou_load_back;
     public GameObject now_loading;
     public GameObject title;
     public Text a;
 	private float al;
 	private Image tap;
+    private Image now_load;
 	private int state = 0;
+    private int now_load_state = 0;
     public float tap_speed;
     public float title_count = 0.0f;
 	/* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
-    void Awake()
-    {
-        // 開発している画面を元に縦横比取得 (縦画面) iPhone6, 6sサイズ
-        //float developAspect = 750.0f / 1334.0f;
-        // 横画面で開発している場合は以下の用に切り替えます
-        float developAspect = 1334.0f / 750.0f;
-
-        // 実機のサイズを取得して、縦横比取得
-        float deviceAspect = (float)Screen.width / (float)Screen.height;
-
-        // 実機と開発画面との対比
-        float scale = deviceAspect / developAspect;
-
-        Camera mainCamera = Camera.main;
-
-        // カメラに設定していたorthographicSizeを実機との対比でスケール
-        float deviceSize = mainCamera.orthographicSize;
-        // scaleの逆数
-        float deviceScale = 1.0f / scale;
-        // orthographicSizeを計算し直す
-        mainCamera.orthographicSize = deviceSize * deviceScale;
-
-    }
+   
 	void Start()
 	{
         //マルチタッチ無効
@@ -67,6 +48,7 @@ public class TitleManager : MonoBehaviour
 		al = 0;
 		// 
 		tap = GameObject.Find("Tap").gameObject.GetComponent<Image>();
+        now_load = GameObject.Find("Now_Loading").gameObject.GetComponent<Image>();
 	}
 
 
@@ -95,6 +77,7 @@ public class TitleManager : MonoBehaviour
         // ----------------------
         //タップトゥスタートの透明、不透明　値など
         state = _Utility.Flashing(tap, tap_speed, state);
+        now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
 
         // ------------------------------
         // シーン遷移
@@ -118,6 +101,9 @@ public class TitleManager : MonoBehaviour
                 //    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 //GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().sortingOrder = 10000;
                 now_loading.GetComponent<Image>().enabled = true;
+                nou_load_back.GetComponent<Image>().enabled = true;
+
+
                 // 次のシーンへ
                 m_scene = 1;
 

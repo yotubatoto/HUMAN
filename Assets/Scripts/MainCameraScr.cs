@@ -203,13 +203,13 @@ public class MainCameraScr : MonoBehaviour
 
         else if (main_move_state == -2)
         {
-            //mission_obj.SetActive(true);
-            manual_0.SetActive(true);
+            mission_obj.SetActive(true);
+            //manual_0.SetActive(true);
             if (info_m == TouchInfo.Ended)
             {
                 main_move_state = -1;
-                manual_0.SetActive(false);
-                //mission_obj.SetActive(false);
+                //manual_0.SetActive(false);
+                mission_obj.SetActive(false);
             }
 
         }
@@ -347,7 +347,7 @@ public class MainCameraScr : MonoBehaviour
                     startPos = AppUtil.GetTouchWorldPosition(Camera.main);
                     circle.transform.position = (Vector2)AppUtil.GetTouchWorldPosition(Camera.main);
                     circle.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-                    finger_circle.GetComponent<SpriteRenderer>().color = new Color(1.0f, 0, 0, 1);
+                    finger_circle.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1, 1, 1);
                     finger_circle.gameObject.transform.position = AppUtil.GetTouchWorldPosition(Camera.main);
                     //						startPos.y, 0);
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = false; ;
@@ -389,8 +389,8 @@ public class MainCameraScr : MonoBehaviour
                     //_time = 0.0f;
                     startPos = AppUtil.GetTouchWorldPosition(Camera.main);
 					circle.transform.position = (Vector2)AppUtil.GetTouchWorldPosition (Camera.main);
-					circle.GetComponent<SpriteRenderer>().color = new Color(0,1,0,1);
-					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,0,0,1);
+					circle.GetComponent<SpriteRenderer>().color = new Color(0,0,0,1);
+					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,1,1,1);
 					finger_circle.gameObject.transform.position = AppUtil.GetTouchWorldPosition(Camera.main);
 //						startPos.y, 0);
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -577,7 +577,7 @@ public class MainCameraScr : MonoBehaviour
                 if (info == TouchInfo.Moved)
                 {
                     
-                    circle.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 1);
+                    circle.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
                     //if (began_flag == false)
                     //{
@@ -751,7 +751,7 @@ public class MainCameraScr : MonoBehaviour
 
                     //}
 
-                    finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,0,0,0);
+                    finger_circle.GetComponent<SpriteRenderer> ().color = new Color(0.0f,0,0,0);
 					circle.GetComponent<SpriteRenderer> ().color = new Color(0.0f,0,0,0);
                     //デバッグログ　射出時のパワーを測る
                     //bonus_color_red = 0;

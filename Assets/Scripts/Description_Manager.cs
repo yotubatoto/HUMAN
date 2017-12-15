@@ -11,7 +11,10 @@ public class Description_Manager : MonoBehaviour {
 	public GameObject now_loading;
 	public Image left;
 	public Image right;
+    public Image now_load;
+    public GameObject now_load_back;
     private bool transition = false;
+    private int now_load_state = 0;
     
 	int count = 0;
 	void Start () 
@@ -23,6 +26,7 @@ public class Description_Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+        now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
        
 		// エスケープキー取得
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -99,6 +103,7 @@ public class Description_Manager : MonoBehaviour {
                 {
                         GameObject.Find("GameMain").GetComponent<Now_Loading>().Load_NextScene_Title();
                         now_loading.GetComponent<Image>().enabled = true;
+                        now_load_back.GetComponent<Image>().enabled = true;
                         GetComponent<Sound_Manager>().Resin_SE();
                         GameObject.Find("Right").GetComponent<BoxCollider2D>().enabled = false;                    
                         GameObject.Find("Left").GetComponent<BoxCollider2D>().enabled = false;                    

@@ -37,9 +37,30 @@ public class Mission_Manager : MonoBehaviour {
 	public GameObject turn_limit;
 	public int CLEAR_LAMP_LEVEL = 1;
     public GameObject Result_obj;
+    public GameObject goal_trun;
     // Use this for initialization
     void Start () 
     {
+        //ヌルでないとき成立する
+
+        if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_1")
+        {
+            Debug.Log("iiiiiiiiiiiiiiiiii");
+            goal_trun.GetComponent<Text>().text = "10";
+        }
+        //goal_trun.GetComponent<Text>().text = "10";
+
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_2")
+        {
+            goal_trun.GetComponent<Text>().text = "8";
+        }
+
+        else if (StageSelectManager.ST_OWNER_NUMBER == null)
+        {
+            goal_trun.GetComponent<Text>().text = "1";
+        }
+        
+
 		mainSource = Camera.main.gameObject.GetComponent<MainCameraScr> ();
 		for(int i=0;i<3;i++)
 		{
@@ -119,7 +140,7 @@ public class Mission_Manager : MonoBehaviour {
                             clear_number += 1;
                         }
                     }
-					if (Mission_2(MAX_TURN))
+					if (Mission_2(int.Parse(goal_trun.GetComponent<Text>().text)))
                     {
 						star_obj [0].SetActive (true);
                         if (once_flag[1] == false)
