@@ -36,10 +36,10 @@ GameObject:
   - component: {fileID: 4304822193053908}
   - component: {fileID: 212567524511505870}
   - component: {fileID: 61480240465189134}
-  - component: {fileID: 114436511151701774}
+  - component: {fileID: 114803740111301196}
   m_Layer: 0
   m_Name: block_red
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354186996177838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.020657, y: 1.7178963, z: 0.10038018}
+  m_LocalPosition: {x: 20.4, y: 1.7, z: 0.10038018}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4904037959425976}
@@ -329,24 +329,6 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
---- !u!114 &114436511151701774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1354186996177838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  count: 0
-  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
-    type: 2}
-  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
-    type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
 --- !u!114 &114598581100096828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -365,6 +347,27 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+--- !u!114 &114803740111301196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354186996177838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
+  stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
+    type: 2}
+  dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
+    type: 2}
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &212291151425435136
 SpriteRenderer:
   m_ObjectHideFlags: 1

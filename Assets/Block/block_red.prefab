@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4276855604642766}
   - component: {fileID: 212437634834748002}
   - component: {fileID: 61539187490436462}
-  - component: {fileID: 114021790428256976}
+  - component: {fileID: 114671154466414254}
   m_Layer: 0
   m_Name: block_red
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.97, y: 2.97}
   m_EdgeRadius: 0
---- !u!114 &114021790428256976
+--- !u!114 &114671154466414254
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,15 +75,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1638664783355182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 190640, guid: b82a63d05f08a6c4ea1bcdbf7792ee80, type: 2}
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &212437634834748002
 SpriteRenderer:
   m_ObjectHideFlags: 1
