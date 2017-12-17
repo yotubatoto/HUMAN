@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1371,10 +1371,11 @@ MonoBehaviour:
   - {fileID: 1991818189}
   - {fileID: 969938009}
   - {fileID: 1938204982}
-  LIMIT_TURN: 5
+  LIMIT_TURN: 10
   turn_limit: {fileID: 173076767}
   CLEAR_LAMP_LEVEL: 1
   Result_obj: {fileID: 413696114}
+  goal_trun: {fileID: 1660559712621162, guid: b68eb2409c2a96345aee1fd8387183fa, type: 2}
 --- !u!82 &513097389
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3513,7 +3514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1180117739
 Transform:
   m_ObjectHideFlags: 0
@@ -4409,7 +4410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1604291590
 Transform:
   m_ObjectHideFlags: 0
@@ -4532,7 +4533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1671288100
 Transform:
   m_ObjectHideFlags: 0
@@ -6220,6 +6221,10 @@ Prefab:
     - target: {fileID: 4221278903863528, guid: a28c490f6fab87a40af04b551a363f79, type: 2}
       propertyPath: m_LocalPosition.x
       value: -52.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101375435120270, guid: a28c490f6fab87a40af04b551a363f79, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a28c490f6fab87a40af04b551a363f79, type: 2}

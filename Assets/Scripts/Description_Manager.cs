@@ -15,18 +15,30 @@ public class Description_Manager : MonoBehaviour {
     public GameObject now_load_back;
     private bool transition = false;
     private int now_load_state = 0;
+    private int choice_state_left = 0;
+    private int choice_state_right = 0;
+
+    
     
 	int count = 0;
 	void Start () 
 	{
         //マルチタッチ無効
         Input.multiTouchEnabled = false;
+        GameObject.Find("Left").GetComponent<Image>().enabled = false;
+        GameObject.Find("left_flare").GetComponent<Image>().enabled = false;
+
+        
+
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
         now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
+        choice_state_left = _Utility.Flashing(left, 1.5f, choice_state_left);
+        choice_state_right = _Utility.Flashing(right, 1.5f, choice_state_right);
+
        
 		// エスケープキー取得
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -50,6 +62,8 @@ public class Description_Manager : MonoBehaviour {
 					{
 						GetComponent<Sound_Manager> ().SE ();
 						count -= 1;
+                        GameObject.Find("right_flare").GetComponent<Image>().enabled = true;
+
 					}
 				}
 				if (right.enabled) 
@@ -58,6 +72,8 @@ public class Description_Manager : MonoBehaviour {
 					{
 						GetComponent<Sound_Manager> ().SE ();
 						count += 1;
+                        //GameObject.Find("Left").GetComponent<Image>().enabled = true;
+
 					}
 				}
 
@@ -69,6 +85,11 @@ public class Description_Manager : MonoBehaviour {
 //					ima [3].enabled = false;
 					right.enabled = true;
 					left.enabled = false;
+                    GameObject.Find("left_flare").GetComponent<Image>().enabled = false;
+                    GameObject.Find("right_flare").GetComponent<Image>().enabled = true;
+
+
+
 				}
 				if (count == 1) 
 				{
@@ -78,6 +99,10 @@ public class Description_Manager : MonoBehaviour {
 //					ima [3].enabled = false;
 					right.enabled = false;
 					left.enabled = true;
+                    GameObject.Find("left_flare").GetComponent<Image>().enabled = true;
+                    GameObject.Find("right_flare").GetComponent<Image>().enabled = false;
+
+
 				}
 //				if (count == 2) 
 //				{

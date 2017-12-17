@@ -25,32 +25,13 @@ public class StageSelectManager : MonoBehaviour
     Color color;
     public GameObject pop_obj;
     public GameObject choice;
+    public GameObject now_load_back;
+    private Image now_load;
+    private int now_load_state = 0; 
+
     TouchInfo info;
 	public Text[] left = new Text[10];
     public Text[] right = new Text[10];
-    void Awake_1()
-    {
-        // 開発している画面を元に縦横比取得 (縦画面) iPhone6, 6sサイズ
-        //float developAspect = 750.0f / 1334.0f;
-        // 横画面で開発している場合は以下の用に切り替えます
-        float developAspect = 1334.0f / 750.0f;
-
-        // 実機のサイズを取得して、縦横比取得
-        float deviceAspect = (float)Screen.width / (float)Screen.height;
-
-        // 実機と開発画面との対比
-        float scale = deviceAspect / developAspect;
-
-        Camera mainCamera = Camera.main;
-
-        // カメラに設定していたorthographicSizeを実機との対比でスケール
-        float deviceSize = mainCamera.orthographicSize;
-        // scaleの逆数
-        float deviceScale = 1.0f / scale;
-        // orthographicSizeを計算し直す
-        mainCamera.orthographicSize = deviceSize * deviceScale;
-
-    }
 
     
     void Awake()
@@ -86,10 +67,16 @@ public class StageSelectManager : MonoBehaviour
 		//GameObject.Find ("debug_text").gameObject.GetComponent<Text> ().text = ((int)transform.position.x).ToString ();
         info = AppUtil.GetTouch();
         Debug.Log(transform.position);
-		if (now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f)
+        if (now_loading.gameObject.GetComponent<Image>().enabled == false)
+        {
+            Execute();
+
+        }
+        //if (now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f)
         {
             //Debug.Log("aaaaa");
-			Execute ();
+            //Execute();
+
 		}
 
 		
@@ -761,6 +748,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     pos = transform.position;
                     pos.x -= move_speed;
+                   
                     flag = true;
                 }
                 else if (startPos.x < endPos.x)
@@ -846,6 +834,10 @@ public class StageSelectManager : MonoBehaviour
         //Debug.Log(collition2d.gameObject.name);
         if (collition2d != null)
         {
+            now_loading.GetComponent<Image>().enabled = true;
+            now_load = GameObject.Find("Now_Loading").GetComponent<Image>();
+            now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
+            now_load_back.GetComponent<Image>().enabled = true;
 
             if (collition2d.gameObject.name == "_1")
             {
@@ -857,6 +849,8 @@ public class StageSelectManager : MonoBehaviour
 					now_loading.GetComponent<Now_Loading>().LoadNextScene();
 					GameObject.Find("Now_Loading").GetComponent<Image>().color
 					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+
 					//SceneManager.LoadScene("Stage_1_Scene");
 				}
 				else if ((int)transform.position.x <= -20.0f)
@@ -866,6 +860,8 @@ public class StageSelectManager : MonoBehaviour
 					now_loading.GetComponent<Now_Loading>().LoadNextScene();
 					GameObject.Find("Now_Loading").GetComponent<Image>().color
 					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+
 					//SceneManager.LoadScene("Stage_1_Scene");
 				}
 				else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.0f)
@@ -875,6 +871,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
             }
@@ -887,6 +884,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
 				else if ((int)transform.position.x <= -20.0f)
@@ -896,6 +894,7 @@ public class StageSelectManager : MonoBehaviour
 					now_loading.GetComponent<Now_Loading>().LoadNextScene();
 					GameObject.Find("Now_Loading").GetComponent<Image>().color
 					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
 					//SceneManager.LoadScene("Stage_1_Scene");
 				}
 				else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
@@ -905,6 +904,7 @@ public class StageSelectManager : MonoBehaviour
 					now_loading.GetComponent<Now_Loading>().LoadNextScene();
 					GameObject.Find("Now_Loading").GetComponent<Image>().color
 					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                    
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
@@ -919,6 +919,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
 					now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
 					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
 					//SceneManager.LoadScene("Stage_1_Scene");
 				}
 				else if ((int)transform.position.x <= -20.0f)
@@ -928,6 +929,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
 				else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
@@ -937,6 +939,7 @@ public class StageSelectManager : MonoBehaviour
 					now_loading.GetComponent<Now_Loading>().LoadNextScene();
 					GameObject.Find("Now_Loading").GetComponent<Image>().color
 					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
@@ -953,6 +956,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                     = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                    
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
@@ -963,6 +967,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
             }
@@ -976,6 +981,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                     = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                    
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
@@ -986,6 +992,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
             }
@@ -999,6 +1006,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                     = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
@@ -1009,6 +1017,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
             }
@@ -1022,6 +1031,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                     = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
@@ -1032,6 +1042,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
             }
@@ -1045,6 +1056,7 @@ public class StageSelectManager : MonoBehaviour
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                     = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
                     
                     //SceneManager.LoadScene("Stage_1_Scene");
                 }
