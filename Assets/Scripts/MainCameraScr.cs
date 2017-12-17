@@ -166,6 +166,7 @@ public class MainCameraScr : MonoBehaviour
 
 		ini_sp = image.sprite;
 		GameObject.Find ("Fade").gameObject.GetComponent<Image> ().enabled = true;
+
 	}
 
 
@@ -416,6 +417,9 @@ public class MainCameraScr : MonoBehaviour
                     test_flag = false;
                     //_time = 0.0f;
                     startPos = AppUtil.GetTouchWorldPosition(Camera.main);
+                    circle.GetComponent<SpriteRenderer>().enabled = true;
+                    finger_circle.GetComponent<SpriteRenderer>().enabled = true;
+
 					circle.transform.position = (Vector2)AppUtil.GetTouchWorldPosition (Camera.main);
 					circle.GetComponent<SpriteRenderer>().color = new Color(0,0,0,1);
 					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,1,1,1);

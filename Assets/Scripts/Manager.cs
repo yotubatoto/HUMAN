@@ -110,7 +110,7 @@ public class Manager : MonoBehaviour
             if(Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             {
                 shot_state = (int)MAIN_STATE.SHOT_1;
-                GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "1";
+                //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "1";
                 GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -142,7 +142,7 @@ public class Manager : MonoBehaviour
                 if (Camera.main.GetComponent<MainCameraScr>().number_count >= 1)
                 {
                     shot_state = (int)MAIN_STATE.SHOT_2;
-                    GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "2";
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "2";
                     GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -209,7 +209,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_3;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "3";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "3";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -275,7 +275,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_4;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "4";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "4";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -342,7 +342,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_5;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "5";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "5";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -407,7 +407,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_6;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "6";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "6";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -473,7 +473,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_7;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "7";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "7";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -539,7 +539,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_8;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "8";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "8";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -605,7 +605,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_9;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "9";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "9";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -671,7 +671,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_10;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").gameObject.GetComponent<Text>().text = "10";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").gameObject.GetComponent<Text>().text = "10";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -738,7 +738,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_11;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "11";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "11";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -804,7 +804,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_12;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "12";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "12";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
 
@@ -870,7 +870,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_13;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "13";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "13";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
                         //if (hit_flower == true)
@@ -936,7 +936,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_14;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "14";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "14";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
                         //if (hit_flower == true)
@@ -1002,7 +1002,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_15;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "15";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "15";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
                         //if (hit_flower == true)
@@ -1067,7 +1067,7 @@ public class Manager : MonoBehaviour
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_16;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
                         //if (hit_flower == true)
