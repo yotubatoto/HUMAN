@@ -40,6 +40,9 @@ public class Mission_Manager : MonoBehaviour {
     public GameObject goal_trun;
     public GameObject clear_goal_turn;
     public string[] GOAL_TURN = new string[12];
+	public AudioClip gameover_bgm;
+	private bool bgm_once_flag = false;
+	private float volume_state = 0;
     // Use this for initialization
     void Start () 
     {
@@ -164,6 +167,31 @@ public class Mission_Manager : MonoBehaviour {
         }
         if(gameOver_obj.activeSelf)
         {
+			if (volume_state == 0) {
+				float v = GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().volume;
+				v -= 0.05f;
+				if (v <= 0) {
+					v = 0;
+					volume_state = 1;
+				}
+				GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().volume = v;
+			}
+			else if (volume_state == 1) 
+			{
+				float v = GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().volume;
+				v += 0.05f;
+				if (v >= 1) {
+					v = 1;
+				}
+				GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().volume = v;
+				if (bgm_once_flag == false) 
+				{
+					bgm_once_flag = true;
+					GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().clip = null;
+					GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().clip = gameover_bgm;
+					GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().Play ();
+				}
+			}
             Camera.main.GetComponent<MainCameraScr>().pause_freeze_flag = true;
             GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
         }

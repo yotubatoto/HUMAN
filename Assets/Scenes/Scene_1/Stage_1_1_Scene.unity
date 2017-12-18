@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1041,6 +1041,7 @@ MonoBehaviour:
   - 15
   - 15
   - 15
+  gameover_bgm: {fileID: 8300000, guid: 20dae5ad4d92219468bf7ad490f6e150, type: 3}
 --- !u!82 &513097389
 AudioSource:
   m_ObjectHideFlags: 0
