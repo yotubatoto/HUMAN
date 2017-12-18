@@ -5288,7 +5288,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1001 &1641750414
 Prefab:
@@ -6271,6 +6271,12 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -27.359985
       objectReference: {fileID: 0}
+    - target: {fileID: 114258209387558654, guid: f6b41622a1c81664c9e612d475a161b9,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: cd4f217e286a5bc42bd63afa2170bd6d,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6b41622a1c81664c9e612d475a161b9, type: 2}
   m_IsPrefabParent: 0
