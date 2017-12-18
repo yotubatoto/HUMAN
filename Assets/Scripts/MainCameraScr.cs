@@ -945,6 +945,10 @@ public class MainCameraScr : MonoBehaviour
                       
 
                         //player.GetComponent<Rigidbody2D>().velocity = new Vector2(100.0f, 0.0f);
+
+                     
+
+
                     }
                     GameObject[] aa = GameObject.FindGameObjectsWithTag("semi");
                     if (GameObject.FindGameObjectsWithTag("semi") != null)
@@ -971,6 +975,14 @@ public class MainCameraScr : MonoBehaviour
             {
                 if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= attenuation_speed)
                 {
+
+                    //光の種　体力減少
+                    GameObject[] seed;
+                    seed = GameObject.FindGameObjectsWithTag("BlockPiece");
+                    foreach (GameObject obs in seed)
+                    {
+                        obs.GetComponent<Seed_Life>().Seed_Life_Down();
+                    }
                     //射出性質変化 小のとき青のオーラをまとう
                     //GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
                     player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
@@ -1000,6 +1012,7 @@ public class MainCameraScr : MonoBehaviour
 			
             // 性質変化
             Change();
+
 	}
 
 	private float CalcRadian(Vector3 from, Vector3 to) 

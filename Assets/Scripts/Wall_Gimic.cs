@@ -36,6 +36,8 @@ public class Wall_Gimic : MonoBehaviour {
     private float l_plus = 5.0f;
     private int not_count = 0;
 
+   
+
     //private bool light_flag = false;
     // Use this for initialization
     void Start ()
@@ -251,6 +253,8 @@ public class Wall_Gimic : MonoBehaviour {
                 //Debug.Log("カウント:" + not_count);
 
             }
+
+     
 
 
             ////レベル4

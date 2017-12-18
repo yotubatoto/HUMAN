@@ -14,10 +14,15 @@ public class Break_obj : MonoBehaviour
     private GameObject obj;
 
     public GameObject seed_prefab;
+    //光の種の生存ターン
+    public int seed_life_turn = 0;
+    private GameObject seed_life;
 
     // Use this for initialization
     void Start()
     {
+        seed_life = null;
+
     }
 
     // Update is called once per frame
@@ -59,15 +64,32 @@ public class Break_obj : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text = 
                     GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
-                Instantiate(seed_prefab, transform.position, Quaternion.identity);                    //seedprefabを生成
+                seed_life = Instantiate(seed_prefab, transform.position, Quaternion.identity);                    //seedprefabを生成
                 Debug.Log("生成されました");
                 //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加
                
+            }
+            //if (seed_life != null)
+            //{
+            //    Instantiate(seed_prefab.transform.position,Quaternion.identity)
+            //}
+
+            if (seed_life_turn <= 0 && seed_life != null)
+            {
+
+                seed_life_turn += 1;
+                if (seed_life_turn >= 3)
+                {
+                    Destroy(seed_life);
+                    seed_life = null;
+                }
+
             }
             
             
 
         }
+
     }
     public void OnTriggerEnter2D(Collider2D coll)
     {
