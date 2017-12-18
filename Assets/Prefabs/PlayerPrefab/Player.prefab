@@ -311,7 +311,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211427345058610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.5, y: -7.5, z: 0.31920326}
+  m_LocalPosition: {x: -37, y: -16.5, z: 0.31920326}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4823374620558478}
@@ -725,7 +725,7 @@ MonoBehaviour:
   item_count: 0
   item_text: {fileID: 0}
   flashing_time: 0
-  camera: {fileID: 159048, guid: 5586498ce0a6fa04dbcf9ccc4d0d0dc5, type: 2}
+  camera: {fileID: 0}
   enemy_coll_effect: {fileID: 173482, guid: 16304a795dbff4fcfbc1f247a7f43357, type: 2}
   point_line_obj:
   - {fileID: 0}
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced0973ba1c43fe4f974f056aa4b9977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_coll_se: {fileID: 8300000, guid: 8245544f9fc17ea479c8d00a65b59a5d, type: 3}
+  enemy_coll_se: {fileID: 8300000, guid: 5f9894f22efdfb84697e48a362d4f073, type: 3}
   resin_coll_se: {fileID: 8300000, guid: 4954ac9a0b6a6d04cb224afd8d611dbd, type: 3}
   block_coll_se: {fileID: 8300000, guid: d532e882a2b088f4cbdd78483d7d6bc7, type: 3}
   gimic_coll_se: {fileID: 8300000, guid: bf75e666464cddf479b61051c8194f77, type: 3}
