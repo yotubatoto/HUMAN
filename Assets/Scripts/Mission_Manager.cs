@@ -44,6 +44,7 @@ public class Mission_Manager : MonoBehaviour {
     void Start () 
     {
         //ヌルでないとき成立する
+                    Debug.Log("PlayerPrefsmdayo"+PlayerPrefs.GetInt("3_1" + "star"));
 
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_1")
         {
