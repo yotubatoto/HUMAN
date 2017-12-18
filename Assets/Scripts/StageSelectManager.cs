@@ -103,7 +103,7 @@ public class StageSelectManager : MonoBehaviour
                                             temp = ii;
                                         lock_imge[ii-1].color = new Color(0,0,0,0.0f);
                                     }
-                                    if(temp != 0)
+                                    if(temp != 0 && temp != 10)
                                     {
                                         lock_imge[temp].color = new Color(0,0,0,0.0f);
                                     }
@@ -385,7 +385,7 @@ public class StageSelectManager : MonoBehaviour
                                             temp = ii;
                                         lock_imge[ii-1].color = new Color(0,0,0,0.0f);
                                     }
-                                    if(temp != 0)
+                                    if(temp != 0 && temp != 10)
                                     {
                                         lock_imge[temp].color = new Color(0,0,0,0.0f);
                                     }
@@ -667,7 +667,7 @@ public class StageSelectManager : MonoBehaviour
                                             temp = ii;
                                         lock_imge[ii-1].color = new Color(0,0,0,0.0f);
                                     }
-                                    if(temp != 0)
+                                    if(temp != 0 && temp != 10)
                                     {
                                         lock_imge[temp].color = new Color(0,0,0,0);
                                     }
