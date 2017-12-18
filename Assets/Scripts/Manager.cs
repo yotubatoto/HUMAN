@@ -359,14 +359,14 @@ public class Manager : MonoBehaviour
         // Wave5
         else if (shot_state == (int)MAIN_STATE.SHOT_5)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
@@ -418,21 +418,21 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
 
            
         }
         // Wave6
         else if (shot_state == (int)MAIN_STATE.SHOT_6)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
@@ -484,21 +484,21 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
 
            
         }
         // Wave7
         else if (shot_state == (int)MAIN_STATE.SHOT_7)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
@@ -550,21 +550,21 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
 
           
         }
         // Wave8
         else if (shot_state == (int)MAIN_STATE.SHOT_8)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
@@ -616,21 +616,21 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
 
            
         }
         // Wave9
         else if (shot_state == (int)MAIN_STATE.SHOT_9)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
@@ -682,26 +682,26 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
 
             
         }
         // Wave10
         else if (shot_state == (int)MAIN_STATE.SHOT_10)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = " 10";
+                    wave.text = "10";
                     shot.text = "10";
                     //ターンのアルファ初期化
                     GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -749,26 +749,26 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
           
 
         }
         // Wave11
         else if (shot_state == (int)MAIN_STATE.SHOT_11)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = " 11";
+                    wave.text = "11";
                     shot.text = "11";
                     //ターンのアルファ初期化
                     GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -815,26 +815,26 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
 
             
         }
         // Wave12
         else if (shot_state == (int)MAIN_STATE.SHOT_12)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = " 12";
+                    wave.text = "12";
                     shot.text = "12";
                     //ターンのアルファ初期化
                     GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -880,26 +880,26 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
 
             
         }
         // Wave13
         else if (shot_state == (int)MAIN_STATE.SHOT_13)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = " 13";
+                    wave.text = "13";
                     shot.text = "13";
                     //ターンのアルファ初期化
                     GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -946,26 +946,26 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
            
 
         }
         // Wave14
         else if (shot_state == (int)MAIN_STATE.SHOT_14)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = " 14";
+                    wave.text = "14";
                     shot.text = "14";
                     //ターンのアルファ初期化
                     GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -1012,26 +1012,26 @@ public class Manager : MonoBehaviour
                         //}
                     }
                 }
-            }
+            //}
             
 
         }
         // Wave15
         else if (shot_state == (int)MAIN_STATE.SHOT_15)
         {
-            if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
-            {
-                al_flag = true;
-                //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
 
-            }
-            if (al_flag)
-            {
+            //}
+            //if (al_flag)
+            //{
                 move_flag = false;
                 if (once_flag == false)
                 {
                     once_flag = true;
-                    wave.text = " 15";
+                    wave.text = "15";
                     shot.text = "15";
                     //ターンのアルファ初期化
                     GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -1066,9 +1066,13 @@ public class Manager : MonoBehaviour
                         
                         al_flag = false;
                         once_flag = false;
-                        shot_state = (int)MAIN_STATE.SHOT_16;
-                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                        //shot_state = (int)MAIN_STATE.SHOT_16;
+                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+                        GameObject.Find("turn_flame").GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                        trun_alfa = 0.0f;
+
+                       GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
 
                         //if (hit_flower == true)
                         //{
@@ -1079,7 +1083,7 @@ public class Manager : MonoBehaviour
 
                     }
                 }
-            }
+            //}
             
         }
     }

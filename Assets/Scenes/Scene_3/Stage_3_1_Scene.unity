@@ -3711,6 +3711,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 0
 --- !u!1001 &196794396
 Prefab:
   m_ObjectHideFlags: 0
@@ -4277,6 +4278,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 3
 --- !u!1 &503366529 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1378196166581938, guid: 4faa2b449665c46899e3181f5b5ad932,
@@ -5763,6 +5765,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 3
 --- !u!4 &1073293850 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4108794512410140, guid: 97e5a8e7de362497d88a06d9550a23ad,
@@ -6591,6 +6594,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 3
 --- !u!1 &1261079040
 GameObject:
   m_ObjectHideFlags: 0
@@ -6648,6 +6652,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 3
 --- !u!1 &1293890050
 GameObject:
   m_ObjectHideFlags: 0
@@ -7792,7 +7797,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1676422208
 GameObject:
@@ -7885,6 +7890,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 3
 --- !u!4 &1700562497 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4030742675051910, guid: efd3140ceb25741f5901f6873cfa8157,

@@ -1022,7 +1022,7 @@ MonoBehaviour:
   - {fileID: 1991818189}
   - {fileID: 969938009}
   - {fileID: 1938204982}
-  LIMIT_TURN: 5
+  LIMIT_TURN: 15
   turn_limit: {fileID: 795165880}
   CLEAR_LAMP_LEVEL: 1
   Result_obj: {fileID: 413696114}
@@ -1386,6 +1386,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 0
 --- !u!61 &687075594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2766,6 +2767,52 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114252112139230258, guid: b2701509b8761234699c064b76ed38fc,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114252112139230258, guid: b2701509b8761234699c064b76ed38fc,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: cd4f217e286a5bc42bd63afa2170bd6d,
+        type: 3}
+    - target: {fileID: 114326025328502800, guid: b2701509b8761234699c064b76ed38fc,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224077782883446894, guid: b2701509b8761234699c064b76ed38fc,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 32.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224077782883446894, guid: b2701509b8761234699c064b76ed38fc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 32.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114252112139230258, guid: b2701509b8761234699c064b76ed38fc,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114252112139230258, guid: b2701509b8761234699c064b76ed38fc,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.8229814
+      objectReference: {fileID: 0}
+    - target: {fileID: 114252112139230258, guid: b2701509b8761234699c064b76ed38fc,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.5808823
+      objectReference: {fileID: 0}
+    - target: {fileID: 114252112139230258, guid: b2701509b8761234699c064b76ed38fc,
+        type: 2}
+      propertyPath: m_Text
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2701509b8761234699c064b76ed38fc, type: 2}
   m_IsPrefabParent: 0
@@ -3117,6 +3164,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 0
 --- !u!58 &1604291592
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114961617309148742}
   - component: {fileID: 50960852304016856}
   - component: {fileID: 58131268237690182}
+  - component: {fileID: 114845277355131238}
   m_Layer: 0
   m_Name: seed
   m_TagString: BlockPiece
@@ -110,6 +111,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
+--- !u!114 &114845277355131238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1647357160750950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffc5855dca64024e8c48e0f2e71d9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MAXLIFE: 4
+  MAXSIZE: 2
+  MOVETIME: 1
 --- !u!114 &114961617309148742
 MonoBehaviour:
   m_ObjectHideFlags: 1
