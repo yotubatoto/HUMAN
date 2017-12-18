@@ -32,8 +32,9 @@ public class StageSelectManager : MonoBehaviour
     TouchInfo info;
 	public Text[] left = new Text[10];
     public Text[] right = new Text[10];
-
-    
+    public Image[] lock_imge = new Image[9];
+    public bool Debug_Mode = false;
+    private bool blackFlag = false;
     void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -44,7 +45,6 @@ public class StageSelectManager : MonoBehaviour
     }
     void Start()
     {
-
         //PlayerPrefs.SetInt("1_1" + "star", 0);
         //変数「ClearStage」に「CLEARSTAGE」の値を代入しなおす
         //マルチタッチ無効
@@ -85,9 +85,34 @@ public class StageSelectManager : MonoBehaviour
         if (pop_obj.gameObject.activeSelf == true)
         {
             //Debug.Log(PlayerPrefs.GetInt("1_1star"));
-
+            
 			if((int)transform.position.x <= -35.0f)
 			{
+                if(Debug_Mode == false)
+                {
+                    int temp = 0;
+                        for(int ii =2;ii <= 10;ii++)
+                        {
+                                    if(PlayerPrefs.GetInt("3_" + ii.ToString() + "star") == 0)
+                                    {
+                                        lock_imge[ii-1].color = new Color(0,0,0,0.8f);
+                                    }
+                                    else
+                                    {
+                                           if(temp <= ii)
+                                            temp = ii;
+                                        lock_imge[ii-1].color = new Color(0,0,0,0.0f);
+                                    }
+                                    if(temp != 0)
+                                    {
+                                        lock_imge[temp].color = new Color(0,0,0,0.0f);
+                                    }
+                                    if(PlayerPrefs.GetInt("2_10star") != 0)
+                                    {
+                                        lock_imge[0].color = new Color(0,0,0,0.8f);
+                                    }
+                        }
+                }
 				for (int i = 0; i < 3; i++) {
 					left[i].text = "3";
 					right[i].text = (i+1).ToString();
@@ -345,6 +370,31 @@ public class StageSelectManager : MonoBehaviour
 			}
 			else if ((int)transform.position.x <= -20.0f && (int)transform.position.x > -30.0f)
 			{
+                if(Debug_Mode == false)
+                {
+                    int temp = 0;
+                        for(int ii =1;ii <= 10;ii++)
+                        {
+                                    if(PlayerPrefs.GetInt("2_" + ii.ToString() + "star") == 0)
+                                    {
+                                        lock_imge[ii-1].color = new Color(0,0,0,0.8f);
+                                    }
+                                    else
+                                    {
+                                          if(temp <= ii)
+                                            temp = ii;
+                                        lock_imge[ii-1].color = new Color(0,0,0,0.0f);
+                                    }
+                                    if(temp != 0)
+                                    {
+                                        lock_imge[temp].color = new Color(0,0,0,0.0f);
+                                    }
+                                    if(PlayerPrefs.GetInt("1_10star") != 0)
+                                    {
+                                        lock_imge[0].color = new Color(0,0,0,0.8f);
+                                    }
+                        }
+                }
 				for (int i = 0; i < 10; i++) {
 					left[i].text = "2";
 					right[i].text = (i+1).ToString();
@@ -602,6 +652,27 @@ public class StageSelectManager : MonoBehaviour
             }
 			else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
             {
+                if(Debug_Mode == false)
+                {
+                    int temp = 0;
+                        for(int ii =1;ii <= 10;ii++)
+                        {
+                                    if(PlayerPrefs.GetInt("1_" + ii.ToString() + "star") == 0)
+                                    {
+                                        lock_imge[ii-1].color = new Color(0,0,0,0.8f);
+                                    }
+                                    else
+                                    {
+                                        if(temp <= ii)
+                                            temp = ii;
+                                        lock_imge[ii-1].color = new Color(0,0,0,0.0f);
+                                    }
+                                    if(temp != 0)
+                                    {
+                                        lock_imge[temp].color = new Color(0,0,0,0);
+                                    }
+                        }
+                }
 				for (int i = 0; i < 10; i++) {
 					left[i].text = "1";
 					right[i].text = (i+1).ToString();
@@ -904,25 +975,27 @@ public class StageSelectManager : MonoBehaviour
         {
             if (info == TouchInfo.Ended)
             {
-                Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                
-                Collider2D collition2d = Physics2D.OverlapPoint(point);
-                if (collition2d != null)
+                if(pop_obj.activeSelf == false)
                 {
-                    if(collition2d.gameObject.name == "vector_left")
+                    Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    
+                    Collider2D collition2d = Physics2D.OverlapPoint(point);
+                    if (collition2d != null)
                     {
-                        pos = transform.position;
-                        pos.x += move_speed;
-                        flag = false;
-                    }
-                    if(collition2d.gameObject.name == "vector_right")
-                    {
-                        pos = transform.position;
-                        pos.x -= move_speed;
-                        flag = true;
+                        if(collition2d.gameObject.name == "vector_left")
+                        {
+                            pos = transform.position;
+                            pos.x += move_speed;
+                            flag = false;
+                        }
+                        if(collition2d.gameObject.name == "vector_right")
+                        {
+                            pos = transform.position;
+                            pos.x -= move_speed;
+                            flag = true;
+                        }
                     }
                 }
-        
                 endPos = AppUtil.GetTouchWorldPosition(Camera.main);
 				if((int)startPos.x == (int)endPos.x)
 				{
@@ -1028,198 +1101,225 @@ public class StageSelectManager : MonoBehaviour
         //Debug.Log(collition2d.gameObject.name);
         if (collition2d != null)
         {
-            now_loading.GetComponent<Image>().enabled = true;
-            now_load = GameObject.Find("Now_Loading").GetComponent<Image>();
-            now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
-            now_load_back.GetComponent<Image>().enabled = true;
-
             if (collition2d.gameObject.name == "_1")
             {
-                Debug.Log(transform.position);
-				if ((int)transform.position.x <= -36.0f)
-				{
-					ST_OWNER_NUMBER = "3_1";
-					GetComponent<Sound_Manager>().Stage_Choice_SE();
-					now_loading.GetComponent<Now_Loading>().LoadNextScene();
-					GameObject.Find("Now_Loading").GetComponent<Image>().color
-					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-
-					//SceneManager.LoadScene("Stage_1_Scene");
-				}
-				else if ((int)transform.position.x <= -20.0f)
-				{
-					ST_OWNER_NUMBER = "2_1";
-					GetComponent<Sound_Manager>().Stage_Choice_SE();
-					now_loading.GetComponent<Now_Loading>().LoadNextScene();
-					GameObject.Find("Now_Loading").GetComponent<Image>().color
-					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-
-					//SceneManager.LoadScene("Stage_1_Scene");
-				}
-				else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.0f)
+                if(lock_imge[0].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
-                    ST_OWNER_NUMBER = "1_1";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    blackFlag = true;
+                    Debug.Log(transform.position);
+                    if ((int)transform.position.x <= -36.0f)
+                    {
+                        
+                        ST_OWNER_NUMBER = "3_1";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-                    //SceneManager.LoadScene("Stage_1_Scene");
+
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_1";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                        = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.0f)
+                    {
+                        ST_OWNER_NUMBER = "1_1";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                            = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    
                 }
+                
             }
             if (collition2d.gameObject.name == "_2")
             {
-                if ((int)transform.position.x <= -36.0f)
+                if(lock_imge[1].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
-                    ST_OWNER_NUMBER = "3_2";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    blackFlag = true;
+                    if ((int)transform.position.x <= -36.0f)
+                    {
+                        ST_OWNER_NUMBER = "3_2";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                            = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_2";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
-				else if ((int)transform.position.x <= -20.0f)
-				{
-					ST_OWNER_NUMBER = "2_2";
-					GetComponent<Sound_Manager>().Stage_Choice_SE();
-					now_loading.GetComponent<Now_Loading>().LoadNextScene();
-					GameObject.Find("Now_Loading").GetComponent<Image>().color
-					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                    {
+                        ST_OWNER_NUMBER = "1_2";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                        = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-					//SceneManager.LoadScene("Stage_1_Scene");
-				}
-				else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
-				{
-					ST_OWNER_NUMBER = "1_2";
-					GetComponent<Sound_Manager>().Stage_Choice_SE();
-					now_loading.GetComponent<Now_Loading>().LoadNextScene();
-					GameObject.Find("Now_Loading").GetComponent<Image>().color
-					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-                   
-                    //SceneManager.LoadScene("Stage_1_Scene");
+                    
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
                 }
+                
             }
 
             if (collition2d.gameObject.name == "_3")
             {
-				if ((int)transform.position.x <= -36.0f)
-				{
-					ST_OWNER_NUMBER = "3_3";
-					GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-					now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
-					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-					//SceneManager.LoadScene("Stage_1_Scene");
-				}
-				else if ((int)transform.position.x <= -20.0f)
+                if(lock_imge[2].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
-                    ST_OWNER_NUMBER = "2_3";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    blackFlag = true;
+                    if ((int)transform.position.x <= -36.0f)
+                    {
+                        ST_OWNER_NUMBER = "3_3";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
-				else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
-				{
-					ST_OWNER_NUMBER = "1_3";
-					GetComponent<Sound_Manager>().Stage_Choice_SE();
-					now_loading.GetComponent<Now_Loading>().LoadNextScene();
-					GameObject.Find("Now_Loading").GetComponent<Image>().color
-					= new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_3";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                            = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-                    
-                    //SceneManager.LoadScene("Stage_1_Scene");
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                    {
+                        ST_OWNER_NUMBER = "1_3";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                        = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                        
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
                 }
-              
-              
             }
 
             if (collition2d.gameObject.name == "_4")
             {
-                if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                if(lock_imge[3].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
-                    ST_OWNER_NUMBER = "1_4";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
-                    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-                   
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
-                else if ((int)transform.position.x <= -20.0f)
-                {
-                    ST_OWNER_NUMBER = "2_4";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    blackFlag = true;
+                    if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                    {
+                        ST_OWNER_NUMBER = "1_4";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-                    //SceneManager.LoadScene("Stage_1_Scene");
+                    
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_4";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                            = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
                 }
+                
+                
             }
 
             if (collition2d.gameObject.name == "_5")
             {
-                if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                if(lock_imge[4].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
-                    ST_OWNER_NUMBER = "1_5";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
-                    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-                   
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
-                else if ((int)transform.position.x <= -20.0f)
-                {
-                    ST_OWNER_NUMBER = "2_5";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    blackFlag = true;
+                    if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                    {
+                        ST_OWNER_NUMBER = "1_5";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-                    //SceneManager.LoadScene("Stage_1_Scene");
+                    
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_5";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                            = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
                 }
             }
 
             if (collition2d.gameObject.name == "_6")
             {
-                if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                if(lock_imge[5].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
-                    ST_OWNER_NUMBER = "1_6";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
-                    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-                    
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
-                else if ((int)transform.position.x <= -20.0f)
-                {
-                    ST_OWNER_NUMBER = "2_6";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    blackFlag = true;
+                    if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                    {
+                        ST_OWNER_NUMBER = "1_6";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
+                        
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_6";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                            = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                }                
+                
             }
 
             if (collition2d.gameObject.name == "_7")
             {
-                if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                if(lock_imge[6].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
+                    blackFlag = true;
+                    if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                    {
                     ST_OWNER_NUMBER = "1_7";
                     GetComponent<Sound_Manager>().Stage_Choice_SE();
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -1228,88 +1328,111 @@ public class StageSelectManager : MonoBehaviour
 
                     
                     //SceneManager.LoadScene("Stage_1_Scene");
-                }
-                else if ((int)transform.position.x <= -20.0f)
-                {
-                    ST_OWNER_NUMBER = "2_7";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
-                        = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_7";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                }                
+                
             }
 
             if (collition2d.gameObject.name == "_8")
             {
-                if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                if(lock_imge[7].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
-                    ST_OWNER_NUMBER = "1_8";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
-                    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
-                    
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
-                else if ((int)transform.position.x <= -20.0f)
-                {
-                    ST_OWNER_NUMBER = "2_8";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    blackFlag = true;
+                    if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                    {
+                        ST_OWNER_NUMBER = "1_8";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
+
+                        
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_8";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                            = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                }                
+              
             }
 
             if (collition2d.gameObject.name == "_9")
             {
-                if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                if(lock_imge[8].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
-                    ST_OWNER_NUMBER = "1_9";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
-                    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                    
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
-                else if ((int)transform.position.x <= -20.0f)
-                {
-                    ST_OWNER_NUMBER = "2_9";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    blackFlag = true;
+                    if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                    {
+                        ST_OWNER_NUMBER = "1_9";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
+                        
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_9";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                            = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                }                
             }
 
             if (collition2d.gameObject.name == "_10")
-            {                
-                if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+            {    
+                if(lock_imge[9].GetComponent<Image>().color == new Color(0,0,0,0))
                 {
-                    ST_OWNER_NUMBER = "1_10";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
-                    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                    
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
-                else if ((int)transform.position.x <= -20.0f)
-                {
-                    ST_OWNER_NUMBER = "2_10";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
-                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    blackFlag = true;
+                    if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
+                    {
+                        ST_OWNER_NUMBER = "1_10";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-                    //SceneManager.LoadScene("Stage_1_Scene");
-                }
+                        
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                    else if ((int)transform.position.x <= -20.0f)
+                    {
+                        ST_OWNER_NUMBER = "2_10";
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                            = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                        //SceneManager.LoadScene("Stage_1_Scene");
+                    }
+                } 
             }
+            if(blackFlag)
+            {
+                now_loading.GetComponent<Image>().enabled = true;
+                now_load = GameObject.Find("Now_Loading").GetComponent<Image>();
+                now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
+                now_load_back.GetComponent<Image>().enabled = true;
+            }
+          
         }
     }
 
