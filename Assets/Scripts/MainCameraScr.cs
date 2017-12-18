@@ -166,7 +166,6 @@ public class MainCameraScr : MonoBehaviour
 
 		ini_sp = image.sprite;
 		GameObject.Find ("Fade").gameObject.GetComponent<Image> ().enabled = true;
-
 	}
 
 
