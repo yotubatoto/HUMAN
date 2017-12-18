@@ -322,7 +322,7 @@ public class MainCameraScr : MonoBehaviour
 
 			TouchInfo t_info = AppUtil.GetTouch();
 			delay_time += Time.deltaTime;
-			if (t_info == TouchInfo.Ended)
+			if (t_info == TouchInfo.Began)
 			{
 				Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
 
@@ -354,7 +354,7 @@ public class MainCameraScr : MonoBehaviour
 		}
         if(pause_black.gameObject.activeSelf == false)
         {
-            if (info == TouchInfo.Ended)
+            if (info == TouchInfo.Began)
             {
                 TouchObjectFind("pause");
                 delay_time = 0.0f;

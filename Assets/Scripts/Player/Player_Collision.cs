@@ -242,6 +242,32 @@ public class Player_Collision : MonoBehaviour {
             {
                 GetComponent<Sound_Manager>().Block_Second_SE();
             }
+
+            
+            
+        }
+
+        //光の種が出ない赤ブロック用
+        if (coll.gameObject.tag == "No_Seed_Block")
+        {
+            if (coll.gameObject.GetComponent<No_Seed_Hit>().break_count == 0)
+            {
+                GetComponent<Sound_Manager>().SE();
+            }
+            if (coll.gameObject.GetComponent<No_Seed_Hit>().break_count == 1)
+            {
+                GetComponent<Sound_Manager>().SE();
+            }
+            if (coll.gameObject.GetComponent<No_Seed_Hit>().break_count == 2)
+            {
+                GetComponent<Sound_Manager>().Block_Second_SE();
+            }
+        }
+
+        //光の種が出ない緑ブロック用
+        if(coll.gameObject.tag == "No_Seed_Green_Block")
+        {
+            GetComponent<Sound_Manager>().SE();
         }
 
         //if(coll.gameObject.tag == "BlockPiece")
