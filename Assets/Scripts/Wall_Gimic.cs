@@ -35,13 +35,17 @@ public class Wall_Gimic : MonoBehaviour {
     //ぼんやりする光のサイズを変える
     private float l_plus = 5.0f;
     private int not_count = 0;
+    private bool lamp_chenge_flag = false;
+    public int chenge_number = 0;
+
 
     //private bool light_flag = false;
     // Use this for initialization
     void Start ()
     {
         child_circle = gameObject.transform.Find("Light").gameObject;
-	}
+        GetComponent<SpriteRenderer>().sprite = light_sprite[0];
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -199,57 +203,65 @@ public class Wall_Gimic : MonoBehaviour {
         {
             //Debug.Log("gyy");
             clear_count += 1;
+            lamp_chenge_flag = true;
+            chenge_number += 1;
+            if (chenge_number > 3) { chenge_number = 3; }
 
             //花のオブジェクト生成
-            if(not_count >= 1)
-            {
-                //seedカウントが1より大きい場合光のレベルが１になる
-              
+            if (not_count >= 1)
+                {
+                    //seedカウントが1より大きい場合光のレベルが１になる
+
                     //ぼやけか光の輪を出す
                     //レベル1
                     //if (number >= 1)
                     //{
-                        child_circle.GetComponent<SpriteRenderer>().enabled = true;
+                    child_circle.GetComponent<SpriteRenderer>().enabled = true;
                     //}
                     l_plus += 3.0f;                                                          //ぼやけた光の輪に大きさをプラスする
                     if (l_plus > 8.0f)
                         l_plus = 8.0f;
                     child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);   //ぼやけた光の輪の大きさをキープする
                     //Debug.Log(l_plus);
-                    gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[1];
-                //ランタンをスイッチONにする
-                    Instantiate(explosionprefab, transform.position, Quaternion.identity);
                 
-                //Debug.Log("カウント:" + not_count);
+                    gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[chenge_number];
+                //ランタンをスイッチONにする
+                Instantiate(explosionprefab, transform.position, Quaternion.identity);
 
-            }
+                    //Debug.Log("カウント:" + not_count);
+                }
 
+                 
 
-
-            //レベル2
-            if (not_count >= 2)
-            {
-                l_plus += 3.0f;
-                if (l_plus > 15.0f)
-                    l_plus = 15.0f;
-                child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
+           
+                //レベル2
+                if (not_count >= 2)
+                {
+                    l_plus += 3.0f;
+                    if (l_plus > 15.0f)
+                        l_plus = 15.0f;
+                    child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
                 //Debug.Log(l_plus);
-                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[2];
-                //Debug.Log("カウント:" + not_count);
+                
+                    gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[chenge_number];
 
+                //Debug.Log("カウント:" + not_count);
             }
+
+               
+
 
             //レベル3
             if (not_count >= 3)
-            {
-                l_plus += 3.0f;
-                if (l_plus > 30.0f)
-                    l_plus = 30.0f;
-                child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
+                {
+                    l_plus += 3.0f;
+                    if (l_plus > 30.0f)
+                        l_plus = 30.0f;
+                    child_circle.transform.localScale = new Vector3(l_plus, l_plus, 0.0f);
                 //Debug.Log(l_plus);
-                gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[3];
-                //Debug.Log("カウント:" + not_count);
 
+                    gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[chenge_number];
+                //Debug.Log("カウント:" + not_count);
             }
 
 
@@ -284,5 +296,8 @@ public class Wall_Gimic : MonoBehaviour {
 
         }
     }
+
+    public int GetnotCount()
+    { return not_count; }
 
 }
