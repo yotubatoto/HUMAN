@@ -7,7 +7,7 @@ public class Stage_Controller: MonoBehaviour {
     public float speed = 2;
     GameObject mainCamera;
     Vector2 vec;
-    public int choice_speed;
+    public float choice_speed;
     public GameObject choice_right;
     public GameObject choice_left;
     //public float choice_shake = 0.0f;
@@ -77,10 +77,10 @@ public class Stage_Controller: MonoBehaviour {
         //右に動かす
         if (choice_state == 0)
         {
-            choice_speed += 2;
-            pos.x += 0.9f * Time.deltaTime;
+            choice_speed += 50.0f *Time.deltaTime;
+            pos.x += 1.0f * Time.deltaTime;
             //距離
-            if (choice_speed > 200)
+            if (choice_speed > 25)
             {
                 choice_state = 1;
                 choice_speed = 0;
@@ -89,9 +89,9 @@ public class Stage_Controller: MonoBehaviour {
         //左に動かす
         else if (choice_state == 1)
         {
-            choice_speed -= 2;
-            pos.x -= 0.9f * Time.deltaTime;
-            if (choice_speed < -200)
+            choice_speed -= 50.0f * Time.deltaTime;
+            pos.x -= 1.0f * Time.deltaTime;
+            if (choice_speed < -25)
             {
                 choice_state = 0;
                 choice_speed = 0;
@@ -112,10 +112,10 @@ public class Stage_Controller: MonoBehaviour {
         //左に動かす
         if (choice_state == 0)
         {
-            choice_speed -= 2;
-            pos.x -= 0.9f * Time.deltaTime;
+            choice_speed -= 50.0f * Time.deltaTime;
+            pos.x -= 1.0f * Time.deltaTime;
             //矢印距離
-            if (choice_speed < -200)
+            if (choice_speed < -25)
             {
                 choice_state = 1;
                 choice_speed = 0;
@@ -124,9 +124,9 @@ public class Stage_Controller: MonoBehaviour {
         //右に動かす
         else if (choice_state == 1)
         {
-            choice_speed += 2;
-            pos.x += 0.9f * Time.deltaTime;
-            if (choice_speed > 200)
+            choice_speed += 50.0f * Time.deltaTime;
+            pos.x += 1.0f * Time.deltaTime;
+            if (choice_speed > 25)
             {
                 choice_state = 0;
                 choice_speed = 0;
