@@ -438,6 +438,25 @@ public class Mission_Manager : MonoBehaviour {
                     SceneManager.LoadScene("StageSelect_Scene");
                 //}
             }
+            if (collition2d.gameObject.name == "Next_Stage")
+            {
+                // ST_OWNER_NUMBER 1_1
+                // st = 1_1
+                string st = StageSelectManager.ST_OWNER_NUMBER;
+                // 1_1の一番後ろの文字列を抽出してる 1 tail = 1
+                string tail = st.Substring(2, 1); // 1
+                // 1_1の一番前の文字列から２文字抽出してる head = 1_
+                string head = st.Substring(0, 2); // 1_
+                // tail =  1 このtailをint型にキャストしてその値を代入してる tem_tailは今はint型の1が入ってる
+                int tem_tail = int.Parse(tail);
+                // int型のtem_tailっていう値に１プラスして2にする tem_tail = 2
+                tem_tail += 1;
+                // head = 1_ tem_tail =2(int) だから文字列の連結を使って head(1_) + tem_tailをstring型に再度キャストしたものを
+                // 連結させる res = 1_2
+                string res = head + tem_tail.ToString();
+                StageSelectManager.ST_OWNER_NUMBER = res;
+                SceneManager.LoadScene("Stage_"+res + "_Scene");
+            }
         }
 
     }
