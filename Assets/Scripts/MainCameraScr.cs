@@ -104,6 +104,9 @@ public class MainCameraScr : MonoBehaviour
     private float gamestart_al = 0.0f;
 	public Sprite change_sp;
 	private Sprite ini_sp;
+    private int temp_save = 0;
+
+    public GameObject rial;
     //遷移フラグ押しっぱなし防止
 
     //操作説明のオブジェ
@@ -212,6 +215,7 @@ public class MainCameraScr : MonoBehaviour
                         {
                             manual[i - 1].SetActive(true);
                             temp = i;
+                            temp_save = temp;
                         }
                     }
                 }
@@ -318,6 +322,8 @@ public class MainCameraScr : MonoBehaviour
 			pause_se_flag = false;
 			Image image = pause.GetComponent<Image> ();
 			image.sprite = change_sp;
+            Image imaage1 = pause.GetComponent<Image>();
+            
 
 			TouchInfo t_info = AppUtil.GetTouch();
 			delay_time += Time.deltaTime;
@@ -328,18 +334,43 @@ public class MainCameraScr : MonoBehaviour
 				if (collition2d != null)
 				{
 					Debug.Log(collition2d.gameObject.name);
+                    if(temp_save == 0)
+                    {
+                        temp_save = 1;
+                    }
 
-					if (collition2d.gameObject.name == "Retry")
+					if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Retry")
 					{
                         //SceneManager.LoadScene("Stage_" + "1_1" + "_Scene");
                         SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
 					}
-					else if(collition2d.gameObject.name == "Stage_Select")
+                    else if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Stage_Select")
 					{
 						SceneManager.LoadScene("StageSelect_Scene");
 					}
+                    else if (collition2d.gameObject.name == "Question")
+                    {
+                        if(manual[temp_save - 1].activeSelf)
+                        {
+                            manual[temp_save - 1].SetActive(false);
+                        }
+                        else
+                        {
+                            //GameObject.Find("manual").SetActive(true);
+                            string st = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
+                            if (st == "1")
+                            {
+                                manual[temp_save - 1].SetActive(true);
+                            }
+                        }
+                     
+                    }
 					else if(collition2d.gameObject.name == "pause")
 					{
+                        if(manual[temp_save - 1].activeSelf)
+                        {
+                            manual[temp_save - 1].SetActive(false);
+                        }
 						pause_freeze_flag = false;
                         //Pauser.Resume ();
                         //時間をもどす

@@ -1055,7 +1055,7 @@ public class Manager : MonoBehaviour
                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                 trun_alfa -= 0.05f;
                 wave.color = c;
-                if (c.a <= 0.0f)
+                if (c.a <= 0.0f && trun_alfa <= 0.0f)
                 {
                    
                     move_flag = true;
@@ -1066,13 +1066,13 @@ public class Manager : MonoBehaviour
                         
                         al_flag = false;
                         once_flag = false;
-                        //shot_state = (int)MAIN_STATE.SHOT_16;
-                        GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                        //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
-                        GameObject.Find("turn_flame").GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                        trun_alfa = 0.0f;
 
-                       GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                        shot_state = (int)MAIN_STATE.SHOT_16;
+
+                        GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
 
                         //if (hit_flower == true)
                         //{
