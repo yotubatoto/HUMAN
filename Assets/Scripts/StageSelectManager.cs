@@ -109,7 +109,7 @@ public class StageSelectManager : MonoBehaviour
                                     }
                                     if(PlayerPrefs.GetInt("2_10star") != 0)
                                     {
-                                        lock_imge[0].color = new Color(0,0,0,0.8f);
+                                        lock_imge[0].color = new Color(0,0,0,0.0f);
                                     }
                         }
                 }
@@ -391,7 +391,7 @@ public class StageSelectManager : MonoBehaviour
                                     }
                                     if(PlayerPrefs.GetInt("1_10star") != 0)
                                     {
-                                        lock_imge[0].color = new Color(0,0,0,0.8f);
+                                        lock_imge[0].color = new Color(0,0,0,0.0f);
                                     }
                         }
                 }
@@ -659,7 +659,8 @@ public class StageSelectManager : MonoBehaviour
                         {
                                     if(PlayerPrefs.GetInt("1_" + ii.ToString() + "star") == 0)
                                     {
-                                        lock_imge[ii-1].color = new Color(0,0,0,0.8f);
+										if(ii != 1)
+                                        	lock_imge[ii-1].color = new Color(0,0,0,0.8f);
                                     }
                                     else
                                     {
