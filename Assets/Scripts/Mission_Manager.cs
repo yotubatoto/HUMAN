@@ -307,7 +307,7 @@ public class Mission_Manager : MonoBehaviour {
 
         if(Result_obj.gameObject.activeSelf == true)
         {
-            if (_info == TouchInfo.Ended)
+            if (_info == TouchInfo.Began)
             {
                 TouchObjectCheck();
             }
