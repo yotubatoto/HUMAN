@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -160,11 +160,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4276855604642766, guid: 170e349fd41f0b3459c72c3828303657, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.9
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4276855604642766, guid: 170e349fd41f0b3459c72c3828303657, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 16.4
+      value: 17.5
       objectReference: {fileID: 0}
     - target: {fileID: 4276855604642766, guid: 170e349fd41f0b3459c72c3828303657, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1041,7 +1041,7 @@ MonoBehaviour:
   - 15
   - 15
   - 15
-  gameover_bgm: {fileID: 8300000, guid: 20dae5ad4d92219468bf7ad490f6e150, type: 3}
+  gameover_bgm: {fileID: 8300000, guid: c401ed9c5f6d9a546ac4741c25a9872c, type: 3}
 --- !u!82 &513097389
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3904,6 +3904,10 @@ Prefab:
       propertyPath: m_Name
       value: block_green (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1638664783355182, guid: 170e349fd41f0b3459c72c3828303657, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 170e349fd41f0b3459c72c3828303657, type: 2}
   m_IsPrefabParent: 0
@@ -4296,6 +4300,10 @@ Prefab:
       value: -97.8
       objectReference: {fileID: 0}
     - target: {fileID: 1148804963861848, guid: a28c490f6fab87a40af04b551a363f79, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101375435120270, guid: a28c490f6fab87a40af04b551a363f79, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
