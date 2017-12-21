@@ -14,6 +14,15 @@ public class Sound_Manager : MonoBehaviour {
     public AudioClip decision_coll_se;
     public AudioClip pause_coll_se;
     public AudioClip obstance_coll_se;
+    public AudioClip no_break_coll_se;
+    public AudioClip damage_coll_se;
+    public AudioClip game_clear_se;
+    public AudioClip question_se;
+
+
+
+ 
+   
 
 
 
@@ -67,5 +76,22 @@ public class Sound_Manager : MonoBehaviour {
         m_audio.PlayOneShot(obstance_coll_se);
 
     }
+    public void No_Break_SE()
+    {
+        m_audio.PlayOneShot(no_break_coll_se);
+    }
+    public void Damage_SE()
+    {
+        m_audio.PlayOneShot(damage_coll_se);
+    }
+    public void Clear_SE()
+    {
+        m_audio.PlayOneShot(game_clear_se);
+    }
+    public void Question_SE()
+    {
+        m_audio.PlayOneShot(question_se);
+    }
+   
    
 }

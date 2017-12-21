@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638664783355182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.2, y: 0.2, z: 0.46872526}
+  m_LocalPosition: {x: -10.5, y: 19.7, z: 0.46872526}
   m_LocalScale: {x: 1.77528, y: 1.77528, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,6 +85,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 0
 --- !u!212 &212437634834748002
 SpriteRenderer:
   m_ObjectHideFlags: 1

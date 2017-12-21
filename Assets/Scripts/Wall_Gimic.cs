@@ -194,6 +194,7 @@ public class Wall_Gimic : MonoBehaviour {
 
             }
 
+           
 
         }
 
@@ -208,6 +209,9 @@ public class Wall_Gimic : MonoBehaviour {
             //clear_count += 1;
             lamp_chenge_flag = true;
             chenge_number += 1;
+            Debug.Log("gugugug");
+            GetComponent<Sound_Manager>().Gimic_SE();
+
             if (chenge_number > 3) { chenge_number = 3; }
 
             //花のオブジェクト生成
@@ -230,7 +234,7 @@ public class Wall_Gimic : MonoBehaviour {
                     gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[chenge_number];
                 //ランタンをスイッチONにする
                 Instantiate(explosionprefab, transform.position, Quaternion.identity);
-
+                
                     //Debug.Log("カウント:" + not_count);
                 }
 

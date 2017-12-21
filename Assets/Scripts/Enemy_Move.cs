@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_Move : MonoBehaviour
 {
-    public int state = 0;
+    public int state = -1;
     public float MAX_SPEED_X = -0.05f;
     public float MAX_SPEED_Y = -0.05f;
     bool m_xPlus = true;
@@ -17,6 +17,7 @@ public class Enemy_Move : MonoBehaviour
     void Start ()
     {
         manager = GameObject.Find("Main Camera").GetComponent<Manager>();
+      
     }
 	
 	// Update is called once per frame
@@ -24,7 +25,7 @@ public class Enemy_Move : MonoBehaviour
     {
         if (manager.move_flag)
             return;
-
+        
 		if(state == 0)
         {
                 transform.Translate(MAX_SPEED_X, 0.0f, 0.0f);

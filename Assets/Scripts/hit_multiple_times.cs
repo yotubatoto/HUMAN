@@ -28,7 +28,7 @@ public class hit_multiple_times : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D coll)
     {   //タグプレイヤーよび　プレイヤーオブジェみつけ　速度○○以上のとき
         if(coll.gameObject.tag == "Player" && GameObject.Find("Player").
-            GetComponent<Rigidbody2D>().velocity.magnitude >= 70)
+            GetComponent<Rigidbody2D>().velocity.magnitude >= 103)
         {
             number += 1;
             break_count += 1;
