@@ -32,7 +32,7 @@ public class Now_Loading : MonoBehaviour
         while (!async.isDone)
         {
             //Slider.value = async.progress;
-            Debug.Log(async.progress);
+            //Debug.Log(async.progress);
             yield return null;
         }
     }

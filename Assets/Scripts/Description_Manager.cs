@@ -70,8 +70,11 @@ public class Description_Manager : MonoBehaviour {
 			Application.Quit();
 			return;
 		}
+
+
 		if (count >= 2)
 			count = 4;
+
 		TouchInfo info = AppUtil.GetTouch ();
 		if (info == TouchInfo.Began) 
 		{
@@ -118,33 +121,13 @@ public class Description_Manager : MonoBehaviour {
 				{
 					ima [0].enabled = false;
 					ima [1].enabled = true;
-//					ima [2].enabled = false;
-//					ima [3].enabled = false;
 					right.enabled = false;
 					left.enabled = true;
                     GameObject.Find("left_flare").GetComponent<Image>().enabled = true;
                     GameObject.Find("right_flare").GetComponent<Image>().enabled = false;
 
 
-				}
-//				if (count == 2) 
-//				{
-//					ima [0].enabled = false;
-//					ima [1].enabled = false;
-////					ima [2].enabled = true;
-////					ima [3].enabled = false;
-//					right.enabled = true;
-//					left.enabled = true;
-//				}
-//				if (count == 3) 
-//				{
-//					ima [0].enabled = false;
-//					ima [1].enabled = false;
-//					ima [2].enabled = false;
-////					ima [3].enabled = true;
-//					right.enabled = false;
-//					left.enabled = true;
-//				}
+				}			
 
                 //ステセレ呼び出しかつ、連打防止
 				if (collition2d.gameObject.name == "Next"　&& transition == false)

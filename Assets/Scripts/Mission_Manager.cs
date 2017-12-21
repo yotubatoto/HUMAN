@@ -12,6 +12,7 @@ public class Mission_Manager : MonoBehaviour {
     private int clear_state = 0;
     public Image clear_text;
     private float clear_time = 0.0f;
+    bool bgm_clear_flag = false; 
     //ステージクリアしたら（ステージクリアのテキストが表示される時間）
     private float clear_count = 0.0f;
     public Image fade;
@@ -41,6 +42,10 @@ public class Mission_Manager : MonoBehaviour {
     public GameObject clear_goal_turn;
     public string[] GOAL_TURN = new string[12];
 	public AudioClip gameover_bgm;
+    public AudioClip game_clear_bgm;
+    private int game_clear_bgm_state= 0;
+
+    
 	private bool bgm_once_flag = false;
 	private float volume_state = 0;
     // Use this for initialization
@@ -190,7 +195,10 @@ public class Mission_Manager : MonoBehaviour {
 					GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().clip = null;
 					GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().clip = gameover_bgm;
 					GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().Play ();
+                    GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().loop = false;
+
 				}
+               
 			}
             Camera.main.GetComponent<MainCameraScr>().pause_freeze_flag = true;
             GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
@@ -208,6 +216,21 @@ public class Mission_Manager : MonoBehaviour {
 //				clear_text.enabled = true;
 				Color c = clear_text.color;
 				c.a += 0.01f;
+
+                if (game_clear_bgm_state == 0)
+                {
+                    if (bgm_clear_flag == false)
+                    {
+                        bgm_once_flag = true;
+                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().clip = null;
+                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().clip = game_clear_bgm;
+                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().Play();
+                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().loop = false;
+                        bgm_clear_flag = false;
+
+                    } 
+                   
+                }
                 GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
                 if (c.a >= 1.0f) {
 					c.a = 1.0f;
@@ -228,6 +251,8 @@ public class Mission_Manager : MonoBehaviour {
             {
 				clear_text.color = new Color(1,1,1,0);
 				clear_pop.SetActive (true);
+              
+              
                 GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
 
      //           GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
@@ -359,7 +384,12 @@ public class Mission_Manager : MonoBehaviour {
 		GameObject[] obj = GameObject.FindGameObjectsWithTag ("Small_Block");
         GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
         GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
-        if (obj.Length == 0 && obj_2.Length == 0 && obj_3.Length == 0) 
+        GameObject[] obj_4 = GameObject.FindGameObjectsWithTag("No_Seed_Block");
+        GameObject[] obj_5 = GameObject.FindGameObjectsWithTag("No_Seed_Green_Block");
+
+
+
+        if (obj.Length == 0 && obj_2.Length == 0 && obj_3.Length == 0 && obj_4.Length == 0 && obj_5.Length == 0) 
 		{
 			return true;
 		}
@@ -373,7 +403,7 @@ public class Mission_Manager : MonoBehaviour {
         {
             GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = LIMIT_TURN.ToString();
             Debug.Log("打数でクリアできなかった");
-            gameOver_obj.gameObject.SetActive(true);
+           
             Time.timeScale = 0.0f;
         }
        if(Mission_3())
@@ -381,8 +411,13 @@ public class Mission_Manager : MonoBehaviour {
             // 全部壊れてる
             if(Mission_1(1) == false)
             {
-                Debug.Log("全部壊れていてかつ光ってないものありでクリアできませんでした");
-                gameOver_obj.gameObject.SetActive(true);
+                
+                    Debug.Log("全部壊れていてかつ光ってないものありでクリアできませんでした");
+               
+                
+                    gameOver_obj.gameObject.SetActive(true);
+
+                
                 Time.timeScale = 0.0f;
             }
         }

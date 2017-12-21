@@ -36,6 +36,7 @@ public class Break_obj : MonoBehaviour
     {
         if (coll.gameObject.tag == "Player")
         {
+
             //Debug.Log(Camera.main.GetComponent<MainCameraScr>().sub.magnitude);
             //射出後のスピード○○のときは性質変化　弱に変化(青)（赤オブジェ壊せずに跳ね返る）
             //if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < 20)

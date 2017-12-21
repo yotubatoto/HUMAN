@@ -71,6 +71,7 @@ public class MainCameraScr : MonoBehaviour
 	public GameObject debug_obj;
     public GameObject[] small;
     public GameObject[] big;
+    public GameObject[] blue_small;
     private float _time = 0.0f;
     //ライト点灯のカウントを数える（クリア条件につながる）　ランプレベルにかかわらず
     //クリアランプのレベルはWall gimic Csのクリアカウントをいじる
@@ -301,6 +302,7 @@ public class MainCameraScr : MonoBehaviour
         //Debug.Log("ベロシティ" + GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
        
         small = GameObject.FindGameObjectsWithTag("Small_Block");
+        blue_small = GameObject.FindGameObjectsWithTag("Blue_Block");
         
         //Debug.Log("main_move_state: " + main_move_state);
         bool _flag = false;
@@ -323,7 +325,9 @@ public class MainCameraScr : MonoBehaviour
 			Image image = pause.GetComponent<Image> ();
 			image.sprite = change_sp;
             Image imaage1 = pause.GetComponent<Image>();
-            
+
+
+           
 
 			TouchInfo t_info = AppUtil.GetTouch();
 			delay_time += Time.deltaTime;
@@ -333,7 +337,7 @@ public class MainCameraScr : MonoBehaviour
 
 				if (collition2d != null)
 				{
-					Debug.Log(collition2d.gameObject.name);
+                    //Debug.Log(collition2d.gameObject.name);
                     if(temp_save == 0)
                     {
                         temp_save = 1;
@@ -342,14 +346,39 @@ public class MainCameraScr : MonoBehaviour
 					if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Retry")
 					{
                         //SceneManager.LoadScene("Stage_" + "1_1" + "_Scene");
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+
+
                         SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+
 					}
                     else if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Stage_Select")
 					{
 						SceneManager.LoadScene("StageSelect_Scene");
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
+                     
 					}
                     else if (collition2d.gameObject.name == "Question")
-                    {
+                    {   
+                        string st = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
+                        if (st != "1")
+                        {
+                            GetComponent<Sound_Manager>().Question_SE();
+                            Debug.Log("iiiii");
+                            GameObject.Find("Question").SetActive(false);
+                            GameObject.Find("FrontLayer/Canvas/Tutorial").SetActive(true);
+                            GameObject.Find("FrontLayer/Canvas/pause_black/Retry").SetActive(false);
+                            GameObject.Find("FrontLayer/Canvas/pause_black/Stage_Select").SetActive(false);
+                            GameObject.Find("FrontLayer/Canvas/Right").SetActive(true);
+                            GameObject.Find("FrontLayer/Canvas/Left").SetActive(true);
+                            //GetComponent<Tutorial_Manager>().right.enabled = true;
+                            //GetComponent<Tutorial_Manager>().left.enabled = true;
+
+                            GameObject.Find("FrontLayer/Canvas/Tutorial").GetComponent<Tutorial_Manager>().Tutorial_Call(0);
+
+                        }
+                       
+
                         if(manual[temp_save - 1].activeSelf)
                         {
                             manual[temp_save - 1].SetActive(false);
@@ -357,18 +386,38 @@ public class MainCameraScr : MonoBehaviour
                         else
                         {
                             //GameObject.Find("manual").SetActive(true);
-                            string st = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
-                            if (st == "1")
+                            string st_1 = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
+                            if (st_1 == "1")
                             {
                                 manual[temp_save - 1].SetActive(true);
+                                GameObject.Find("FrontLayer/Canvas/pause_black/Question").SetActive(false);
+                                GameObject.Find("FrontLayer/Canvas/pause_black/Retry").SetActive(false);
+                                GameObject.Find("FrontLayer/Canvas/pause_black/Stage_Select").SetActive(false);
+
+                            }
+                            else
+                            {
+
+                                GameObject.Find("FrontLayer/Canvas/Tutorial").GetComponent<Tutorial_Manager>().Tutorial_Call(0);
+                               
+                              
                             }
                         }
+
+                        
+            
+                        
+                        //else if(string StageSelectManager.ST_OWNER_NUMBER.Substring"2_1")
+                        //{
+
+                        //}
                      
                     }
 					else if(collition2d.gameObject.name == "pause")
 					{
                         if(manual[temp_save - 1].activeSelf)
                         {
+                            Debug.Log("ポーズ解除");
                             manual[temp_save - 1].SetActive(false);
                         }
 						pause_freeze_flag = false;
@@ -377,8 +426,21 @@ public class MainCameraScr : MonoBehaviour
                         Time.timeScale = 1.0f;
 						delay_time = 0.0f;
 						pause_black.gameObject.SetActive(false);
+                        string st = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
+                        if (st != "1")
+                        {
+                            GameObject.Find("FrontLayer/Canvas/Tutorial").SetActive(false);
+                            GameObject.Find("FrontLayer/Canvas/Right").SetActive(false);
+                            GameObject.Find("FrontLayer/Canvas/Left").SetActive(false);
+
+                        }
+                      
+                        //GetComponent<Tutorial_Manager>().left.enabled = false;
+
 						image.sprite = ini_sp;
+
 					}
+                   
 				}
 			}
 		}
@@ -386,6 +448,7 @@ public class MainCameraScr : MonoBehaviour
         {
             if (info == TouchInfo.Began)
             {
+
                 TouchObjectFind("pause");
                 delay_time = 0.0f;
             }
@@ -1012,6 +1075,7 @@ public class MainCameraScr : MonoBehaviour
                     foreach (GameObject obs in seed)
                     {
                         obs.GetComponent<Seed_Life>().Seed_Life_Down();
+                         
                     }
                     //射出性質変化 小のとき青のオーラをまとう
                     //GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
@@ -1078,6 +1142,12 @@ public class MainCameraScr : MonoBehaviour
                     {
                         obs.GetComponent<Collider2D>().isTrigger = false;
                     }
+                    foreach (GameObject obs in blue_small)
+                    {
+                        obs.GetComponent<Collider2D>().isTrigger = false;
+                    }
+
+
                 }
                 else
                 {
@@ -1090,6 +1160,11 @@ public class MainCameraScr : MonoBehaviour
                     {
                         obs.GetComponent<Collider2D>().isTrigger = false;
                     }
+                    foreach (GameObject obs in blue_small)
+                    {
+                        obs.GetComponent<Collider2D>().isTrigger = false;
+                    }
+
                 }
             }
             else if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > nature_change_blue &&
@@ -1110,6 +1185,11 @@ public class MainCameraScr : MonoBehaviour
                     {
                         obs.GetComponent<Collider2D>().isTrigger = true;
                     }
+                    foreach (GameObject obs in blue_small)
+                    {
+                        obs.GetComponent<Collider2D>().isTrigger = true;
+                    }
+
                 }
                 else
                 {
@@ -1123,6 +1203,11 @@ public class MainCameraScr : MonoBehaviour
                     {
                         obs.GetComponent<Collider2D>().isTrigger = false;
                     }
+                    foreach (GameObject obs in blue_small)
+                    {
+                        obs.GetComponent<Collider2D>().isTrigger = false;
+                    }
+
                 }
             }
    
@@ -1135,10 +1220,16 @@ public class MainCameraScr : MonoBehaviour
                 GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = false;
                 GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
                 small = GameObject.FindGameObjectsWithTag("Small_Block");
+                blue_small = GameObject.FindGameObjectsWithTag("Blue_Block");
                 foreach (GameObject obs in small)
                 {
                     obs.GetComponent<Collider2D>().isTrigger = true;
                 }
+                foreach (GameObject obs in blue_small)
+                {
+                    obs.GetComponent<Collider2D>().isTrigger = true;
+                }
+
             }
            
         }
@@ -1160,11 +1251,12 @@ public class MainCameraScr : MonoBehaviour
         if (collition2d != null)
         {
             if (collition2d.gameObject.name == name)
-            {
+            { //ポーズカウントは1で初期化している
                 pause_count += 1;
                 //偶数時がポーズ
                 if (pause_count % 2 == 0)
                 {
+                   
                     //Pauser.Resume();
                     //時間を止める
                     Time.timeScale = 0.0f;
@@ -1173,6 +1265,13 @@ public class MainCameraScr : MonoBehaviour
                     {
                         pause_se_flag = true;
                         GetComponent<Sound_Manager>().SE();
+
+
+                        GameObject.Find("FrontLayer/Canvas/pause_black/Retry").SetActive(true);
+                        GameObject.Find("FrontLayer/Canvas/pause_black/Stage_Select").SetActive(true);
+                        GameObject.Find("FrontLayer/Canvas/pause_black/Question").SetActive(true);
+
+
                     }
 
                     pause_freeze_flag = true;
