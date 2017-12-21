@@ -153,6 +153,7 @@ public class MainCameraScr : MonoBehaviour
 	*/
     void Start ()
     {
+        //hamada
         //string a = "よろしく";
         if(StageSelectManager.ST_OWNER_NUMBER != null)
             st_owner = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
@@ -296,7 +297,7 @@ public class MainCameraScr : MonoBehaviour
         if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > velocity_max)
         {
             velocity_max = GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude;
-            Debug.Log("ベロシティ" + velocity_max);
+            //Debug.Log("ベロシティ" + velocity_max);
         }
 
         //Debug.Log("ベロシティ" + GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
@@ -718,7 +719,7 @@ public class MainCameraScr : MonoBehaviour
 //                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
 					sub = movePos - startPos;
-                    Debug.Log("サブ" + sub.magnitude);
+                    //Debug.Log("サブ" + sub.magnitude);
 
                     //Debug.Log(temp);
                     // ここでdumpをやっている

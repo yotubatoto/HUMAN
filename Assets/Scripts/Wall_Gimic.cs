@@ -53,7 +53,7 @@ public class Wall_Gimic : MonoBehaviour {
 	void Update () 
     {
         //クリアするためのカウント　ここをかえることでランプレベルが○○のときクリアになる
-        if (clear_count != 0)
+        if (not_count != 0)
         {
             clear_flag = true;
         }
@@ -204,8 +204,9 @@ public class Wall_Gimic : MonoBehaviour {
     {
         if (collision.gameObject.tag == "BlockPiece")
         {
+            Debug.Log("fffff");
             //Debug.Log("gyy");
-            clear_count += 1;
+            //clear_count += 1;
             lamp_chenge_flag = true;
             chenge_number += 1;
             Debug.Log("gugugug");

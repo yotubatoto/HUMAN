@@ -79,7 +79,7 @@ public class Manager : MonoBehaviour
     private float count = 0.0f;
     //ターンとターンの間にオブジェクトを動かす                              
     public bool move_flag = false;
-    float a_value = 0.03f;
+    float a_value = 0.003f;
     private bool al_flag = false;
     public bool hit_flower = false;  //光の種とランタンが当たったを調べる
 
