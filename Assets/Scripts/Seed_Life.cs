@@ -20,7 +20,7 @@ public class Seed_Life : MonoBehaviour {
     private float now_movetime;
     private float between_scale;
     private int effect_state = 0;
-
+    private float c = 1.0f;
 	// Use this for initialization
 	void Start () 
     {
@@ -31,13 +31,16 @@ public class Seed_Life : MonoBehaviour {
         between_scale = 0.0f;
         now_movetime = 0.0f;
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () 
     {
-
-        if(effect_state == 1){
+        ParticleSystem.ColorOverLifetimeModule par = GetComponent<ParticleSystem>().colorOverLifetime;
+        float temp = (transform.localScale.x * 1.0f) / 2.0f;
+        par.color = new Color(temp, temp, temp);
+        Debug.Log(temp);
+        if (effect_state == 1){
 
             
             float deltatime = Time.deltaTime;
@@ -49,7 +52,9 @@ public class Seed_Life : MonoBehaviour {
 
             transform.localScale = new Vector3(effect_scale, effect_scale, effect_scale);
 
-            if (now_movetime >= MOVETIME) { effect_state = 0; }
+            if (now_movetime >= MOVETIME) {
+                effect_state = 0;
+            }
             if (effect_scale <= 0.0f) { Destroy(gameObject); }
         //effect_scale -= 1.0f;
         //transform.localScale = new Vector3(effect_scale, effect_scale, effect_scale);

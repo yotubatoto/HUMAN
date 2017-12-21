@@ -6779,9 +6779,9 @@ MonoBehaviour:
   zoom_speed: 0.5
   light_sprite:
   - {fileID: 21300000, guid: 91c37f04a6519b94bbacb2828c61f6b6, type: 3}
-  - {fileID: 21300000, guid: 4ad43b735005ea240bad2e91c65e2284, type: 3}
-  - {fileID: 21300000, guid: 06aaa148d71c5e94dad8994f3c1d6814, type: 3}
   - {fileID: 21300000, guid: 4b769547e042a8d45a3732121f4d2364, type: 3}
+  - {fileID: 21300000, guid: 06aaa148d71c5e94dad8994f3c1d6814, type: 3}
+  - {fileID: 21300000, guid: 4ad43b735005ea240bad2e91c65e2284, type: 3}
   INITIAL_SIZE: 2
   MAX_SIZE: 3
   number: 0
@@ -12199,6 +12199,18 @@ Prefab:
       propertyPath: light_sprite.Array.data[4]
       value: 
       objectReference: {fileID: 21300000, guid: 4b769547e042a8d45a3732121f4d2364,
+        type: 3}
+    - target: {fileID: 114299442333135788, guid: 4e336b74f7d6b6f4aac70b3058ddcbac,
+        type: 2}
+      propertyPath: light_sprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b769547e042a8d45a3732121f4d2364,
+        type: 3}
+    - target: {fileID: 114299442333135788, guid: 4e336b74f7d6b6f4aac70b3058ddcbac,
+        type: 2}
+      propertyPath: light_sprite.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4ad43b735005ea240bad2e91c65e2284,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e336b74f7d6b6f4aac70b3058ddcbac, type: 2}

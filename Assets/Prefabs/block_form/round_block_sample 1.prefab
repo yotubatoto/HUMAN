@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114928309353421708}
   m_Layer: 0
   m_Name: round_block_sample 1
-  m_TagString: Untagged
+  m_TagString: Small_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
     type: 2}
   seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
     type: 2}
+  seed_life_turn: 0
 --- !u!212 &212553853951579298
 SpriteRenderer:
   m_ObjectHideFlags: 1
