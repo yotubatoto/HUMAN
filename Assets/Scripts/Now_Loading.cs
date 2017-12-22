@@ -21,10 +21,10 @@ public class Now_Loading : MonoBehaviour
     {
         StartCoroutine(LoadScene("StageSelect_Scene"));
     }
-	public void Load_NextScene_Des()
-	{
-		StartCoroutine(LoadScene("Description_Scene"));
-	}
+	//public void Load_NextScene_Des()
+	//{
+	//	StartCoroutine(LoadScene("Description_Scene"));
+	//}
     IEnumerator LoadScene(string scene_name)
     {
         async = SceneManager.LoadSceneAsync(scene_name);
