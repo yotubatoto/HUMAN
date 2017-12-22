@@ -96,7 +96,7 @@ public class TitleManager : MonoBehaviour
                     m_se_source.Play();
                     m_se_source.loop = false;
                 }
-                GameObject.Find("GameMain").GetComponent<Now_Loading>().Load_NextScene_Des();
+                GameObject.Find("GameMain").GetComponent<Now_Loading>().Load_NextScene_Title();
                 //GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().color 
                 //    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 //GameObject.Find("Now_Loading").GetComponent<SpriteRenderer>().sortingOrder = 10000;
