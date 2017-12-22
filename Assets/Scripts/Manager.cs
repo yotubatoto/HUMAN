@@ -79,15 +79,16 @@ public class Manager : MonoBehaviour
     private float count = 0.0f;
     //ターンとターンの間にオブジェクトを動かす                              
     public bool move_flag = false;
-    float a_value = 0.003f;
+    float a_value = 0.0f;
     private bool al_flag = false;
     public bool hit_flower = false;  //光の種とランタンが当たったを調べる
 
     //public GameObject turn;
-    public float trun_alfa = 1.0f;
+    public float trun_alfa = 0.0f;
     private int trun_state = 0;
     bool once_flag = false;
-
+    private int turn_keep_state = 0;
+   
 
     // Use this for initialization
     void Start()
@@ -126,13 +127,36 @@ public class Manager : MonoBehaviour
             Color c =  wave.color;
             Color trun_color = GameObject.Find("turn_flame").GetComponent<Image>().color;
             //ターンは画像なのでターン開始時アルファをいじる
-            
-                trun_alfa -= 0.04f;
-            GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f,  trun_alfa);
-           
 
-            c.a -= a_value;
+            //　
+            if (turn_keep_state == 0)
+            {
+                
+               //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+              
+           
+            }
+
            wave.color = c;
             if(c.a <= 0.0f && trun_alfa <= 0.0f)
             {
@@ -171,56 +195,77 @@ public class Manager : MonoBehaviour
                 if (once_flag == false)
                 {
                     once_flag = true;
-                  
                     wave.text = " 2";
                     shot.text = "2";
                     score.text = " 140";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    turn_keep_state = 0;
                     Color cc = wave.color;
                     cc.a = 1;
                     wave.color = cc;
-                   
                     Camera.main.GetComponent<MainCameraScr>().end_flag = false;
                     Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
-                    //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-                    //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
-                    
+                  
                 }
                 Color c = wave.color;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                ////trun_alfa -= 0.05f;
 
-                c.a -= a_value;
-                wave.color = c;
-                if (c.a <= 0.0f && trun_alfa <= 0.0f)
+                //c.a -= a_value;
+                //wave.color = c;
+
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //c.a = trun_alfa;
+                    //wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+
+                if (trun_alfa <= 0.0f)
                 {
                     move_flag = true;
-                   
 
                     if (Camera.main.GetComponent<MainCameraScr>().number_count >= 2 &&
                         Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
                     {
+                        
+
                         //Debug.Log("aaa" + hit_flower);
                         al_flag = false;
                         once_flag = false;
                         shot_state = (int)MAIN_STATE.SHOT_3;
                         //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "3";
                         GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
-
-
-
-                        //光の種とランタンが当たったらtrueになる
-                        //if (hit_flower == true)
-                        //{
-                        //    Debug.Log("unko");
-                        //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
-                        //    hit_flower = false;
-                        //}
                     }
                 }
             }
@@ -229,6 +274,7 @@ public class Manager : MonoBehaviour
         // Wave3
         else if (shot_state == (int)MAIN_STATE.SHOT_3)
         {
+
             //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
             //{
             //    al_flag = true;
@@ -243,11 +289,14 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 3";
                     shot.text = "3";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 130";
+                    turn_keep_state = 0;
+
+                   
                     Color cc = wave.color;
                     cc.a = 1;
                     wave.color = cc;
@@ -258,14 +307,45 @@ public class Manager : MonoBehaviour
                    
                 }
                 Color c = wave.color;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
 
-                c.a -= a_value;
+                //c.a -= a_value;
                 wave.color = c;
-                if (c.a <= 0.0f)
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                if (trun_alfa <= 0.0f)
                 {
                     move_flag = true;
 
@@ -309,10 +389,11 @@ public class Manager : MonoBehaviour
                     wave.text = " 4";
                     shot.text = "4";
                     score.text = " 120";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     Color cc = wave.color;
                     cc.a = 1;
                     wave.color = cc;
@@ -327,12 +408,43 @@ public class Manager : MonoBehaviour
                   
 
                 c.a -= a_value;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
                 //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
-                wave.color = c;
-                if (c.a <= 0.0f)
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
+                //wave.color = c;
+                if (trun_alfa <= 0.0f)
                 {
                     move_flag = true;
                     
@@ -373,10 +485,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 5";
                     shot.text = "5";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 110";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -390,12 +503,43 @@ public class Manager : MonoBehaviour
                 Color c = wave.color;
 
                 c.a -= a_value;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
-                wave.color = c;
-                if (c.a <= 0.0f)
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
+                //wave.color = c;
+                if (trun_alfa <= 0.0f)
                 {
                   
                     move_flag = true;
@@ -439,10 +583,12 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 6";
                     shot.text = "6";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 100";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -454,12 +600,48 @@ public class Manager : MonoBehaviour
                     
                 }
                 Color c = wave.color;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
 
-                c.a -= a_value;
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    Debug.Log("ijij");
+
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(0.0f, 0.0f, 0.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
+
+                //c.a -= a_value;
                 wave.color = c;
                 if (c.a <= 0.0f)
                 {
@@ -505,10 +687,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 7";
                     shot.text = "7";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 90";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -520,14 +703,47 @@ public class Manager : MonoBehaviour
                     
                 }
                 Color c = wave.color;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
 
-                c.a -= a_value;
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
+
+                //c.a -= a_value;
                 wave.color = c;
-                if (c.a <= 0.0f)
+                if (trun_alfa <= 0.0f)
                 {
                    
                     move_flag = true;
@@ -571,10 +787,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 8";
                     shot.text = "8";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 80";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -586,15 +803,48 @@ public class Manager : MonoBehaviour
                    
                 }
                 Color c = wave.color;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
 
 
                 c.a -= a_value;
                 wave.color = c;
-                if (c.a <= 0.0f)
+                if (trun_alfa <= 0.0f)
                 {
                    
                     move_flag = true;
@@ -637,10 +887,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = " 9";
                     shot.text = "9";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 70";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -653,13 +904,46 @@ public class Manager : MonoBehaviour
                 }
                 Color c = wave.color;
 
-                c.a -= a_value;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                //c.a -= a_value;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
                 wave.color = c;
-                if (c.a <= 0.0f)
+                if (trun_alfa <= 0.0f)
                 {
                     
                     move_flag = true;
@@ -703,10 +987,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = "10";
                     shot.text = "10";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 60";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -720,13 +1005,46 @@ public class Manager : MonoBehaviour
                 }
                 Color c = wave.color;
                 
-                c.a -= a_value;
+                //c.a -= a_value;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
                 //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
                 wave.color = c;
-                if (c.a <= 0.0f)
+                if (trun_alfa <= 0.0f)
                 {
                    
                     move_flag = true;
@@ -770,10 +1088,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = "11";
                     shot.text = "11";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 50";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -787,12 +1106,45 @@ public class Manager : MonoBehaviour
                 Color c = wave.color;
                
                 c.a -= a_value;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
                 wave.color = c;
-                if (c.a <= 0.0f)
+                if (trun_alfa <= 0.0f)
                 {
                     
                     move_flag = true;
@@ -836,10 +1188,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = "12";
                     shot.text = "12";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 40";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -851,10 +1204,43 @@ public class Manager : MonoBehaviour
                     
                 }
                 Color c = wave.color;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
 
                 c.a -= a_value;
                 wave.color = c;
@@ -901,10 +1287,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = "13";
                     shot.text = "13";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 30";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -918,13 +1305,46 @@ public class Manager : MonoBehaviour
                 Color c = wave.color;
 
 
-                c.a -= a_value;
+                //c.a -= a_value;
                 //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
                 wave.color = c;
-                if (c.a <= 0.0f)
+                if (trun_alfa <= 0.0f)
                 {
                    
                     move_flag = true;
@@ -967,10 +1387,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = "14";
                     shot.text = "14";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                    
                     score.text = " 20";
                     Color cc = wave.color;
@@ -984,13 +1405,46 @@ public class Manager : MonoBehaviour
                 }
                 Color c = wave.color;
 
-                c.a -= a_value;
-                //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                //c.a -= a_value;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                ////ターンアルファへらす
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
                 wave.color = c;
-                if (c.a <= 0.0f)
+                if (trun_alfa <= 0.0f)
                 {
                     
                     move_flag = true;
@@ -1033,10 +1487,11 @@ public class Manager : MonoBehaviour
                     once_flag = true;
                     wave.text = "15";
                     shot.text = "15";
-                    //ターンのアルファ初期化
-                    GameObject.Find("turn_flame").GetComponent<Image>().color =
-                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    trun_alfa = 1.0f;
+                    turn_keep_state = 0;
+                    ////ターンのアルファ初期化
+                    //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                    //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    //trun_alfa = 1.0f;
                     score.text = " 10";
                     Color cc = wave.color;
                     cc.a = 1;
@@ -1049,13 +1504,46 @@ public class Manager : MonoBehaviour
                 }
                 Color c = wave.color;
 
-                c.a -= a_value;
+                //c.a -= a_value;
                 //ターンアルファへらす
-                GameObject.Find("turn_flame").GetComponent<Image>().color =
-                       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                trun_alfa -= 0.05f;
+                if (turn_keep_state == 0)
+                {
+                    //ターンが現れる時間
+                    trun_alfa += 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+                    wave.color = c;
+
+                    //ターンを表示している時間
+                    if (trun_alfa >= 5.0f)
+                    {
+                        turn_keep_state = 1;
+                    }
+                }
+                else if (turn_keep_state == 1)
+                {   //ターンを消す時間
+                    trun_alfa -= 5.0f * Time.deltaTime;
+                    GameObject.Find("turn_flame").GetComponent<Image>().color =
+                                new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                    GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                        new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                    c.a = trun_alfa;
+
+                    if (trun_alfa <= 0.0f)
+                    {
+                        trun_alfa = 0;
+                    }
+
+                }
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa -= 0.05f;
                 wave.color = c;
-                if (c.a <= 0.0f && trun_alfa <= 0.0f)
+                if (trun_alfa <= 0.0f)
                 {
                    
                     move_flag = true;

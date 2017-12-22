@@ -801,14 +801,14 @@ public class MainCameraScr : MonoBehaviour
                     {
                         anime.GetComponent<Animator>().speed = 3.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
-                            = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+                            = new Color(0.98f, 0.52f, 0.55f, 1.0f);
                     }
                     //矢印イエロー
                     else if (sub.magnitude > 8.0f)
                     {
                         anime.GetComponent<Animator>().speed = 2.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
-                            = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+                            = new Color(1.0f, 0.89f, 0.41f, 1.0f);
 
                     }
                     //3より射出パワーが上なら矢印ブルー
@@ -816,7 +816,7 @@ public class MainCameraScr : MonoBehaviour
                     {
                         anime.GetComponent<Animator>().speed = 2.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
-                            = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                            = new Color(0.51f, 0.54f, 1.0f, 1.0f);
 
 
                     }

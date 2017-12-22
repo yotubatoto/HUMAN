@@ -1955,6 +1955,7 @@ public class StageSelectManager : MonoBehaviour
             {
                 if(lock_imge[0].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
+                    Debug.Log("iiiiiiii");
                     blackFlag = true;
                     Debug.Log(transform.position);
                

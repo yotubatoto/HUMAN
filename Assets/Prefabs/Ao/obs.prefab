@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 212816372147121086}
   - component: {fileID: 61903178184984710}
   - component: {fileID: 114740447199908492}
+  - component: {fileID: 82863549246257936}
+  - component: {fileID: 114516415557055610}
   m_Layer: 0
   m_Name: obs
   m_TagString: Gimic
@@ -65,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433904586384740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.26, y: 4.091596, z: 0.1304608}
+  m_LocalPosition: {x: -32.93, y: 20.65, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4014497277129544}
@@ -97,6 +99,109 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
+--- !u!82 &82863549246257936
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433904586384740}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114516415557055610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433904586384740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced0973ba1c43fe4f974f056aa4b9977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy_coll_se: {fileID: 0}
+  resin_coll_se: {fileID: 0}
+  block_coll_se: {fileID: 0}
+  gimic_coll_se: {fileID: 8300000, guid: 5f133010e39b89f4da23bb67ae5b4766, type: 3}
+  choice_coll_se: {fileID: 0}
+  decision_coll_se: {fileID: 0}
+  pause_coll_se: {fileID: 0}
+  obstance_coll_se: {fileID: 0}
+  no_break_coll_se: {fileID: 0}
+  damage_coll_se: {fileID: 0}
+  game_clear_se: {fileID: 0}
+  question_se: {fileID: 0}
 --- !u!114 &114740447199908492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,9 +220,9 @@ MonoBehaviour:
   zoom_speed: 0.5
   light_sprite:
   - {fileID: 21300000, guid: 91c37f04a6519b94bbacb2828c61f6b6, type: 3}
-  - {fileID: 21300000, guid: 4ad43b735005ea240bad2e91c65e2284, type: 3}
-  - {fileID: 21300000, guid: 06aaa148d71c5e94dad8994f3c1d6814, type: 3}
   - {fileID: 21300000, guid: 4b769547e042a8d45a3732121f4d2364, type: 3}
+  - {fileID: 21300000, guid: 06aaa148d71c5e94dad8994f3c1d6814, type: 3}
+  - {fileID: 21300000, guid: 4ad43b735005ea240bad2e91c65e2284, type: 3}
   INITIAL_SIZE: 2
   MAX_SIZE: 3
   number: 0
@@ -130,6 +235,7 @@ MonoBehaviour:
   light_state: 0
   spark_prefab: {fileID: 1869632849318842, guid: 1554648a76993344f98318fd56845213,
     type: 2}
+  chenge_number: 0
 --- !u!212 &212293345413100108
 SpriteRenderer:
   m_ObjectHideFlags: 1
