@@ -15,6 +15,11 @@ public class Mission_Manager : MonoBehaviour {
     bool bgm_clear_flag = false; 
     //ステージクリアしたら（ステージクリアのテキストが表示される時間）
     private float clear_count = 0.0f;
+    //private GameObject[] small;
+    private GameObject[] gimic;
+    private GameObject[] gimic_object;
+    private int gimic_number = 0;
+    private int block_number = 0;
     public Image fade;
     enum MISSION_STATE
     {
@@ -158,8 +163,36 @@ public class Mission_Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        block_number = 0;
+        gimic_number = 0;
+
+        block_number += GameObject.FindGameObjectsWithTag("Small_Block").Length;
+        block_number += GameObject.FindGameObjectsWithTag("Big_Block").Length;
+        block_number += GameObject.FindGameObjectsWithTag("Blue_Block").Length;
+
+        if(GameObject.FindGameObjectsWithTag("BlockPiece").Length >= 1)
+        {
+           block_number += 1;
+        }
+
+        //block_number += GameObject.FindGameObjectsWithTag("Gimic").Length;
+
+        gimic_object = GameObject.FindGameObjectsWithTag("Gimic");
+        for (int i = 0; i < gimic_object.Length; i++)
+        {
+            if (gimic_object[i].GetComponent<Wall_Gimic>().not_count == 0)
+            {
+                gimic_number += 1;
+            }
+        }
+
+
+        Debug.Log("B:" + block_number + " G:" + gimic_number);
+
         //打ち出した後打数内でクリアできなかった場合
-        if (GetComponent<MainCameraScr>().main_move_state == 0)
+        if (GetComponent<MainCameraScr>().main_move_state == 0 &&
+            (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) > LIMIT_TURN ||
+             block_number < gimic_number))
         {
             Mission_Lose();
 
@@ -354,18 +387,20 @@ public class Mission_Manager : MonoBehaviour {
 
 	bool Mission_1(int clear)
 	{
-		bool _flag = false;
-		for (int i = 0; i < mainSource.right_count; i++)
-		{
-			if (mainSource.right_obj[i].GetComponent<Wall_Gimic>().clear_count < clear)
-			{
-				_flag = true;
-			}
-		}
-		if (_flag == false)
-		{
-			return true;
-		}
+
+
+        bool _flag = false;
+        for (int i = 0; i < mainSource.right_count; i++)
+        {
+            if (mainSource.right_obj[i].GetComponent<Wall_Gimic>().clear_count < clear)
+            {
+                _flag = true;
+            }
+        }
+        if (_flag == false)
+        {
+            return true;
+        }
 		return false;
 	}
 
@@ -382,14 +417,14 @@ public class Mission_Manager : MonoBehaviour {
 	bool Mission_3()
 	{
 		GameObject[] obj = GameObject.FindGameObjectsWithTag ("Small_Block");
-        GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
+        //GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
         GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
-        GameObject[] obj_4 = GameObject.FindGameObjectsWithTag("No_Seed_Block");
+        //GameObject[] obj_4 = GameObject.FindGameObjectsWithTag("No_Seed_Block");
         GameObject[] obj_5 = GameObject.FindGameObjectsWithTag("No_Seed_Green_Block");
 
 
 
-        if (obj.Length == 0 && obj_2.Length == 0 && obj_3.Length == 0 && obj_4.Length == 0 && obj_5.Length == 0) 
+        if (obj.Length == 0 &&  obj_3.Length == 0 && obj_5.Length == 0) 
 		{
 			return true;
 		}
@@ -399,14 +434,22 @@ public class Mission_Manager : MonoBehaviour {
     //ゲームオーバー時にゲームオーバー画面表示しステージセレクト画面に戻る
     void Mission_Lose()
     {
+
         if (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) > LIMIT_TURN)
         {
             GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = LIMIT_TURN.ToString();
             Debug.Log("打数でクリアできなかった");
+            gameOver_obj.SetActive(true);
            
             Time.timeScale = 0.0f;
         }
-       if(Mission_3())
+        if (block_number < gimic_number)
+        {
+            Debug.Log("ブロックの数が少ないので終わり");
+            gameOver_obj.SetActive(true);
+        }
+        
+        if (Mission_3())
         {
             // 全部壊れてる
             if(Mission_1(1) == false)
@@ -421,6 +464,10 @@ public class Mission_Manager : MonoBehaviour {
                 Time.timeScale = 0.0f;
             }
         }
+
+         
+          
+       
     }
 
     void TouchObjectSearch()

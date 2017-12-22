@@ -34,7 +34,7 @@ public class Wall_Gimic : MonoBehaviour {
     public GameObject spark_prefab;
     //ぼんやりする光のサイズを変える
     private float l_plus = 5.0f;
-    private int not_count = 0;
+    public int not_count = 0;
     private bool lamp_chenge_flag = false;
     public int chenge_number = 0;
 
