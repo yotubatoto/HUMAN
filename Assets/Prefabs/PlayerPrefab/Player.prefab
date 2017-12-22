@@ -760,6 +760,10 @@ MonoBehaviour:
   decision_coll_se: {fileID: 0}
   pause_coll_se: {fileID: 0}
   obstance_coll_se: {fileID: 8300000, guid: 4710c1860ba77574da928eb2720a05b7, type: 3}
+  no_break_coll_se: {fileID: 0}
+  damage_coll_se: {fileID: 0}
+  game_clear_se: {fileID: 0}
+  question_se: {fileID: 0}
 --- !u!114 &114809987531346742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4429,7 +4433,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 90
-  m_Sprite: {fileID: 21300000, guid: 96de72ae4452b614d9e11b65133ca9ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fd36b71c285c1b4fae8864390101829, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
