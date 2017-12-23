@@ -27,7 +27,13 @@ public class StageSelectManager : MonoBehaviour
     public GameObject choice;
     public GameObject now_load_back;
     private Image now_load;
-    private int now_load_state = 0; 
+    private int now_load_state = 0;
+    //連打防止
+    private bool barrage_flag = false;
+
+    
+    
+    
 
     TouchInfo info;
 	public Text[] left = new Text[10];
@@ -50,6 +56,7 @@ public class StageSelectManager : MonoBehaviour
         //マルチタッチ無効
         Input.multiTouchEnabled = false;
 		Time.timeScale = 1.0f;
+        now_load = GameObject.Find("Now_Loading").gameObject.GetComponent<Image>();
         
     }
 
@@ -64,6 +71,8 @@ public class StageSelectManager : MonoBehaviour
 			Application.Quit();
 			return;
 		}
+        now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
+
 		//GameObject.Find ("debug_text").gameObject.GetComponent<Text> ().text = ((int)transform.position.x).ToString ();
         info = AppUtil.GetTouch();
         Debug.Log(transform.position);
@@ -1778,8 +1787,9 @@ public class StageSelectManager : MonoBehaviour
                     pop_obj.transform.Find("_10/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 }
             }
-
-			if (now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f) 
+           //点滅させるのにこの条件はカット now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f
+           
+			if (GetComponent<AudioSource>().enabled == true) 
 			{
 				if (info == TouchInfo.Began)
 				{
@@ -1836,12 +1846,15 @@ public class StageSelectManager : MonoBehaviour
                         {
                             pos = transform.position;
                             pos.x += move_speed;
+                            GetComponent<Sound_Manager>().Stage_Choice_SE();
                             flag = false;
                         }
                         if(collition2d.gameObject.name == "vector_right")
                         {
                             pos = transform.position;
                             pos.x -= move_speed;
+                            GetComponent<Sound_Manager>().Stage_Choice_SE();
+
                             flag = true;
                         }
                     }
@@ -1951,11 +1964,11 @@ public class StageSelectManager : MonoBehaviour
         //Debug.Log(collition2d.gameObject.name);
         if (collition2d != null)
         {
-            if (collition2d.gameObject.name == "_1")
+            if (collition2d.gameObject.name == "_1"　&& barrage_flag == false)
             {
                 if(lock_imge[0].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
-                    Debug.Log("iiiiiiii");
+                    //Debug.Log("iiiiiiii");
                     blackFlag = true;
                     Debug.Log(transform.position);
                
@@ -1965,6 +1978,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -1977,6 +1991,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -1989,6 +2004,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2000,6 +2016,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2011,6 +2028,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "1_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2020,7 +2038,7 @@ public class StageSelectManager : MonoBehaviour
                 }
                 
             }
-            if (collition2d.gameObject.name == "_2")
+            if (collition2d.gameObject.name == "_2" && barrage_flag == false)
             {
                 if(lock_imge[1].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
@@ -2032,6 +2050,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2044,6 +2063,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2055,6 +2075,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2065,6 +2086,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2075,6 +2097,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "1_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2085,7 +2108,7 @@ public class StageSelectManager : MonoBehaviour
                 
             }
 
-            if (collition2d.gameObject.name == "_3")
+            if (collition2d.gameObject.name == "_3" && barrage_flag == false)
             {
                 if(lock_imge[2].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
@@ -2097,6 +2120,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2109,6 +2133,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2120,6 +2145,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2130,6 +2156,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2140,6 +2167,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "1_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2149,7 +2177,7 @@ public class StageSelectManager : MonoBehaviour
                 }
             }
 
-            if (collition2d.gameObject.name == "_4")
+            if (collition2d.gameObject.name == "_4" && barrage_flag == false)
             {
                 if(lock_imge[3].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
@@ -2161,6 +2189,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2173,6 +2202,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2184,6 +2214,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2195,6 +2226,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2205,6 +2237,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "1_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2217,7 +2250,7 @@ public class StageSelectManager : MonoBehaviour
                 
             }
 
-            if (collition2d.gameObject.name == "_5")
+            if (collition2d.gameObject.name == "_5" && barrage_flag == false)
             {
                 if(lock_imge[4].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
@@ -2229,6 +2262,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2241,6 +2275,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2252,6 +2287,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2262,6 +2298,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2272,6 +2309,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "1_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2282,7 +2320,7 @@ public class StageSelectManager : MonoBehaviour
                 }
             }
 
-            if (collition2d.gameObject.name == "_6")
+            if (collition2d.gameObject.name == "_6" && barrage_flag == false)
             {
                 if(lock_imge[5].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
@@ -2294,6 +2332,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2306,6 +2345,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2318,6 +2358,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2329,6 +2370,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2339,6 +2381,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2349,6 +2392,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "1_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2360,7 +2404,7 @@ public class StageSelectManager : MonoBehaviour
                 
             }
 
-            if (collition2d.gameObject.name == "_7")
+            if (collition2d.gameObject.name == "_7" && barrage_flag == false)
             {
                 if(lock_imge[6].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
@@ -2372,6 +2416,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_7";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2384,6 +2429,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_7";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2395,6 +2441,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_7";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2405,6 +2452,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_7";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                          = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2415,6 +2463,7 @@ public class StageSelectManager : MonoBehaviour
                     ST_OWNER_NUMBER = "1_7";
                     GetComponent<Sound_Manager>().Stage_Choice_SE();
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                    barrage_flag = true;
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
                     = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2426,7 +2475,7 @@ public class StageSelectManager : MonoBehaviour
                 
             }
 
-            if (collition2d.gameObject.name == "_8")
+            if (collition2d.gameObject.name == "_8" && barrage_flag == false)
             {
                 if(lock_imge[7].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
@@ -2438,6 +2487,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2450,6 +2500,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2461,6 +2512,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2471,6 +2523,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         //SceneManager.LoadScene("Stage_1_Scene");
@@ -2480,6 +2533,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "1_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2491,7 +2545,7 @@ public class StageSelectManager : MonoBehaviour
               
             }
 
-            if (collition2d.gameObject.name == "_9")
+            if (collition2d.gameObject.name == "_9" && barrage_flag == false)
             {
                 if(lock_imge[8].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
@@ -2503,6 +2557,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2515,6 +2570,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2526,6 +2582,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2536,6 +2593,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         //SceneManager.LoadScene("Stage_1_Scene");
@@ -2545,6 +2603,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "1_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         
@@ -2554,7 +2613,7 @@ public class StageSelectManager : MonoBehaviour
                 }                
             }
 
-            if (collition2d.gameObject.name == "_10")
+            if (collition2d.gameObject.name == "_10" && barrage_flag == false)
             {    
                 if(lock_imge[9].GetComponent<Image>().color == new Color(0,0,0,0))
                 {
@@ -2566,6 +2625,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "5_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2578,6 +2638,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "4_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2589,6 +2650,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "3_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2599,6 +2661,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "2_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         //SceneManager.LoadScene("Stage_1_Scene");
@@ -2608,6 +2671,7 @@ public class StageSelectManager : MonoBehaviour
                         ST_OWNER_NUMBER = "1_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         

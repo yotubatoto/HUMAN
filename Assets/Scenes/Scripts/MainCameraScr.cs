@@ -108,7 +108,8 @@ public class MainCameraScr : MonoBehaviour
     private int temp_save = 0;
 
     public GameObject rial;
-    //遷移フラグ押しっぱなし防止
+    //連打防止
+    private bool main_barrage_flag = false;
 
     //操作説明のオブジェ
     public GameObject[] manual = new GameObject[10];
@@ -195,6 +196,7 @@ public class MainCameraScr : MonoBehaviour
         }
 
         TouchInfo info_m = AppUtil.GetTouch();
+      
 
         //スタート時にホワイトから透明に
         if (main_move_state == -3)
@@ -262,7 +264,8 @@ public class MainCameraScr : MonoBehaviour
         {
             if (gamestart_al_flag == false)
             {
-                gamestart_al += 0.02f;
+                
+                gamestart_al += 1.0f * Time.deltaTime;
                 if (gamestart_al >= 1.0f)
                 {
                     gamestart_al = 1.0f;
@@ -271,7 +274,7 @@ public class MainCameraScr : MonoBehaviour
             }
             else
             {
-                gamestart_al -= 0.02f;
+                gamestart_al -= 1.0f * Time.deltaTime;
 
                 if (gamestart_al <= 0.0f)
                 {
@@ -358,23 +361,23 @@ public class MainCameraScr : MonoBehaviour
                         temp_save = 1;
                     }
 
-                    if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Retry")
+                    if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Retry" && main_barrage_flag == false)
                     {
                         //SceneManager.LoadScene("Stage_" + "1_1" + "_Scene");
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-
-
                         //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
                         GetComponent<Now_Loading>().LoadNextScene();
+                        main_barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                         GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
 
                     }
-                    else if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Stage_Select")
+                    else if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Stage_Select" && main_barrage_flag == false)
                     {
                         //SceneManager.LoadScene("StageSelect_Scene");
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         GetComponent<Now_Loading>().Load_NextScene_Title();
+                        main_barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                         GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
 
@@ -410,6 +413,10 @@ public class MainCameraScr : MonoBehaviour
                             string st_1 = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
                             if (st_1 == "1")
                             {
+                                GetComponent<Sound_Manager>().Question_SE();
+                                Debug.Log("bbbbbbbbbbbbb");
+
+
                                 manual[temp_save - 1].SetActive(true);
                                 GameObject.Find("Common/Canvas/pause_black/Question").SetActive(false);
                                 GameObject.Find("Common/Canvas/pause_black/Retry").SetActive(false);
@@ -820,14 +827,14 @@ public class MainCameraScr : MonoBehaviour
                     //矢印赤
                     if (sub.magnitude > 19.5f)
                     {
-                        anime.GetComponent<Animator>().speed = 3.0f;
+                        anime.GetComponent<Animator>().speed = 4.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(0.98f, 0.52f, 0.55f, 1.0f);
                     }
                     //矢印イエロー
                     else if (sub.magnitude > 8.0f)
                     {
-                        anime.GetComponent<Animator>().speed = 2.0f;
+                        anime.GetComponent<Animator>().speed = 3.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(1.0f, 0.89f, 0.41f, 1.0f);
 

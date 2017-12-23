@@ -1,10 +1,23 @@
 fileFormatVersion: 2
 guid: ced0973ba1c43fe4f974f056aa4b9977
-timeCreated: 1509261637
+timeCreated: 1514046010
 licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemy_coll_se: {instanceID: 0}
+  - resin_coll_se: {instanceID: 0}
+  - block_coll_se: {instanceID: 0}
+  - gimic_coll_se: {instanceID: 0}
+  - choice_coll_se: {fileID: 8300000, guid: 5cfa0bffd156dff4eaf42865719ccc7e, type: 3}
+  - decision_coll_se: {instanceID: 0}
+  - pause_coll_se: {instanceID: 0}
+  - obstance_coll_se: {instanceID: 0}
+  - no_break_coll_se: {instanceID: 0}
+  - damage_coll_se: {instanceID: 0}
+  - game_clear_se: {instanceID: 0}
+  - question_se: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
