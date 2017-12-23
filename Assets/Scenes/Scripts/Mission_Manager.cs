@@ -190,10 +190,9 @@ public class Mission_Manager : MonoBehaviour {
         Debug.Log("B:" + block_number + " G:" + gimic_number);
 
         //打ち出した後打数内でクリアできなかった場合
-        if (GetComponent<MainCameraScr>().main_move_state == 0 &&
-            (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) > LIMIT_TURN ||
-             block_number < gimic_number))
+        if (GetComponent<MainCameraScr>().main_move_state == 0)
         {
+            Debug.Log("wwwwwwwwwwwwwwww");
             Mission_Lose();
 
         }
@@ -392,7 +391,7 @@ public class Mission_Manager : MonoBehaviour {
         bool _flag = false;
         for (int i = 0; i < mainSource.right_count; i++)
         {
-            if (mainSource.right_obj[i].GetComponent<Wall_Gimic>().clear_count < clear)
+            if (mainSource.right_obj[i].GetComponent<Wall_Gimic>().not_count < clear)
             {
                 _flag = true;
             }
@@ -435,9 +434,10 @@ public class Mission_Manager : MonoBehaviour {
     void Mission_Lose()
     {
 
-        if (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) > LIMIT_TURN)
+        if (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) <= 0)
         {
-            GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = LIMIT_TURN.ToString();
+            int a = 0;
+            GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = a.ToString();
             Debug.Log("打数でクリアできなかった");
             gameOver_obj.SetActive(true);
            
