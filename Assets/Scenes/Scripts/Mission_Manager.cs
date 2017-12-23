@@ -190,10 +190,9 @@ public class Mission_Manager : MonoBehaviour {
         Debug.Log("B:" + block_number + " G:" + gimic_number);
 
         //打ち出した後打数内でクリアできなかった場合
-        if (GetComponent<MainCameraScr>().main_move_state == 0 &&
-            (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) > LIMIT_TURN ||
-             block_number < gimic_number))
+        if (GetComponent<MainCameraScr>().main_move_state == 0)
         {
+            Debug.Log("wwwwwwwwwwwwwwww");
             Mission_Lose();
 
         }
@@ -392,7 +391,7 @@ public class Mission_Manager : MonoBehaviour {
         bool _flag = false;
         for (int i = 0; i < mainSource.right_count; i++)
         {
-            if (mainSource.right_obj[i].GetComponent<Wall_Gimic>().clear_count < clear)
+            if (mainSource.right_obj[i].GetComponent<Wall_Gimic>().not_count < clear)
             {
                 _flag = true;
             }
@@ -435,9 +434,10 @@ public class Mission_Manager : MonoBehaviour {
     void Mission_Lose()
     {
 
-        if (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) > LIMIT_TURN)
+        if (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) <= 0)
         {
-            GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = LIMIT_TURN.ToString();
+            int a = 0;
+            GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = a.ToString();
             Debug.Log("打数でクリアできなかった");
             gameOver_obj.SetActive(true);
            
@@ -483,14 +483,20 @@ public class Mission_Manager : MonoBehaviour {
 
                 if (gameOver_obj.gameObject.activeSelf)
                 {
-                    SceneManager.LoadScene("Stage_"+StageSelectManager.ST_OWNER_NUMBER+"_Scene");
+                    //SceneManager.LoadScene("Stage_"+StageSelectManager.ST_OWNER_NUMBER+"_Scene");
+                    Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                    GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                    GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
                 }
             }
             if (collition2d.gameObject.name == "stageselect")
             {
                 if (gameOver_obj.gameObject.activeSelf)
                 {
-                    SceneManager.LoadScene("StageSelect_Scene");
+                    //SceneManager.LoadScene("StageSelect_Scene");
+                    Camera.main.GetComponent<Now_Loading>().Load_NextScene_Title();
+                    GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                    GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
                 }
             }
         }
@@ -508,17 +514,21 @@ public class Mission_Manager : MonoBehaviour {
             if (collition2d.gameObject.name == "Retry_result")
             {
                 Debug.Log(StageSelectManager.ST_OWNER_NUMBER);
-                //if (gameOver_obj.gameObject.activeSelf)
-                //{
-                    SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
-                //}
+               
+                //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+
+                Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+
             }
             if (collition2d.gameObject.name == "Stage_Select_result")
             {
-                //if (gameOver_obj.gameObject.activeSelf)
-                //{
-                    SceneManager.LoadScene("StageSelect_Scene");
-                //}
+               
+                Camera.main.GetComponent<Now_Loading>().Load_NextScene_Title();
+               
+                GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
             }
             if (collition2d.gameObject.name == "Next_Stage")
             {
@@ -537,7 +547,11 @@ public class Mission_Manager : MonoBehaviour {
                 // 連結させる res = 1_2
                 string res = head + tem_tail.ToString();
                 StageSelectManager.ST_OWNER_NUMBER = res;
-                SceneManager.LoadScene("Stage_"+res + "_Scene");
+                Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+
+                GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+                //SceneManager.LoadScene("Stage_"+res + "_Scene");
             }
         }
 

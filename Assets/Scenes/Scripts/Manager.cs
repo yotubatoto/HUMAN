@@ -98,12 +98,14 @@ public class Manager : MonoBehaviour
         //journeyLength = Vector2.Distance(transform.position, goal.transform.position);
         itemCount = PlayerPrefs.GetInt("item", 0);
         clearCount = PlayerPrefs.GetInt("clear", 0);
+        shot.text = GetComponent<Mission_Manager>().LIMIT_TURN.ToString();
         
     }
     
     // Update is called once per frame
     void Update()
     {
+
         //Count_Such();
         //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag);
         if(shot_state == (int) MAIN_STATE.SHOT_0)
@@ -196,7 +198,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 2";
-                    shot.text = "2";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 1;
+                    shot.text = temp.ToString();
                     score.text = " 140";
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -288,8 +291,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 3";
-                    shot.text = "3";
-                    ////ターンのアルファ初期化
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 2;
+                    shot.text = temp.ToString();
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
                     //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
                     //trun_alfa = 1.0f;
@@ -387,7 +390,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 4";
-                    shot.text = "4";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 3;
+                    shot.text = temp.ToString();
                     score.text = " 120";
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
@@ -484,7 +488,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 5";
-                    shot.text = "5";
+                   int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 4;
+                    shot.text = temp.ToString();
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -582,7 +587,9 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 6";
-                    shot.text = "6";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 5;
+                    shot.text = temp.ToString();
+
                     turn_keep_state = 0;
 
                     ////ターンのアルファ初期化
@@ -686,7 +693,9 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 7";
-                    shot.text = "7";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 6;
+                    shot.text = temp.ToString();
+
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -786,7 +795,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 8";
-                    shot.text = "8";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 7;
+                    shot.text = temp.ToString();
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -886,7 +896,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = " 9";
-                    shot.text = "9";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 8;
+                    shot.text = temp.ToString();
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -986,7 +997,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = "10";
-                    shot.text = "10";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 9;
+                    shot.text = temp.ToString();
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -1087,7 +1099,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = "11";
-                    shot.text = "11";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 10;
+                    shot.text = temp.ToString();
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -1187,7 +1200,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = "12";
-                    shot.text = "12";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 11;
+                    shot.text = temp.ToString();
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -1286,7 +1300,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = "13";
-                    shot.text = "13";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 12;
+                    shot.text = temp.ToString();
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -1386,7 +1401,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = "14";
-                    shot.text = "14";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 13;
+                    shot.text = temp.ToString();
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =
@@ -1486,7 +1502,8 @@ public class Manager : MonoBehaviour
                 {
                     once_flag = true;
                     wave.text = "15";
-                    shot.text = "15";
+                    int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 14;
+                    shot.text = temp.ToString();
                     turn_keep_state = 0;
                     ////ターンのアルファ初期化
                     //GameObject.Find("turn_flame").GetComponent<Image>().color =

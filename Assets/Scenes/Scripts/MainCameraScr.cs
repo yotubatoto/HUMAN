@@ -146,7 +146,8 @@ public class MainCameraScr : MonoBehaviour
     public float touch_time = 0.0f;
     //public float check_time = 0.0f;
     private string st_owner = null;
-
+    private int state = 0;
+    public Image nowloading_back_img;
 
     /* --------------------------------------------------
 	 * @パラメータ初期化
@@ -180,6 +181,13 @@ public class MainCameraScr : MonoBehaviour
 	*/
 	void Update ()
 	{
+        if(nowloading_back_img.enabled)
+        {
+            //タップトゥスタートの透明、不透明　値など
+            state = _Utility.Flashing(now_loading.GetComponent<Image>(), 1.5f, state);
+            //now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
+        }
+
         if (hold.x != float.MaxValue)
         {
             arrow.transform.position = hold;
@@ -322,7 +330,13 @@ public class MainCameraScr : MonoBehaviour
         TouchInfo info = AppUtil.GetTouch();
 		if (pause_black.gameObject.activeSelf == true)
 		{
-			pause_se_flag = false;
+            //if (nowloading_back_img.enabled)
+            //{
+            //    //タップトゥスタートの透明、不透明　値など
+            //    state = _Utility.Flashing(now_loading.GetComponent<Image>(), 1, state);
+            //    //now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
+            //}
+            pause_se_flag = false;
 			Image image = pause.GetComponent<Image> ();
 			image.sprite = change_sp;
             Image imaage1 = pause.GetComponent<Image>();
@@ -350,15 +364,21 @@ public class MainCameraScr : MonoBehaviour
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
 
 
-                        SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                        GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                        GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
 
-					}
+                    }
                     else if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Stage_Select")
 					{
-						SceneManager.LoadScene("StageSelect_Scene");
+						//SceneManager.LoadScene("StageSelect_Scene");
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                     
-					}
+                        GetComponent<Now_Loading>().Load_NextScene_Title();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                        GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+
+                    }
                     else if (collition2d.gameObject.name == "Question")
                     {   
                         string st = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
@@ -391,9 +411,9 @@ public class MainCameraScr : MonoBehaviour
                             if (st_1 == "1")
                             {
                                 manual[temp_save - 1].SetActive(true);
-                                GameObject.Find("FrontLayer/Canvas/pause_black/Question").SetActive(false);
-                                GameObject.Find("FrontLayer/Canvas/pause_black/Retry").SetActive(false);
-                                GameObject.Find("FrontLayer/Canvas/pause_black/Stage_Select").SetActive(false);
+                                GameObject.Find("Common/Canvas/pause_black/Question").SetActive(false);
+                                GameObject.Find("Common/Canvas/pause_black/Retry").SetActive(false);
+                                GameObject.Find("Common/Canvas/pause_black/Stage_Select").SetActive(false);
 
                             }
                             else
@@ -1268,9 +1288,9 @@ public class MainCameraScr : MonoBehaviour
                         GetComponent<Sound_Manager>().SE();
 
 
-                        GameObject.Find("FrontLayer/Canvas/pause_black/Retry").SetActive(true);
-                        GameObject.Find("FrontLayer/Canvas/pause_black/Stage_Select").SetActive(true);
-                        GameObject.Find("FrontLayer/Canvas/pause_black/Question").SetActive(true);
+                        GameObject.Find("Common/Canvas/pause_black/Retry").SetActive(true);
+                        GameObject.Find("Common/Canvas/pause_black/Stage_Select").SetActive(true);
+                        GameObject.Find("Common/Canvas/pause_black/Question").SetActive(true);
 
 
                     }
