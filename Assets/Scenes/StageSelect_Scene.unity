@@ -1014,12 +1014,12 @@ Prefab:
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
@@ -1054,22 +1054,22 @@ Prefab:
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 840
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 224534646819791654, guid: c7c5191f5ee09446f8ddb7fe549a0bd6,
         type: 2}
@@ -6356,7 +6356,6 @@ MonoBehaviour:
   - {fileID: 65282951}
   - {fileID: 115134827}
   Debug_Mode: 1
-  nowloading_back_img: {fileID: 1806714192}
 --- !u!4 &1249383449
 Transform:
   m_ObjectHideFlags: 0
