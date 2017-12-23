@@ -483,20 +483,14 @@ public class Mission_Manager : MonoBehaviour {
 
                 if (gameOver_obj.gameObject.activeSelf)
                 {
-                    //SceneManager.LoadScene("Stage_"+StageSelectManager.ST_OWNER_NUMBER+"_Scene");
-                    Camera.main.GetComponent<Now_Loading>().LoadNextScene();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
-                    GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+                    SceneManager.LoadScene("Stage_"+StageSelectManager.ST_OWNER_NUMBER+"_Scene");
                 }
             }
             if (collition2d.gameObject.name == "stageselect")
             {
                 if (gameOver_obj.gameObject.activeSelf)
                 {
-                    //SceneManager.LoadScene("StageSelect_Scene");
-                    Camera.main.GetComponent<Now_Loading>().Load_NextScene_Title();
-                    GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
-                    GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+                    SceneManager.LoadScene("StageSelect_Scene");
                 }
             }
         }
@@ -514,21 +508,17 @@ public class Mission_Manager : MonoBehaviour {
             if (collition2d.gameObject.name == "Retry_result")
             {
                 Debug.Log(StageSelectManager.ST_OWNER_NUMBER);
-               
-                //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
-
-                Camera.main.GetComponent<Now_Loading>().LoadNextScene();
-                GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
-                GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
-
+                //if (gameOver_obj.gameObject.activeSelf)
+                //{
+                    SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                //}
             }
             if (collition2d.gameObject.name == "Stage_Select_result")
             {
-               
-                Camera.main.GetComponent<Now_Loading>().Load_NextScene_Title();
-               
-                GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
-                GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+                //if (gameOver_obj.gameObject.activeSelf)
+                //{
+                    SceneManager.LoadScene("StageSelect_Scene");
+                //}
             }
             if (collition2d.gameObject.name == "Next_Stage")
             {
@@ -547,11 +537,7 @@ public class Mission_Manager : MonoBehaviour {
                 // 連結させる res = 1_2
                 string res = head + tem_tail.ToString();
                 StageSelectManager.ST_OWNER_NUMBER = res;
-                Camera.main.GetComponent<Now_Loading>().LoadNextScene();
-
-                GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
-                GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
-                //SceneManager.LoadScene("Stage_"+res + "_Scene");
+                SceneManager.LoadScene("Stage_"+res + "_Scene");
             }
         }
 
