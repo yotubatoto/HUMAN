@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class Mission_Manager : MonoBehaviour {
+public class Mission_Manager : MonoBehaviour
+{
     public GameObject Playerobj;
     public int mission_state = 0;
     public bool clear_flag = false;
     private int clear_state = 0;
     public Image clear_text;
     private float clear_time = 0.0f;
-    bool bgm_clear_flag = false; 
+    bool bgm_clear_flag = false;
     //ステージクリアしたら（ステージクリアのテキストが表示される時間）
     private float clear_count = 0.0f;
     //private GameObject[] small;
@@ -27,37 +28,37 @@ public class Mission_Manager : MonoBehaviour {
         STAGE_1_2,
         STAGE_1_3
     };
-	public GameObject clear_pop;
-	public List<string> mission_text = new List<string> ();
-	MainCameraScr mainSource;
-	bool[] once_flag = new bool[3];
-	int clear_number = 0;
-	float stage_select_count = 0.0f;
-//    public int MAX_SHOT = 1;
+    public GameObject clear_pop;
+    public List<string> mission_text = new List<string>();
+    MainCameraScr mainSource;
+    bool[] once_flag = new bool[3];
+    int clear_number = 0;
+    float stage_select_count = 0.0f;
+    //    public int MAX_SHOT = 1;
     public GameObject gameOver_obj;
     private float delay_time = 0.0f;
     private bool clear_once_flag = false;
-	public GameObject[] star_obj = new GameObject[3];
-	private int MAX_TURN = 15;
-	public int LIMIT_TURN = 10;
-	public GameObject turn_limit;
-	public int CLEAR_LAMP_LEVEL = 1;
+    public GameObject[] star_obj = new GameObject[3];
+    private int MAX_TURN = 15;
+    public int LIMIT_TURN = 10;
+    public GameObject turn_limit;
+    public int CLEAR_LAMP_LEVEL = 1;
     public GameObject Result_obj;
     public GameObject goal_trun;
     public GameObject clear_goal_turn;
     public string[] GOAL_TURN = new string[12];
-	public AudioClip gameover_bgm;
+    public AudioClip gameover_bgm;
     public AudioClip game_clear_bgm;
-    private int game_clear_bgm_state= 0;
+    private int game_clear_bgm_state = 0;
 
-    
-	private bool bgm_once_flag = false;
-	private float volume_state = 0;
+
+    private bool bgm_once_flag = false;
+    private float volume_state = 0;
     // Use this for initialization
-    void Start () 
+    void Start()
     {
         //ヌルでないとき成立する
-                    Debug.Log("PlayerPrefsmdayo"+PlayerPrefs.GetInt("3_1" + "star"));
+        Debug.Log("PlayerPrefsmdayo" + PlayerPrefs.GetInt("3_1" + "star"));
 
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_1")
         {
@@ -147,21 +148,21 @@ public class Mission_Manager : MonoBehaviour {
             goal_trun.GetComponent<Text>().text = "1";
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
         }
-        
 
-		mainSource = Camera.main.gameObject.GetComponent<MainCameraScr> ();
-		for(int i=0;i<3;i++)
-		{
-			once_flag [i] = false;
-		}
+
+        mainSource = Camera.main.gameObject.GetComponent<MainCameraScr>();
+        for (int i = 0; i < 3; i++)
+        {
+            once_flag[i] = false;
+        }
         turn_limit.GetComponent<Text>().text = LIMIT_TURN.ToString();
         MAX_TURN = int.Parse(turn_limit.gameObject.GetComponent<Text>().text);
-//		GameObject.Find ("Debug/Text").gameObject.GetComponent<Text> ().text = MAX_TURN.ToString ();
-	}
+        //		GameObject.Find ("Debug/Text").gameObject.GetComponent<Text> ().text = MAX_TURN.ToString ();
+    }
 
-	
-	// Update is called once per frame
-	void Update () 
+
+    // Update is called once per frame
+    void Update()
     {
         block_number = 0;
         gimic_number = 0;
@@ -170,9 +171,9 @@ public class Mission_Manager : MonoBehaviour {
         block_number += GameObject.FindGameObjectsWithTag("Big_Block").Length;
         block_number += GameObject.FindGameObjectsWithTag("Blue_Block").Length;
 
-        if(GameObject.FindGameObjectsWithTag("BlockPiece").Length >= 1)
+        if (GameObject.FindGameObjectsWithTag("BlockPiece").Length >= 1)
         {
-           block_number += 1;
+            block_number += 1;
         }
 
         //block_number += GameObject.FindGameObjectsWithTag("Gimic").Length;
@@ -198,40 +199,43 @@ public class Mission_Manager : MonoBehaviour {
         }
         TouchInfo _info = AppUtil.GetTouch();
         //gameOver_obj.SetActive(true);
-        if(_info == TouchInfo.Began)
+        if (_info == TouchInfo.Began)
         {
             TouchObjectSearch();
         }
-        if(gameOver_obj.activeSelf)
+        if (gameOver_obj.activeSelf)
         {
-			if (volume_state == 0) {
-				float v = GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().volume;
-				v -= 0.05f;
-				if (v <= 0) {
-					v = 0;
-					volume_state = 1;
-				}
-				GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().volume = v;
-			}
-			else if (volume_state == 1) 
-			{
-				float v = GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().volume;
-				v += 0.05f;
-				if (v >= 1) {
-					v = 1;
-				}
-				GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().volume = v;
-				if (bgm_once_flag == false) 
-				{
-					bgm_once_flag = true;
-					GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().clip = null;
-					GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().clip = gameover_bgm;
-					GameObject.Find ("BGM").gameObject.GetComponent<AudioSource> ().Play ();
+            if (volume_state == 0)
+            {
+                float v = GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().volume;
+                v -= 0.05f;
+                if (v <= 0)
+                {
+                    v = 0;
+                    volume_state = 1;
+                }
+                GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().volume = v;
+            }
+            else if (volume_state == 1)
+            {
+                float v = GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().volume;
+                v += 0.05f;
+                if (v >= 1)
+                {
+                    v = 1;
+                }
+                GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().volume = v;
+                if (bgm_once_flag == false)
+                {
+                    bgm_once_flag = true;
+                    GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().clip = null;
+                    GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().clip = gameover_bgm;
+                    GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().Play();
                     GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().loop = false;
 
-				}
-               
-			}
+                }
+
+            }
             Camera.main.GetComponent<MainCameraScr>().pause_freeze_flag = true;
             GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
         }
@@ -239,15 +243,16 @@ public class Mission_Manager : MonoBehaviour {
         //{
         //    clear_flag = Resin_GetNumber(4);
         //}
-//        clear_flag = true;
+        //        clear_flag = true;
         //クリア条件を満たしたらカラーをいじっている
         if (clear_flag)
         {
-			Camera.main.GetComponent<MainCameraScr> ().pause_freeze_flag = true;
-			if (clear_state == 0) {
-//				clear_text.enabled = true;
-				Color c = clear_text.color;
-				c.a += 0.01f;
+            Camera.main.GetComponent<MainCameraScr>().pause_freeze_flag = true;
+            if (clear_state == 0)
+            {
+                //				clear_text.enabled = true;
+                Color c = clear_text.color;
+                c.a += 0.01f;
 
                 if (game_clear_bgm_state == 0)
                 {
@@ -260,17 +265,18 @@ public class Mission_Manager : MonoBehaviour {
                         GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().loop = false;
                         bgm_clear_flag = false;
 
-                    } 
-                   
+                    }
+
                 }
                 GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
-                if (c.a >= 1.0f) {
-					c.a = 1.0f;
+                if (c.a >= 1.0f)
+                {
+                    c.a = 1.0f;
                     clear_state = 1;
-				}
-				clear_text.color = c;
-			}
-            else if(clear_state == 1)
+                }
+                clear_text.color = c;
+            }
+            else if (clear_state == 1)
             {
                 //ステージクリアしたら（ステージクリアのテキストが表示される時間）
                 clear_count += Time.deltaTime;
@@ -279,22 +285,22 @@ public class Mission_Manager : MonoBehaviour {
                     clear_state = 2;
                 }
             }
-            else if (clear_state == 2) 
+            else if (clear_state == 2)
             {
-				clear_text.color = new Color(1,1,1,0);
-				clear_pop.SetActive (true);
-              
-              
+                clear_text.color = new Color(1, 1, 1, 0);
+                clear_pop.SetActive(true);
+
+
                 GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
 
-     //           GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
-					//(Camera.main.GetComponent<Manager> ().shot_state - 1).ToString ();        //この処理をManagerように変えて入れる
-                if(clear_once_flag == false)
+                //           GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
+                //(Camera.main.GetComponent<Manager> ().shot_state - 1).ToString ();        //この処理をManagerように変えて入れる
+                if (clear_once_flag == false)
                 {
                     clear_once_flag = true;
-					if (Mission_1(CLEAR_LAMP_LEVEL))
+                    if (Mission_1(CLEAR_LAMP_LEVEL))
                     {
-						star_obj [2].SetActive (true);
+                        star_obj[2].SetActive(true);
                         if (once_flag[0] == false)
                         {
                             clear_number += 1;
@@ -302,7 +308,7 @@ public class Mission_Manager : MonoBehaviour {
                     }
                     if (Mission_2(int.Parse(goal_trun.GetComponent<Text>().text)))
                     {
-						star_obj [0].SetActive (true);
+                        star_obj[0].SetActive(true);
                         if (once_flag[1] == false)
                         {
                             clear_number += 1;
@@ -310,7 +316,7 @@ public class Mission_Manager : MonoBehaviour {
                     }
                     if (Mission_3())
                     {
-						star_obj [1].SetActive (true);
+                        star_obj[1].SetActive(true);
                         if (once_flag[2] == false)
                         {
                             clear_number += 1;
@@ -322,22 +328,25 @@ public class Mission_Manager : MonoBehaviour {
                 if (clear_number >= PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "star"))
                 {
                     PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER + "star", clear_number);
-                    Debug.Log("PlayerPrefsmdayo"+PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "star"));
+                    Debug.Log("PlayerPrefsmdayo" + PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "star"));
                 }
                 stage_select_count += Time.deltaTime;
-				if (stage_select_count > 3) {
-					clear_state = 3;
-				}
-			} else if (clear_state == 3) 
-			{
-				
-				GameObject.Find ("Touch").gameObject.GetComponent<Text> ().color = 
-					new Color (0, 0, 0, 1);
-				TouchInfo info = AppUtil.GetTouch();
-				if (info == TouchInfo.Ended) {
+                if (stage_select_count > 3)
+                {
+                    clear_state = 3;
+                }
+            }
+            else if (clear_state == 3)
+            {
+
+                GameObject.Find("Touch").gameObject.GetComponent<Text>().color =
+                    new Color(0, 0, 0, 1);
+                TouchInfo info = AppUtil.GetTouch();
+                if (info == TouchInfo.Ended)
+                {
                     clear_state = 4;
-				}
-			}
+                }
+            }
             if (clear_state == 4)
             {
                 //Color c = fade.color;
@@ -362,14 +371,14 @@ public class Mission_Manager : MonoBehaviour {
             }
         }
 
-        if(Result_obj.gameObject.activeSelf == true)
+        if (Result_obj.gameObject.activeSelf == true)
         {
             if (_info == TouchInfo.Began)
             {
                 TouchObjectCheck();
             }
         }
-			
+
     }
 
     //ランプの点灯数がマックスになったらステージ遷移
@@ -384,8 +393,8 @@ public class Mission_Manager : MonoBehaviour {
         return false;
     }
 
-	bool Mission_1(int clear)
-	{
+    bool Mission_1(int clear)
+    {
 
 
         bool _flag = false;
@@ -400,22 +409,22 @@ public class Mission_Manager : MonoBehaviour {
         {
             return true;
         }
-		return false;
-	}
+        return false;
+    }
 
-	bool Mission_2(int n)
-	{
-		int temp =Camera.main.GetComponent<Manager> ().shot_state - 1;   
-		if(temp <= n)
-		{
-			return true;
-		}
-		return false;
-	}
+    bool Mission_2(int n)
+    {
+        int temp = Camera.main.GetComponent<Manager>().shot_state - 1;
+        if (temp <= n)
+        {
+            return true;
+        }
+        return false;
+    }
 
-	bool Mission_3()
-	{
-		GameObject[] obj = GameObject.FindGameObjectsWithTag ("Small_Block");
+    bool Mission_3()
+    {
+        GameObject[] obj = GameObject.FindGameObjectsWithTag("Small_Block");
         //GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
         GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
         //GameObject[] obj_4 = GameObject.FindGameObjectsWithTag("No_Seed_Block");
@@ -423,12 +432,12 @@ public class Mission_Manager : MonoBehaviour {
 
 
 
-        if (obj.Length == 0 &&  obj_3.Length == 0 && obj_5.Length == 0) 
-		{
-			return true;
-		}
-		return false;
-	}
+        if (obj.Length == 0 && obj_3.Length == 0 && obj_5.Length == 0)
+        {
+            return true;
+        }
+        return false;
+    }
 
     //ゲームオーバー時にゲームオーバー画面表示しステージセレクト画面に戻る
     void Mission_Lose()
@@ -440,7 +449,7 @@ public class Mission_Manager : MonoBehaviour {
             GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = a.ToString();
             Debug.Log("打数でクリアできなかった");
             gameOver_obj.SetActive(true);
-           
+
             Time.timeScale = 0.0f;
         }
         if (block_number < gimic_number)
@@ -448,26 +457,26 @@ public class Mission_Manager : MonoBehaviour {
             Debug.Log("ブロックの数が少ないので終わり");
             gameOver_obj.SetActive(true);
         }
-        
+
         if (Mission_3())
         {
             // 全部壊れてる
-            if(Mission_1(1) == false)
+            if (Mission_1(1) == false)
             {
-                
-                    Debug.Log("全部壊れていてかつ光ってないものありでクリアできませんでした");
-               
-                
-                    gameOver_obj.gameObject.SetActive(true);
 
-                
+                Debug.Log("全部壊れていてかつ光ってないものありでクリアできませんでした");
+
+
+                gameOver_obj.gameObject.SetActive(true);
+
+
                 Time.timeScale = 0.0f;
             }
         }
 
-         
-          
-       
+
+
+
     }
 
     void TouchObjectSearch()
@@ -483,14 +492,20 @@ public class Mission_Manager : MonoBehaviour {
 
                 if (gameOver_obj.gameObject.activeSelf)
                 {
-                    SceneManager.LoadScene("Stage_"+StageSelectManager.ST_OWNER_NUMBER+"_Scene");
+                    //SceneManager.LoadScene("Stage_"+StageSelectManager.ST_OWNER_NUMBER+"_Scene");
+                    Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                    GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                    GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
                 }
             }
             if (collition2d.gameObject.name == "stageselect")
             {
                 if (gameOver_obj.gameObject.activeSelf)
                 {
-                    SceneManager.LoadScene("StageSelect_Scene");
+                    //SceneManager.LoadScene("StageSelect_Scene");
+                    Camera.main.GetComponent<Now_Loading>().Load_NextScene_Title();
+                    GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                    GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
                 }
             }
         }
@@ -508,17 +523,21 @@ public class Mission_Manager : MonoBehaviour {
             if (collition2d.gameObject.name == "Retry_result")
             {
                 Debug.Log(StageSelectManager.ST_OWNER_NUMBER);
-                //if (gameOver_obj.gameObject.activeSelf)
-                //{
-                    SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
-                //}
+
+                //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+
+                Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+
             }
             if (collition2d.gameObject.name == "Stage_Select_result")
             {
-                //if (gameOver_obj.gameObject.activeSelf)
-                //{
-                    SceneManager.LoadScene("StageSelect_Scene");
-                //}
+
+                Camera.main.GetComponent<Now_Loading>().Load_NextScene_Title();
+
+                GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
             }
             if (collition2d.gameObject.name == "Next_Stage")
             {
@@ -537,7 +556,11 @@ public class Mission_Manager : MonoBehaviour {
                 // 連結させる res = 1_2
                 string res = head + tem_tail.ToString();
                 StageSelectManager.ST_OWNER_NUMBER = res;
-                SceneManager.LoadScene("Stage_"+res + "_Scene");
+                Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+
+                GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+                //SceneManager.LoadScene("Stage_"+res + "_Scene");
             }
         }
 

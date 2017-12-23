@@ -13,14 +13,14 @@ public class MainCameraScr : MonoBehaviour
 {
     float velocity_max = float.MinValue;
 
-	private Vector2 startPos = Vector2.zero;
-	private Vector2 endPos = Vector2.zero;
-	private Vector2 movePos = Vector2.zero;
-	public GameObject player;
+    private Vector2 startPos = Vector2.zero;
+    private Vector2 endPos = Vector2.zero;
+    private Vector2 movePos = Vector2.zero;
+    public GameObject player;
     public bool touch_freeze_flag = false;
     public Vector3 Vec;
-	private bool flag = false;
-	public GameObject arrow;
+    private bool flag = false;
+    public GameObject arrow;
     public GameObject circle;
     public GameObject pause;
     private float pause_time = 0.0f;
@@ -32,8 +32,8 @@ public class MainCameraScr : MonoBehaviour
     private GameObject obj = null;
     private int time = 0;
     private float old_angle = 0.0f;
-	private Vector2 force_ = Vector2.zero;
-	public float force_velocity = 40000.0f;
+    private Vector2 force_ = Vector2.zero;
+    public float force_velocity = 40000.0f;
     public float nature_change_yellow;
     public float nature_change_blue;
     private int pause_count = 1;
@@ -65,27 +65,27 @@ public class MainCameraScr : MonoBehaviour
     private Vector2 arrow_start_pos = Vector2.zero;
 
     //ランプの数
-	public GameObject[] right_obj;
-    
+    public GameObject[] right_obj;
+
     private bool began_flag = false;
-	public GameObject debug_obj;
+    public GameObject debug_obj;
     public GameObject[] small;
     public GameObject[] big;
     public GameObject[] blue_small;
     private float _time = 0.0f;
     //ライト点灯のカウントを数える（クリア条件につながる）　ランプレベルにかかわらず
     //クリアランプのレベルはWall gimic Csのクリアカウントをいじる
-	public int right_count = 0;
-        // ゲームスタート時　-1 //射出していないとき　0　タッチして触れているとき 1（ふれたまま　打ち出した後　2
+    public int right_count = 0;
+    // ゲームスタート時　-1 //射出していないとき　0　タッチして触れているとき 1（ふれたまま　打ち出した後　2
     public int main_move_state = -3;
     public int number_count = 0;
     // 性質変化の現在の状態 =>enableがfalseの場合0、青だと１、黄色だと２、赤だと３
     public int characteristic_change_state = 0;
-	//public Text debug_test;
+    //public Text debug_test;
     private bool test_flag = false;
     private float t_x, t_y = 0.0f;
-	public GameObject finger_circle;
-	public float MAX_DISTANCE = 25.0f;
+    public GameObject finger_circle;
+    public float MAX_DISTANCE = 25.0f;
     //0色なし　1　青　2　黄　3　赤
     private int bonus_nature_change_red = 0;
     private int bonus_nature_change_yellow = 0;
@@ -103,8 +103,8 @@ public class MainCameraScr : MonoBehaviour
     private float filter_time = 1.0f;
     private bool game_start_flag = false;
     private float gamestart_al = 0.0f;
-	public Sprite change_sp;
-	private Sprite ini_sp;
+    public Sprite change_sp;
+    private Sprite ini_sp;
     private int temp_save = 0;
 
     public GameObject rial;
@@ -146,40 +146,48 @@ public class MainCameraScr : MonoBehaviour
     public float touch_time = 0.0f;
     //public float check_time = 0.0f;
     private string st_owner = null;
-
+    private int state = 0;
+    public Image nowloading_back_img;
 
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
-    void Start ()
+    void Start()
     {
         //hamada
         //string a = "よろしく";
-        if(StageSelectManager.ST_OWNER_NUMBER != null)
+        if (StageSelectManager.ST_OWNER_NUMBER != null)
             st_owner = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
         //Debug.Log(b);
         //マルチタッチ無効
         Input.multiTouchEnabled = false;
-        
+
         Time.timeScale = 1.0f;
-		//Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
         //カメラのスケール２５
         //Camera.main.orthographicSize = 25.0f;
         right_obj = GameObject.FindGameObjectsWithTag("Gimic");
         right_count = right_obj.Length;
-		Image image = pause.GetComponent<Image> ();
+        Image image = pause.GetComponent<Image>();
 
-		ini_sp = image.sprite;
-		GameObject.Find ("Fade").gameObject.GetComponent<Image> ().enabled = true;
-	}
+        ini_sp = image.sprite;
+        GameObject.Find("Fade").gameObject.GetComponent<Image>().enabled = true;
+    }
 
 
 
-	/* --------------------------------------------------
+    /* --------------------------------------------------
 	 * @毎フレーム更新
 	*/
-	void Update ()
-	{
+    void Update()
+    {
+        if (nowloading_back_img.enabled)
+        {
+            //タップトゥスタートの透明、不透明　値など
+            state = _Utility.Flashing(now_loading.GetComponent<Image>(), 1.5f, state);
+            //now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
+        }
+
         if (hold.x != float.MaxValue)
         {
             arrow.transform.position = hold;
@@ -201,12 +209,12 @@ public class MainCameraScr : MonoBehaviour
             }
             GameObject.Find("Fade").GetComponent<Image>().color = c;
         }
-        
+
 
         else if (main_move_state == -2)
         {
             int temp = 0;
-            if(st_owner != null)
+            if (st_owner != null)
             {
                 if (st_owner == "1")
                 {
@@ -233,10 +241,10 @@ public class MainCameraScr : MonoBehaviour
             //manual_0.SetActive(true);
             if (info_m == TouchInfo.Ended)
             {
-                
+
                 main_move_state = -1;
                 //manual_0.SetActive(false);
-                if(st_owner != null && st_owner == "1")
+                if (st_owner != null && st_owner == "1")
                 {
                     manual[temp - 1].SetActive(false);
                 }
@@ -250,9 +258,9 @@ public class MainCameraScr : MonoBehaviour
 
 
         //ゲームスタート画像を徐々に遷移
-       else if (main_move_state == -1)
+        else if (main_move_state == -1)
         {
-            if(gamestart_al_flag == false)
+            if (gamestart_al_flag == false)
             {
                 gamestart_al += 0.02f;
                 if (gamestart_al >= 1.0f)
@@ -265,33 +273,33 @@ public class MainCameraScr : MonoBehaviour
             {
                 gamestart_al -= 0.02f;
 
-                if(gamestart_al <= 0.0f)
+                if (gamestart_al <= 0.0f)
                 {
                     main_move_state = 0;
                 }
             }
 
-           
+
             GameObject.Find("GameStart").GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, gamestart_al);
         }
 
-       if (main_move_state == 0)
+        if (main_move_state == 0)
         {
 
-           
-          ////ゲームスタート時のフィルターを少しずつフェードさせる
-          //  GameObject.Find("Game_Filter").GetComponent<Image>().enabled = true;
 
-          //  Color color = GameObject.Find("Game_Filter").GetComponent<Image>().color;
-          //  GameObject.Find("Game_Filter").GetComponent<Image>().color =
-          //              new Color(1.0f, 1.0f, 1.0f, filter_time);
-          //  filter_time -= 0.02f;
-           
-          //  if(color == new Color (1.0f,1.0f,1.0f,0.0f))
-          //  {
-          //      main_move_state = 0;
-                
-          //  }
+            ////ゲームスタート時のフィルターを少しずつフェードさせる
+            //  GameObject.Find("Game_Filter").GetComponent<Image>().enabled = true;
+
+            //  Color color = GameObject.Find("Game_Filter").GetComponent<Image>().color;
+            //  GameObject.Find("Game_Filter").GetComponent<Image>().color =
+            //              new Color(1.0f, 1.0f, 1.0f, filter_time);
+            //  filter_time -= 0.02f;
+
+            //  if(color == new Color (1.0f,1.0f,1.0f,0.0f))
+            //  {
+            //      main_move_state = 0;
+
+            //  }
 
         }
         if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > velocity_max)
@@ -301,10 +309,10 @@ public class MainCameraScr : MonoBehaviour
         }
 
         //Debug.Log("ベロシティ" + GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude);
-       
+
         small = GameObject.FindGameObjectsWithTag("Small_Block");
         blue_small = GameObject.FindGameObjectsWithTag("Blue_Block");
-        
+
         //Debug.Log("main_move_state: " + main_move_state);
         bool _flag = false;
         for (int i = 0; i < right_count; i++)
@@ -320,47 +328,59 @@ public class MainCameraScr : MonoBehaviour
         }
 
         TouchInfo info = AppUtil.GetTouch();
-		if (pause_black.gameObject.activeSelf == true)
-		{
-			pause_se_flag = false;
-			Image image = pause.GetComponent<Image> ();
-			image.sprite = change_sp;
+        if (pause_black.gameObject.activeSelf == true)
+        {
+            //if (nowloading_back_img.enabled)
+            //{
+            //    //タップトゥスタートの透明、不透明　値など
+            //    state = _Utility.Flashing(now_loading.GetComponent<Image>(), 1, state);
+            //    //now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
+            //}
+            pause_se_flag = false;
+            Image image = pause.GetComponent<Image>();
+            image.sprite = change_sp;
             Image imaage1 = pause.GetComponent<Image>();
 
 
-           
 
-			TouchInfo t_info = AppUtil.GetTouch();
-			delay_time += Time.deltaTime;
-			if (t_info == TouchInfo.Began)
-			{
-				Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
 
-				if (collition2d != null)
-				{
+            TouchInfo t_info = AppUtil.GetTouch();
+            delay_time += Time.deltaTime;
+            if (t_info == TouchInfo.Began)
+            {
+                Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
+
+                if (collition2d != null)
+                {
                     //Debug.Log(collition2d.gameObject.name);
-                    if(temp_save == 0)
+                    if (temp_save == 0)
                     {
                         temp_save = 1;
                     }
 
-					if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Retry")
-					{
+                    if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Retry")
+                    {
                         //SceneManager.LoadScene("Stage_" + "1_1" + "_Scene");
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
 
 
-                        SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                        //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
+                        GetComponent<Now_Loading>().LoadNextScene();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                        GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
 
-					}
+                    }
                     else if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Stage_Select")
-					{
-						SceneManager.LoadScene("StageSelect_Scene");
+                    {
+                        //SceneManager.LoadScene("StageSelect_Scene");
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                     
-					}
+                        GetComponent<Now_Loading>().Load_NextScene_Title();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                        GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+
+                    }
                     else if (collition2d.gameObject.name == "Question")
-                    {   
+                    {
                         string st = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
                         if (st != "1")
                         {
@@ -378,9 +398,9 @@ public class MainCameraScr : MonoBehaviour
                             GameObject.Find("FrontLayer/Canvas/Tutorial").GetComponent<Tutorial_Manager>().Tutorial_Call(0);
 
                         }
-                       
 
-                        if(manual[temp_save - 1].activeSelf)
+
+                        if (manual[temp_save - 1].activeSelf)
                         {
                             manual[temp_save - 1].SetActive(false);
                         }
@@ -400,33 +420,33 @@ public class MainCameraScr : MonoBehaviour
                             {
 
                                 GameObject.Find("FrontLayer/Canvas/Tutorial").GetComponent<Tutorial_Manager>().Tutorial_Call(0);
-                               
-                              
+
+
                             }
                         }
 
-                        
-            
-                        
+
+
+
                         //else if(string StageSelectManager.ST_OWNER_NUMBER.Substring"2_1")
                         //{
 
                         //}
-                     
+
                     }
-					else if(collition2d.gameObject.name == "pause")
-					{
-                        if(manual[temp_save - 1].activeSelf)
+                    else if (collition2d.gameObject.name == "pause")
+                    {
+                        if (manual[temp_save - 1].activeSelf)
                         {
                             Debug.Log("ポーズ解除");
                             manual[temp_save - 1].SetActive(false);
                         }
-						pause_freeze_flag = false;
+                        pause_freeze_flag = false;
                         //Pauser.Resume ();
                         //時間をもどす
                         Time.timeScale = 1.0f;
-						delay_time = 0.0f;
-						pause_black.gameObject.SetActive(false);
+                        delay_time = 0.0f;
+                        pause_black.gameObject.SetActive(false);
                         string st = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
                         if (st != "1")
                         {
@@ -435,17 +455,17 @@ public class MainCameraScr : MonoBehaviour
                             GameObject.Find("FrontLayer/Canvas/Left").SetActive(false);
 
                         }
-                      
+
                         //GetComponent<Tutorial_Manager>().left.enabled = false;
 
-						image.sprite = ini_sp;
+                        image.sprite = ini_sp;
 
-					}
-                   
-				}
-			}
-		}
-        if(pause_black.gameObject.activeSelf == false)
+                    }
+
+                }
+            }
+        }
+        if (pause_black.gameObject.activeSelf == false)
         {
             if (info == TouchInfo.Began)
             {
@@ -454,8 +474,8 @@ public class MainCameraScr : MonoBehaviour
                 delay_time = 0.0f;
             }
         }
-      
-        if(pause_freeze_flag == false)
+
+        if (pause_freeze_flag == false)
         {
             if (main_move_state != 0)
             {
@@ -493,13 +513,13 @@ public class MainCameraScr : MonoBehaviour
                 //TouchInfo _info = AppUtil.GetTouch();
                 bonus_color_yellow = 0;
                 bonus_color_red = 0;
-                bonus_nature_change_red =0;
+                bonus_nature_change_red = 0;
                 bonus_nature_change_yellow = 0;
                 //GameObject.Find("Player/player_difference/RED").GetComponent<SpriteRenderer>().enabled = false;
                 //GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
                 //GameObject.Find("Player/player_difference/YELLOW").GetComponent<SpriteRenderer>().enabled = false;
 
-                
+
 
                 if (info == TouchInfo.Began)
                 {
@@ -514,24 +534,24 @@ public class MainCameraScr : MonoBehaviour
                     circle.GetComponent<SpriteRenderer>().enabled = true;
                     finger_circle.GetComponent<SpriteRenderer>().enabled = true;
 
-					circle.transform.position = (Vector2)AppUtil.GetTouchWorldPosition (Camera.main);
-					circle.GetComponent<SpriteRenderer>().color = new Color(0,0,0,1);
-					finger_circle.GetComponent<SpriteRenderer> ().color = new Color(1.0f,1,1,1);
-					finger_circle.gameObject.transform.position = AppUtil.GetTouchWorldPosition(Camera.main);
-//						startPos.y, 0);
+                    circle.transform.position = (Vector2)AppUtil.GetTouchWorldPosition(Camera.main);
+                    circle.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
+                    finger_circle.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1, 1, 1);
+                    finger_circle.gameObject.transform.position = AppUtil.GetTouchWorldPosition(Camera.main);
+                    //						startPos.y, 0);
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     GameObject.Find("arrow").GetComponent<SpriteRenderer>().enabled = true;
 
 
                     Color color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
-//                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
+                    //                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
                     GameObject.Find("arrow").GetComponent<SpriteRenderer>().color =
                         new Color(0.0f, 0.0f, 1.0f, 1.0f);
 
                     arrow.transform.localScale = new Vector3(10.0f, 1, 1);
                     // スワイプし始めたら状態を移行する
 
-                  
+
 
                 }
                 if (info == TouchInfo.Moved)
@@ -543,13 +563,13 @@ public class MainCameraScr : MonoBehaviour
                         big_one.a = 1.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color = big_one;
                         transition_flag = true;
-                       
+
                     }
 
                     end_flag = false;
                     main_move_state = 1;
 
-                    
+
 
                     //if (began_flag == false)
                     //{
@@ -558,36 +578,36 @@ public class MainCameraScr : MonoBehaviour
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
                     Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
-//                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
+                    //                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                     sub = movePos - startPos;
                     Debug.Log(sub.magnitude);
                     arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, .0f);
 
 
-                    
-                 //if(player.GetComponent<Rigidbody2D>().velocity =
-                 //{
-                 //    diagonal.normalized * force_velocity;
 
-                 //}
+                    //if(player.GetComponent<Rigidbody2D>().velocity =
+                    //{
+                    //    diagonal.normalized * force_velocity;
+
+                    //}
 
 
-                     
-                     //player.GetComponent<Rigidbody2D>().velocity =
-                     //((sub * speed * force_velocity) * temp * -1) * Time.deltaTime;
 
-                     ////赤矢印パワーの上限
-                     //player.GetComponent<Rigidbody2D>().velocity =
-                     //((sub * speed * force_velocity) * temp * -1) * Time.deltaTime;
-                     //if (player.GetComponent<Rigidbody2D>().velocity.magnitude > force_velocity)
-                     //{
-                     //    player.GetComponent<Rigidbody2D>().velocity =
-                     //        player.GetComponent<Rigidbody2D>().velocity.normalized * force_velocity;
+                    //player.GetComponent<Rigidbody2D>().velocity =
+                    //((sub * speed * force_velocity) * temp * -1) * Time.deltaTime;
 
-                     //}
-                     ; 
-                     
+                    ////赤矢印パワーの上限
+                    //player.GetComponent<Rigidbody2D>().velocity =
+                    //((sub * speed * force_velocity) * temp * -1) * Time.deltaTime;
+                    //if (player.GetComponent<Rigidbody2D>().velocity.magnitude > force_velocity)
+                    //{
+                    //    player.GetComponent<Rigidbody2D>().velocity =
+                    //        player.GetComponent<Rigidbody2D>().velocity.normalized * force_velocity;
+
+                    //}
+                    ;
+
                     temp = sub.magnitude;
 
                     //arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
@@ -640,17 +660,17 @@ public class MainCameraScr : MonoBehaviour
 
                         }
                     }
-					float radius = Vector2.Distance(startPos,movePos);
-					if (radius > MAX_DISTANCE) 
-					{
-						float radian = CalcRadian(
-							startPos, 
-							movePos
-						);
-						float x = MAX_DISTANCE * Mathf.Cos (radian);
-						float y = MAX_DISTANCE * Mathf.Sin (radian);
-						sub = new Vector2(x,y);
-					}
+                    float radius = Vector2.Distance(startPos, movePos);
+                    if (radius > MAX_DISTANCE)
+                    {
+                        float radian = CalcRadian(
+                            startPos,
+                            movePos
+                        );
+                        float x = MAX_DISTANCE * Mathf.Cos(radian);
+                        float y = MAX_DISTANCE * Mathf.Sin(radian);
+                        sub = new Vector2(x, y);
+                    }
                     //Debug.Log((old_angle) - (ang));
                     //予測線の出る角度
                     float test = old_angle - ang;
@@ -669,7 +689,7 @@ public class MainCameraScr : MonoBehaviour
                     //    anime.GetComponent<Animator>().speed = 3.0f;
                     //    GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                     //        = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-                        
+
                     //}
                     ////矢印イエロー
                     //else if (sub.magnitude > 9.0f)
@@ -702,7 +722,7 @@ public class MainCameraScr : MonoBehaviour
 
                 if (info == TouchInfo.Moved)
                 {
-                    
+
                     circle.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
                     //if (began_flag == false)
@@ -716,34 +736,35 @@ public class MainCameraScr : MonoBehaviour
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
                     Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
-//                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
+                    //                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
-					sub = movePos - startPos;
+                    sub = movePos - startPos;
                     //Debug.Log("サブ" + sub.magnitude);
 
                     //Debug.Log(temp);
                     // ここでdumpをやっている
                     //Debug.Log(startPos);
-                    float radius = Vector2.Distance(startPos,movePos);
-					if (radius > MAX_DISTANCE) {
-						float radian = CalcRadian (
-							startPos, 
-							               movePos
-						               );
-						float x = MAX_DISTANCE * Mathf.Cos (radian);
-						float y = MAX_DISTANCE * Mathf.Sin (radian);
-						sub = new Vector2 (x, y);
-						finger_circle.gameObject.transform.position = new Vector3 (startPos.x+x, startPos.y+y, 0);
-					}
-					else
-					{
-						finger_circle.gameObject.transform.position = movePos;
-					}
+                    float radius = Vector2.Distance(startPos, movePos);
+                    if (radius > MAX_DISTANCE)
+                    {
+                        float radian = CalcRadian(
+                            startPos,
+                                           movePos
+                                       );
+                        float x = MAX_DISTANCE * Mathf.Cos(radian);
+                        float y = MAX_DISTANCE * Mathf.Sin(radian);
+                        sub = new Vector2(x, y);
+                        finger_circle.gameObject.transform.position = new Vector3(startPos.x + x, startPos.y + y, 0);
+                    }
+                    else
+                    {
+                        finger_circle.gameObject.transform.position = movePos;
+                    }
 
                     arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 4.0f, 2.0f);
 
                     //Shake_Arrow();
-				    temp = sub.magnitude;
+                    temp = sub.magnitude;
                     float ang = Mathf.Atan2(sub.y, sub.x) * Mathf.Rad2Deg;
 
                     float angle = ang - 90.0f;
@@ -779,7 +800,7 @@ public class MainCameraScr : MonoBehaviour
                                 //        obj_h.GetComponent<Rigidbody2D>().velocity.normalized * force_velocity;
                                 //}
                                 ////obj_h.GetComponent<Rigidbody2D>().velocity = new Vector2(100.0f, 0.0f);
-//                                    .AddForce(force_);
+                                //                                    .AddForce(force_);
                             }
 
                         }
@@ -795,7 +816,7 @@ public class MainCameraScr : MonoBehaviour
 
                     old_angle = ang;
                     //Debug.Log(sub.magnitude);
-								
+
                     //矢印赤
                     if (sub.magnitude > 19.5f)
                     {
@@ -821,7 +842,7 @@ public class MainCameraScr : MonoBehaviour
 
                     }
                     else
-                    {   
+                    {
                         //射出すらできないパワーの時ブラックカラー矢印
                         anime.GetComponent<Animator>().speed = 1.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
@@ -831,7 +852,7 @@ public class MainCameraScr : MonoBehaviour
                     Shake_Arrow();
                 }
 
-                
+
 
                 if (info == TouchInfo.Ended)
                 {
@@ -839,7 +860,7 @@ public class MainCameraScr : MonoBehaviour
                     touch_time = Time.time - touch_time;
                     Debug.Log(touch_time);
 
-                    if(touch_time < 0.3f)
+                    if (touch_time < 0.3f)
                     {
                         //number_count += 1;
                         end_flag = true;
@@ -877,8 +898,8 @@ public class MainCameraScr : MonoBehaviour
 
                     //}
 
-                    finger_circle.GetComponent<SpriteRenderer> ().color = new Color(0.0f,0,0,0);
-					circle.GetComponent<SpriteRenderer> ().color = new Color(0.0f,0,0,0);
+                    finger_circle.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0, 0, 0);
+                    circle.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0, 0, 0);
                     //デバッグログ　射出時のパワーを測る
                     //bonus_color_red = 0;
                     began_flag = false;
@@ -892,8 +913,8 @@ public class MainCameraScr : MonoBehaviour
                         = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 
                     //速度が３まで低下したら次のWAVEにいく
-                    if(sub.magnitude > 3.0f)
-                    {                       
+                    if (sub.magnitude > 3.0f)
+                    {
                         number_count += 1;
                         end_flag = true;
                         anime.GetComponent<Animator>().speed = 1.0f;
@@ -916,15 +937,15 @@ public class MainCameraScr : MonoBehaviour
                         temp = sub.magnitude;
                         //サブまぐにの色数値
                         ////temp = 19.5f - 3.83333f * 2.0f;
-                        
+
                         //カラーいじる矢印
                         //color = new Color(1.0f, 1.0f, 0.0f, 1.0f);
-                        
+
                         //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
                         color.a = 1.0f;
                         Debug.Log(color);
 
-                        
+
                         if (color == new Color(0.51f, 0.54f, 1.0f, 1.0f))
                         {
                             //青の強
@@ -957,21 +978,21 @@ public class MainCameraScr : MonoBehaviour
                         }
 
                         //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
-                        else if  (color == new Color(1.0f, 0.89f, 0.41f, 1.0f))
+                        else if (color == new Color(1.0f, 0.89f, 0.41f, 1.0f))
                         {
                             if (temp > 19.5f - 3.83333f)
                             {
                                 GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
                                  ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.018f/** Time.deltaTime;*/;
                             }
-                               
-                           
-                          else if (temp > 19.5 - 3.83333f * 2)
+
+
+                            else if (temp > 19.5 - 3.83333f * 2)
                             {
                                 GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
                                 ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.017f/** Time.deltaTime;*/;
                             }
-                         else 
+                            else
                             {
                                 GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
                                 ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.022f/** Time.deltaTime;*/;
@@ -986,9 +1007,9 @@ public class MainCameraScr : MonoBehaviour
                                   player.GetComponent<Rigidbody2D>().velocity.normalized * 102.5f;
 
                             }
-                            
-                               
-                               
+
+
+
                             if (player.GetComponent<Rigidbody2D>().velocity.magnitude < 65)
                             {
                                 bonus_nature_change_yellow = 1;
@@ -998,7 +1019,7 @@ public class MainCameraScr : MonoBehaviour
                                 bonus_nature_change_yellow = 0;
                             }
                         }
-                        else 
+                        else
                         {
                             //赤矢印パワーの上限
                             player.GetComponent<Rigidbody2D>().velocity =
@@ -1021,8 +1042,8 @@ public class MainCameraScr : MonoBehaviour
 
                         //blue_speed = 2.0f;
                         //player.GetComponent<Rigidbody2D>().velocity = new Vector2(blue_speed, 0.0f);
-                                
-                       
+
+
 
 
                         //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
@@ -1036,11 +1057,11 @@ public class MainCameraScr : MonoBehaviour
                         //            player.GetComponent<Rigidbody2D>().velocity.normalized * force_velocity;
                         //    }
                         //}
-                      
+
 
                         //player.GetComponent<Rigidbody2D>().velocity = new Vector2(100.0f, 0.0f);
 
-                     
+
 
 
                     }
@@ -1054,7 +1075,7 @@ public class MainCameraScr : MonoBehaviour
                     }
                     //Color c_color = circle.GetComponent<SpriteRenderer>().color;
                     //circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.0f);
-                   
+
 
                 }
 
@@ -1076,7 +1097,7 @@ public class MainCameraScr : MonoBehaviour
                     foreach (GameObject obs in seed)
                     {
                         obs.GetComponent<Seed_Life>().Seed_Life_Down();
-                         
+
                     }
                     //射出性質変化 小のとき青のオーラをまとう
                     //GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled = false;
@@ -1086,7 +1107,7 @@ public class MainCameraScr : MonoBehaviour
                     GameObject[] a = GameObject.FindGameObjectsWithTag("semi");
                     if (GameObject.FindGameObjectsWithTag("semi") != null)
                     {
-                       
+
                         foreach (GameObject _obj in a)
                         {
                             Destroy(_obj);
@@ -1099,28 +1120,28 @@ public class MainCameraScr : MonoBehaviour
                         main_move_state = 0;
                     }
                     main_move_state = 0;
-                    
+
                 }
-               
+
             }
         }
-			
-            // 性質変化
-            Change();
 
-	}
+        // 性質変化
+        Change();
 
-	private float CalcRadian(Vector3 from, Vector3 to) 
-	{
-		float dx = to.x - from.x;
-		float dy = to.y - from.y;
-		float radian = Mathf.Atan2(dy, dx);
-		return radian;
-	}
+    }
+
+    private float CalcRadian(Vector3 from, Vector3 to)
+    {
+        float dx = to.x - from.x;
+        float dy = to.y - from.y;
+        float radian = Mathf.Atan2(dy, dx);
+        return radian;
+    }
 
     void Change()
     {
-        if(main_move_state == 2)
+        if (main_move_state == 2)
         {
             //if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > nature_change_blue &&
 
@@ -1128,10 +1149,10 @@ public class MainCameraScr : MonoBehaviour
             bonus_color_yellow += Time.deltaTime;
             //Debug.Log("ネイチャーチェンジの値:" + bonus_nature_change);
 
-               if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < nature_change_blue)
+            if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude < nature_change_blue)
             {
                 //射出性質変化 赤黄のオーラを消し青のオーラを発生
-                if (bonus_nature_change_yellow == 1 && bonus_color_yellow <  CHANGE_COLOR_DELAY_COUNT)
+                if (bonus_nature_change_yellow == 1 && bonus_color_yellow < CHANGE_COLOR_DELAY_COUNT)
                 {
                     characteristic_change_state = 2;
                     Debug.Log("ftftfytfyguh");
@@ -1211,7 +1232,7 @@ public class MainCameraScr : MonoBehaviour
 
                 }
             }
-   
+
             else if (GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity.magnitude > nature_change_yellow)
             {
                 characteristic_change_state = 3;
@@ -1232,7 +1253,7 @@ public class MainCameraScr : MonoBehaviour
                 }
 
             }
-           
+
         }
         else
         {
@@ -1257,7 +1278,7 @@ public class MainCameraScr : MonoBehaviour
                 //偶数時がポーズ
                 if (pause_count % 2 == 0)
                 {
-                   
+
                     //Pauser.Resume();
                     //時間を止める
                     Time.timeScale = 0.0f;
@@ -1294,15 +1315,15 @@ public class MainCameraScr : MonoBehaviour
                 {
                     Color pause_color = new Color(0, 0, 0, 0);
                     //Color pause_ = now_loading.gameObject.GetComponent<Image>().color;
-                //    now_loading.GetComponent<Image>().color =
-                //        new Color(pause_color.r, pause_color.g, pause_color.b, 0.7f);
+                    //    now_loading.GetComponent<Image>().color =
+                    //        new Color(pause_color.r, pause_color.g, pause_color.b, 0.7f);
                 }
-                
+
             }
 
             //Debug.Log(collition2d.gameObject.name);
 
-            
+
         }
 
 
@@ -1347,26 +1368,26 @@ public class MainCameraScr : MonoBehaviour
         }
     }
 
-//    void TouchObjectSearch(string name)
-//    {
-//        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-//        Collider2D collition2d = Physics2D.OverlapPoint(point);
-//
-//        if (collition2d != null)
-//        {
-//            if (collition2d.gameObject.name == name)
-//            {
-//                    Debug.Log("aaa");
-//                    if(name == "pause")
-//                    {
-//                        if (retry_obj.gameObject.activeSelf == false)
-//                        {
-//                            retry_obj.SetActive(true);
-//                        }
-//                    }
-//                       
-//            }
-//        }
-//
-//    }
+    //    void TouchObjectSearch(string name)
+    //    {
+    //        Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //        Collider2D collition2d = Physics2D.OverlapPoint(point);
+    //
+    //        if (collition2d != null)
+    //        {
+    //            if (collition2d.gameObject.name == name)
+    //            {
+    //                    Debug.Log("aaa");
+    //                    if(name == "pause")
+    //                    {
+    //                        if (retry_obj.gameObject.activeSelf == false)
+    //                        {
+    //                            retry_obj.SetActive(true);
+    //                        }
+    //                    }
+    //                       
+    //            }
+    //        }
+    //
+    //    }
 }
