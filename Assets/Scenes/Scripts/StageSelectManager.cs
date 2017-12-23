@@ -35,8 +35,6 @@ public class StageSelectManager : MonoBehaviour
     public Image[] lock_imge = new Image[9];
     public bool Debug_Mode = false;
     private bool blackFlag = false;
-    private int state = 0;
-    public Image nowloading_back_img;
     void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -81,13 +79,8 @@ public class StageSelectManager : MonoBehaviour
 
 		}
 
-        if (nowloading_back_img.enabled)
-        {
-            //タップトゥスタートの透明、不透明　値など
-            state = _Utility.Flashing(now_loading.GetComponent<Image>(), 1.5f, state);
-            //now_load_state = _Utility.Flashing(now_load, 1.5f, now_load_state);
-        }
-
+		
+		
 
         if (pop_obj.gameObject.activeSelf == true)
         {
@@ -1971,7 +1964,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -1983,7 +1976,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -1995,7 +1988,7 @@ public class StageSelectManager : MonoBehaviour
                         
                         ST_OWNER_NUMBER = "3_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2006,7 +1999,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2017,7 +2010,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "1_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2038,7 +2031,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2050,7 +2043,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2061,7 +2054,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "3_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2071,7 +2064,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2081,7 +2074,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "1_2";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2103,7 +2096,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2115,7 +2108,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2126,7 +2119,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "3_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2136,7 +2129,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2146,7 +2139,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "1_3";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2167,7 +2160,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2179,7 +2172,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2190,7 +2183,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "3_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2201,7 +2194,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2211,7 +2204,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "1_4";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2235,7 +2228,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2247,7 +2240,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2258,7 +2251,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "3_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2268,7 +2261,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2278,7 +2271,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "1_5";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2300,7 +2293,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_1";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2312,7 +2305,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2324,7 +2317,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2335,8 +2328,8 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "3_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
-                        GameObject.Find("Now_Loading").GetComponent<Image>().color
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
                         //SceneManager.LoadScene("Stage_1_Scene");
@@ -2345,7 +2338,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2355,7 +2348,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "1_6";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2378,7 +2371,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_7";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2390,7 +2383,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_7";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2401,7 +2394,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "3_7";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2411,7 +2404,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_7";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                          = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2419,11 +2412,11 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
-                        ST_OWNER_NUMBER = "1_7";
-                        GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
-                        GameObject.Find("Now_Loading").GetComponent<Image>().color
-                        = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    ST_OWNER_NUMBER = "1_7";
+                    GetComponent<Sound_Manager>().Stage_Choice_SE();
+                    now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
                     
                     //SceneManager.LoadScene("Stage_1_Scene");
@@ -2444,7 +2437,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2456,7 +2449,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2467,7 +2460,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "3_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2477,7 +2470,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         //SceneManager.LoadScene("Stage_1_Scene");
@@ -2486,7 +2479,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "1_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2509,7 +2502,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2521,7 +2514,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2532,7 +2525,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "3_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2542,7 +2535,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         //SceneManager.LoadScene("Stage_1_Scene");
@@ -2551,7 +2544,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "1_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         
@@ -2572,7 +2565,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "5_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2584,7 +2577,7 @@ public class StageSelectManager : MonoBehaviour
 
                         ST_OWNER_NUMBER = "4_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2595,7 +2588,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "3_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         now_loading.GetComponent<Now_Loading>().GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -2605,7 +2598,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "2_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                             = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         //SceneManager.LoadScene("Stage_1_Scene");
@@ -2614,7 +2607,7 @@ public class StageSelectManager : MonoBehaviour
                     {
                         ST_OWNER_NUMBER = "1_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                         
