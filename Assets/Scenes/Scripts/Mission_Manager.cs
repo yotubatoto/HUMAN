@@ -140,6 +140,197 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
 
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_4")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_5")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_6")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_7")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_8")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_9")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_10")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_1")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_2")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_3")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_4")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_5")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_6")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_7")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_8")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_9")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_10")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_1")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_2")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_3")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_4")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_5")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_6")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_7")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_8")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_9")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
+        }
+        else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_10")
+        {
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
+
+
         }
 
 
@@ -425,14 +616,14 @@ public class Mission_Manager : MonoBehaviour
     bool Mission_3()
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("Small_Block");
-        //GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
+        GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
         GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
         //GameObject[] obj_4 = GameObject.FindGameObjectsWithTag("No_Seed_Block");
         GameObject[] obj_5 = GameObject.FindGameObjectsWithTag("No_Seed_Green_Block");
 
 
 
-        if (obj.Length == 0 && obj_3.Length == 0 && obj_5.Length == 0)
+        if (obj.Length == 0 && obj_2.Length == 0 && obj_3.Length == 0 && obj_5.Length == 0)
         {
             return true;
         }
