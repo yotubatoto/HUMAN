@@ -182,8 +182,8 @@ public class Player_Collision : MonoBehaviour {
             gimic_coll_flag = true;
             //touch_flag = true;
             //Debug.Log(touch_flag);
+                
             GetComponent<Sound_Manager>().Obstance_SE();
-
             hit_coordinate = coll.transform.position;
             //if (bonus_count < 3)
             //{
@@ -238,7 +238,7 @@ public class Player_Collision : MonoBehaviour {
             }
         }
 
-        
+
        
 
      
@@ -306,9 +306,9 @@ public class Player_Collision : MonoBehaviour {
 
         if (coll.gameObject.tag == "wall_sound")
         {
-
+            GetComponent<Sound_Manager>().Obstance_SE();
         }
-        GetComponent<Sound_Manager>().Obstance_SE();
+      
         
             
             

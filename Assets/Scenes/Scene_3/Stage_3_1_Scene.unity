@@ -1828,9 +1828,34 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114366214881428546, guid: 3d9ce56c869b5394b9ede3fd6ed98004,
+        type: 2}
+      propertyPath: LIMIT_TURN
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114366214881428546, guid: 3d9ce56c869b5394b9ede3fd6ed98004,
+        type: 2}
+      propertyPath: goal_trun
+      value: 
+      objectReference: {fileID: 1492883877}
+    - target: {fileID: 114366214881428546, guid: 3d9ce56c869b5394b9ede3fd6ed98004,
+        type: 2}
+      propertyPath: clear_goal_turn
+      value: 
+      objectReference: {fileID: 1492883876}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9ce56c869b5394b9ede3fd6ed98004, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1492883876 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1873660933999832, guid: 3d9ce56c869b5394b9ede3fd6ed98004,
+    type: 2}
+  m_PrefabInternal: {fileID: 1492883875}
+--- !u!1 &1492883877 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1347083811577152, guid: 3d9ce56c869b5394b9ede3fd6ed98004,
+    type: 2}
+  m_PrefabInternal: {fileID: 1492883875}
 --- !u!1001 &1545615374
 Prefab:
   m_ObjectHideFlags: 0
@@ -2257,7 +2282,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9cf1b2baae4eb9342a8f2c29697fb9de, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4fce537d353a2734d9b09ec934a6725a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
