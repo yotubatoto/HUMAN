@@ -92,7 +92,6 @@ GameObject:
   - component: {fileID: 124234039822213226}
   - component: {fileID: 114187026123922220}
   - component: {fileID: 114776284985342364}
-  - component: {fileID: 114285653666198452}
   - component: {fileID: 81683150398132196}
   - component: {fileID: 114366214881428546}
   - component: {fileID: 114857645044900426}
@@ -1757,6 +1756,12 @@ MonoBehaviour:
   - {fileID: 1177740235444744}
   - {fileID: 1491905865525904}
   - {fileID: 1964796256257698}
+  fade_obj: {fileID: 114209884620371670}
+  gamestart_obj: {fileID: 114059105227026814}
+  player_difference_blue_obj: {fileID: 0}
+  player_difference_yellow_obj: {fileID: 0}
+  player_difference_red_obj: {fileID: 0}
+  arrow_obj: {fileID: 0}
   mission_obj: {fileID: 1880071938121782}
   hold: {x: 3.4028235e+38, y: 3.4028235e+38}
   touch_time: 0
@@ -1888,19 +1893,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ' 150'
---- !u!114 &114285653666198452
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1096177397093974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24c70bac518c32944abe8e0990147221, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shake_decay: 0.002
-  coef_shake_intensity: 0.3
 --- !u!114 &114304058677648982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2001,7 +1993,7 @@ MonoBehaviour:
   - 15
   - 15
   gameover_bgm: {fileID: 8300000, guid: 20dae5ad4d92219468bf7ad490f6e150, type: 3}
-  game_clear_bgm: {fileID: 0}
+  game_clear_bgm: {fileID: 8300000, guid: 770a17cf8d878d14f8e91343c340d50a, type: 3}
 --- !u!114 &114369525280250018
 MonoBehaviour:
   m_ObjectHideFlags: 1
