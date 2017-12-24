@@ -59,6 +59,7 @@ public class Mission_Manager : MonoBehaviour
     private bool bgm_once_flag = false;
     private float volume_state = 0;
     private string st_owner = "";
+    public GameObject next_stage;
     // Use this for initialization
     void Start()
     {
@@ -674,10 +675,21 @@ public class Mission_Manager : MonoBehaviour
                 clear_pop.SetActive(false);
                 string st = StageSelectManager.ST_OWNER_NUMBER;
                 // 1_1の一番後ろの文字列を抽出してる 1 tail = 1
-                string tail = st.Substring(2, 1); // 1
-                if(tail != "10")
+                string tail = st.Substring(3, 1); // 1
+                if(tail != "0")
                 {
                     Result_obj.gameObject.SetActive(true);
+                }
+                else
+                {
+                    if(st_owner == "5")
+                    {
+                        Camera.main.GetComponent<Now_Loading>().Load_NextScene_Ending();
+                        GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+                        GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+                    }
+                    Result_obj.gameObject.SetActive(true);
+                    next_stage.SetActive(false);
                 }
             }
         }
