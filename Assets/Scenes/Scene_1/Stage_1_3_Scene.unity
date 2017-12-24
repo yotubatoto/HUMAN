@@ -304,7 +304,7 @@ Prefab:
     - target: {fileID: 224409027187898324, guid: 3d9ce56c869b5394b9ede3fd6ed98004,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: -7
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9ce56c869b5394b9ede3fd6ed98004, type: 2}
@@ -461,6 +461,21 @@ Prefab:
       propertyPath: item_text
       value: 
       objectReference: {fileID: 2027603914}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: obstance_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 47794917427a43f4a8af9ade7b783776, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: enemy_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 5036ac1cbce508d4a8f711ac190128f9, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: no_break_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
   m_IsPrefabParent: 0
@@ -638,7 +653,7 @@ GameObject:
   - component: {fileID: 821948424}
   m_Layer: 0
   m_Name: Picture_Frame
-  m_TagString: Untagged
+  m_TagString: wall_sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -979,6 +994,66 @@ Prefab:
     - target: {fileID: 4405969726580828, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218291260659818, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030588345176344, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991299675197232, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239834417896650, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694827972497558, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989015735629730, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1951016156357620, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086902626338080, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580277400768230, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570474765445704, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536080725900738, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271510715518978, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187364774312348, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252708654552226, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614938346645320, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d0e96e911fe01a4c9fe87cc6a128f93, type: 2}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 821948424}
   m_Layer: 0
   m_Name: Picture_Frame
-  m_TagString: Untagged
+  m_TagString: wall_sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1078,6 +1078,22 @@ Prefab:
     - target: {fileID: 1434998151458068, guid: 78e3ee2444b42a54db9def6b8688e0f6, type: 2}
       propertyPath: m_Name
       value: Unbreak_Circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1496841425215064, guid: 78e3ee2444b42a54db9def6b8688e0f6, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798230744361716, guid: 78e3ee2444b42a54db9def6b8688e0f6, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844251592920396, guid: 78e3ee2444b42a54db9def6b8688e0f6, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165497805610496, guid: 78e3ee2444b42a54db9def6b8688e0f6, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78e3ee2444b42a54db9def6b8688e0f6, type: 2}
@@ -2228,6 +2244,54 @@ Prefab:
       propertyPath: m_Name
       value: Unbreak_block
       objectReference: {fileID: 0}
+    - target: {fileID: 1685044931497254, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218535352461520, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808981518345878, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750861362770736, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071037975840146, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741453487960232, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305863775658288, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021659299070840, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1183762850239490, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716708224062538, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518188496100422, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669314072079392, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
+      propertyPath: m_TagString
+      value: Obstance
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3009f52bb2f5db84a88fe859be254553, type: 2}
   m_IsPrefabParent: 0
@@ -2428,6 +2492,26 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: enemy_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 5036ac1cbce508d4a8f711ac190128f9, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: obstance_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 47794917427a43f4a8af9ade7b783776, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: no_break_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: damage_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
   m_IsPrefabParent: 0

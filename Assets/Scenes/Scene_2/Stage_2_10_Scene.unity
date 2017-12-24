@@ -5338,7 +5338,7 @@ GameObject:
   - component: {fileID: 540467159}
   m_Layer: 0
   m_Name: normal_unbreakable_block (21)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5521,7 +5521,7 @@ GameObject:
   - component: {fileID: 576178381}
   m_Layer: 0
   m_Name: normal_unbreakable_block (26)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6726,7 +6726,7 @@ GameObject:
   - component: {fileID: 708459459}
   m_Layer: 0
   m_Name: normal_unbreakable_block (24)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6850,7 +6850,7 @@ GameObject:
   - component: {fileID: 724036079}
   m_Layer: 0
   m_Name: normal_unbreakable_block (18)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6969,7 +6969,7 @@ GameObject:
   - component: {fileID: 732861996}
   m_Layer: 0
   m_Name: normal_unbreakable_block (29)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7893,7 +7893,7 @@ GameObject:
   - component: {fileID: 821948424}
   m_Layer: 0
   m_Name: Picture_Frame
-  m_TagString: Untagged
+  m_TagString: wall_sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8712,7 +8712,7 @@ GameObject:
   - component: {fileID: 912708017}
   m_Layer: 0
   m_Name: normal_unbreakable_block (19)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12988,7 +12988,7 @@ GameObject:
   - component: {fileID: 1331923202}
   m_Layer: 0
   m_Name: normal_unbreakable_block (27)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13122,7 +13122,7 @@ GameObject:
   - component: {fileID: 1348526935}
   m_Layer: 0
   m_Name: normal_unbreakable_block (28)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14950,7 +14950,7 @@ GameObject:
   - component: {fileID: 1537805347}
   m_Layer: 0
   m_Name: normal_unbreakable_block (20)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16720,7 +16720,7 @@ GameObject:
   - component: {fileID: 1699680894}
   m_Layer: 0
   m_Name: normal_unbreakable_block (22)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17914,7 +17914,7 @@ GameObject:
   - component: {fileID: 1782334246}
   m_Layer: 0
   m_Name: normal_unbreakable_block (13)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20639,7 +20639,7 @@ GameObject:
   - component: {fileID: 2034404369}
   m_Layer: 0
   m_Name: normal_unbreakable_block (23)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20972,6 +20972,26 @@ Prefab:
       propertyPath: MinDistance
       value: 1.3582535
       objectReference: {fileID: 0}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: enemy_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 5036ac1cbce508d4a8f711ac190128f9, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: obstance_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 47794917427a43f4a8af9ade7b783776, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: no_break_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: damage_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
   m_IsPrefabParent: 0
@@ -21185,7 +21205,7 @@ GameObject:
   - component: {fileID: 2107049327}
   m_Layer: 0
   m_Name: normal_unbreakable_block (25)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
