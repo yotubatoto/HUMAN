@@ -30,7 +30,7 @@ public class StageSelectManager : MonoBehaviour
     private int now_load_state = 0;
     //連打防止
     private bool barrage_flag = false;
-
+    public static Vector3 SAVE_POS = new Vector3(0.0f,1.42f,0.0f);
     
     
     
@@ -51,6 +51,7 @@ public class StageSelectManager : MonoBehaviour
     }
     void Start()
     {
+        transform.position = SAVE_POS;
         //PlayerPrefs.SetInt("1_1" + "star", 0);
         //変数「ClearStage」に「CLEARSTAGE」の値を代入しなおす
         //マルチタッチ無効
@@ -1976,6 +1977,7 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "5_1";
+                        SAVE_POS = transform.position;
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -1989,6 +1991,7 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "4_1";
+                        SAVE_POS = transform.position;
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2002,6 +2005,8 @@ public class StageSelectManager : MonoBehaviour
                     {
                         
                         ST_OWNER_NUMBER = "3_1";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2014,6 +2019,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -20.0f)
                     {
                         ST_OWNER_NUMBER = "2_1";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2026,6 +2033,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.0f)
                     {
                         ST_OWNER_NUMBER = "1_1";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2048,6 +2057,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "5_2";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2061,6 +2072,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "4_2";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2073,6 +2086,8 @@ public class StageSelectManager : MonoBehaviour
                    else if ((int)transform.position.x <= -36.0f)
                     {
                         ST_OWNER_NUMBER = "3_2";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2084,6 +2099,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -20.0f)
                     {
                         ST_OWNER_NUMBER = "2_2";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2095,6 +2112,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
                         ST_OWNER_NUMBER = "1_2";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2118,6 +2137,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "5_3";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2131,6 +2152,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "4_3";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2143,6 +2166,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -36.0f)
                     {
                         ST_OWNER_NUMBER = "3_3";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2154,6 +2179,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -20.0f)
                     {
                         ST_OWNER_NUMBER = "2_3";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2165,6 +2192,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
                         ST_OWNER_NUMBER = "1_3";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2187,6 +2216,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "5_4";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2200,6 +2231,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "4_4";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2212,6 +2245,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -36.0f)
                     {
                         ST_OWNER_NUMBER = "3_4";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2224,6 +2259,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -20.0f)
                     {
                         ST_OWNER_NUMBER = "2_4";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2235,6 +2272,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
                         ST_OWNER_NUMBER = "1_4";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2260,6 +2299,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "5_5";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2273,6 +2314,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "4_5";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2285,6 +2328,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -36.0f)
                     {
                         ST_OWNER_NUMBER = "3_5";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2296,6 +2341,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -20.0f)
                     {
                         ST_OWNER_NUMBER = "2_5";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2307,6 +2354,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
                         ST_OWNER_NUMBER = "1_5";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2326,23 +2375,25 @@ public class StageSelectManager : MonoBehaviour
                 {
                     blackFlag = true;
                 
-                    if ((int)transform.position.x <= -75.0f)
-                    {
+                    //if ((int)transform.position.x <= -75.0f)
+                    //{
 
-                        ST_OWNER_NUMBER = "5_1";
-                        GetComponent<Sound_Manager>().Stage_Choice_SE();
-                        now_loading.GetComponent<Now_Loading>().LoadNextScene();
-                        barrage_flag = true;
-                        GameObject.Find("Now_Loading").GetComponent<Image>().color
-                        = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    //    ST_OWNER_NUMBER = "5_1";
+                    //    GetComponent<Sound_Manager>().Stage_Choice_SE();
+                    //    now_loading.GetComponent<Now_Loading>().LoadNextScene();
+                    //    barrage_flag = true;
+                    //    GameObject.Find("Now_Loading").GetComponent<Image>().color
+                    //    = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
 
-                        //SceneManager.LoadScene("Stage_1_Scene");
-                    }
+                    //    //SceneManager.LoadScene("Stage_1_Scene");
+                    //}
                     if ((int)transform.position.x <= -75.0f)
                     {
 
                         ST_OWNER_NUMBER = "5_6";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2356,6 +2407,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "4_6";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2368,6 +2421,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -36.0f)
                     {
                         ST_OWNER_NUMBER = "3_6";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2379,6 +2434,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -20.0f)
                     {
                         ST_OWNER_NUMBER = "2_6";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2390,6 +2447,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
                         ST_OWNER_NUMBER = "1_6";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2414,6 +2473,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "5_7";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2427,6 +2488,8 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "4_7";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2439,6 +2502,8 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -36.0f)
                     {
                         ST_OWNER_NUMBER = "3_7";
+                        SAVE_POS = transform.position;
+
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
@@ -2449,6 +2514,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= -20.0f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "2_7";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2460,8 +2526,9 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
+                        SAVE_POS = transform.position;
                     ST_OWNER_NUMBER = "1_7";
-                    GetComponent<Sound_Manager>().Stage_Choice_SE();
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
                     now_loading.GetComponent<Now_Loading>().LoadNextScene();
                     barrage_flag = true;
                     GameObject.Find("Now_Loading").GetComponent<Image>().color
@@ -2484,6 +2551,7 @@ public class StageSelectManager : MonoBehaviour
                     if ((int)transform.position.x <= -75.0f)
                     {
 
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "5_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2497,6 +2565,7 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -55.0f)
                     {
 
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "4_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2509,6 +2578,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= -36.0f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "3_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2520,6 +2590,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= -20.0f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "2_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2530,6 +2601,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "1_8";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2554,6 +2626,7 @@ public class StageSelectManager : MonoBehaviour
                     if ((int)transform.position.x <= -75.0f)
                     {
 
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "5_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2567,6 +2640,7 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -55.0f)
                     {
 
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "4_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2579,6 +2653,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= -36.0f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "3_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2590,6 +2665,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= -20.0f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "2_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2600,6 +2676,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "1_9";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2622,6 +2699,7 @@ public class StageSelectManager : MonoBehaviour
                     if ((int)transform.position.x <= -75.0f)
                     {
 
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "5_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2635,6 +2713,7 @@ public class StageSelectManager : MonoBehaviour
                     else if ((int)transform.position.x <= -55.0f)
                     {
 
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "4_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2647,6 +2726,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= -36.0f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "3_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2658,6 +2738,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= -20.0f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "2_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2668,6 +2749,7 @@ public class StageSelectManager : MonoBehaviour
                     }
                     else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
                     {
+                        SAVE_POS = transform.position;
                         ST_OWNER_NUMBER = "1_10";
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
