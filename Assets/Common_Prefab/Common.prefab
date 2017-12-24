@@ -2638,9 +2638,10 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
+  - 10
   gameover_bgm: {fileID: 8300000, guid: c401ed9c5f6d9a546ac4741c25a9872c, type: 3}
   game_clear_bgm: {fileID: 8300000, guid: 770a17cf8d878d14f8e91343c340d50a, type: 3}
+  next_stage: {fileID: 1099978229029674}
 --- !u!114 &114369525280250018
 MonoBehaviour:
   m_ObjectHideFlags: 1
