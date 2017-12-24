@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 41663860}
   m_Layer: 0
   m_Name: normal_unbreakable_block (67)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 51153716}
   m_Layer: 0
   m_Name: normal_unbreakable_block (50)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 59572484}
   m_Layer: 0
   m_Name: normal_unbreakable_block (47)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 83077715}
   m_Layer: 0
   m_Name: normal_unbreakable_block (40)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 106085093}
   m_Layer: 0
   m_Name: normal_unbreakable_block (60)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 143473751}
   m_Layer: 0
   m_Name: normal_unbreakable_block (11)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 160010443}
   m_Layer: 0
   m_Name: normal_unbreakable_block (42)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 162033432}
   m_Layer: 0
   m_Name: normal_unbreakable_block (34)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -964,7 +964,7 @@ GameObject:
   - component: {fileID: 170702275}
   m_Layer: 0
   m_Name: normal_unbreakable_block (25)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1067,7 +1067,7 @@ GameObject:
   - component: {fileID: 184137538}
   m_Layer: 0
   m_Name: normal_unbreakable_block (71)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1170,7 +1170,7 @@ GameObject:
   - component: {fileID: 274885885}
   m_Layer: 0
   m_Name: normal_unbreakable_block (33)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1273,7 +1273,7 @@ GameObject:
   - component: {fileID: 296224420}
   m_Layer: 0
   m_Name: normal_unbreakable_block (53)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1376,7 +1376,7 @@ GameObject:
   - component: {fileID: 321750339}
   m_Layer: 0
   m_Name: normal_unbreakable_block (75)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1479,7 +1479,7 @@ GameObject:
   - component: {fileID: 360111043}
   m_Layer: 0
   m_Name: normal_unbreakable_block (3)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1587,7 +1587,7 @@ GameObject:
   - component: {fileID: 379179339}
   m_Layer: 0
   m_Name: normal_unbreakable_block (41)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1870,6 +1870,21 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: enemy_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 5036ac1cbce508d4a8f711ac190128f9, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: obstance_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 47794917427a43f4a8af9ade7b783776, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: no_break_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
   m_IsPrefabParent: 0
@@ -1886,7 +1901,7 @@ GameObject:
   - component: {fileID: 426760844}
   m_Layer: 0
   m_Name: normal_unbreakable_block (70)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1989,7 +2004,7 @@ GameObject:
   - component: {fileID: 447699744}
   m_Layer: 0
   m_Name: normal_unbreakable_block (66)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2092,7 +2107,7 @@ GameObject:
   - component: {fileID: 475316463}
   m_Layer: 0
   m_Name: normal_unbreakable_block (76)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2195,7 +2210,7 @@ GameObject:
   - component: {fileID: 479931744}
   m_Layer: 0
   m_Name: normal_unbreakable_block (35)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2298,7 +2313,7 @@ GameObject:
   - component: {fileID: 497701830}
   m_Layer: 0
   m_Name: normal_unbreakable_block (51)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2401,7 +2416,7 @@ GameObject:
   - component: {fileID: 499755306}
   m_Layer: 0
   m_Name: normal_unbreakable_block (77)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2504,7 +2519,7 @@ GameObject:
   - component: {fileID: 502770844}
   m_Layer: 0
   m_Name: normal_unbreakable_block (17)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2607,7 +2622,7 @@ GameObject:
   - component: {fileID: 535953560}
   m_Layer: 0
   m_Name: normal_unbreakable_block (78)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2710,7 +2725,7 @@ GameObject:
   - component: {fileID: 572743799}
   m_Layer: 0
   m_Name: normal_unbreakable_block (69)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2813,7 +2828,7 @@ GameObject:
   - component: {fileID: 599171320}
   m_Layer: 0
   m_Name: normal_unbreakable_block (65)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2916,7 +2931,7 @@ GameObject:
   - component: {fileID: 611762652}
   m_Layer: 0
   m_Name: normal_unbreakable_block (43)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3019,7 +3034,7 @@ GameObject:
   - component: {fileID: 629245938}
   m_Layer: 0
   m_Name: normal_unbreakable_block (64)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3122,7 +3137,7 @@ GameObject:
   - component: {fileID: 649151295}
   m_Layer: 0
   m_Name: normal_unbreakable_block (36)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3225,7 +3240,7 @@ GameObject:
   - component: {fileID: 652177322}
   m_Layer: 0
   m_Name: normal_unbreakable_block (72)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3328,7 +3343,7 @@ GameObject:
   - component: {fileID: 717013443}
   m_Layer: 0
   m_Name: normal_unbreakable_block (44)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3431,7 +3446,7 @@ GameObject:
   - component: {fileID: 718108481}
   m_Layer: 0
   m_Name: normal_unbreakable_block (54)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3566,7 +3581,7 @@ GameObject:
   - component: {fileID: 821948424}
   m_Layer: 0
   m_Name: Picture_Frame
-  m_TagString: Untagged
+  m_TagString: wall_sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3741,7 +3756,7 @@ GameObject:
   - component: {fileID: 845227812}
   m_Layer: 0
   m_Name: normal_unbreakable_block (28)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3844,7 +3859,7 @@ GameObject:
   - component: {fileID: 851180359}
   m_Layer: 0
   m_Name: normal_unbreakable_block (55)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3947,7 +3962,7 @@ GameObject:
   - component: {fileID: 941875815}
   m_Layer: 0
   m_Name: normal_unbreakable_block (31)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4174,7 +4189,7 @@ GameObject:
   - component: {fileID: 985562173}
   m_Layer: 0
   m_Name: normal_unbreakable_block (24)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4277,7 +4292,7 @@ GameObject:
   - component: {fileID: 1100679451}
   m_Layer: 0
   m_Name: normal_unbreakable_block (38)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4380,7 +4395,7 @@ GameObject:
   - component: {fileID: 1102671328}
   m_Layer: 0
   m_Name: normal_unbreakable_block (37)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4483,7 +4498,7 @@ GameObject:
   - component: {fileID: 1104305642}
   m_Layer: 0
   m_Name: normal_unbreakable_block (45)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4601,7 +4616,7 @@ GameObject:
   - component: {fileID: 1139001342}
   m_Layer: 0
   m_Name: normal_unbreakable_block (27)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4704,7 +4719,7 @@ GameObject:
   - component: {fileID: 1140719335}
   m_Layer: 0
   m_Name: normal_unbreakable_block (74)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4807,7 +4822,7 @@ GameObject:
   - component: {fileID: 1159094263}
   m_Layer: 0
   m_Name: normal_unbreakable_block (63)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5143,7 +5158,7 @@ GameObject:
   - component: {fileID: 1319010909}
   m_Layer: 0
   m_Name: normal_unbreakable_block (58)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5246,7 +5261,7 @@ GameObject:
   - component: {fileID: 1325939103}
   m_Layer: 0
   m_Name: normal_unbreakable_block (46)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5349,7 +5364,7 @@ GameObject:
   - component: {fileID: 1404167859}
   m_Layer: 0
   m_Name: normal_unbreakable_block (13)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5452,7 +5467,7 @@ GameObject:
   - component: {fileID: 1426971248}
   m_Layer: 0
   m_Name: normal_unbreakable_block (56)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5679,7 +5694,7 @@ GameObject:
   - component: {fileID: 1482364966}
   m_Layer: 0
   m_Name: normal_unbreakable_block (62)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5782,7 +5797,7 @@ GameObject:
   - component: {fileID: 1495793218}
   m_Layer: 0
   m_Name: normal_unbreakable_block (73)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6009,7 +6024,7 @@ GameObject:
   - component: {fileID: 1511061949}
   m_Layer: 0
   m_Name: normal_unbreakable_block (59)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6112,7 +6127,7 @@ GameObject:
   - component: {fileID: 1516744975}
   m_Layer: 0
   m_Name: normal_unbreakable_block (7)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6215,7 +6230,7 @@ GameObject:
   - component: {fileID: 1519010040}
   m_Layer: 0
   m_Name: normal_unbreakable_block (12)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6318,7 +6333,7 @@ GameObject:
   - component: {fileID: 1553972163}
   m_Layer: 0
   m_Name: normal_unbreakable_block (10)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6421,7 +6436,7 @@ GameObject:
   - component: {fileID: 1560849611}
   m_Layer: 0
   m_Name: normal_unbreakable_block (57)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6646,7 +6661,7 @@ GameObject:
   - component: {fileID: 1601062796}
   m_Layer: 0
   m_Name: normal_unbreakable_block (8)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6956,7 +6971,7 @@ GameObject:
   - component: {fileID: 1674447230}
   m_Layer: 0
   m_Name: normal_unbreakable_block (16)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7059,7 +7074,7 @@ GameObject:
   - component: {fileID: 1681867694}
   m_Layer: 0
   m_Name: normal_unbreakable_block (48)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7162,7 +7177,7 @@ GameObject:
   - component: {fileID: 1686444433}
   m_Layer: 0
   m_Name: normal_unbreakable_block (49)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7513,7 +7528,7 @@ GameObject:
   - component: {fileID: 1705480392}
   m_Layer: 0
   m_Name: normal_unbreakable_block (68)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7616,7 +7631,7 @@ GameObject:
   - component: {fileID: 1732395417}
   m_Layer: 0
   m_Name: normal_unbreakable_block (6)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7719,7 +7734,7 @@ GameObject:
   - component: {fileID: 1740603577}
   m_Layer: 0
   m_Name: normal_unbreakable_block (23)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7822,7 +7837,7 @@ GameObject:
   - component: {fileID: 1772132102}
   m_Layer: 0
   m_Name: normal_unbreakable_block (5)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8128,7 +8143,7 @@ GameObject:
   - component: {fileID: 1838898822}
   m_Layer: 0
   m_Name: normal_unbreakable_block (26)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8231,7 +8246,7 @@ GameObject:
   - component: {fileID: 1839138622}
   m_Layer: 0
   m_Name: normal_unbreakable_block (39)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8485,7 +8500,7 @@ GameObject:
   - component: {fileID: 1881599832}
   m_Layer: 0
   m_Name: normal_unbreakable_block (52)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8588,7 +8603,7 @@ GameObject:
   - component: {fileID: 1908360610}
   m_Layer: 0
   m_Name: normal_unbreakable_block (29)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8691,7 +8706,7 @@ GameObject:
   - component: {fileID: 1909242586}
   m_Layer: 0
   m_Name: normal_unbreakable_block (61)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8794,7 +8809,7 @@ GameObject:
   - component: {fileID: 1916398250}
   m_Layer: 0
   m_Name: normal_unbreakable_block (30)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9139,7 +9154,7 @@ GameObject:
   - component: {fileID: 2034055545}
   m_Layer: 0
   m_Name: normal_unbreakable_block (9)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9296,7 +9311,7 @@ GameObject:
   - component: {fileID: 2051945960}
   m_Layer: 0
   m_Name: normal_unbreakable_block (14)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9523,7 +9538,7 @@ GameObject:
   - component: {fileID: 2095235216}
   m_Layer: 0
   m_Name: normal_unbreakable_block (2)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9687,7 +9702,7 @@ GameObject:
   - component: {fileID: 2098712902}
   m_Layer: 0
   m_Name: normal_unbreakable_block (4)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9914,7 +9929,7 @@ GameObject:
   - component: {fileID: 2130365757}
   m_Layer: 0
   m_Name: normal_unbreakable_block (32)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10017,7 +10032,7 @@ GameObject:
   - component: {fileID: 2136797723}
   m_Layer: 0
   m_Name: normal_unbreakable_block (15)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
