@@ -14,6 +14,7 @@ public class Effect_Move : MonoBehaviour
     Vector2 vel = Vector2.zero;
     Vector2 unko1 = Vector2.zero;
     string coll_name;
+    float ax = 1.0f;
     // Use this for initialization
     void Start ()
     {
@@ -41,9 +42,9 @@ public class Effect_Move : MonoBehaviour
            
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmooth);
             
-
             // 前方に進む
-            transform.Translate(vel.normalized * speed * Time.deltaTime);
+            transform.Translate(((vel.normalized * speed) *ax) * Time.deltaTime);
+            ax += (0.2f * Time.deltaTime);
         }
 
 
