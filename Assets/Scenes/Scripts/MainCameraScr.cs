@@ -860,236 +860,240 @@ public class MainCameraScr : MonoBehaviour
                 }
 
 
-
-                if (info == TouchInfo.Ended)
+                if (true)
                 {
-                    //0.5より小さいと射出されない
-                    touch_time = Time.time - touch_time;
-                    Debug.Log(touch_time);
+                    Debug.Log("################");
 
-                    if (touch_time < 0.3f)
+                    if (info == TouchInfo.Ended)
                     {
-                        //number_count += 1;
-                        end_flag = true;
-                        anime.GetComponent<Animator>().speed = 1.0f;
-                        //arrow.GetComponent<SpriteRenderer>().enabled = false;
-                        Color color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
-                        GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
-                            = new Color(color.r, color.g, color.b, 0.0f);
-                        GameObject.Find("Player/player_motion").GetComponent<SpriteRenderer>().enabled = false;
+                        //0.5より小さいと射出されない
+                        touch_time = Time.time - touch_time;
+                        Debug.Log(touch_time);
 
-                        flag = true;
-                        endPos = AppUtil.GetTouchWorldPosition(Camera.main);
-                        Vector2 a = endPos - startPos;
-                        //Debug.Log(a.magnitude);
-                        temp = 0;
-                        temp = a.magnitude;
-                        //if (temp > 12.0f)
-                        //{
-                        //    temp = 12.0f;
-                        //}
-                        //スワイプの長さの値を変えれる
-                        //player.GetComponent<Rigidbody2D>().AddForce(force_);
-
-                        temp = sub.magnitude;
-
-                        color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
-
-                        //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
-                        color.a = 1.0f;
-                        sub = new Vector2(0.0f, 0.0f);
-
-                    }
-                    //else if(touch_time < 5.0f)
-                    //{
-
-                    //}
-
-                    finger_circle.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0, 0, 0);
-                    circle.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0, 0, 0);
-                    //デバッグログ　射出時のパワーを測る
-                    //bonus_color_red = 0;
-                    began_flag = false;
-                    end_time = 0.0f;
-                    bonus_color_red = 0.0f;
-                    bonus_color_yellow = 0.0f;
-                    color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
-                    //射出すらできないパワーの時ブラックカラー矢印を消す
-                    anime.GetComponent<Animator>().speed = 1.0f;
-                    GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
-                        = new Color(0.0f, 0.0f, 0.0f, 0.0f);
-
-                    //速度が３まで低下したら次のWAVEにいく
-                    if (sub.magnitude > 3.0f)
-                    {
-                        number_count += 1;
-                        end_flag = true;
-                        anime.GetComponent<Animator>().speed = 1.0f;
-                        //arrow.GetComponent<SpriteRenderer>().enabled = false;
-                        Color color_end = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
-                        GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
-                            = new Color(color.r, color.g, color.b, 0.0f);
-                        GameObject.Find("Player/player_motion").GetComponent<SpriteRenderer>().enabled = false;
-
-                        flag = true;
-                        endPos = AppUtil.GetTouchWorldPosition(Camera.main);
-                        //Debug.Log(a.magnitude);
-                        //if (temp > 12.0f)
-                        //{
-                        //    temp = 12.0f;
-                        //}
-                        //スワイプの長さの値を変えれる
-                        //player.GetComponent<Rigidbody2D>().AddForce(force_);
-
-                        temp = sub.magnitude;
-                        //サブまぐにの色数値
-                        ////temp = 19.5f - 3.83333f * 2.0f;
-
-                        //カラーいじる矢印
-                        //color = new Color(1.0f, 1.0f, 0.0f, 1.0f);
-
-                        //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
-                        color.a = 1.0f;
-                        Debug.Log(color);
-
-
-                        if (color == new Color(0.51f, 0.54f, 1.0f, 1.0f))
+                        if (touch_time < 0.3f)
                         {
-                            //青の強
-                            if (temp > 8.0f - 1.66667f)
+                            //number_count += 1;
+                            end_flag = true;
+                            anime.GetComponent<Animator>().speed = 1.0f;
+                            //arrow.GetComponent<SpriteRenderer>().enabled = false;
+                            Color color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
+                            GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
+                                = new Color(color.r, color.g, color.b, 0.0f);
+                            GameObject.Find("Player/player_motion").GetComponent<SpriteRenderer>().enabled = false;
+
+                            flag = true;
+                            endPos = AppUtil.GetTouchWorldPosition(Camera.main);
+                            Vector2 a = endPos - startPos;
+                            //Debug.Log(a.magnitude);
+                            temp = 0;
+                            temp = a.magnitude;
+                            //if (temp > 12.0f)
+                            //{
+                            //    temp = 12.0f;
+                            //}
+                            //スワイプの長さの値を変えれる
+                            //player.GetComponent<Rigidbody2D>().AddForce(force_);
+
+                            temp = sub.magnitude;
+
+                            color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
+
+                            //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
+                            color.a = 1.0f;
+                            sub = new Vector2(0.0f, 0.0f);
+
+                        }
+                        //else if(touch_time < 5.0f)
+                        //{
+
+                        //}
+
+                        finger_circle.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0, 0, 0);
+                        circle.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0, 0, 0);
+                        //デバッグログ　射出時のパワーを測る
+                        //bonus_color_red = 0;
+                        began_flag = false;
+                        end_time = 0.0f;
+                        bonus_color_red = 0.0f;
+                        bonus_color_yellow = 0.0f;
+                        color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
+                        //射出すらできないパワーの時ブラックカラー矢印を消す
+                        anime.GetComponent<Animator>().speed = 1.0f;
+                        GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
+                            = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+
+                        //速度が３まで低下したら次のWAVEにいく
+                        if (sub.magnitude > 3.0f)
+                        {
+                            number_count += 1;
+                            end_flag = true;
+                            anime.GetComponent<Animator>().speed = 1.0f;
+                            //arrow.GetComponent<SpriteRenderer>().enabled = false;
+                            Color color_end = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
+                            GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
+                                = new Color(color.r, color.g, color.b, 0.0f);
+                            GameObject.Find("Player/player_motion").GetComponent<SpriteRenderer>().enabled = false;
+
+                            flag = true;
+                            endPos = AppUtil.GetTouchWorldPosition(Camera.main);
+                            //Debug.Log(a.magnitude);
+                            //if (temp > 12.0f)
+                            //{
+                            //    temp = 12.0f;
+                            //}
+                            //スワイプの長さの値を変えれる
+                            //player.GetComponent<Rigidbody2D>().AddForce(force_);
+
+                            temp = sub.magnitude;
+                            //サブまぐにの色数値
+                            ////temp = 19.5f - 3.83333f * 2.0f;
+
+                            //カラーいじる矢印
+                            //color = new Color(1.0f, 1.0f, 0.0f, 1.0f);
+
+                            //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
+                            color.a = 1.0f;
+                            Debug.Log(color);
+
+
+                            if (color == new Color(0.51f, 0.54f, 1.0f, 1.0f))
                             {
-                                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
-                                     ((sub.normalized * blue_speed * force_velocity) * temp * -1) * 0.016f;
-                            }//青の中
-                            else if (temp > 8.0f - 1.66667f * 2.0f)
-                            {
-                                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
-                                     ((sub.normalized * blue_speed * force_velocity) * temp * -1) * 0.016f;/* 
+                                //青の強
+                                if (temp > 8.0f - 1.66667f)
+                                {
+                                    GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
+                                         ((sub.normalized * blue_speed * force_velocity) * temp * -1) * 0.016f;
+                                }//青の中
+                                else if (temp > 8.0f - 1.66667f * 2.0f)
+                                {
+                                    GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
+                                         ((sub.normalized * blue_speed * force_velocity) * temp * -1) * 0.016f;/* 
                                                                                                          * タイムかけてしまうとPCのCPUによって経過時間がかわるのでNG * Time.deltaTime;*/
-                            }//青の小
-                            else
-                            {
-                                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
-                                     ((sub.normalized * blue_speed * force_velocity) * temp * -1) * 0.01f/* 
+                                }//青の小
+                                else
+                                {
+                                    GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
+                                         ((sub.normalized * blue_speed * force_velocity) * temp * -1) * 0.01f/* 
                                                                                                          * タイムかけてしまうとPCのCPUによって経過時間がかわるのでNG * Time.deltaTime;*/;
 
+                                }
+
+                                //青の矢印の上限
+                                if (player.GetComponent<Rigidbody2D>().velocity.magnitude > 30)
+                                {
+                                    player.GetComponent<Rigidbody2D>().velocity =
+                                        player.GetComponent<Rigidbody2D>().velocity.normalized * 30;
+                                }
+
                             }
 
-                            //青の矢印の上限
-                            if (player.GetComponent<Rigidbody2D>().velocity.magnitude > 30)
+                            //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
+                            else if (color == new Color(1.0f, 0.89f, 0.41f, 1.0f))
                             {
-                                player.GetComponent<Rigidbody2D>().velocity =
-                                    player.GetComponent<Rigidbody2D>().velocity.normalized * 30;
+                                if (temp > 19.5f - 3.83333f)
+                                {
+                                    GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
+                                     ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.018f/** Time.deltaTime;*/;
+                                }
+
+
+                                else if (temp > 19.5 - 3.83333f * 2)
+                                {
+                                    GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
+                                    ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.017f/** Time.deltaTime;*/;
+                                }
+                                else
+                                {
+                                    GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
+                                    ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.022f/** Time.deltaTime;*/;
+                                }
+
+
+
+                                //黄色の矢印の上限
+                                if (player.GetComponent<Rigidbody2D>().velocity.magnitude > 102.5f)
+                                {
+                                    player.GetComponent<Rigidbody2D>().velocity =
+                                      player.GetComponent<Rigidbody2D>().velocity.normalized * 102.5f;
+
+                                }
+
+
+
+                                if (player.GetComponent<Rigidbody2D>().velocity.magnitude < 65)
+                                {
+                                    bonus_nature_change_yellow = 1;
+                                }
+                                else
+                                {
+                                    bonus_nature_change_yellow = 0;
+                                }
                             }
+                            else
+                            {
+                                //赤矢印パワーの上限
+                                player.GetComponent<Rigidbody2D>().velocity =
+                                    ((sub * speed * force_velocity) * temp * -1) * 1.0f /* Time.deltaTime;*/ ;
+                                if (player.GetComponent<Rigidbody2D>().velocity.magnitude > force_velocity)
+                                {
+                                    player.GetComponent<Rigidbody2D>().velocity =
+                                        player.GetComponent<Rigidbody2D>().velocity.normalized * force_velocity;
+
+                                }
+                                if (player.GetComponent<Rigidbody2D>().velocity.magnitude < 200)
+                                {
+                                    bonus_nature_change_red = 1;
+                                }
+                                else
+                                {
+                                    bonus_nature_change_red = 0;
+                                }
+                            }
+
+                            //blue_speed = 2.0f;
+                            //player.GetComponent<Rigidbody2D>().velocity = new Vector2(blue_speed, 0.0f);
+
+
+
+
+                            //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
+                            //else if (GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled == false)
+                            //{
+                            //    player.GetComponent<Rigidbody2D>().velocity =
+                            //        ((sub * speed * force_velocity) * temp * -1) * Time.deltaTime;
+                            //    if (player.GetComponent<Rigidbody2D>().velocity.magnitude > force_velocity)
+                            //    {
+                            //        player.GetComponent<Rigidbody2D>().velocity =
+                            //            player.GetComponent<Rigidbody2D>().velocity.normalized * force_velocity;
+                            //    }
+                            //}
+
+
+                            //player.GetComponent<Rigidbody2D>().velocity = new Vector2(100.0f, 0.0f);
+
+
+
 
                         }
-
-                        //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
-                        else if (color == new Color(1.0f, 0.89f, 0.41f, 1.0f))
+                        GameObject[] aa = GameObject.FindGameObjectsWithTag("semi");
+                        if (GameObject.FindGameObjectsWithTag("semi") != null)
                         {
-                            if (temp > 19.5f - 3.83333f)
+                            foreach (GameObject _obj in aa)
                             {
-                                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
-                                 ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.018f/** Time.deltaTime;*/;
-                            }
-
-
-                            else if (temp > 19.5 - 3.83333f * 2)
-                            {
-                                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
-                                ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.017f/** Time.deltaTime;*/;
-                            }
-                            else
-                            {
-                                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity =
-                                ((sub.normalized * yellow_speed * force_velocity) * temp * -1) * 0.022f/** Time.deltaTime;*/;
-                            }
-
-
-
-                            //黄色の矢印の上限
-                            if (player.GetComponent<Rigidbody2D>().velocity.magnitude > 102.5f)
-                            {
-                                player.GetComponent<Rigidbody2D>().velocity =
-                                  player.GetComponent<Rigidbody2D>().velocity.normalized * 102.5f;
-
-                            }
-
-
-
-                            if (player.GetComponent<Rigidbody2D>().velocity.magnitude < 65)
-                            {
-                                bonus_nature_change_yellow = 1;
-                            }
-                            else
-                            {
-                                bonus_nature_change_yellow = 0;
+                                Destroy(_obj);
                             }
                         }
-                        else
-                        {
-                            //赤矢印パワーの上限
-                            player.GetComponent<Rigidbody2D>().velocity =
-                                ((sub * speed * force_velocity) * temp * -1) * 1.0f /* Time.deltaTime;*/ ;
-                            if (player.GetComponent<Rigidbody2D>().velocity.magnitude > force_velocity)
-                            {
-                                player.GetComponent<Rigidbody2D>().velocity =
-                                    player.GetComponent<Rigidbody2D>().velocity.normalized * force_velocity;
-
-                            }
-                            if (player.GetComponent<Rigidbody2D>().velocity.magnitude < 200)
-                            {
-                                bonus_nature_change_red = 1;
-                            }
-                            else
-                            {
-                                bonus_nature_change_red = 0;
-                            }
-                        }
-
-                        //blue_speed = 2.0f;
-                        //player.GetComponent<Rigidbody2D>().velocity = new Vector2(blue_speed, 0.0f);
-
-
-
-
-                        //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
-                        //else if (GameObject.Find("Player/player_difference/BLUE").GetComponent<SpriteRenderer>().enabled == false)
-                        //{
-                        //    player.GetComponent<Rigidbody2D>().velocity =
-                        //        ((sub * speed * force_velocity) * temp * -1) * Time.deltaTime;
-                        //    if (player.GetComponent<Rigidbody2D>().velocity.magnitude > force_velocity)
-                        //    {
-                        //        player.GetComponent<Rigidbody2D>().velocity =
-                        //            player.GetComponent<Rigidbody2D>().velocity.normalized * force_velocity;
-                        //    }
-                        //}
-
-
-                        //player.GetComponent<Rigidbody2D>().velocity = new Vector2(100.0f, 0.0f);
-
-
+                        //Color c_color = circle.GetComponent<SpriteRenderer>().color;
+                        //circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.0f);
 
 
                     }
-                    GameObject[] aa = GameObject.FindGameObjectsWithTag("semi");
-                    if (GameObject.FindGameObjectsWithTag("semi") != null)
+
+                    // 画面から指を離したら状態を移行
+                    if (end_flag)
                     {
-                        foreach (GameObject _obj in aa)
-                        {
-                            Destroy(_obj);
-                        }
+                        main_move_state = 2;
                     }
-                    //Color c_color = circle.GetComponent<SpriteRenderer>().color;
-                    //circle.GetComponent<SpriteRenderer>().color = new Color(c_color.r, c_color.g, c_color.b, 0.0f);
-
-
-                }
-
-                // 画面から指を離したら状態を移行
-                if (end_flag)
-                {
-                    main_move_state = 2;
                 }
             }
             // 打ち出した後
