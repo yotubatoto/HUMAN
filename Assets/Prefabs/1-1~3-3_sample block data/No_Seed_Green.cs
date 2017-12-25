@@ -50,7 +50,7 @@ public class No_Seed_Green : MonoBehaviour
             {
                 Destroy(gameObject);
                 //GameObject.Find("Player").GetComponent<Player_Collision>().combo_count += 1;
-                GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text =
                     GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
                 Debug.Log("生成されました");
@@ -72,7 +72,7 @@ public class No_Seed_Green : MonoBehaviour
                 //GameObject.Find("Block/block_red (2)").GetComponent<BoxCollider>().isTrigger 
 
                 count += 1;
-                GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text =
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
                 //Debug.Log("生成されました");
