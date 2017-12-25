@@ -563,7 +563,7 @@ public class Mission_Manager : MonoBehaviour
             {
                 //ステージクリアしたら（ステージクリアのテキストが表示される時間）
                 clear_count += Time.deltaTime;
-                if (clear_count > 1.0f)
+                if (clear_count > 3.0f)
                 {
                     clear_state = 2;
                 }
@@ -850,8 +850,9 @@ public class Mission_Manager : MonoBehaviour
                 Debug.Log(StageSelectManager.ST_OWNER_NUMBER);
 
                 //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
-
                 Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+
+                GetComponent<Sound_Manager>().Stage_Choice_SE();
                 clear_barrage_flag = true;
                 GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                 GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
@@ -861,6 +862,7 @@ public class Mission_Manager : MonoBehaviour
             {
 
                 Camera.main.GetComponent<Now_Loading>().Load_NextScene_Title();
+                GetComponent<Sound_Manager>().Stage_Choice_SE();
                 clear_barrage_flag = true;
                 GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                 GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
@@ -883,6 +885,7 @@ public class Mission_Manager : MonoBehaviour
                 string res = head + tem_tail.ToString();
                 StageSelectManager.ST_OWNER_NUMBER = res;
                 Camera.main.GetComponent<Now_Loading>().LoadNextScene();
+                GetComponent<Sound_Manager>().Stage_Choice_SE();
                 clear_barrage_flag = true;
                 GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                 GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;

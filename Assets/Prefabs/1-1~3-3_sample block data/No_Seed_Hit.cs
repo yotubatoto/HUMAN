@@ -39,7 +39,7 @@ public class No_Seed_Hit : MonoBehaviour
             if (break_count == 2)
             {
                 Destroy(gameObject);
-                GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text =
                     GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString();
             }

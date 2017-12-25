@@ -21,6 +21,7 @@ public class MainCameraScr : MonoBehaviour
     public Vector3 Vec;
     private bool flag = false;
     public GameObject arrow;
+    public GameObject arrow_tri;
     public GameObject circle;
     public GameObject pause;
     private float pause_time = 0.0f;
@@ -42,10 +43,12 @@ public class MainCameraScr : MonoBehaviour
     public GameObject player_anime_difference;
     public GameObject now_loading;
     Color color;
+    Color color_1;
     //射出の減衰スピード
     public float attenuation_speed = 2.0f;
     private int shake_state = 0;
     public float arrow_shake = 0.0f;
+    private float arrow_tri_shake = 0.0f;
     public GameObject anime;
     private float end_time = 0.0f;
     private bool pause_se_flag = false;
@@ -63,6 +66,7 @@ public class MainCameraScr : MonoBehaviour
     public bool pause_freeze_flag = false;
     public GameObject retry;
     private Vector2 arrow_start_pos = Vector2.zero;
+    private Vector2 arrow_tri_start_pos = Vector2.zero;
 
     //ランプの数
     public GameObject[] right_obj;
@@ -192,11 +196,12 @@ public class MainCameraScr : MonoBehaviour
         if (hold.x != float.MaxValue)
         {
             arrow.transform.position = hold;
+            //arrow_tri.transform.position = hold;
             hold = new Vector2(float.MaxValue, float.MaxValue);
         }
 
         TouchInfo info_m = AppUtil.GetTouch();
-      
+
 
         //スタート時にホワイトから透明に
         if (main_move_state == -3)
@@ -365,9 +370,9 @@ public class MainCameraScr : MonoBehaviour
                     if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Retry" && main_barrage_flag == false)
                     {
                         //SceneManager.LoadScene("Stage_" + "1_1" + "_Scene");
-                        GetComponent<Sound_Manager>().Stage_Choice_SE();
                         //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
                         GetComponent<Now_Loading>().LoadNextScene();
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
                         main_barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                         GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
@@ -376,8 +381,8 @@ public class MainCameraScr : MonoBehaviour
                     else if (manual[temp_save - 1].activeSelf == false && collition2d.gameObject.name == "Stage_Select" && main_barrage_flag == false)
                     {
                         //SceneManager.LoadScene("StageSelect_Scene");
-                        GetComponent<Sound_Manager>().Stage_Choice_SE();
                         GetComponent<Now_Loading>().Load_NextScene_Title();
+                        GetComponent<Sound_Manager>().Stage_Choice_SE();
                         main_barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                         GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
@@ -503,11 +508,18 @@ public class MainCameraScr : MonoBehaviour
                     //						startPos.y, 0);
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = false; ;
                     GameObject.Find("arrow").GetComponent<SpriteRenderer>().enabled = true;
+                    GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().enabled = true;
+
 
 
                     Color color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
                     //                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
                     GameObject.Find("arrow").GetComponent<SpriteRenderer>().color =
+                        new Color(0.0f, 0.0f, 1.0f, 0.0f);
+
+                    Color color_1 = GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color;
+                    //                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
+                    GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color =
                         new Color(0.0f, 0.0f, 1.0f, 0.0f);
 
                     arrow.transform.localScale = new Vector3(10.0f, 1, 1);
@@ -549,12 +561,20 @@ public class MainCameraScr : MonoBehaviour
                     //						startPos.y, 0);
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     GameObject.Find("arrow").GetComponent<SpriteRenderer>().enabled = true;
+                    GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().enabled = true;
+
 
 
                     Color color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
                     //                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
                     GameObject.Find("arrow").GetComponent<SpriteRenderer>().color =
                         new Color(0.0f, 0.0f, 1.0f, 1.0f);
+
+                    Color color_1 = GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color;
+                    //                    Color c_color = circle.GetComponent<SpriteRenderer>().color;
+                    GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color =
+                        new Color(0.0f, 0.0f, 1.0f, 1.0f);
+
 
                     arrow.transform.localScale = new Vector3(10.0f, 1, 1);
                     // スワイプし始めたら状態を移行する
@@ -570,6 +590,10 @@ public class MainCameraScr : MonoBehaviour
                         Color big_one = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
                         big_one.a = 1.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color = big_one;
+
+                        Color big_one_1 = GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color;
+                        big_one.a = 1.0f;
+                        GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color = big_one;
                         transition_flag = true;
 
                     }
@@ -586,6 +610,8 @@ public class MainCameraScr : MonoBehaviour
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
                     Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
+                    //Color color_1 = arrow_tri.transform.Find("arrow_tri").gameObject.GetComponent<SpriteRenderer>().color;
+
                     //                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                     sub = movePos - startPos;
@@ -744,6 +770,9 @@ public class MainCameraScr : MonoBehaviour
                     anime.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 
                     Color color = arrow.transform.Find("arrow").gameObject.GetComponent<SpriteRenderer>().color;
+                    //Color color_1 = arrow_tri.transform.Find("arrow_tri").gameObject.GetComponent<SpriteRenderer>().color;
+
+
                     //                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                     sub = movePos - startPos;
@@ -831,6 +860,8 @@ public class MainCameraScr : MonoBehaviour
                         anime.GetComponent<Animator>().speed = 4.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(0.98f, 0.52f, 0.55f, 1.0f);
+                        GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
+                          = new Color(0.98f, 0.52f, 0.55f, 1.0f);
                     }
                     //矢印イエロー
                     else if (sub.magnitude > 8.0f)
@@ -838,6 +869,9 @@ public class MainCameraScr : MonoBehaviour
                         anime.GetComponent<Animator>().speed = 3.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(1.0f, 0.89f, 0.41f, 1.0f);
+                        GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
+                           = new Color(1.0f, 0.89f, 0.41f, 1.0f);
+
 
                     }
                     //3より射出パワーが上なら矢印ブルー
@@ -846,6 +880,9 @@ public class MainCameraScr : MonoBehaviour
                         anime.GetComponent<Animator>().speed = 2.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(0.51f, 0.54f, 1.0f, 1.0f);
+                        GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
+                           = new Color(0.51f, 0.54f, 1.0f, 1.0f);
+
 
 
                     }
@@ -855,6 +892,8 @@ public class MainCameraScr : MonoBehaviour
                         anime.GetComponent<Animator>().speed = 1.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+                        GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
+                           = new Color(0.0f, 0.0f, 0.0f, 1.0f);
                     }
 
                     Shake_Arrow();
@@ -880,6 +919,11 @@ public class MainCameraScr : MonoBehaviour
                             Color color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
                             GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                                 = new Color(color.r, color.g, color.b, 0.0f);
+
+                            Color color_1 = GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color;
+                            GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
+                                = new Color(color.r, color.g, color.b, 0.0f);
+
                             GameObject.Find("Player/player_motion").GetComponent<SpriteRenderer>().enabled = false;
 
                             flag = true;
@@ -898,6 +942,8 @@ public class MainCameraScr : MonoBehaviour
                             temp = sub.magnitude;
 
                             color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
+                            color_1 = GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color;
+
 
                             //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
                             color.a = 1.0f;
@@ -918,10 +964,16 @@ public class MainCameraScr : MonoBehaviour
                         bonus_color_red = 0.0f;
                         bonus_color_yellow = 0.0f;
                         color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
+                        Color color_2 = GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color;
+
                         //射出すらできないパワーの時ブラックカラー矢印を消す
                         anime.GetComponent<Animator>().speed = 1.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+
+                        GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
+                           = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+
 
                         //速度が３まで低下したら次のWAVEにいく
                         if (sub.magnitude > 3.0f)
@@ -932,6 +984,10 @@ public class MainCameraScr : MonoBehaviour
                             //arrow.GetComponent<SpriteRenderer>().enabled = false;
                             Color color_end = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
                             GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
+                                = new Color(color.r, color.g, color.b, 0.0f);
+
+                            Color color_end_1 = GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color;
+                            GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
                                 = new Color(color.r, color.g, color.b, 0.0f);
                             GameObject.Find("Player/player_motion").GetComponent<SpriteRenderer>().enabled = false;
 
@@ -1347,34 +1403,50 @@ public class MainCameraScr : MonoBehaviour
             //Debug.Log("aaaa");
             hold = new Vector2(float.MaxValue, float.MaxValue);
             Vector2 pos = arrow.transform.position;
+            //Vector2 pos_tri = arrow_tri.transform.position;
             if (shake_state == 0)
             {
                 hold = arrow.transform.position;
+                //hold = arrow_tri.transform.position;
 
                 //矢印揺れるスピード
                 arrow_shake += 0.08f;
                 pos.x += Random.Range(-0.5f, 0.5f);
                 pos.y += arrow_shake;
+
+                //arrow_tri_shake += 0.08f;
+                //pos_tri.x += Random.Range(-0.5f, 0.5f);
+                //pos_tri.y += arrow_tri_shake;
                 if (arrow_shake > 0.3f)
                 {
                     shake_state = 1;
                     arrow_shake = 0.0f;
+                    //arrow_tri_shake = 0;
                 }
                 arrow.transform.position = pos;
             }
             else if (shake_state == 1)
             {
                 hold = arrow.transform.position;
+                //hold = arrow_tri.transform.position;
+
 
                 arrow_shake += 0.08f;
                 pos.x += Random.Range(-0.25f, 0.25f);
                 pos.y -= arrow_shake;
+
+                //arrow_tri_shake += 0.08f;
+                //pos_tri.x += Random.Range(-0.5f, 0.5f);
+                //pos_tri.y -= arrow_shake;
                 if (arrow_shake > 0.3f)
                 {
                     shake_state = 0;
                     arrow_shake = 0.0f;
+                    //arrow_tri_shake = 0.0f;
                 }
                 arrow.transform.position = pos;
+                //arrow_tri.transform.position = pos_tri;
+
             }
 
         }
