@@ -675,7 +675,16 @@ public class Mission_Manager : MonoBehaviour
                 clear_pop.SetActive(false);
                 string st = StageSelectManager.ST_OWNER_NUMBER;
                 // 1_1の一番後ろの文字列を抽出してる 1 tail = 1
-                string tail = st.Substring(3, 1); // 1
+                int len = st.Length;
+                string tail = "";
+                if(len >= 4)
+                {
+                    tail = st.Substring(3, 1); // 1
+                }
+                else
+                {
+                    tail = st.Substring(2, 1); // 1
+                }
                 if(tail != "0")
                 {
                     Result_obj.gameObject.SetActive(true);
