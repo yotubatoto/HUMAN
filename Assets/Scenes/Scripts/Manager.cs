@@ -154,6 +154,7 @@ public class Manager : MonoBehaviour
                 if (trun_alfa <= 0.0f)
                 {
                     trun_alfa = 0;
+                    GetComponent<MainCameraScr>().pause_freeze_flag = false;
                 }
               
            

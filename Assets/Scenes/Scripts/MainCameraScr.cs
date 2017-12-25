@@ -264,7 +264,7 @@ public class MainCameraScr : MonoBehaviour
         {
             if (gamestart_al_flag == false)
             {
-                
+                pause_freeze_flag = true;
                 gamestart_al += 1.0f * Time.deltaTime;
                 if (gamestart_al >= 1.0f)
                 {
@@ -279,6 +279,7 @@ public class MainCameraScr : MonoBehaviour
                 if (gamestart_al <= 0.0f)
                 {
                     main_move_state = 0;
+                    pause_freeze_flag = false;
                 }
             }
 
