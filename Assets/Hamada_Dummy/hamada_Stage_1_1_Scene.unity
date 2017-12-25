@@ -577,8 +577,60 @@ MonoBehaviour:
   - 15
   - 15
   - 15
+  LIMITE:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   gameover_bgm: {fileID: 8300000, guid: 20dae5ad4d92219468bf7ad490f6e150, type: 3}
   game_clear_bgm: {fileID: 8300000, guid: 770a17cf8d878d14f8e91343c340d50a, type: 3}
+  next_stage: {fileID: 0}
 --- !u!81 &59993058
 AudioListener:
   m_ObjectHideFlags: 0
@@ -11360,7 +11412,7 @@ Transform:
   m_GameObject: {fileID: 1834320532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.06, z: 0.3192033}
-  m_LocalScale: {x: 6.5, y: 6.5, z: 10.400496}
+  m_LocalScale: {x: 7, y: 7, z: 10.400496}
   m_Children: []
   m_Father: {fileID: 817490242}
   m_RootOrder: 0
@@ -11399,7 +11451,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -101
-  m_Sprite: {fileID: 21300000, guid: e7f6ad79d3e678d4fb4c6463e1fd8aa1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c9dc6424305d8343b64c37230b27799, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

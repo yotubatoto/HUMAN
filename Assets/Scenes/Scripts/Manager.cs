@@ -1584,12 +1584,1487 @@ public class Manager : MonoBehaviour
                         //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
                         //    hit_flower = false;
                         //}
-                        score.text = " 0";
+                        //score.text = " 0";
 
                     }
                 }
             //}
             
+        }
+        // Wave16
+        else if (shot_state == (int)MAIN_STATE.SHOT_16)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "16";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 15;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 16 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_17;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+
+        //wave17
+        else if (shot_state == (int)MAIN_STATE.SHOT_17)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "17";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 16;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 17 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_18;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+
+        //wave18
+        else if (shot_state == (int)MAIN_STATE.SHOT_18)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "18";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 17;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 18 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_19;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+        //wave19
+        else if (shot_state == (int)MAIN_STATE.SHOT_19)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "19";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 18;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 19 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_20;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+
+        //wave20
+        else if (shot_state == (int)MAIN_STATE.SHOT_20)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "20";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 19;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 20 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_21;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+
+        //wave21
+        else if (shot_state == (int)MAIN_STATE.SHOT_21)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "21";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 20;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 21 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_22;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+        //wave22
+        else if (shot_state == (int)MAIN_STATE.SHOT_22)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "22";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 21;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 22 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_23;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+
+        //wave24
+        else if (shot_state == (int)MAIN_STATE.SHOT_24)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "24";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 23;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 24 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_25;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+        //wave25
+        else if (shot_state == (int)MAIN_STATE.SHOT_25)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "25";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 24;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 25 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_26;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+        //wave26
+        else if (shot_state == (int)MAIN_STATE.SHOT_26)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "26";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 25;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 26 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_27;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+        //wave27
+        else if (shot_state == (int)MAIN_STATE.SHOT_27)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "27";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 26;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 27 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_28;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+        //wave28
+        else if (shot_state == (int)MAIN_STATE.SHOT_28)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "28";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 27;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 28 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_29;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+        //wave29
+        else if (shot_state == (int)MAIN_STATE.SHOT_29)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "29";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 28;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 29 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_30;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    //score.text = " 0";
+
+                }
+            }
+            //}
+
+        }
+        //wave30
+        else if (shot_state == (int)MAIN_STATE.SHOT_30)
+        {
+            //if (Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            //{
+            //    al_flag = true;
+            //    //GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+
+            //}
+            //if (al_flag)
+            //{
+            move_flag = false;
+            if (once_flag == false)
+            {
+                once_flag = true;
+                wave.text = "30";
+                int temp = GetComponent<Mission_Manager>().LIMIT_TURN - 29;
+                shot.text = temp.ToString();
+                turn_keep_state = 0;
+                ////ターンのアルファ初期化
+                //GameObject.Find("turn_flame").GetComponent<Image>().color =
+                //    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                //trun_alfa = 1.0f;
+                score.text = " 10";
+                Color cc = wave.color;
+                cc.a = 1;
+                wave.color = cc;
+                Camera.main.GetComponent<MainCameraScr>().end_flag = false;
+                Camera.main.GetComponent<MainCameraScr>().state_move_flag = false;
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+                //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);
+
+            }
+            Color c = wave.color;
+
+            //c.a -= a_value;
+            //ターンアルファへらす
+            if (turn_keep_state == 0)
+            {
+                //ターンが現れる時間
+                trun_alfa += 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+                wave.color = c;
+
+                //ターンを表示している時間
+                if (trun_alfa >= 5.0f)
+                {
+                    turn_keep_state = 1;
+                }
+            }
+            else if (turn_keep_state == 1)
+            {   //ターンを消す時間
+                trun_alfa -= 5.0f * Time.deltaTime;
+                GameObject.Find("turn_flame").GetComponent<Image>().color =
+                            new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+
+                GameObject.Find("Turn_Number").GetComponent<Text>().color =
+                    new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+                c.a = trun_alfa;
+
+                if (trun_alfa <= 0.0f)
+                {
+                    trun_alfa = 0;
+                }
+
+            }
+            //GameObject.Find("turn_flame").GetComponent<Image>().color =
+            //       new Color(1.0f, 1.0f, 1.0f, trun_alfa);
+            //trun_alfa -= 0.05f;
+            wave.color = c;
+            if (trun_alfa <= 0.0f)
+            {
+
+                move_flag = true;
+
+                if (Camera.main.GetComponent<MainCameraScr>().number_count >= 30 &&
+                    Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+                {
+
+                    al_flag = false;
+                    once_flag = false;
+                    //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "16";
+                    GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
+
+
+                    shot_state = (int)MAIN_STATE.SHOT_31;
+
+                    GetComponent<Mission_Manager>().gameOver_obj.SetActive(true);
+
+                    //if (hit_flower == true)
+                    //{
+                    //    GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag = false;
+                    //    hit_flower = false;
+                    //}
+                    score.text = " 0";
+
+                }
+            }
+            //}
+
         }
     }
 
