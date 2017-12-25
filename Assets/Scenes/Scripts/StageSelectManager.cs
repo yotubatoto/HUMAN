@@ -30,6 +30,11 @@ public class StageSelectManager : MonoBehaviour
     private int now_load_state = 0;
     //連打防止
     private bool barrage_flag = false;
+   
+
+    public Image[] stage_up_obj = new Image[5];
+    public Image[] black_obj = new Image[5];
+
     public static Vector3 SAVE_POS = new Vector3(0.0f,1.42f,0.0f);
     
     
@@ -89,8 +94,21 @@ public class StageSelectManager : MonoBehaviour
 
 		}
 
-		
-		
+
+        if (pop_obj.gameObject.activeSelf == false)
+        {
+            for(int i=0;i<5;i++)
+            {
+                stage_up_obj[i].enabled = false;
+            }
+        }
+        if (pop_obj.gameObject.activeSelf == true)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                black_obj[i].enabled = true;
+            }
+        }
 
         if (pop_obj.gameObject.activeSelf == true)
         {
@@ -98,6 +116,10 @@ public class StageSelectManager : MonoBehaviour
 
             if ((int)transform.position.x <= -75.0f)
             {
+                stage_up_obj[4].enabled = true;
+                black_obj[4].enabled = true;
+
+
                 if (Debug_Mode == false)
                 {
                     int temp = 0;
@@ -381,6 +403,9 @@ public class StageSelectManager : MonoBehaviour
             }
             else if ((int)transform.position.x <= -55.0f)
             {
+                stage_up_obj[3].enabled = true;
+                black_obj[2].enabled = true;
+
                 if (Debug_Mode == false)
                 {
                     int temp = 0;
@@ -947,6 +972,10 @@ public class StageSelectManager : MonoBehaviour
             //}
             else if ((int)transform.position.x <= -35.0f)
 			{
+                stage_up_obj[2].enabled = true;
+                black_obj[2].enabled = true;
+
+
                 if(Debug_Mode == false)
                 {
                     int temp = 0;
@@ -1229,6 +1258,10 @@ public class StageSelectManager : MonoBehaviour
 			}
 			else if ((int)transform.position.x <= -20.0f && (int)transform.position.x > -30.0f)
 			{
+                stage_up_obj[1].enabled = true;
+                black_obj[1].enabled = true;
+
+
                 if(Debug_Mode == false)
                 {
                     int temp = 0;
@@ -1511,6 +1544,8 @@ public class StageSelectManager : MonoBehaviour
             }
 			else if ((int)transform.position.x <= 0 && (int)transform.position.x > -10.5f)
             {
+                stage_up_obj[0].enabled = true;
+
                 if(Debug_Mode == false)
                 {
                     int temp = 0;
@@ -1788,6 +1823,13 @@ public class StageSelectManager : MonoBehaviour
                     pop_obj.transform.Find("_10/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 }
             }
+            //else
+            //{
+            //    for(int i=0;i<5;i++)
+            //    {
+            //        stage_up_obj[i].enabled = false;
+            //    }
+            //}
            //点滅させるのにこの条件はカット now_loading.gameObject.GetComponent<Image> ().color.a == 0.0f
            
 			if (GetComponent<AudioSource>().enabled == true) 
@@ -1802,6 +1844,7 @@ public class StageSelectManager : MonoBehaviour
                           || collition2d.gameObject.name == "_6" || collition2d.gameObject.name == "_7" || collition2d.gameObject.name == "_8"
                           || collition2d.gameObject.name == "_9" || collition2d.gameObject.name == "_10")
 						{
+                          
 							TouchObjectFind();
 						}
 					}
@@ -1864,6 +1907,7 @@ public class StageSelectManager : MonoBehaviour
 				if((int)startPos.x == (int)endPos.x)
 				{
                     TouchObjectFind("col", 1);
+
                     // TouchObjectFind("vector_right", 1);
                     // TouchObjectFind("vector_right(1)", 1);
                     // TouchObjectFind("vector_left", 1);
@@ -1967,9 +2011,15 @@ public class StageSelectManager : MonoBehaviour
         {
             if (collition2d.gameObject.name == "_1"　&& barrage_flag == false)
             {
+               
                 if(lock_imge[0].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
+                
+
+
                     //Debug.Log("iiiiiiii");
+                  
+
                     blackFlag = true;
                     Debug.Log(transform.position);
                
@@ -1977,6 +2027,7 @@ public class StageSelectManager : MonoBehaviour
                     {
 
                         ST_OWNER_NUMBER = "5_1";
+                        
                         SAVE_POS = transform.position;
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
@@ -2049,8 +2100,12 @@ public class StageSelectManager : MonoBehaviour
             }
             if (collition2d.gameObject.name == "_2" && barrage_flag == false)
             {
+                
                 if(lock_imge[1].GetComponent<Image>().color == new Color(0,0,0,0)) 
                 {
+                   
+
+                    
                     blackFlag = true;
                    
                     if ((int)transform.position.x <= -75.0f)
@@ -2135,7 +2190,6 @@ public class StageSelectManager : MonoBehaviour
               
                     if ((int)transform.position.x <= -75.0f)
                     {
-
                         ST_OWNER_NUMBER = "5_3";
                         SAVE_POS = transform.position;
 
