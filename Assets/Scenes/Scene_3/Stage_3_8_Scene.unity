@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 29058813}
   m_Layer: 0
   m_Name: block_green_new (14)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,17 +179,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 29058810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &29058814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -225,7 +227,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -249,7 +251,7 @@ GameObject:
   - component: {fileID: 56072026}
   m_Layer: 0
   m_Name: block_green_new (12)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,17 +304,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 56072023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &56072027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -348,7 +352,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -511,7 +515,7 @@ GameObject:
   - component: {fileID: 191447090}
   m_Layer: 0
   m_Name: block_green_new (9)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -564,17 +568,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 191447087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &191447091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -610,7 +616,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -634,7 +640,7 @@ GameObject:
   - component: {fileID: 292282397}
   m_Layer: 0
   m_Name: normal_unbreakable_block (1)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -790,7 +796,7 @@ GameObject:
   - component: {fileID: 413365600}
   m_Layer: 0
   m_Name: block_green_new (21)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -843,17 +849,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 413365597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &413365601
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -889,7 +897,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -918,7 +926,7 @@ GameObject:
   - component: {fileID: 503577496}
   m_Layer: 0
   m_Name: block_green_new (3)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -971,17 +979,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 503577493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &503577497
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1017,7 +1027,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1041,7 +1051,7 @@ GameObject:
   - component: {fileID: 520084120}
   m_Layer: 0
   m_Name: block_red (4)
-  m_TagString: Big_Block
+  m_TagString: Small_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1068,19 +1078,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 520084118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
+  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
-  break_count: 0
-  block_sprite:
-  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
-  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
+  count: 0
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
+  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
+    type: 2}
+  seed_life_turn: 0
 --- !u!61 &520084121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1142,7 +1150,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1171,7 +1179,7 @@ GameObject:
   - component: {fileID: 585834267}
   m_Layer: 0
   m_Name: block_red (3)
-  m_TagString: Big_Block
+  m_TagString: Small_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1198,19 +1206,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 585834265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
+  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
-  break_count: 0
-  block_sprite:
-  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
-  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
+  count: 0
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
+  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
+    type: 2}
+  seed_life_turn: 0
 --- !u!61 &585834268
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1272,7 +1278,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1296,7 +1302,7 @@ GameObject:
   - component: {fileID: 608533876}
   m_Layer: 0
   m_Name: block_green_new (10)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1349,17 +1355,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 608533873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &608533877
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1395,7 +1403,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1424,7 +1432,7 @@ GameObject:
   - component: {fileID: 693164655}
   m_Layer: 0
   m_Name: block_green_new (13)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1477,17 +1485,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 693164652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &693164656
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1523,7 +1533,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1547,7 +1557,7 @@ GameObject:
   - component: {fileID: 732036051}
   m_Layer: 0
   m_Name: block_red (2)
-  m_TagString: Big_Block
+  m_TagString: Small_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1574,19 +1584,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 732036049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
+  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
-  break_count: 0
-  block_sprite:
-  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
-  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
+  count: 0
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
+  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
+    type: 2}
+  seed_life_turn: 0
 --- !u!61 &732036052
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1648,7 +1656,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1672,7 +1680,7 @@ GameObject:
   - component: {fileID: 734720303}
   m_Layer: 0
   m_Name: block_green_new (22)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1725,17 +1733,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 734720300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &734720304
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1771,7 +1781,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1795,7 +1805,7 @@ GameObject:
   - component: {fileID: 739762331}
   m_Layer: 0
   m_Name: block_green_new (23)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1848,17 +1858,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 739762328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &739762332
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1894,7 +1906,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1951,7 +1963,7 @@ GameObject:
   - component: {fileID: 794974842}
   m_Layer: 0
   m_Name: block_red (1)
-  m_TagString: Big_Block
+  m_TagString: Small_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1978,19 +1990,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 794974840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
+  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
-  break_count: 0
-  block_sprite:
-  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
-  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
+  count: 0
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
+  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
+    type: 2}
+  seed_life_turn: 0
 --- !u!61 &794974843
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2052,7 +2062,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2107,7 +2117,7 @@ GameObject:
   - component: {fileID: 821948424}
   m_Layer: 0
   m_Name: Picture_Frame
-  m_TagString: Untagged
+  m_TagString: wall_sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2293,7 +2303,7 @@ GameObject:
   - component: {fileID: 884708157}
   m_Layer: 0
   m_Name: block_green_new (8)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2346,17 +2356,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 884708154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &884708158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2392,7 +2404,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2567,7 +2579,7 @@ GameObject:
   - component: {fileID: 948061687}
   m_Layer: 0
   m_Name: block_green_new (17)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2620,17 +2632,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 948061684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &948061688
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2666,7 +2680,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2919,7 +2933,7 @@ GameObject:
   - component: {fileID: 990430759}
   m_Layer: 0
   m_Name: block_green_new (15)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2972,17 +2986,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 990430756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &990430760
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3018,7 +3034,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3130,7 +3146,7 @@ GameObject:
   - component: {fileID: 1153273825}
   m_Layer: 0
   m_Name: block_green_new (18)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3183,17 +3199,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1153273822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &1153273826
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3229,7 +3247,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3424,7 +3442,7 @@ GameObject:
   - component: {fileID: 1342960117}
   m_Layer: 0
   m_Name: block_green_new (6)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3477,17 +3495,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1342960114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &1342960118
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3523,7 +3543,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3547,7 +3567,7 @@ GameObject:
   - component: {fileID: 1348113344}
   m_Layer: 0
   m_Name: block_red (5)
-  m_TagString: Big_Block
+  m_TagString: Small_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3574,19 +3594,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1348113342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
+  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
-  break_count: 0
-  block_sprite:
-  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
-  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
+  count: 0
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
+  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
+    type: 2}
+  seed_life_turn: 0
 --- !u!61 &1348113345
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3648,7 +3666,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3843,7 +3861,7 @@ GameObject:
   - component: {fileID: 1472046740}
   m_Layer: 0
   m_Name: block_green_new (20)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3896,17 +3914,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1472046737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &1472046741
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3942,7 +3962,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3982,7 +4002,7 @@ GameObject:
   - component: {fileID: 1605021818}
   m_Layer: 0
   m_Name: block_green_new (5)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4035,17 +4055,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1605021815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &1605021819
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4081,7 +4103,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4259,6 +4281,26 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.959
       objectReference: {fileID: 0}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: enemy_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 5036ac1cbce508d4a8f711ac190128f9, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: obstance_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 47794917427a43f4a8af9ade7b783776, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: no_break_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: damage_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
   m_IsPrefabParent: 0
@@ -4332,8 +4374,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1626100197490010, guid: 75fcb565499f43b47ad46fb207c47c53, type: 2}
       propertyPath: m_TagString
-      value: Small_Block
+      value: Big_Block
       objectReference: {fileID: 0}
+    - target: {fileID: 212108392067436348, guid: 75fcb565499f43b47ad46fb207c47c53,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114412025983238448, guid: 75fcb565499f43b47ad46fb207c47c53, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 75fcb565499f43b47ad46fb207c47c53, type: 2}
@@ -4343,7 +4391,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1626100197490010, guid: 75fcb565499f43b47ad46fb207c47c53,
     type: 2}
   m_PrefabInternal: {fileID: 1727565328}
---- !u!114 &1727565330
+--- !u!114 &1727565331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -4351,17 +4399,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1727565329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!114 &1748595078 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114079433702877100, guid: 3d9ce56c869b5394b9ede3fd6ed98004,
@@ -4673,7 +4723,7 @@ GameObject:
   - component: {fileID: 1984534831}
   m_Layer: 0
   m_Name: block_green_new (2)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4726,17 +4776,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1984534828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &1984534832
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4772,7 +4824,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4796,7 +4848,7 @@ GameObject:
   - component: {fileID: 2034397817}
   m_Layer: 0
   m_Name: block_green_new (1)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4849,17 +4901,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2034397814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &2034397818
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4895,7 +4949,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4956,7 +5010,7 @@ GameObject:
   - component: {fileID: 2115197186}
   m_Layer: 0
   m_Name: block_green_new (11)
-  m_TagString: Small_Block
+  m_TagString: Big_Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5009,17 +5063,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2115197183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e158f11d636b419943f8d469a12ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 457f2789d47c5d84f99db6a72a64f59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  number: 0
+  break_count: 0
+  block_sprite:
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
+  - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
   dust_prefab: {fileID: 1328703676498832, guid: 014de1c208ce116488bc1f1f71933ad2,
     type: 2}
-  seed_prefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9,
-    type: 2}
-  seed_life_turn: 0
+  seedprefab: {fileID: 1647357160750950, guid: 3cf0c269c061540b090a88a18cd920d9, type: 2}
 --- !u!212 &2115197187
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5055,7 +5111,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 9e47aa347d2f9bc45812443bb36d8d07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

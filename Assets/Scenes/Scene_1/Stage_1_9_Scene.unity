@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 147271259}
   m_Layer: 0
   m_Name: normal_unbreakable_block (12)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 170702275}
   m_Layer: 0
   m_Name: normal_unbreakable_block (25)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 185159446}
   m_Layer: 0
   m_Name: normal_unbreakable_block (28)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -510,6 +510,26 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: enemy_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 5036ac1cbce508d4a8f711ac190128f9, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: obstance_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 227a85a1d48674844926b8555aa18136, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: no_break_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: damage_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a2346a50e02074428492ec355f13805, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
   m_IsPrefabParent: 0
@@ -526,7 +546,7 @@ GameObject:
   - component: {fileID: 407347081}
   m_Layer: 0
   m_Name: normal_unbreakable_block (6)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -629,7 +649,7 @@ GameObject:
   - component: {fileID: 409958863}
   m_Layer: 0
   m_Name: normal_unbreakable_block (34)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -732,7 +752,7 @@ GameObject:
   - component: {fileID: 486541326}
   m_Layer: 0
   m_Name: normal_unbreakable_block (30)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -835,7 +855,7 @@ GameObject:
   - component: {fileID: 497400705}
   m_Layer: 0
   m_Name: normal_unbreakable_block (31)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -938,7 +958,7 @@ GameObject:
   - component: {fileID: 521776040}
   m_Layer: 0
   m_Name: normal_unbreakable_block (5)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1166,7 +1186,7 @@ GameObject:
   - component: {fileID: 639257687}
   m_Layer: 0
   m_Name: normal_unbreakable_block (11)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1275,7 +1295,7 @@ GameObject:
   - component: {fileID: 669496841}
   m_Layer: 0
   m_Name: normal_unbreakable_block (33)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1378,7 +1398,7 @@ GameObject:
   - component: {fileID: 677469315}
   m_Layer: 0
   m_Name: normal_unbreakable_block (29)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1637,7 +1657,7 @@ GameObject:
   - component: {fileID: 821948424}
   m_Layer: 0
   m_Name: Picture_Frame
-  m_TagString: Untagged
+  m_TagString: wall_sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1903,6 +1923,11 @@ Prefab:
       propertyPath: LIMIT_TURN
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114366214881428546, guid: 3d9ce56c869b5394b9ede3fd6ed98004,
+        type: 2}
+      propertyPath: LIMITE.Array.data[8]
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d9ce56c869b5394b9ede3fd6ed98004, type: 2}
   m_IsPrefabParent: 0
@@ -1919,7 +1944,7 @@ GameObject:
   - component: {fileID: 985562173}
   m_Layer: 0
   m_Name: normal_unbreakable_block (24)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2022,7 +2047,7 @@ GameObject:
   - component: {fileID: 1002922827}
   m_Layer: 0
   m_Name: normal_unbreakable_block (22)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2125,7 +2150,7 @@ GameObject:
   - component: {fileID: 1022201383}
   m_Layer: 0
   m_Name: normal_unbreakable_block (17)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2243,7 +2268,7 @@ GameObject:
   - component: {fileID: 1139001342}
   m_Layer: 0
   m_Name: normal_unbreakable_block (27)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2346,7 +2371,7 @@ GameObject:
   - component: {fileID: 1164114714}
   m_Layer: 0
   m_Name: normal_unbreakable_block (13)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2572,7 +2597,7 @@ GameObject:
   - component: {fileID: 1329088265}
   m_Layer: 0
   m_Name: normal_unbreakable_block (41)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2675,7 +2700,7 @@ GameObject:
   - component: {fileID: 1364182410}
   m_Layer: 0
   m_Name: normal_unbreakable_block (4)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2778,7 +2803,7 @@ GameObject:
   - component: {fileID: 1451615997}
   m_Layer: 0
   m_Name: normal_unbreakable_block (37)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2881,7 +2906,7 @@ GameObject:
   - component: {fileID: 1477121476}
   m_Layer: 0
   m_Name: normal_unbreakable_block (10)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2984,7 +3009,7 @@ GameObject:
   - component: {fileID: 1493026739}
   m_Layer: 0
   m_Name: normal_unbreakable_block (3)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3087,7 +3112,7 @@ GameObject:
   - component: {fileID: 1535673076}
   m_Layer: 0
   m_Name: normal_unbreakable_block (38)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3473,7 +3498,7 @@ GameObject:
   - component: {fileID: 1629813038}
   m_Layer: 0
   m_Name: normal_unbreakable_block (35)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3576,7 +3601,7 @@ GameObject:
   - component: {fileID: 1633358248}
   m_Layer: 0
   m_Name: normal_unbreakable_block (40)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3772,7 +3797,7 @@ GameObject:
   - component: {fileID: 1740603577}
   m_Layer: 0
   m_Name: normal_unbreakable_block (23)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3875,7 +3900,7 @@ GameObject:
   - component: {fileID: 1811752611}
   m_Layer: 0
   m_Name: normal_unbreakable_block (16)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4087,7 +4112,7 @@ GameObject:
   - component: {fileID: 1838898822}
   m_Layer: 0
   m_Name: normal_unbreakable_block (26)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4341,7 +4366,7 @@ GameObject:
   - component: {fileID: 1877609390}
   m_Layer: 0
   m_Name: normal_unbreakable_block (15)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4444,7 +4469,7 @@ GameObject:
   - component: {fileID: 1913416301}
   m_Layer: 0
   m_Name: normal_unbreakable_block (39)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4674,7 +4699,7 @@ GameObject:
   - component: {fileID: 2051470810}
   m_Layer: 0
   m_Name: normal_unbreakable_block (32)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4815,13 +4840,13 @@ Prefab:
         type: 2}
       propertyPath: light_sprite.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 4ad43b735005ea240bad2e91c65e2284,
+      objectReference: {fileID: 21300000, guid: 4b769547e042a8d45a3732121f4d2364,
         type: 3}
     - target: {fileID: 114299442333135788, guid: 4e336b74f7d6b6f4aac70b3058ddcbac,
         type: 2}
       propertyPath: light_sprite.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 4b769547e042a8d45a3732121f4d2364,
+      objectReference: {fileID: 21300000, guid: 4ad43b735005ea240bad2e91c65e2284,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e336b74f7d6b6f4aac70b3058ddcbac, type: 2}
@@ -4839,7 +4864,7 @@ GameObject:
   - component: {fileID: 2116315914}
   m_Layer: 0
   m_Name: normal_unbreakable_block (36)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4942,7 +4967,7 @@ GameObject:
   - component: {fileID: 2127127488}
   m_Layer: 0
   m_Name: normal_unbreakable_block (9)
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

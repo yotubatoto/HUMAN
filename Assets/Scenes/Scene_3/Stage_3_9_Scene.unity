@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3801,7 +3801,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -4175,7 +4175,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -4575,7 +4575,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -5202,7 +5202,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -5328,7 +5328,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -5454,7 +5454,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -7557,7 +7557,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -7683,7 +7683,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -7837,7 +7837,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -8033,7 +8033,7 @@ GameObject:
   - component: {fileID: 821948424}
   m_Layer: 0
   m_Name: Picture_Frame
-  m_TagString: Untagged
+  m_TagString: wall_sound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8294,7 +8294,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -8420,7 +8420,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -8546,7 +8546,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -8792,6 +8792,26 @@ Prefab:
       propertyPath: item_text
       value: 
       objectReference: {fileID: 112218949}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: enemy_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 5036ac1cbce508d4a8f711ac190128f9, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: obstance_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: 47794917427a43f4a8af9ade7b783776, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: no_break_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
+    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
+        type: 2}
+      propertyPath: damage_coll_se
+      value: 
+      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
   m_IsPrefabParent: 0
@@ -8863,7 +8883,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -11509,7 +11529,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -11635,7 +11655,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -12257,7 +12277,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -13020,7 +13040,7 @@ GameObject:
   - component: {fileID: 1471306553}
   m_Layer: 0
   m_Name: normal_unbreakable_block_round
-  m_TagString: Untagged
+  m_TagString: Obstance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13520,7 +13540,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -14246,7 +14266,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -14656,7 +14676,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -14906,7 +14926,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -15907,7 +15927,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -16033,7 +16053,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -17075,7 +17095,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}
@@ -17565,7 +17585,7 @@ MonoBehaviour:
   number: 0
   break_count: 0
   block_sprite:
-  - {fileID: 0}
+  - {fileID: 21300000, guid: dac665ffce04f7b47b7dfb4539431c08, type: 3}
   - {fileID: 21300000, guid: 1201b827b3a24844b90a9191404832ea, type: 3}
   stardust_prefab: {fileID: 1092203485686894, guid: 591e4cbf28852bf488449f6952a0cb8b,
     type: 2}

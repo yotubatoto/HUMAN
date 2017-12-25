@@ -110,13 +110,13 @@ public class Manager : MonoBehaviour
         //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().touch_flag);
         if(shot_state == (int) MAIN_STATE.SHOT_0)
         {
-            if(Camera.main.GetComponent<MainCameraScr>().main_move_state == 0)
+            if(Camera.main.GetComponent<MainCameraScr>().main_move_state >= 0)
             {
                 shot_state = (int)MAIN_STATE.SHOT_1;
                 //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "1";
                 GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
-
+                Debug.Log("ddd");
             }
         }
         // Wave1
