@@ -61,6 +61,7 @@ public class Mission_Manager : MonoBehaviour
     private float volume_state = 0;
     private string st_owner = "";
     public GameObject next_stage;
+    public int state = 0;
     // Use this for initialization
     void Start()
     {
@@ -842,6 +843,7 @@ public class Mission_Manager : MonoBehaviour
                     game_over_barrage_flag = true; 
                     GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                     GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+                    //state = _Utility.Flashing(GameObject.Find("Now_Loading").GetComponent<Image>(), 1.5f, state);
                 }
             }
         }
