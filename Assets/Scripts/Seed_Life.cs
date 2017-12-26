@@ -39,7 +39,7 @@ public class Seed_Life : MonoBehaviour {
         ParticleSystem.ColorOverLifetimeModule par = GetComponent<ParticleSystem>().colorOverLifetime;
         float temp = (transform.localScale.x * 1.0f) / 2.0f;
         par.color = new Color(temp, temp, temp);
-        Debug.Log(temp);
+        //Debug.Log(temp);
         if (effect_state == 1){
 
             
