@@ -183,13 +183,13 @@ public class Player_Collision : MonoBehaviour {
 
             if (item_count == 0)
             {
-                GetComponent<Sound_Manager>().No_Break_SE();
+                GetComponent<Sound_Manager>().Obstance_SE();
 
             }
             if(item_count >= 1)
             {
                 Debug.Log("uiguegugueguf");
-                GetComponent<Sound_Manager>().SE();
+                GetComponent<Sound_Manager>().Obstance_SE();
             }
 
             //if (GetComponent<>()

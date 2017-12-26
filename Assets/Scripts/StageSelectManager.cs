@@ -57,6 +57,7 @@ public class StageSelectManager : MonoBehaviour
     void Start()
     {
         transform.position = SAVE_POS;
+        pos = transform.position;
         //PlayerPrefs.SetInt("1_1" + "star", 0);
         //変数「ClearStage」に「CLEARSTAGE」の値を代入しなおす
         //マルチタッチ無効
