@@ -13,6 +13,7 @@ public class Break_obj : MonoBehaviour
     public GameObject dust_prefab;
     private GameObject obj;
 
+
     public GameObject seed_prefab;
     //光の種の生存ターン
     public int seed_life_turn = 0;
@@ -53,19 +54,24 @@ public class Break_obj : MonoBehaviour
             }
 
             count += 1;
+           
             obj = Instantiate(stardust_prefab, transform.position, Quaternion.identity);
             Instantiate(dust_prefab, transform.position, Quaternion.identity);
             //crash_count_flag = true;
+         
 
             //プレイヤーと当たったらオブジェクトを破棄する
             if (count <= 1)
             {
                 Destroy(gameObject);
+                
                 //GameObject.Find("Player").GetComponent<Player_Collision>().combo_count += 1;
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
+                //Debug.Log(GetComponent<Player_Collision>().item_count);
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text = 
                     GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
-                seed_life = Instantiate(seed_prefab, transform.position, Quaternion.identity);                    //seedprefabを生成
+                seed_life = Instantiate(seed_prefab, transform.position, Quaternion.identity);
+                //seedprefabを生成
                 Debug.Log("生成されました");
                 //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加
                
@@ -105,7 +111,8 @@ public class Break_obj : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text =
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
-                Instantiate(seed_prefab, transform.position, Quaternion.identity);                    //seedprefabを生成
+                Instantiate(seed_prefab, transform.position, Quaternion.identity);
+                //seedprefabを生成
                 //Debug.Log("生成されました");
                 //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加
                 obj = Instantiate(stardust_prefab, transform.position, Quaternion.identity);

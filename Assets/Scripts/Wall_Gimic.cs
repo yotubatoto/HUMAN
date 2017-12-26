@@ -172,7 +172,9 @@ public class Wall_Gimic : MonoBehaviour {
                 //}
                 not_count += GameObject.Find("Player").GetComponent<Player_Collision>().item_count;
 
-                GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+
+                //バグが出たら解除　ここでカウントを初期化すると　常に０になり、GIMIC　SEがならせなくなる
+                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
             
                 //size_state = 1;
 
