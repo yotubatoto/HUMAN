@@ -926,7 +926,7 @@ public class MainCameraScr : MonoBehaviour
                             GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
                                 = new Color(color.r, color.g, color.b, 0.0f);
 
-                            GameObject.Find("Player/anime").GetComponent<SpriteRenderer>().enabled = false;
+                            GameObject.Find("Player/player_motion").GetComponent<SpriteRenderer>().enabled = false;
 
                             flag = true;
                             endPos = AppUtil.GetTouchWorldPosition(Camera.main);
