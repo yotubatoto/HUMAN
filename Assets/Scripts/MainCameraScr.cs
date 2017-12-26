@@ -186,6 +186,7 @@ public class MainCameraScr : MonoBehaviour
 	*/
     void Update()
     {
+        //GameObject.Find("Test").gameObject.GetComponent<Text>().text = nowloading_back_img.enabled.ToString();
         if (nowloading_back_img.enabled)
         {
             //タップトゥスタートの透明、不透明　値など
@@ -386,6 +387,7 @@ public class MainCameraScr : MonoBehaviour
                         main_barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                         GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+                        //state = _Utility.Flashing(now_loading.GetComponent<Image>(), 1.5f, state);
 
                     }
                     else if (collition2d.gameObject.name == "Question")
