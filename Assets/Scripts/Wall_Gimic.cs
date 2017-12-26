@@ -57,6 +57,7 @@ public class Wall_Gimic : MonoBehaviour {
         {
             clear_flag = true;
         }
+        Debug.Log("ランプレベル" + not_count);
         //Debug.Log(clear_count);
         //transform.localScale = new Vector3(100, 100, 1.0f);
         //gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
@@ -174,12 +175,12 @@ public class Wall_Gimic : MonoBehaviour {
 
 
                 //バグが出たら解除　ここでカウントを初期化すると　常に０になり、GIMIC　SEがならせなくなる
-                //GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
-            
+                GameObject.Find("Player").GetComponent<Player_Collision>().item_count = 0;
+
                 //size_state = 1;
 
                 //ランタンにぼやけた光を出す
-                if(chage_state == 0)
+                if (chage_state == 0)
                 {
                     //Debug.Log("aaa");
                     obj = Instantiate(chageprefab, transform.position, Quaternion.identity);  //ぼやけた光を生成
