@@ -396,15 +396,15 @@ public class MainCameraScr : MonoBehaviour
                             GetComponent<Sound_Manager>().Question_SE();
                             Debug.Log("iiiii");
                             GameObject.Find("Question").SetActive(false);
-                            GameObject.Find("FrontLayer/Canvas/Tutorial").SetActive(true);
-                            GameObject.Find("FrontLayer/Canvas/pause_black/Retry").SetActive(false);
-                            GameObject.Find("FrontLayer/Canvas/pause_black/Stage_Select").SetActive(false);
-                            GameObject.Find("FrontLayer/Canvas/Right").SetActive(true);
-                            GameObject.Find("FrontLayer/Canvas/Left").SetActive(true);
+                            GameObject.Find("Common/Canvas/Tutorial").SetActive(true);
+                            GameObject.Find("Common/Canvas/pause_black/Retry").SetActive(false);
+                            GameObject.Find("Common/Canvas/pause_black/Stage_Select").SetActive(false);
+                            GameObject.Find("Common/Canvas/Right").SetActive(true);
+                            GameObject.Find("Common/Canvas/Left").SetActive(true);
                             //GetComponent<Tutorial_Manager>().right.enabled = true;
                             //GetComponent<Tutorial_Manager>().left.enabled = true;
 
-                            GameObject.Find("FrontLayer/Canvas/Tutorial").GetComponent<Tutorial_Manager>().Tutorial_Call(0);
+                            GameObject.Find("Common/Canvas/Tutorial").GetComponent<Tutorial_Manager>().Tutorial_Call(0);
 
                         }
 
@@ -432,7 +432,7 @@ public class MainCameraScr : MonoBehaviour
                             else
                             {
 
-                                GameObject.Find("FrontLayer/Canvas/Tutorial").GetComponent<Tutorial_Manager>().Tutorial_Call(0);
+                                GameObject.Find("Common/Canvas/Tutorial").GetComponent<Tutorial_Manager>().Tutorial_Call(0);
 
 
                             }
@@ -463,9 +463,9 @@ public class MainCameraScr : MonoBehaviour
                         string st = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
                         if (st != "1")
                         {
-                            GameObject.Find("FrontLayer/Canvas/Tutorial").SetActive(false);
-                            GameObject.Find("FrontLayer/Canvas/Right").SetActive(false);
-                            GameObject.Find("FrontLayer/Canvas/Left").SetActive(false);
+                            GameObject.Find("Common/Canvas/Tutorial").SetActive(false);
+                            GameObject.Find("Common/Canvas/Right").SetActive(false);
+                            GameObject.Find("Common/Canvas/Left").SetActive(false);
 
                         }
 

@@ -54,6 +54,7 @@ public class Mission_Manager : MonoBehaviour
     public AudioClip gameover_bgm;
     public AudioClip game_clear_bgm;
     private int game_clear_bgm_state = 0;
+    private bool ending_flag = false;
 
 
     private bool bgm_once_flag = false;
@@ -691,8 +692,9 @@ public class Mission_Manager : MonoBehaviour
                 }
                 else
                 {
-                    if(st_owner == "5")
+                    if(st_owner == "5" && ending_flag == false)
                     {
+                        ending_flag = true;
                         Camera.main.GetComponent<Now_Loading>().Load_NextScene_Ending();
                         GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                         GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
