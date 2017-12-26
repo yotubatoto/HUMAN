@@ -213,13 +213,27 @@ public class Player_Collision : MonoBehaviour {
             }
 
         }
+
+        if (coll.gameObject.tag == "Blue_Block")
+        {
+            if (GetComponent<Rigidbody2D>().velocity.magnitude <= 30.0f)
+            {
+                GetComponent<Sound_Manager>().Obstance_SE();
+
+            }
+            else if (GetComponent<Rigidbody2D>().velocity.magnitude >= 30.0f)
+            {
+                GetComponent<Sound_Manager>().SE();
+
+            }
+        }
       
 
         if (coll.gameObject.tag == "Small_Block")
         {
             if (GetComponent<Rigidbody2D>().velocity.magnitude <= 30.0f)
             {
-                GetComponent<Sound_Manager>().No_Break_SE();
+                GetComponent<Sound_Manager>().Obstance_SE();
 
             }
             else if (GetComponent<Rigidbody2D>().velocity.magnitude >= 30.0f)
@@ -240,23 +254,23 @@ public class Player_Collision : MonoBehaviour {
             if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0　
                 && GetComponent<Rigidbody2D>().velocity.magnitude < 100.0f)
             {
-                GetComponent<Sound_Manager>().No_Break_SE();
+                GetComponent<Sound_Manager>().Obstance_SE();
             }
             else if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0
                 && GetComponent<Rigidbody2D>().velocity.magnitude >= 100.0f)
             {
-                GetComponent<Sound_Manager>().SE();
+                GetComponent<Sound_Manager>().Damage_SE();
             }
 
             if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1 && GetComponent<Rigidbody2D>().velocity.magnitude > 100.0f)
             {
-                GetComponent<Sound_Manager>().SE();
+                GetComponent<Sound_Manager>().Damage_SE();
             }
             else if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1 && GetComponent<Rigidbody2D>().velocity.magnitude <= 100.0f)
             {
-                GetComponent<Sound_Manager>().No_Break_SE();
+                GetComponent<Sound_Manager>().Obstance_SE();
             }
-                
+
             if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 2 &&
                     GetComponent<Rigidbody2D>().velocity.magnitude > 100.0f)
             {
@@ -272,7 +286,7 @@ public class Player_Collision : MonoBehaviour {
         {
             if (coll.gameObject.GetComponent<No_Seed_Hit>().break_count == 0)
             {
-                GetComponent<Sound_Manager>().No_Break_SE();
+                GetComponent<Sound_Manager>().Obstance_SE();
             }
             if (coll.gameObject.GetComponent<No_Seed_Hit>().break_count == 1)
             {
@@ -291,7 +305,7 @@ public class Player_Collision : MonoBehaviour {
 
             if (GetComponent<Rigidbody2D>().velocity.magnitude <= 30.0f)
             {
-                GetComponent<Sound_Manager>().No_Break_SE();
+                GetComponent<Sound_Manager>().Obstance_SE();
 
             }
             else if (GetComponent<Rigidbody2D>().velocity.magnitude >= 30.0f)

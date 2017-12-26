@@ -959,11 +959,12 @@ public class MainCameraScr : MonoBehaviour
                         circle.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0, 0, 0);
                         //デバッグログ　射出時のパワーを測る
                         //bonus_color_red = 0;
+                        Color color_true = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
                         began_flag = false;
                         end_time = 0.0f;
                         bonus_color_red = 0.0f;
                         bonus_color_yellow = 0.0f;
-                        color = GameObject.Find("arrow").GetComponent<SpriteRenderer>().color;
+                         
                         Color color_2 = GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color;
 
                         //射出すらできないパワーの時ブラックカラー矢印を消す
@@ -1013,7 +1014,7 @@ public class MainCameraScr : MonoBehaviour
                             Debug.Log(color);
 
 
-                            if (color == new Color(0.51f, 0.54f, 1.0f, 1.0f))
+                            if (color_true == new Color(0.51f, 0.54f, 1.0f, 1.0f))
                             {
                                 //青の強
                                 if (temp > 8.0f - 1.66667f)
@@ -1045,7 +1046,7 @@ public class MainCameraScr : MonoBehaviour
                             }
 
                             //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
-                            else if (color == new Color(1.0f, 0.89f, 0.41f, 1.0f))
+                            else if (color_true == new Color(1.0f, 0.89f, 0.41f, 1.0f))
                             {
                                 if (temp > 19.5f - 3.83333f)
                                 {
