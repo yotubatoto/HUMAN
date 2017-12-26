@@ -24,7 +24,7 @@ public class StageSelectManager : MonoBehaviour
     private bool se_flag = false;
     Color color;
     public GameObject pop_obj;
-    public GameObject choice;
+    //public GameObject choice;
     public GameObject now_load_back;
     private Image now_load;
     private int now_load_state = 0;
