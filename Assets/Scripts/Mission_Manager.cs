@@ -703,6 +703,15 @@ public class Mission_Manager : MonoBehaviour
                         GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
                     }
                     Result_obj.gameObject.SetActive(true);
+                    Vector3 retry_pos = GameObject.Find("Common/Canvas/result_black 1/Retry_result").GetComponent<RectTransform>().transform.localPosition;
+                    retry_pos.x = 362.0f;
+                    retry_pos.y = -155.0f;
+                    GameObject.Find("Common/Canvas/result_black 1/Retry_result").GetComponent<RectTransform>().transform.localPosition = retry_pos;
+
+                    Vector3 select_pos = GameObject.Find("Common/Canvas/result_black 1/Stage_Select_result").GetComponent<RectTransform>().transform.localPosition;
+                    select_pos.x = -338.0f;
+                    select_pos.y = -155.0f;
+                    GameObject.Find("Common/Canvas/result_black 1/Stage_Select_result").GetComponent<RectTransform>().transform.localPosition = select_pos;
                     next_stage.SetActive(false);
                 }
             }
