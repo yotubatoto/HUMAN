@@ -36,9 +36,9 @@ public class Seed_Life : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        ParticleSystem.ColorOverLifetimeModule par = GetComponent<ParticleSystem>().colorOverLifetime;
-        float temp = (transform.localScale.x * 1.0f) / 2.0f;
-        par.color = new Color(temp, temp, temp);
+        //ParticleSystem.ColorOverLifetimeModule par = GetComponent<ParticleSystem>().colorOverLifetime;
+        //float temp = (transform.localScale.x * 1.0f) / 2.0f;
+        //par.color = new Color(temp, temp, temp);
         //Debug.Log(temp);
         if (effect_state == 1){
 
