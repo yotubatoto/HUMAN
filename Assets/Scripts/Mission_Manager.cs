@@ -552,7 +552,7 @@ public class Mission_Manager : MonoBehaviour
             {
                 //ステージクリアしたら（ステージクリアのテキストが表示される時間）
                 clear_count += Time.deltaTime;
-                if (clear_count > 3.0f)
+                if (clear_count > 2.5f)
                 {
                     clear_state = 2;
                 }
