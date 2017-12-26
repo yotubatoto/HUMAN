@@ -369,6 +369,16 @@ public class Player_Collision : MonoBehaviour {
             }
         }
 
+        if (coll.gameObject.tag == "Blue_Block")
+        {
+          
+            
+            {
+                GetComponent<Sound_Manager>().SE();
+
+            }
+        }
+
        
       
         

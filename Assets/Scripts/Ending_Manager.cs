@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Ending_Manager : MonoBehaviour
 {
     private float count = 0;
-    public float MAX_TIME = 5;
+    public float MAX_TIME = 8;
     public Image now_loading;
     public Image now_loading_back;
     private int state = 0;
@@ -37,7 +37,7 @@ public class Ending_Manager : MonoBehaviour
         if(tap.enabled)
         {
             Color c = tap.color;
-            c.a += 0.001f;
+            c.a += 0.002f;
             if(c.a >= 1)
             {
                 c.a = 1.0f;
