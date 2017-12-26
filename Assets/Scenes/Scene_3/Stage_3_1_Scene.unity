@@ -606,34 +606,6 @@ Prefab:
       propertyPath: item_text
       value: 
       objectReference: {fileID: 1973035328}
-    - target: {fileID: 4680471053858716, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4680471053858716, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
-        type: 2}
-      propertyPath: enemy_coll_se
-      value: 
-      objectReference: {fileID: 8300000, guid: 5036ac1cbce508d4a8f711ac190128f9, type: 3}
-    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
-        type: 2}
-      propertyPath: obstance_coll_se
-      value: 
-      objectReference: {fileID: 8300000, guid: 47794917427a43f4a8af9ade7b783776, type: 3}
-    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
-        type: 2}
-      propertyPath: no_break_coll_se
-      value: 
-      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
-    - target: {fileID: 114654281860373904, guid: fe6b199bc7239af4485727e2a8dc586b,
-        type: 2}
-      propertyPath: damage_coll_se
-      value: 
-      objectReference: {fileID: 8300000, guid: d25a49e3c23255a488052e0d45ab9ba8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe6b199bc7239af4485727e2a8dc586b, type: 2}
   m_IsPrefabParent: 0
