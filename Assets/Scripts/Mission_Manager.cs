@@ -771,6 +771,23 @@ public class Mission_Manager : MonoBehaviour
     bool Mission_3()
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("Small_Block");
+        //GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
+        GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
+        //GameObject[] obj_4 = GameObject.FindGameObjectsWithTag("No_Seed_Block");
+        GameObject[] obj_5 = GameObject.FindGameObjectsWithTag("No_Seed_Green_Block");
+
+
+
+        if (obj.Length == 0 && obj_3.Length == 0 && obj_5.Length == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+    //レッドブロックを認識させないと速攻ゲームオーバーになるのでレングス追加
+    bool Mission_4()
+    {
+        GameObject[] obj = GameObject.FindGameObjectsWithTag("Small_Block");
         GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
         GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
         //GameObject[] obj_4 = GameObject.FindGameObjectsWithTag("No_Seed_Block");
@@ -804,7 +821,7 @@ public class Mission_Manager : MonoBehaviour
             gameOver_obj.SetActive(true);
         }
 
-        if (Mission_3())
+        if (Mission_4())
         {
             // 全部壊れてる
             if (Mission_1(1) == false)

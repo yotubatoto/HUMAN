@@ -39,7 +39,7 @@ public class StageSelectManager : MonoBehaviour
 
    
 
-    public Text test;
+    //public Text test;
 
     
     
@@ -2216,7 +2216,7 @@ public class StageSelectManager : MonoBehaviour
 
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
 
-                        test.text = transform.position.x.ToString();
+                        //test.text = transform.position.x.ToString();
 
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;

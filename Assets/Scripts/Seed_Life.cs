@@ -56,6 +56,7 @@ public class Seed_Life : MonoBehaviour {
                 effect_state = 0;
             }
             if (effect_scale <= 0.0f) { Destroy(gameObject); }
+
         //effect_scale -= 1.0f;
         //transform.localScale = new Vector3(effect_scale, effect_scale, effect_scale);
 		}
