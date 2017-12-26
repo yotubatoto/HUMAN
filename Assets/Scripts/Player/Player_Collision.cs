@@ -180,30 +180,30 @@ public class Player_Collision : MonoBehaviour {
         if (coll.gameObject.tag == "Gimic")
         {
             gimic_coll_flag = true;
-            //touch_flag = true;
-            //Debug.Log(touch_flag);
-                
-            GetComponent<Sound_Manager>().Obstance_SE();
-            hit_coordinate = coll.transform.position;
-            //if (bonus_count < 3)
-            //{
-            //    bonus_count = 0;
 
-            //    number_of_times += 1;
-            //    if (bonus_count_flag)
-            //        bonus_point = 5;
+            if (item_count == 0)
+            {
+                GetComponent<Sound_Manager>().No_Break_SE();
+
+            }
+            if(item_count >= 1)
+            {
+                Debug.Log("uiguegugueguf");
+                GetComponent<Sound_Manager>().SE();
+            }
+
+            //if (GetComponent<>()
+            //{
+
             //}
 
-            //ランプ内部カウント
-            //lamp_count += 1;
-            //レジン取得数
-            //item_count += 1;
-
-            //item_count += bonus_point;
-            //item_text.text = item_count.ToString();
-            //Instantiate(effect_prefab, transform.position, Quaternion.identity);
-            //GetComponent<Sound_Manager>().Item_UP_SE();
-
+            //else if (GetComponent<Break_obj>().count >= 1)
+            //{
+            //   
+            //}
+            
+            hit_coordinate = coll.transform.position;
+          
             GameObject[] seed;
             seed = GameObject.FindGameObjectsWithTag("BlockPiece");
             coll_name = coll.gameObject.name;
@@ -212,17 +212,8 @@ public class Player_Collision : MonoBehaviour {
                 obs.GetComponent<Effect_Move>().move_flag = true;
             }
 
-            ////最初にプレイヤーとランタンが当たったか
-            //if (touch_flag == false)
-            //{
-            //    Debug.Log("vvv");
-            //    touch_flag = true;
-            //    hit_coordinate = coll.transform.position;
-            //}
-
-
-
         }
+      
 
         if (coll.gameObject.tag == "Small_Block")
         {
@@ -239,11 +230,6 @@ public class Player_Collision : MonoBehaviour {
         }
 
 
-       
-
-     
-
-
         if (coll.gameObject.tag == "Obstance")
         {
             GetComponent<Sound_Manager>().Obstance_SE();
@@ -251,21 +237,34 @@ public class Player_Collision : MonoBehaviour {
 
         if (coll.gameObject.tag == "Big_Block")
         {
-            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0)
+            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0　
+                && GetComponent<Rigidbody2D>().velocity.magnitude < 100.0f)
             {
                 GetComponent<Sound_Manager>().No_Break_SE();
             }
-            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1)
-            {
-                GetComponent<Sound_Manager>().Damage_SE();
-            }
-            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 2)
+            else if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0
+                && GetComponent<Rigidbody2D>().velocity.magnitude >= 100.0f)
             {
                 GetComponent<Sound_Manager>().SE();
             }
 
-
-
+            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1 && GetComponent<Rigidbody2D>().velocity.magnitude > 100.0f)
+            {
+                GetComponent<Sound_Manager>().SE();
+            }
+            else if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1 && GetComponent<Rigidbody2D>().velocity.magnitude <= 100.0f)
+            {
+                GetComponent<Sound_Manager>().No_Break_SE();
+            }
+                
+            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 2 &&
+                    GetComponent<Rigidbody2D>().velocity.magnitude > 100.0f)
+            {
+                GetComponent<Sound_Manager>().SE();
+            }
+                   
+                
+            
         }
 
         //光の種が出ない赤ブロック用
