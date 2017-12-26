@@ -327,7 +327,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211427345058610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -53.925888, y: 18.41505, z: 0.63170326}
+  m_LocalPosition: {x: -48.60589, y: -18.314949, z: 0.63170326}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4823374620558478}
@@ -789,9 +789,9 @@ MonoBehaviour:
   choice_coll_se: {fileID: 0}
   decision_coll_se: {fileID: 0}
   pause_coll_se: {fileID: 0}
-  obstance_coll_se: {fileID: 8300000, guid: 47794917427a43f4a8af9ade7b783776, type: 3}
+  obstance_coll_se: {fileID: 8300000, guid: a2e69120c19266b45a618936a927335c, type: 3}
   no_break_coll_se: {fileID: 8300000, guid: 9a2346a50e02074428492ec355f13805, type: 3}
-  damage_coll_se: {fileID: 0}
+  damage_coll_se: {fileID: 8300000, guid: 61a2ede6b2f64724ca7a260a85fd8449, type: 3}
   game_clear_se: {fileID: 0}
   question_se: {fileID: 0}
 --- !u!114 &114809987531346742

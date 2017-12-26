@@ -539,20 +539,7 @@ public class Mission_Manager : MonoBehaviour
                 Color c = clear_text.color;
                 c.a += 1.0f * Time.deltaTime;
 
-                if (game_clear_bgm_state == 0)
-                {
-                    if (bgm_clear_flag == false)
-                    {
-                        bgm_once_flag = true;
-                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().clip = null;
-                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().clip = game_clear_bgm;
-                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().Play();
-                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().loop = false;
-                        bgm_clear_flag = false;
-
-                    }
-
-                }
+               
                 GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
                 if (c.a >= 1.0f)
                 {
@@ -568,6 +555,21 @@ public class Mission_Manager : MonoBehaviour
                 if (clear_count > 3.0f)
                 {
                     clear_state = 2;
+                }
+
+                if (game_clear_bgm_state == 0)
+                {
+                    if (bgm_clear_flag == false)
+                    {
+                        bgm_once_flag = true;
+                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().clip = null;
+                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().clip = game_clear_bgm;
+                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().Play();
+                        GameObject.Find("BGM").gameObject.GetComponent<AudioSource>().loop = false;
+                        bgm_clear_flag = false;
+
+                    }
+
                 }
             }
             else if (clear_state == 2)
