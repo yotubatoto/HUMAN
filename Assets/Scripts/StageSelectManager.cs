@@ -36,6 +36,11 @@ public class StageSelectManager : MonoBehaviour
     public Image[] black_obj = new Image[5];
 
     public static Vector3 SAVE_POS = new Vector3(0.0f,1.42f,0.0f);
+
+   
+
+    public Text test;
+
     
     
     
@@ -2210,11 +2215,14 @@ public class StageSelectManager : MonoBehaviour
                         SAVE_POS = transform.position;
 
                         GetComponent<Sound_Manager>().Stage_Choice_SE();
+
+                        test.text = transform.position.x.ToString();
+
                         now_loading.GetComponent<Now_Loading>().LoadNextScene();
                         barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().color
                         = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
+                        
 
                         //SceneManager.LoadScene("Stage_1_Scene");
                     }

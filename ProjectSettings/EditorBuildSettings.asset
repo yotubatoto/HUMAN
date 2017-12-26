@@ -36,12 +36,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_1/Stage_1_8_Scene.unity
     guid: b8cdf4ff65a03384b89fcd428d7f7e92
   - enabled: 1
-    path: Assets/Scenes/Scene_1/Stage_1_9_Scene.unity
-    guid: ee10cb805df495c409a9d1bef78bd358
-  - enabled: 1
-    path: Assets/Scenes/Scene_1/Stage_1_10_Scene.unity
-    guid: 5df93356552d9c849bca884b3698ee85
-  - enabled: 1
     path: Assets/Scenes/Scene_2/Stage_2_1_Scene.unity
     guid: 57de08fedb2a0384c9e3bf3fe4643687
   - enabled: 1
@@ -72,6 +66,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_2/Stage_2_10_Scene.unity
     guid: 2a787cec36c4ffd469a7c3b6a59aacdb
   - enabled: 1
+    path: Assets/Scenes/Scene_1/Stage_1_9_Scene.unity
+    guid: ee10cb805df495c409a9d1bef78bd358
+  - enabled: 1
     path: Assets/Scenes/Scene_3/Stage_3_1_Scene.unity
     guid: e77df0a6099c97c42ba912f3c4e19cc4
   - enabled: 1
@@ -96,12 +93,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_3/Stage_3_8_Scene.unity
     guid: b31ba8e0c4580e94291a41a3a4fabc99
   - enabled: 1
-    path: Assets/Scenes/Scene_3/Stage_3_9_Scene.unity
-    guid: 9269c826b51e6944ba813522b4e8d268
-  - enabled: 1
-    path: Assets/Scenes/Scene_3/Stage_3_10_Scene.unity
-    guid: 1ebcf0caf164ba046af62f687602580d
-  - enabled: 1
     path: Assets/Scenes/Scene_4/Stage_4_1_Scene.unity
     guid: c4655f00d4170374092617a214f22680
   - enabled: 1
@@ -109,28 +100,34 @@ EditorBuildSettings:
     guid: 047f1cfa21d23be4fb99a4cebfeb8eb8
   - enabled: 1
     path: Assets/Scenes/Scene_4/Stage_4_3_Scene.unity
-    guid: 27701ec7ad89f17489e65126cb4bcd4d
+    guid: 76fc8fb58ae04da42a425b2435f0e14e
   - enabled: 1
     path: Assets/Scenes/Scene_4/Stage_4_4_Scene.unity
-    guid: b217ab8f045b0ba41afb5e931cdc59b0
+    guid: 251f16972c52e164ab70746cb47b48b7
   - enabled: 1
     path: Assets/Scenes/Scene_4/Stage_4_5_Scene.unity
-    guid: ac7a5a25593d1274982345c7b8f2d386
+    guid: 27701ec7ad89f17489e65126cb4bcd4d
   - enabled: 1
     path: Assets/Scenes/Scene_4/Stage_4_6_Scene.unity
-    guid: 203820dc29bb0b042a6216ecd9bcd646
+    guid: 20f406760fe0b9d4fbbed6de3c227401
   - enabled: 1
     path: Assets/Scenes/Scene_4/Stage_4_7_Scene.unity
-    guid: 01153e149efd47e4782176075bd8e6cd
+    guid: b217ab8f045b0ba41afb5e931cdc59b0
   - enabled: 1
     path: Assets/Scenes/Scene_4/Stage_4_8_Scene.unity
-    guid: 4bc06eeadb4d58b40bed9040402a0f0e
+    guid: ac7a5a25593d1274982345c7b8f2d386
   - enabled: 1
     path: Assets/Scenes/Scene_4/Stage_4_9_Scene.unity
-    guid: 420f644c7b390c142809357d23db84dc
+    guid: 5e10f409c5d075145899ee73f01209b1
   - enabled: 1
     path: Assets/Scenes/Scene_4/Stage_4_10_Scene.unity
-    guid: 22863dc7be2103d4bad970839f16fce9
+    guid: ec4e0f077bf44894b96c3d6353564a2d
+  - enabled: 1
+    path: Assets/Scenes/Scene_3/Stage_3_9_Scene.unity
+    guid: 9269c826b51e6944ba813522b4e8d268
+  - enabled: 1
+    path: Assets/Scenes/Scene_3/Stage_3_10_Scene.unity
+    guid: 1ebcf0caf164ba046af62f687602580d
   - enabled: 1
     path: Assets/Scenes/Scene_5/Stage_5_1_Scene.unity
     guid: 0fd6138fce46bbe468eed31677bd2d6f
@@ -161,165 +158,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene_5/Stage_5_10_Scene.unity
     guid: 40e26e3d150278b4d8c787bc747094b5
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/76fc8fb58ae04da42a425b2435f0e14e
-    guid: 76fc8fb58ae04da42a425b2435f0e14e
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/251f16972c52e164ab70746cb47b48b7
-    guid: 251f16972c52e164ab70746cb47b48b7
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/20f406760fe0b9d4fbbed6de3c227401
-    guid: 20f406760fe0b9d4fbbed6de3c227401
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/5e10f409c5d075145899ee73f01209b1
-    guid: 5e10f409c5d075145899ee73f01209b1
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/ec4e0f077bf44894b96c3d6353564a2d
-    guid: ec4e0f077bf44894b96c3d6353564a2d
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/37d140a6d65e80d459a931a25c307f6e
-    guid: 37d140a6d65e80d459a931a25c307f6e
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/15c734f426e60b34b9c5768680fc341e
-    guid: 15c734f426e60b34b9c5768680fc341e
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/b6a73ec05f5069846aa684ecd2632329
-    guid: b6a73ec05f5069846aa684ecd2632329
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/bfeb6759ae99e89488c046db9cb6c610
-    guid: bfeb6759ae99e89488c046db9cb6c610
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/33105133909fcc347812bcd29b28a801
-    guid: 33105133909fcc347812bcd29b28a801
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Scene_1/Stage_1_10_Scene.unity
+    guid: 5df93356552d9c849bca884b3698ee85
   - enabled: 1
     path: Assets/Scenes/Ending_Scene.unity
     guid: 4424d29d3faa5fd4f9c2616ece61a8c8
