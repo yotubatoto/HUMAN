@@ -861,6 +861,53 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1001 &407440898
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 798166106}
+    m_Modifications:
+    - target: {fileID: 4722701181289662, guid: 040a415c934312e4c803d90e7c2ff2db, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722701181289662, guid: 040a415c934312e4c803d90e7c2ff2db, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722701181289662, guid: 040a415c934312e4c803d90e7c2ff2db, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722701181289662, guid: 040a415c934312e4c803d90e7c2ff2db, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722701181289662, guid: 040a415c934312e4c803d90e7c2ff2db, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722701181289662, guid: 040a415c934312e4c803d90e7c2ff2db, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722701181289662, guid: 040a415c934312e4c803d90e7c2ff2db, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722701181289662, guid: 040a415c934312e4c803d90e7c2ff2db, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 040a415c934312e4c803d90e7c2ff2db, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &407440899 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4722701181289662, guid: 040a415c934312e4c803d90e7c2ff2db,
+    type: 2}
+  m_PrefabInternal: {fileID: 407440898}
 --- !u!1001 &451783508
 Prefab:
   m_ObjectHideFlags: 0
@@ -1220,6 +1267,7 @@ Transform:
   - {fileID: 1133611267}
   - {fileID: 961216725}
   - {fileID: 1509038140}
+  - {fileID: 407440899}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

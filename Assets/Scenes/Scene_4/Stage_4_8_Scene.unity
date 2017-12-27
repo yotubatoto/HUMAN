@@ -5036,6 +5036,53 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1001 &2086265702
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2135488320}
+    m_Modifications:
+    - target: {fileID: 4587228767213924, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587228767213924, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 27.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587228767213924, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 11.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587228767213924, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.70664
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587228767213924, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.025689226
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587228767213924, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.02568923
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587228767213924, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.70664
+      objectReference: {fileID: 0}
+    - target: {fileID: 4587228767213924, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &2086265703 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4587228767213924, guid: d38ac71ff001556459ad3ca74a329359,
+    type: 2}
+  m_PrefabInternal: {fileID: 2086265702}
 --- !u!1 &2124502323 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1394605496034084, guid: fe6b199bc7239af4485727e2a8dc586b,
@@ -5076,6 +5123,7 @@ Transform:
   - {fileID: 1621719600}
   - {fileID: 238426673}
   - {fileID: 1509038140}
+  - {fileID: 2086265703}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
