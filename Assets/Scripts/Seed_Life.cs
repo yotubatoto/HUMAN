@@ -55,8 +55,15 @@ public class Seed_Life : MonoBehaviour {
             if (now_movetime >= MOVETIME) {
                 effect_state = 0;
             }
-            if (effect_scale <= 0.0f) { Destroy(gameObject); }
+            if (effect_scale <= 0.0f) 
+            {
+                
+                GameObject.Find("Player").GetComponent<Player_Collision>().item_count -= 1;
+                Destroy(gameObject);
 
+
+            }
+            
         //effect_scale -= 1.0f;
         //transform.localScale = new Vector3(effect_scale, effect_scale, effect_scale);
 		}
@@ -77,6 +84,7 @@ public class Seed_Life : MonoBehaviour {
             //間のサイズ
             between_scale = effect_scale - target_scale;
             now_movetime = 0.0f;
+
 
     }
 }

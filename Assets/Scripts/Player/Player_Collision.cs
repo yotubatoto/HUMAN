@@ -54,6 +54,7 @@ public class Player_Collision : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+        //Debug.Log("アイテムカウント" + GetComponent<Player_Collision>().item_count);
 
 
         //damp_();
@@ -250,37 +251,37 @@ public class Player_Collision : MonoBehaviour {
             GetComponent<Sound_Manager>().Obstance_SE();
         }
 
-        if (coll.gameObject.tag == "Big_Block")
-        {
-            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0　
-                && GetComponent<Rigidbody2D>().velocity.magnitude < 100.0f)
-            {
-                GetComponent<Sound_Manager>().Obstance_SE();
-            }
-            else if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0
-                && GetComponent<Rigidbody2D>().velocity.magnitude >= 100.0f)
-            {
-                GetComponent<Sound_Manager>().Damage_SE();
-            }
+        //if (coll.gameObject.tag == "Big_Block")
+        //{
+        //    if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0　
+        //        && GetComponent<Rigidbody2D>().velocity.magnitude < 100.0f)
+        //    {
+        //        GetComponent<Sound_Manager>().Obstance_SE();
+        //    }
+        //    else if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 0
+        //        && GetComponent<Rigidbody2D>().velocity.magnitude >= 100.0f)
+        //    {
+        //        GetComponent<Sound_Manager>().Damage_SE();
+        //    }
 
-            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1 && GetComponent<Rigidbody2D>().velocity.magnitude > 100.0f)
-            {
-                GetComponent<Sound_Manager>().Obstance_SE();
-            }
-            else if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1 && GetComponent<Rigidbody2D>().velocity.magnitude <= 100.0f)
-            {
-                GetComponent<Sound_Manager>().SE();
-            }
+        //    if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1 && GetComponent<Rigidbody2D>().velocity.magnitude > 100.0f)
+        //    {
+        //        GetComponent<Sound_Manager>().Obstance_SE();
+        //    }
+        //    else if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1 && GetComponent<Rigidbody2D>().velocity.magnitude <= 100.0f)
+        //    {
+        //        GetComponent<Sound_Manager>().SE();
+        //    }
 
-            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 2 &&
-                    GetComponent<Rigidbody2D>().velocity.magnitude > 100.0f)
-            {
-                GetComponent<Sound_Manager>().SE();
-            }
+        //    if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 2 &&
+        //            GetComponent<Rigidbody2D>().velocity.magnitude > 100.0f)
+        //    {
+        //        GetComponent<Sound_Manager>().SE();
+        //    }
                    
                 
             
-        }
+        //}
 
         //光の種が出ない赤ブロック用
         //if (coll.gameObject.tag == "No_Seed_Block")
@@ -399,14 +400,14 @@ public class Player_Collision : MonoBehaviour {
         {
             GetComponent<Sound_Manager>().SE();
         }
-        if (coll.gameObject.tag == "Big_Block")
-        {
-            if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1)
-            {
-                //GetComponent<Sound_Manager>().SE();
-            }
+        //if (coll.gameObject.tag == "Big_Block")
+        //{
+        //    if (coll.gameObject.GetComponent<hit_multiple_times>().break_count == 1)
+        //    {
+        //        //GetComponent<Sound_Manager>().SE();
+        //    }
            
-        }
+        //}
 
       
 

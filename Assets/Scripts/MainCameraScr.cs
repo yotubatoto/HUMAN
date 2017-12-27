@@ -915,7 +915,7 @@ public class MainCameraScr : MonoBehaviour
 
                 if (true)
                 {
-                    Debug.Log("################");
+                    //Debug.Log("################");
 
                     if (info == TouchInfo.Ended)
                     {
@@ -1179,6 +1179,7 @@ public class MainCameraScr : MonoBehaviour
                     foreach (GameObject obs in seed)
                     {
                         obs.GetComponent<Seed_Life>().Seed_Life_Down();
+                        //GetComponent<Player_Collision>().item_count -= 1;
 
                     }
                     //射出性質変化 小のとき青のオーラをまとう

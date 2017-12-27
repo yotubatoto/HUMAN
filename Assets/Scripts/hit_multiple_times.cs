@@ -52,6 +52,36 @@ public class hit_multiple_times : MonoBehaviour
             Instantiate(dust_prefab, transform.position, Quaternion.identity);
             gameObject.GetComponent<SpriteRenderer>().sprite = block_sprite[number];
         }
+
+
+
+
+        if (coll.gameObject.tag == "Player")
+        {
+            if (break_count == 0
+                && coll.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 100.0f)
+            {
+                coll.gameObject.GetComponent<Sound_Manager>().Obstance_SE();
+            }
+
+            else if (break_count == 1
+                && coll.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude >= 100.0f)
+            {
+                coll.gameObject.GetComponent<Sound_Manager>().Damage_SE();
+            }
+
+            else if (break_count == 1
+                && coll.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 100.0f)
+            {
+                coll.gameObject.GetComponent<Sound_Manager>().Obstance_SE();
+            }
+
+            else if (break_count == 2
+                && coll.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude >= 100.0f)
+            {
+                coll.gameObject.GetComponent<Sound_Manager>().SE();
+            }
+        }
        
     }
     public void OnTriggerEnter2D(Collider2D coll)

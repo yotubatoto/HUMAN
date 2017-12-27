@@ -550,6 +550,7 @@ public class Mission_Manager : MonoBehaviour
             Camera.main.GetComponent<MainCameraScr>().pause_freeze_flag = true;
             if (clear_state == 0)
             {
+                PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER + "clear", 1);
                 //				clear_text.enabled = true;
                 Color c = clear_text.color;
                 c.a += 1.0f * Time.deltaTime;

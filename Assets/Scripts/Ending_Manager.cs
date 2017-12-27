@@ -37,8 +37,8 @@ public class Ending_Manager : MonoBehaviour
         if(tap.enabled)
         {
             Color c = tap.color;
-            c.a += 0.002f;
-            if(c.a >= 1)
+            c.a += 1.0f * Time.deltaTime;
+            if(c.a >= 5)
             {
                 c.a = 1.0f;
             }
