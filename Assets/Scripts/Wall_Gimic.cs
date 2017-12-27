@@ -45,6 +45,7 @@ public class Wall_Gimic : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        not_count = 0;
         child_circle = gameObject.transform.Find("Light").gameObject;
         GetComponent<SpriteRenderer>().sprite = light_sprite[0];
     }

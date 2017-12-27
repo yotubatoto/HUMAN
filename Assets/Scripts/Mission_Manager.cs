@@ -62,11 +62,16 @@ public class Mission_Manager : MonoBehaviour
     private string st_owner = "";
     public GameObject next_stage;
     public int state = 0;
+    private float bug_time = 0.0f;
     // Use this for initialization
     void Start()
     {
         if (StageSelectManager.ST_OWNER_NUMBER != null)
             st_owner = StageSelectManager.ST_OWNER_NUMBER.Substring(0, 1);
+        if(StageSelectManager.ST_OWNER_NUMBER == "5_10")
+        {
+            clear_flag = false;
+        }
         //ヌルでないとき成立する
         Debug.Log("PlayerPrefsmdayo" + PlayerPrefs.GetInt("3_1" + "star"));
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_1")
@@ -449,6 +454,15 @@ public class Mission_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(StageSelectManager.ST_OWNER_NUMBER == "5_10" && bug_time < 1)
+        {
+            clear_flag = false;
+            bug_time += Time.deltaTime;
+            if(bug_time > 1)
+            {
+                bug_time = 1;
+            }
+        }
         block_number = 0;
         gimic_number = 0;
 
@@ -685,20 +699,15 @@ public class Mission_Manager : MonoBehaviour
                 string tail = "";
                 if(len >= 4)
                 {
-                    tail = st.Substring(3, 1); // 1
+                    tail = st.Substring(2, 2); // 1
                 }
-                else
+                else if(len < 4)
                 {
                     tail = st.Substring(2, 1); // 1
                 }
-                if(tail != "0")
+                if(tail == "10")
                 {
-                    Result_obj.gameObject.SetActive(true);
-
-                }
-                else
-                {
-                    if(st_owner == "5" && ending_flag == false)
+                    if (st_owner == "5" && ending_flag == false)
                     {
                         ending_flag = true;
                         Camera.main.GetComponent<Now_Loading>().Load_NextScene_Ending();
@@ -716,6 +725,11 @@ public class Mission_Manager : MonoBehaviour
                     select_pos.y = -155.0f;
                     GameObject.Find("Common/Canvas/result_black 1/Stage_Select_result").GetComponent<RectTransform>().transform.localPosition = select_pos;
                     next_stage.SetActive(false);
+                }
+                else
+                {
+                    Result_obj.gameObject.SetActive(true);
+
                 }
             }
         }
