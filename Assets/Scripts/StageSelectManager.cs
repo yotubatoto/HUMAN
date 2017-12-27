@@ -78,7 +78,7 @@ public class StageSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //GameObject.Find("_te").gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("1_3clear").ToString();
         // エスケープキー取得
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -1598,31 +1598,50 @@ public class StageSelectManager : MonoBehaviour
                     int temp = 0;
                     for (int ii = 1; ii <= 10; ii++)
                     {
-                        if (PlayerPrefs.GetInt("1_" + ii.ToString() + "star") == 0)
+                        if (PlayerPrefs.GetInt("1_1star") == 0)
                         {
-                            if (ii != 1)
+                            if (PlayerPrefs.GetInt("1_" + ii.ToString() + "clear") == 0)
+                            {
+                                //if (ii != 1)
                                 lock_imge[ii - 1].color = new Color(1, 1, 1, 0.8f);
+                            }
+                            else
+                            {
+                                //if (temp <= ii)
+                                //    temp = ii;
+                                lock_imge[ii - 1].color = new Color(0, 0, 0, 0.0f);
+                            }
+                            //if (temp != 0 && temp != 10)
+                            //{
+                            //    lock_imge[temp].color = new Color(0, 0, 0, 0);
+                            //}
                         }
                         else
                         {
-                            if (temp <= ii)
-                                temp = ii;
-                            lock_imge[ii - 1].color = new Color(0, 0, 0, 0.0f);
-                        }
-                        if (temp != 0 && temp != 10)
-                        {
-                            lock_imge[temp].color = new Color(0, 0, 0, 0);
+                            if (PlayerPrefs.GetInt("1_" + ii.ToString() + "clear") == 0)
+                            {
+                                if (ii != 1)
+                                    lock_imge[ii - 1].color = new Color(1, 1, 1, 0.8f);
+                            }
+                            else
+                            {
+                                if (temp <= ii)
+                                    temp = ii;
+                                lock_imge[ii - 1].color = new Color(0, 0, 0, 0.0f);
+                            }
+                            if (temp != 0 && temp != 10)
+                            {
+                                lock_imge[temp].color = new Color(0, 0, 0, 0);
+                            }
                         }
                     }
-                    PlayerPrefs.SetInt("1_1clear", 1);
-
-
                 }
                 for (int i = 0; i < 10; i++)
                 {
                     left[i].text = "1";
                     right[i].text = (i + 1).ToString();
                 }
+
                 // 1-1
                 if (PlayerPrefs.GetInt("1_1star") == 0)
                 {
@@ -1674,25 +1693,25 @@ public class StageSelectManager : MonoBehaviour
                     pop_obj.transform.Find("_2/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 }
                 // 1-3
-                if (PlayerPrefs.GetInt("1_3star") == 0)
-                {
-                    pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                    pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                    pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                }
-                if (PlayerPrefs.GetInt("1_3star") == 1)
-                {
-                    pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                    pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                    pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                }
-                if (PlayerPrefs.GetInt("1_3star") == 2)
-                {
-                    pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                    pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                    pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                }
-                if (PlayerPrefs.GetInt("1_3star") == 3)
+                //if (PlayerPrefs.GetInt("1_3star") == 0)
+                //{
+                //    pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                //    pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                //    pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                //}
+                //if (PlayerPrefs.GetInt("1_3star") == 1)
+                //{
+                //    pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                //    pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                //    pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                //}
+                //if (PlayerPrefs.GetInt("1_3star") == 2)
+                //{
+                //    pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                //    pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                //    pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                //}
+                if (PlayerPrefs.GetInt("1_3star") >= 0)
                 {
                     pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                     pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
