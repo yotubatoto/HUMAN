@@ -73,12 +73,18 @@ public class StageSelectManager : MonoBehaviour
         Time.timeScale = 1.0f;
         now_load = GameObject.Find("Now_Loading").gameObject.GetComponent<Image>();
         PlayerPrefs.SetInt("1_1clear", 1);
+        if(PlayerPrefs.GetInt("1_3clear") >= 1)
+        {
+            PlayerPrefs.SetInt("1_3star", 3);
+        }
+        //PlayerPrefs.SetInt("1_1star", 0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //GameObject.Find("_te").gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("1_3clear").ToString();
         // エスケープキー取得
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -1598,20 +1604,41 @@ public class StageSelectManager : MonoBehaviour
                     int temp = 0;
                     for (int ii = 1; ii <= 10; ii++)
                     {
-                        if (PlayerPrefs.GetInt("1_" + ii.ToString() + "star") == 0)
+                        if (PlayerPrefs.GetInt("1_1star") == 0)
                         {
-                            if (ii != 1)
+                            if (PlayerPrefs.GetInt("1_" + ii.ToString() + "clear") == 0)
+                            {
+                                //if (ii != 1)
                                 lock_imge[ii - 1].color = new Color(1, 1, 1, 0.8f);
+                            }
+                            else
+                            {
+                                //if (temp <= ii)
+                                //    temp = ii;
+                                lock_imge[ii - 1].color = new Color(0, 0, 0, 0.0f);
+                            }
+                            //if (temp != 0 && temp != 10)
+                            //{
+                            //    lock_imge[temp].color = new Color(0, 0, 0, 0);
+                            //}
                         }
                         else
                         {
-                            if (temp <= ii)
-                                temp = ii;
-                            lock_imge[ii - 1].color = new Color(0, 0, 0, 0.0f);
-                        }
-                        if (temp != 0 && temp != 10)
-                        {
-                            lock_imge[temp].color = new Color(0, 0, 0, 0);
+                            if (PlayerPrefs.GetInt("1_" + ii.ToString() + "clear") == 0)
+                            {
+                                if (ii != 1)
+                                    lock_imge[ii - 1].color = new Color(1, 1, 1, 0.8f);
+                            }
+                            else
+                            {
+                                if (temp <= ii)
+                                    temp = ii;
+                                lock_imge[ii - 1].color = new Color(0, 0, 0, 0.0f);
+                            }
+                            if (temp != 0 && temp != 10)
+                            {
+                                lock_imge[temp].color = new Color(0, 0, 0, 0);
+                            }
                         }
                     }
                     PlayerPrefs.SetInt("1_1clear", 1);
