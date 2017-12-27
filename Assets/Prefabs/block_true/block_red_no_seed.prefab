@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4780752957163918}
   - component: {fileID: 212187377026383902}
   - component: {fileID: 61517186327586546}
-  - component: {fileID: 114536898816673806}
+  - component: {fileID: 114334471901870520}
   m_Layer: 0
   m_Name: block_red_no_seed
   m_TagString: No_Seed_Block
@@ -36,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1440070810029086}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.5, y: 18.1, z: -0.17640859}
-  m_LocalScale: {x: 1.77528, y: 1.77528, z: 0.88764}
+  m_LocalPosition: {x: 7.63, y: -3.61, z: -11.426409}
+  m_LocalScale: {x: 2.7737439, y: 2.7737436, z: 1.3868718}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.97, y: 2.97}
   m_EdgeRadius: 0
---- !u!114 &114536898816673806
+--- !u!114 &114334471901870520
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

@@ -478,7 +478,8 @@ public class Mission_Manager : MonoBehaviour
         //打ち出した後打数内でクリアできなかった場合
         if (GetComponent<MainCameraScr>().main_move_state == 0)
         {
-            Debug.Log("wwwwwwwwwwwwwwww");
+           
+            //Debug.Log("wwwwwwwwwwwwwwww");
             Mission_Lose();
 
         }
@@ -786,7 +787,7 @@ public class Mission_Manager : MonoBehaviour
         }
         return false;
     }
-    //レッドブロックを認識させないと速攻ゲームオーバーになるのでレングス追加
+    //レッドブロック,ブルーブロックを認識させないと速攻ゲームオーバーになるのでレングス追加
     bool Mission_4()
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("Small_Block");
@@ -794,10 +795,12 @@ public class Mission_Manager : MonoBehaviour
         GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
         //GameObject[] obj_4 = GameObject.FindGameObjectsWithTag("No_Seed_Block");
         GameObject[] obj_5 = GameObject.FindGameObjectsWithTag("No_Seed_Green_Block");
+        GameObject[] obj_6 = GameObject.FindGameObjectsWithTag("Blue_Block");
 
 
 
-        if (obj.Length == 0 && obj_2.Length == 0 && obj_3.Length == 0 && obj_5.Length == 0)
+
+        if (obj.Length == 0 && obj_2.Length == 0 && obj_3.Length == 0 && obj_5.Length == 0 && obj_6.Length == 0)
         {
             return true;
         }
@@ -812,6 +815,8 @@ public class Mission_Manager : MonoBehaviour
         {
             int a = 0;
             GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = a.ToString();
+            GameObject.Find("turn_flame").GetComponent<Image>().enabled = false;
+            GameObject.Find("Turn_Number").GetComponent<Text>().enabled = false;
             Debug.Log("打数でクリアできなかった");
             gameOver_obj.SetActive(true);
 
