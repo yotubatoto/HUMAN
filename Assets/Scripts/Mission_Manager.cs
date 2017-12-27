@@ -552,7 +552,7 @@ public class Mission_Manager : MonoBehaviour
             {
                 //ステージクリアしたら（ステージクリアのテキストが表示される時間）
                 clear_count += Time.deltaTime;
-                if (clear_count > 2.0f)
+                if (clear_count > 1.0f)
                 {
                     clear_state = 2;
                 }
@@ -582,6 +582,7 @@ public class Mission_Manager : MonoBehaviour
 
 
                 GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+                
 
                 //           GameObject.Find ("clear_number").gameObject.GetComponent<Text> ().text = 
                 //(Camera.main.GetComponent<Manager> ().shot_state - 1).ToString ();        //この処理をManagerように変えて入れる
@@ -692,6 +693,7 @@ public class Mission_Manager : MonoBehaviour
                 if(tail != "0")
                 {
                     Result_obj.gameObject.SetActive(true);
+
                 }
                 else
                 {

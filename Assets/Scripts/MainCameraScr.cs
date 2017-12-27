@@ -177,6 +177,8 @@ public class MainCameraScr : MonoBehaviour
 
         ini_sp = image.sprite;
         GameObject.Find("Fade").gameObject.GetComponent<Image>().enabled = true;
+        GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+
     }
 
 
@@ -234,17 +236,20 @@ public class MainCameraScr : MonoBehaviour
                             manual[i - 1].SetActive(true);
                             temp = i;
                             temp_save = temp;
+                           
                         }
                     }
                 }
                 else
                 {
                     mission_obj.SetActive(true);
+
                 }
             }
             else
             {
                 mission_obj.SetActive(true);
+
             }
             //manual_0.SetActive(true);
             if (info_m == TouchInfo.Ended)
@@ -255,10 +260,12 @@ public class MainCameraScr : MonoBehaviour
                 if (st_owner != null && st_owner == "1")
                 {
                     manual[temp - 1].SetActive(false);
+
                 }
                 else
                 {
                     mission_obj.SetActive(false);
+
                 }
             }
 
@@ -276,6 +283,7 @@ public class MainCameraScr : MonoBehaviour
                 {
                     gamestart_al = 1.0f;
                     gamestart_al_flag = true;
+
                 }
             }
             else
@@ -286,6 +294,7 @@ public class MainCameraScr : MonoBehaviour
                 {
                     main_move_state = 0;
                     pause_freeze_flag = false;
+
                 }
             }
 
@@ -295,6 +304,8 @@ public class MainCameraScr : MonoBehaviour
 
         if (main_move_state == 0)
         {
+            GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = true;
+
 
 
             ////ゲームスタート時のフィルターを少しずつフェードさせる
