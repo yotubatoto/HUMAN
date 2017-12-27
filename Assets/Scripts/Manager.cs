@@ -116,7 +116,7 @@ public class Manager : MonoBehaviour
                 //GameObject.Find("FrontLayer/Canvas/Clear/clear_number").GetComponent<Text>().text = "1";
                 GameObject.Find("Main Camera").GetComponent<MainCameraScr>().hold = new Vector2(float.MaxValue, float.MaxValue);
 
-                Debug.Log("ddd");
+                //Debug.Log("ddd");
             }
         }
         // Wave1

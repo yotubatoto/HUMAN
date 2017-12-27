@@ -66,16 +66,19 @@ public class Break_obj : MonoBehaviour
                 Destroy(gameObject);
                 
                 //GameObject.Find("Player").GetComponent<Player_Collision>().combo_count += 1;
+
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count += 1;
                 //Debug.Log(GetComponent<Player_Collision>().item_count);
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text = 
                     GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
                 seed_life = Instantiate(seed_prefab, transform.position, Quaternion.identity);
+
                 //seedprefabを生成
                 Debug.Log("生成されました");
                 //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加
                
             }
+
             //if (seed_life != null)
             //{
             //    Instantiate(seed_prefab.transform.position,Quaternion.identity)
@@ -89,6 +92,7 @@ public class Break_obj : MonoBehaviour
                 {
                     Destroy(seed_life);
                     seed_life = null;
+
                 }
 
             }
