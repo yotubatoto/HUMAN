@@ -51,6 +51,7 @@ public class StageSelectManager : MonoBehaviour
     public Image[] lock_imge = new Image[9];
     public bool Debug_Mode = false;
     private bool blackFlag = false;
+    private int[] _temp = new int[10];
     void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -65,14 +66,27 @@ public class StageSelectManager : MonoBehaviour
         pos = transform.position;
         //PlayerPrefs.SetInt("1_1" + "star", 0);
         //PlayerPrefs.SetInt("2_9" + "star", 0);
-        //PlayerPrefs.SetInt("5_10" + "star", 0);
-        //PlayerPrefs.SetInt("3_10clear", 1);
+        ////PlayerPrefs.SetInt("5_10" + "star", 0);
+        //PlayerPrefs.SetInt("1_1clear", 0);
+        //PlayerPrefs.SetInt("1_2clear", 0);
+        //PlayerPrefs.SetInt("1_3clear", 0);
+        //PlayerPrefs.SetInt("1_4clear", 0);
+        //PlayerPrefs.SetInt("1_5clear", 0);
+        //PlayerPrefs.SetInt("1_6clear", 0);
+        //PlayerPrefs.SetInt("1_7clear", 0);
+        //PlayerPrefs.SetInt("1_8clear", 0);
+        //PlayerPrefs.SetInt("1_9clear", 0);
+        //PlayerPrefs.SetInt("1_10clear", 0);
         //変数「ClearStage」に「CLEARSTAGE」の値を代入しなおす
         //マルチタッチ無効
         Input.multiTouchEnabled = false;
         Time.timeScale = 1.0f;
         now_load = GameObject.Find("Now_Loading").gameObject.GetComponent<Image>();
         PlayerPrefs.SetInt("1_1clear", 1);
+        //for (int i = 0; i < 10;i++ )
+        //{
+        //    _temp[i] = PlayerPrefs.GetInt("1_"+ (i + 1).ToString() + "star", 3);
+        //}
     }
 
     // Update is called once per frame
@@ -1616,16 +1630,16 @@ public class StageSelectManager : MonoBehaviour
                             //    lock_imge[temp].color = new Color(0, 0, 0, 0);
                             //}
                         }
-                        else
+                        else if (PlayerPrefs.GetInt("1_1star") > 0)
                         {
                             if (PlayerPrefs.GetInt("1_" + ii.ToString() + "clear") == 0)
                             {
-                                if (ii != 1)
+                                //if (ii != 1)
                                     lock_imge[ii - 1].color = new Color(1, 1, 1, 0.8f);
                             }
                             else
                             {
-                                if (temp <= ii)
+                                if (temp < ii)
                                     temp = ii;
                                 lock_imge[ii - 1].color = new Color(0, 0, 0, 0.0f);
                             }
@@ -1711,8 +1725,15 @@ public class StageSelectManager : MonoBehaviour
                 //    pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 //    pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
                 //}
-                if (PlayerPrefs.GetInt("1_3star") >= 0)
+                //if (PlayerPrefs.GetInt("1_3star") == 3)
+                //{
+                //    pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                //    pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                //    pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                //}
+                if (PlayerPrefs.GetInt("1_3clear") >= 1)
                 {
+                    GameObject.Find("_te").GetComponent<Text>().text = PlayerPrefs.GetInt("1_3star").ToString();
                     pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                     pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                     pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
@@ -1870,9 +1891,9 @@ public class StageSelectManager : MonoBehaviour
                 //1-10
                 if (PlayerPrefs.GetInt("1_10star") == 0)
                 {
-                    pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                    pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-                    pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    pop_obj.transform.Find("_10/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    pop_obj.transform.Find("_10/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    pop_obj.transform.Find("_10/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
                 }
                 if (PlayerPrefs.GetInt("1_10star") == 1)
                 {
