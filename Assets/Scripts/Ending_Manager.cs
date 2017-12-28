@@ -24,6 +24,7 @@ public class Ending_Manager : MonoBehaviour
             TouchInfo info = AppUtil.GetTouch();
             if(info == TouchInfo.Ended)
             {
+                GetComponent<Sound_Manager>().Stage_Choice_SE();
                 GetComponent<Now_Loading>().Load_NextScene_First();
                 now_loading.enabled = true;
                 now_loading_back.enabled = true;

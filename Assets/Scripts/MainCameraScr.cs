@@ -106,7 +106,7 @@ public class MainCameraScr : MonoBehaviour
     public GameObject game_filter;
     private float filter_time = 1.0f;
     private bool game_start_flag = false;
-    private float gamestart_al = 0.0f;
+    private float gamestart_al = 1.0f;
     public Sprite change_sp;
     private Sprite ini_sp;
     private int temp_save = 0;
@@ -279,7 +279,7 @@ public class MainCameraScr : MonoBehaviour
             {
                 pause_freeze_flag = true;
                 gamestart_al += 1.0f * Time.deltaTime;
-                if (gamestart_al >= 1.0f)
+                if (gamestart_al >= 3.0f)
                 {
                     gamestart_al = 1.0f;
                     gamestart_al_flag = true;
@@ -288,7 +288,7 @@ public class MainCameraScr : MonoBehaviour
             }
             else
             {
-                gamestart_al -= 1.0f * Time.deltaTime;
+                gamestart_al -= 3.5f * Time.deltaTime;
 
                 if (gamestart_al <= 0.0f)
                 {
@@ -308,6 +308,11 @@ public class MainCameraScr : MonoBehaviour
 
 
 
+            //if (GameObject.Find("GAMEOVER"),gameObject.GetComponent<>())
+            //{
+            //    GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+
+            //}
             ////ゲームスタート時のフィルターを少しずつフェードさせる
             //  GameObject.Find("Game_Filter").GetComponent<Image>().enabled = true;
 
@@ -870,7 +875,7 @@ public class MainCameraScr : MonoBehaviour
                     //矢印赤
                     if (sub.magnitude > 19.5f)
                     {
-                        anime.GetComponent<Animator>().speed = 4.0f;
+                        anime.GetComponent<Animator>().speed = 2.5f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(0.98f, 0.52f, 0.55f, 1.0f);
                         GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
@@ -879,7 +884,7 @@ public class MainCameraScr : MonoBehaviour
                     //矢印イエロー
                     else if (sub.magnitude > 8.0f)
                     {
-                        anime.GetComponent<Animator>().speed = 3.0f;
+                        anime.GetComponent<Animator>().speed = 2.0f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(1.0f, 0.89f, 0.41f, 1.0f);
                         GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
@@ -890,7 +895,7 @@ public class MainCameraScr : MonoBehaviour
                     //3より射出パワーが上なら矢印ブルー
                     else if (sub.magnitude > 3.0f)
                     {
-                        anime.GetComponent<Animator>().speed = 2.0f;
+                        anime.GetComponent<Animator>().speed = 1.5f;
                         GameObject.Find("arrow").GetComponent<SpriteRenderer>().color
                             = new Color(0.51f, 0.54f, 1.0f, 1.0f);
                         GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color
