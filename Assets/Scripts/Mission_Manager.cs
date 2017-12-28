@@ -55,6 +55,7 @@ public class Mission_Manager : MonoBehaviour
     public AudioClip game_clear_bgm;
     private int game_clear_bgm_state = 0;
     private bool ending_flag = false;
+    private bool ending_barrage_flag = false;
 
 
     private bool bgm_once_flag = false;
@@ -494,7 +495,12 @@ public class Mission_Manager : MonoBehaviour
         {
            
             //Debug.Log("wwwwwwwwwwwwwwww");
+            GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+
+
             Mission_Lose();
+            GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+
 
         }
         TouchInfo _info = AppUtil.GetTouch();
@@ -708,12 +714,17 @@ public class Mission_Manager : MonoBehaviour
                 }
                 if(tail == "10")
                 {
-                    if (st_owner == "5" && ending_flag == false)
+                    if (st_owner == "5" && ending_flag == false && ending_barrage_flag == false)
                     {
+                        GameObject.Find("Common/Canvas/result_black 1/Retry_result").GetComponent<Collider2D>().enabled = false;
+                        GameObject.Find("Common/Canvas/result_black 1/Stage_Select_result").GetComponent<Collider2D>().enabled= false;
+
                         ending_flag = true;
                         Camera.main.GetComponent<Now_Loading>().Load_NextScene_Ending();
+                        ending_barrage_flag = true;
                         GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
                         GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+                       
                     }
                     Result_obj.gameObject.SetActive(true);
                     Vector3 retry_pos = GameObject.Find("Common/Canvas/result_black 1/Retry_result").GetComponent<RectTransform>().transform.localPosition;
@@ -790,13 +801,13 @@ public class Mission_Manager : MonoBehaviour
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("Small_Block");
         //GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
-        GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
+        //GameObject[] obj_3 = GameObject.FindGameObjectsWithTag("BlockPiece");
         //GameObject[] obj_4 = GameObject.FindGameObjectsWithTag("No_Seed_Block");
         GameObject[] obj_5 = GameObject.FindGameObjectsWithTag("No_Seed_Green_Block");
 
 
 
-        if (obj.Length == 0 && obj_3.Length == 0 && obj_5.Length == 0)
+        if (obj.Length == 0 && obj_5.Length == 0)
         {
             return true;
         }
@@ -828,19 +839,27 @@ public class Mission_Manager : MonoBehaviour
 
         if (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) <= 0)
         {
+            Debug.Log("ポーズ");
+            
             int a = 0;
             GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = a.ToString();
             GameObject.Find("turn_flame").GetComponent<Image>().enabled = false;
             GameObject.Find("Turn_Number").GetComponent<Text>().enabled = false;
             Debug.Log("打数でクリアできなかった");
             gameOver_obj.SetActive(true);
+            GameObject.Find("Common/Canvas/pause").GetComponent<CircleCollider2D>().enabled = false;
+
+
 
             Time.timeScale = 0.0f;
         }
         if (block_number < gimic_number)
         {
+            GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
             Debug.Log("ブロックの数が少ないので終わり");
             gameOver_obj.SetActive(true);
+
+
         }
 
         if (Mission_4())
@@ -851,8 +870,12 @@ public class Mission_Manager : MonoBehaviour
 
                 Debug.Log("全部壊れていてかつ光ってないものありでクリアできませんでした");
 
+                GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+
 
                 gameOver_obj.gameObject.SetActive(true);
+
+
 
 
                 Time.timeScale = 0.0f;
