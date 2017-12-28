@@ -118,7 +118,6 @@ public class StageSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //GameObject.Find("_te").gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("1_3clear").ToString();
         // エスケープキー取得
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -1759,7 +1758,6 @@ public class StageSelectManager : MonoBehaviour
                 //}
                 if (PlayerPrefs.GetInt("1_3clear") >= 1)
                 {
-                    GameObject.Find("_te").GetComponent<Text>().text = PlayerPrefs.GetInt("1_3star").ToString();
                     pop_obj.transform.Find("_3/Star_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                     pop_obj.transform.Find("_3/Star_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
                     pop_obj.transform.Find("_3/Star_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
