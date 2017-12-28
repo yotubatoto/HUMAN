@@ -54,6 +54,23 @@ public class Break_obj : MonoBehaviour
             }
 
             count += 1;
+
+
+
+            //if (coll.gameObject.tag == "Player")
+            //{
+            //    if (coll.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < 30.0f)
+            //    {
+            //        coll.gameObject.GetComponent<Sound_Manager>().Obstance_SE();
+            //    }
+
+            //    else if (coll.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude >= 100.0f)
+            //    {
+            //        coll.gameObject.GetComponent<Sound_Manager>().SE();
+            //    }
+
+
+            //}
            
             obj = Instantiate(stardust_prefab, transform.position, Quaternion.identity);
             Instantiate(dust_prefab, transform.position, Quaternion.identity);
@@ -72,6 +89,11 @@ public class Break_obj : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text = 
                     GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
                 seed_life = Instantiate(seed_prefab, transform.position, Quaternion.identity);
+
+
+
+
+             
 
                 //seedprefabを生成
                 Debug.Log("生成されました");
@@ -109,6 +131,16 @@ public class Break_obj : MonoBehaviour
             // if (GameObject.Find("Main Camera").GetComponent<MainCameraScr>().sub.magnitude > 15)
             if (GameObject.Find("Main Camera").GetComponent<MainCameraScr>().characteristic_change_state >= 2)
             {
+                
+
+                    // if (coll.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude >= 100.0f)
+                    //{
+                    //    coll.gameObject.GetComponent<Sound_Manager>().SE();
+                    //}
+
+
+                
+
                 //GameObject.Find("Block/block_red (2)").GetComponent<BoxCollider>().isTrigger 
                 
                 count += 1;
@@ -116,6 +148,14 @@ public class Break_obj : MonoBehaviour
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_text.text =
                 GameObject.Find("Player").GetComponent<Player_Collision>().item_count.ToString(); //オブジェクトが破棄されたらSEEDカウントを表示
                 Instantiate(seed_prefab, transform.position, Quaternion.identity);
+
+               
+
+
+
+
+
+
                 //seedprefabを生成
                 //Debug.Log("生成されました");
                 //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加

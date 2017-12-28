@@ -495,11 +495,13 @@ public class Mission_Manager : MonoBehaviour
         {
            
             //Debug.Log("wwwwwwwwwwwwwwww");
-            GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+            //GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
 
 
             Mission_Lose();
-            GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+            //GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+          
+            
 
 
         }
@@ -543,7 +545,7 @@ public class Mission_Manager : MonoBehaviour
 
             }
             Camera.main.GetComponent<MainCameraScr>().pause_freeze_flag = true;
-            GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+            //GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
         }
         //if (mission_state == (int)MISSION_STATE.STAGE_1_1)
         //{
@@ -832,30 +834,30 @@ public class Mission_Manager : MonoBehaviour
         }
         return false;
     }
-
+    
     //ゲームオーバー時にゲームオーバー画面表示しステージセレクト画面に戻る
     void Mission_Lose()
     {
 
         if (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) <= 0)
         {
-            Debug.Log("ポーズ");
             
+
+            Debug.Log("ポーズ");
+            GameObject.Find("Common/Canvas/pause").GetComponent<CircleCollider2D>().enabled = false;
             int a = 0;
             GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = a.ToString();
             GameObject.Find("turn_flame").GetComponent<Image>().enabled = false;
             GameObject.Find("Turn_Number").GetComponent<Text>().enabled = false;
             Debug.Log("打数でクリアできなかった");
             gameOver_obj.SetActive(true);
-            GameObject.Find("Common/Canvas/pause").GetComponent<CircleCollider2D>().enabled = false;
-
 
 
             Time.timeScale = 0.0f;
         }
         if (block_number < gimic_number)
         {
-            GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+            //GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
             Debug.Log("ブロックの数が少ないので終わり");
             gameOver_obj.SetActive(true);
 
@@ -870,7 +872,7 @@ public class Mission_Manager : MonoBehaviour
 
                 Debug.Log("全部壊れていてかつ光ってないものありでクリアできませんでした");
 
-                GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
+                //GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
 
 
                 gameOver_obj.gameObject.SetActive(true);
@@ -881,7 +883,7 @@ public class Mission_Manager : MonoBehaviour
                 Time.timeScale = 0.0f;
             }
         }
-       
+        GameObject.Find("pause").GetComponent<CircleCollider2D>().enabled = false;
 
 
     }
