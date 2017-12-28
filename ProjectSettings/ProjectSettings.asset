@@ -148,15 +148,15 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: gls.gls0104
+    Android: gls.gls0108
     Standalone: unity.HumanSendai.BloomWorld
     Tizen: gls.gls0003
     iOS: gls.gls0003
     tvOS: gls.gls0003
   buildNumber:
     iOS: 0
-  AndroidBundleVersionCode: 2
-  AndroidMinSdkVersion: 16
+  AndroidBundleVersionCode: 3
+  AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 25
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -229,8 +229,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/USER/Desktop/user.keystore
+  AndroidKeyaliasName: ogosho
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   AndroidEnableTango: 0
