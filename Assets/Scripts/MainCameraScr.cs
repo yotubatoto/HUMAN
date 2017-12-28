@@ -121,7 +121,8 @@ public class MainCameraScr : MonoBehaviour
 
 
     private bool transition_flag = false;
-
+    public GameObject manual_2;
+    private int ended_state = 0;
     void Awake()
     {
         // 開発している画面を元に縦横比取得 (縦画面) iPhone6, 6sサイズ
@@ -223,21 +224,48 @@ public class MainCameraScr : MonoBehaviour
 
         else if (main_move_state == -2)
         {
-            int temp = 0;
-            if (st_owner != null)
+            if (StageSelectManager.ST_OWNER_NUMBER == "2_1")
             {
-                if (st_owner == "1")
+                if (ended_state == 0)
+                    manual_2.SetActive(true);
+                if (info_m == TouchInfo.Ended)
                 {
-                    //チュートリアル画像を表示する
-                    for (int i = 1; i <= 10; i++)
+                    if (ended_state == 0)
                     {
-                        if (StageSelectManager.ST_OWNER_NUMBER == ("1_" + i.ToString()))
+                        manual_2.SetActive(false);
+                        mission_obj.SetActive(true);
+                    }
+                    else if (ended_state >= 1)
+                    {
+                        main_move_state = -1;
+                        mission_obj.SetActive(false);
+                    }
+                    ended_state += 1;
+                }
+            }
+            else
+            {
+                int temp = 0;
+                if (st_owner != null)
+                {
+                    if (st_owner == "1")
+                    {
+                        //チュートリアル画像を表示する
+                        for (int i = 1; i <= 10; i++)
                         {
-                            manual[i - 1].SetActive(true);
-                            temp = i;
-                            temp_save = temp;
-                           
+                            if (StageSelectManager.ST_OWNER_NUMBER == ("1_" + i.ToString()))
+                            {
+                                manual[i - 1].SetActive(true);
+                                temp = i;
+                                temp_save = temp;
+
+                            }
                         }
+                    }
+                    else
+                    {
+                        mission_obj.SetActive(true);
+
                     }
                 }
                 else
@@ -245,29 +273,25 @@ public class MainCameraScr : MonoBehaviour
                     mission_obj.SetActive(true);
 
                 }
-            }
-            else
-            {
-                mission_obj.SetActive(true);
-
-            }
-            //manual_0.SetActive(true);
-            if (info_m == TouchInfo.Ended)
-            {
-
-                main_move_state = -1;
-                //manual_0.SetActive(false);
-                if (st_owner != null && st_owner == "1")
+                //manual_0.SetActive(true);
+                if (info_m == TouchInfo.Ended)
                 {
-                    manual[temp - 1].SetActive(false);
 
-                }
-                else
-                {
-                    mission_obj.SetActive(false);
+                    main_move_state = -1;
+                    //manual_0.SetActive(false);
+                    if (st_owner != null && st_owner == "1")
+                    {
+                        manual[temp - 1].SetActive(false);
 
+                    }
+                    else
+                    {
+                        mission_obj.SetActive(false);
+
+                    }
                 }
             }
+
 
         }
 
@@ -982,7 +1006,7 @@ public class MainCameraScr : MonoBehaviour
                         end_time = 0.0f;
                         bonus_color_red = 0.0f;
                         bonus_color_yellow = 0.0f;
-                         
+
                         Color color_2 = GameObject.Find("arrow_tri").GetComponent<SpriteRenderer>().color;
 
                         //射出すらできないパワーの時ブラックカラー矢印を消す
