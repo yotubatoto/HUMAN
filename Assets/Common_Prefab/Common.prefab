@@ -209,7 +209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1111773701640410
 GameObject:
   m_ObjectHideFlags: 1
@@ -2329,7 +2329,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099978229029674}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -2451,6 +2451,7 @@ MonoBehaviour:
   hold: {x: 3.4028235e+38, y: 3.4028235e+38}
   touch_time: 0
   nowloading_back_img: {fileID: 114624683063588134}
+  TEMP_VALUE: 0
 --- !u!114 &114197458053248770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2795,33 +2796,33 @@ MonoBehaviour:
   - 3
   - 3
   - 2
-  - 5
-  - 2
+  - 7
+  - 7
   - 8
   - 6
   - 5
-  - 3
-  - 3
-  - 3
+  - 4
+  - 4
+  - 5
   - 2
   - 3
-  - 2
-  - 5
-  - 5
-  - 5
-  - 6
-  - 1
+  - 3
   - 7
-  - 10
+  - 5
+  - 5
+  - 8
+  - 3
+  - 7
+  - 15
   - 5
   - 5
   - 3
   - 4
-  - 7
+  - 9
   - 8
   - 5
   - 3
-  - 8
+  - 10
   - 10
   - 7
   LIMITE:
@@ -2853,15 +2854,15 @@ MonoBehaviour:
   - 15
   - 10
   - 15
-  - 8
-  - 7
+  - 10
+  - 9
   - 15
   - 8
   - 15
   - 15
   - 20
   - 15
-  - 6
+  - 15
   - 15
   - 25
   - 18
@@ -2872,7 +2873,7 @@ MonoBehaviour:
   - 15
   - 10
   - 10
-  - 10
+  - 20
   - 15
   - 10
   gameover_bgm: {fileID: 8300000, guid: c401ed9c5f6d9a546ac4741c25a9872c, type: 3}
@@ -3108,7 +3109,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ba7da0157674a1d41b11033c579ea244, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b38677d792cd64f4b9feca5d455f7ada, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3657,7 +3658,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ba7da0157674a1d41b11033c579ea244, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b38677d792cd64f4b9feca5d455f7ada, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
