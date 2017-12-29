@@ -117,12 +117,17 @@ public class MainCameraScr : MonoBehaviour
 
     //操作説明のオブジェ
     public GameObject[] manual = new GameObject[10];
+    
 
 
 
     private bool transition_flag = false;
     public GameObject manual_2;
     private int ended_state = 0;
+
+    public Text turn_current;
+    private bool turn_current_once_flag = false;
+    private bool once_flag_2 = false;
     void Awake()
     {
         // 開発している画面を元に縦横比取得 (縦画面) iPhone6, 6sサイズ
@@ -154,7 +159,7 @@ public class MainCameraScr : MonoBehaviour
     private string st_owner = null;
     private int state = 0;
     public Image nowloading_back_img;
-
+    public int TEMP_VALUE = 0;
     /* --------------------------------------------------
 	 * @パラメータ初期化
 	*/
@@ -572,6 +577,13 @@ public class MainCameraScr : MonoBehaviour
             // 射出していないとき
             if (main_move_state == 0)
             {
+                if(once_flag_2 == false)
+                {
+                    once_flag_2 = true;
+                    turn_current_once_flag = false;
+                }
+                int temp_ = int.Parse(turn_current.text) - 1;
+                TEMP_VALUE = temp_;
                 //TouchInfo _info = AppUtil.GetTouch();
                 bonus_color_yellow = 0;
                 bonus_color_red = 0;
@@ -1199,6 +1211,18 @@ public class MainCameraScr : MonoBehaviour
             // 打ち出した後
             else if (main_move_state == 2)
             {
+                once_flag_2 = false;
+                 if(turn_current_once_flag == false)
+                 {
+                     turn_current_once_flag = true;
+                     int temp = int.Parse(turn_current.text)-1;
+                     //TEMP_VALUE = temp;
+                     turn_current.text = temp.ToString();
+                     if(temp < 0)
+                     {
+                         turn_current.text = 0.ToString();
+                     }
+                 }
                 if (player.GetComponent<Rigidbody2D>().velocity.magnitude <= attenuation_speed)
                 {
 
