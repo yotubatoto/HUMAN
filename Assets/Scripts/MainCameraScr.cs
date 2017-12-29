@@ -308,7 +308,7 @@ public class MainCameraScr : MonoBehaviour
             {
                 pause_freeze_flag = true;
                 gamestart_al += 1.0f * Time.deltaTime;
-                if (gamestart_al >= 3.0f)
+                if (gamestart_al >= 2.0f)
                 {
                     gamestart_al = 1.0f;
                     gamestart_al_flag = true;
