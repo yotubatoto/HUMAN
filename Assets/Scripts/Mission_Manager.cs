@@ -64,6 +64,7 @@ public class Mission_Manager : MonoBehaviour
     public GameObject next_stage;
     public int state = 0;
     private float bug_time = 0.0f;
+    public Text turn_current;
     // Use this for initialization
     void Start()
     {
@@ -78,42 +79,61 @@ public class Mission_Manager : MonoBehaviour
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_1")
         {
             LIMIT_TURN = int.Parse(LIMITE[0]);
+            turn_current.text = LIMIT_TURN.ToString();
         }
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_2")
         {
             LIMIT_TURN = int.Parse(LIMITE[1]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_3")
         {
             LIMIT_TURN = int.Parse(LIMITE[2]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_4")
         {
             LIMIT_TURN = int.Parse(LIMITE[3]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_5")
         {
             LIMIT_TURN = int.Parse(LIMITE[4]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_6")
         {
             LIMIT_TURN = int.Parse(LIMITE[5]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_7")
         {
             LIMIT_TURN = int.Parse(LIMITE[6]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_8")
         {
             LIMIT_TURN = int.Parse(LIMITE[7]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_9")
         {
             LIMIT_TURN = int.Parse(LIMITE[8]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_10")
         {
             LIMIT_TURN = int.Parse(LIMITE[9]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
 
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_1")
@@ -123,6 +143,8 @@ public class Mission_Manager : MonoBehaviour
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             //LIMIT_TURN = LIMITE[]
             LIMIT_TURN = int.Parse(LIMITE[10]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         //goal_trun.GetComponent<Text>().text = "10";
 
@@ -131,6 +153,8 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[1];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[11]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
@@ -139,6 +163,8 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[2];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[12]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_4")
@@ -146,6 +172,8 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[3];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[13]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_5")
@@ -153,12 +181,16 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[4];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[14]);
+            turn_current.text = LIMIT_TURN.ToString();
+
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_6")
         {
             goal_trun.GetComponent<Text>().text = GOAL_TURN[5];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[15]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
@@ -167,6 +199,9 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[6];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[16]);
+            turn_current.text = LIMIT_TURN.ToString();
+            
+
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_8")
@@ -174,6 +209,8 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[7];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[17]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
@@ -182,6 +219,8 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[8];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[18]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
@@ -190,6 +229,8 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[9];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[19]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
@@ -198,6 +239,8 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[10];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[20]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
@@ -206,6 +249,8 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[11];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[21]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
@@ -214,222 +259,256 @@ public class Mission_Manager : MonoBehaviour
             goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[22]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_4")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[13];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[23]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_5")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[14];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[24]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_6")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[15];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[25]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_7")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[16];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[26]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_8")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[17];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[27]);
+            turn_current.text = LIMIT_TURN.ToString();
+
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_9")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[18];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[28]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "3_10")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[19];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[29]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_1")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[20];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[30]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_2")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[21];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[31]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_3")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[22];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[32]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_4")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[23];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[33]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_5")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[24];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[34]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_6")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[25];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[35]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_7")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[26];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[36]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_8")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[27];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[37]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_9")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[28];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[38]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "4_10")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[29];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[39]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_1")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[30];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[40]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_2")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[31];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[41]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_3")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[32];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[42]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_4")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[33];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[43]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_5")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[34];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[44]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_6")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[35];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[45]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_7")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[36];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[46]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_8")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[37];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[47]);
+            turn_current.text = LIMIT_TURN.ToString();
 
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_9")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[38];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[48]);
+            turn_current.text = LIMIT_TURN.ToString();
 
         }
         else if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "5_10")
         {
-            goal_trun.GetComponent<Text>().text = GOAL_TURN[12];
+            goal_trun.GetComponent<Text>().text = GOAL_TURN[39];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             LIMIT_TURN = int.Parse(LIMITE[49]);
+            turn_current.text = LIMIT_TURN.ToString();
 
         }
 
@@ -791,8 +870,13 @@ public class Mission_Manager : MonoBehaviour
 
     bool Mission_2(int n)
     {
-        int temp = Camera.main.GetComponent<Manager>().shot_state - 1;
-        if (temp <= n)
+        //int temp = Camera.main.GetComponent<Manager>().shot_state -1;
+        //int temp = 
+        // nが１の場合
+        Debug.Log("++++++++++++"+GetComponent<Manager>().shot_state);
+        int t = LIMIT_TURN - int.Parse(turn_current.text);
+      
+        if (t <= n)
         {
             return true;
         }
@@ -839,7 +923,7 @@ public class Mission_Manager : MonoBehaviour
     void Mission_Lose()
     {
 
-        if (int.Parse(GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text) <= 0)
+        if (GetComponent<MainCameraScr>().TEMP_VALUE < 0)
         {
             
 
