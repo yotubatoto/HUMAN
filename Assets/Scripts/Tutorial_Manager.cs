@@ -44,7 +44,7 @@ public class Tutorial_Manager : MonoBehaviour {
                     if (once_flag == true)
                     {
                         //right.enabled = true;
-                        Debug.Log("あああ");
+                        
                     }
 
 
@@ -56,9 +56,7 @@ public class Tutorial_Manager : MonoBehaviour {
                     if (collition2d.gameObject.name == "Right")
                     {
                         //GetComponent<Sound_Manager>().SE();
-                        Debug.Log("はまだ黒い" + manual_count);
-
-                        Debug.Log("はまだ肌黒い");
+                        
                         manual_count += 1;
                         if (manual_count >= 9)
                         {
@@ -74,10 +72,8 @@ public class Tutorial_Manager : MonoBehaviour {
                 {
                     if (collition2d.gameObject.name == "Left")
                     {
-                        //GetComponent<Sound_Manager>().SE();
-                        Debug.Log("はまだ白い" + manual_count);
-
-                        Debug.Log("はまだ肌白い");
+                       //GameObject.Find("").
+                      
                         manual_count -= 1;
                         if (manual_count <= 0)
                         {
