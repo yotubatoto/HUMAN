@@ -145,8 +145,8 @@ public class Wall_Gimic : MonoBehaviour {
     }
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (size_state == 0)
-        {
+        //if (size_state == 0)
+        //{
             if (coll.gameObject.tag == "Player")
             {
                 //number += 1;
@@ -200,7 +200,7 @@ public class Wall_Gimic : MonoBehaviour {
 
            
 
-        }
+        //}
 
     }
 
@@ -210,11 +210,13 @@ public class Wall_Gimic : MonoBehaviour {
         {
             Debug.Log("fffff");
             //Debug.Log("gyy");
+            GetComponent<Sound_Manager>().Gimic_SE();
+
             //clear_count += 1;
             lamp_chenge_flag = true;
-            chenge_number += 1;
+            //chenge_number += 1;
             Debug.Log("gugugug");
-            GetComponent<Sound_Manager>().Gimic_SE();
+
 
             if (chenge_number > 3) { chenge_number = 3; }
 
