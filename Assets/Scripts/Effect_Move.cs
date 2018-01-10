@@ -16,19 +16,19 @@ public class Effect_Move : MonoBehaviour
     string coll_name;
     float ax = 1.0f;
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         // 始めにギミックの位置を取得できるようにする
         Gimic = GameObject.FindWithTag("Gimic");
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         //Debug.Log(move_flag);
         if (move_flag == true)
         {
-            if(once_flag == false)
+            if (once_flag == false)
             {
                 once_flag = true;
                 // プレイヤーがランタンに当たったらseedがランタンのほうを向く
@@ -39,11 +39,11 @@ public class Effect_Move : MonoBehaviour
                 coll_name = GameObject.Find("Player").GetComponent<Player_Collision>().coll_name;
                 //targetRotation = Quaternion.LookRotation(unko1 - unko2);
             }
-           
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmooth);
-            
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmooth);
+
             // 前方に進む
-            transform.Translate(((vel.normalized * speed) *ax) * Time.deltaTime);
+            transform.Translate(((vel.normalized * speed) * ax) * Time.deltaTime);
             ax += (0.2f * Time.deltaTime);
         }
 
@@ -77,12 +77,14 @@ public class Effect_Move : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-  
+
         if (collision.gameObject.tag == "Gimic")
         {
+
             if (move_flag && coll_name == collision.gameObject.name)
             {
                 Destroy(gameObject);
+                collision.gameObject.GetComponent<Wall_Gimic>().chenge_number += 1;
             }
             //Instantiate(light, transform.position, Quaternion.identity);
             //if(time > life_time)
@@ -94,6 +96,7 @@ public class Effect_Move : MonoBehaviour
 
         }
     }
+   
 }
 
 

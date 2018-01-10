@@ -38,6 +38,10 @@ public class StageSelectManager : MonoBehaviour
     public static Vector3 SAVE_POS = new Vector3(0.0f, 1.42f, 0.0f);
 
 
+    //ミッションターン
+    public bool[,] mission1_2_3 = new bool[50, 3];
+
+
 
     //public Text test;
 
@@ -87,7 +91,18 @@ public class StageSelectManager : MonoBehaviour
         }
     }
     void Start()
-    {
+{
+        for (int i = 0; i < 50; i++) 
+      {
+        for (int j = 0; j < 3; j++)
+        {
+        mission1_2_3[i, j] = false;
+        
+        }
+
+      }
+        
+
         transform.position = SAVE_POS;
         pos = transform.position;
         //PlayerPrefs.SetInt("1_1" + "star", 0);
@@ -113,7 +128,7 @@ public class StageSelectManager : MonoBehaviour
         //{
         //    _temp[i] = PlayerPrefs.GetInt("1_"+ (i + 1).ToString() + "star", 3);
         //}
-    }
+}
 
     // Update is called once per frame
     void Update()
@@ -1377,6 +1392,8 @@ public class StageSelectManager : MonoBehaviour
                     left[i].text = "2";
                     right[i].text = (i + 1).ToString();
                 }
+
+               
                 // 2-1
                 if (PlayerPrefs.GetInt("2_1star") == 0)
                 {

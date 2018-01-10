@@ -144,6 +144,8 @@ public class Mission_Manager : MonoBehaviour
             //LIMIT_TURN = LIMITE[]
             LIMIT_TURN = int.Parse(LIMITE[10]);
             turn_current.text = LIMIT_TURN.ToString();
+            
+
 
         }
         //goal_trun.GetComponent<Text>().text = "10";
@@ -838,7 +840,7 @@ public class Mission_Manager : MonoBehaviour
     }
 
     //ランプの点灯数がマックスになったらステージ遷移
-    bool Lamp_Lighting_Number(int max_lighting)
+   public bool Lamp_Lighting_Number(int max_lighting)
     {
         int light_count = Playerobj.GetComponent<Player_Collision>().item_count;
 
@@ -849,7 +851,7 @@ public class Mission_Manager : MonoBehaviour
         return false;
     }
 
-    bool Mission_1(int clear)
+   public bool Mission_1(int clear)
     {
 
 
@@ -868,7 +870,7 @@ public class Mission_Manager : MonoBehaviour
         return false;
     }
 
-    bool Mission_2(int n)
+   public bool Mission_2(int n)
     {
         //int temp = Camera.main.GetComponent<Manager>().shot_state -1;
         //int temp = 
@@ -883,7 +885,7 @@ public class Mission_Manager : MonoBehaviour
         return false;
     }
 
-    bool Mission_3()
+   public bool Mission_3()
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("Small_Block");
         //GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
@@ -900,7 +902,7 @@ public class Mission_Manager : MonoBehaviour
         return false;
     }
     //レッドブロック,ブルーブロックを認識させないと速攻ゲームオーバーになるのでレングス追加
-    bool Mission_4()
+   public bool Mission_4()
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("Small_Block");
         GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
