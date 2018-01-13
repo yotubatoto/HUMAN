@@ -49,7 +49,7 @@ public class Break_obj : MonoBehaviour
                 GameObject.Find("Main Camera").GetComponent<MainCameraScr>().characteristic_change_state == 0)
             {
                 //何もしない
-                Debug.Log("きてる");
+                //Debug.Log("きてる");
                 return;
             }
 
