@@ -694,7 +694,7 @@ public class Mission_Manager : MonoBehaviour
             {
                 //ステージクリアしたら（ステージクリアのテキストが表示される時間）
                 clear_count += Time.deltaTime;
-                if (clear_count > 4.0f)
+                if (clear_count > 2.5f)
                 {
                     clear_state = 2;
                 }
@@ -852,8 +852,8 @@ public class Mission_Manager : MonoBehaviour
                     }
                     Result_obj.gameObject.SetActive(true);
                     Vector3 retry_pos = GameObject.Find("Common/Canvas/result_black 1/Retry_result").GetComponent<RectTransform>().transform.localPosition;
-                    //retry_pos.x = 362.0f;
-                    //retry_pos.y = -155.0f;
+                    retry_pos.x = 362.0f;
+                    retry_pos.y = -155.0f;
                     GameObject.Find("Common/Canvas/result_black 1/Retry_result").GetComponent<RectTransform>().transform.localPosition = retry_pos;
 
                     Vector3 select_pos = GameObject.Find("Common/Canvas/result_black 1/Stage_Select_result").GetComponent<RectTransform>().transform.localPosition;
