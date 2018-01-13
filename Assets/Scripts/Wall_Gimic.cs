@@ -58,7 +58,7 @@ public class Wall_Gimic : MonoBehaviour {
         {
             clear_flag = true;
         }
-        Debug.Log("ランプレベル" + not_count);
+        //Debug.Log("ランプレベル" + not_count);
         //Debug.Log(clear_count);
         //transform.localScale = new Vector3(100, 100, 1.0f);
         //gameObject.GetComponent<SpriteRenderer>().sprite = light_sprite[number];
@@ -208,14 +208,14 @@ public class Wall_Gimic : MonoBehaviour {
     {
         if (collision.gameObject.tag == "BlockPiece")
         {
-            Debug.Log("fffff");
+            //Debug.Log("fffff");
             //Debug.Log("gyy");
             GetComponent<Sound_Manager>().Gimic_SE();
 
             //clear_count += 1;
             lamp_chenge_flag = true;
             //chenge_number += 1;
-            Debug.Log("gugugug");
+            //Debug.Log("gugugug");
 
 
             if (chenge_number > 3) { chenge_number = 3; }

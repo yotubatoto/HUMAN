@@ -96,7 +96,7 @@ public class Break_obj : MonoBehaviour
              
 
                 //seedprefabを生成
-                Debug.Log("生成されました");
+                //Debug.Log("生成されました");
                 //Debug.Log(GameObject.Find("Player").GetComponent<Player_Collision>().item_count);     //seedカウントを追加
                
             }

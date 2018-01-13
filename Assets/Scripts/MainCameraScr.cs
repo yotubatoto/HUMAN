@@ -239,6 +239,40 @@ public class MainCameraScr : MonoBehaviour
                     {
                         manual_2.SetActive(false);
                         mission_obj.SetActive(true);
+                        //Debug.Log("nnnnnnnnnnnnnnnn");
+
+                        // 2-1
+                        if (PlayerPrefs.GetInt("2_1_1") != 0)
+                        {
+                            //Debug.Log("aaiueo");
+                            GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        }
+                        else
+                        {
+                            GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        }
+
+                        if (PlayerPrefs.GetInt("2_1_2") != 0)
+                        {
+                            GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        }
+                        else
+                        {
+                            GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        }
+
+                        if (PlayerPrefs.GetInt("2_1_3") != 0)
+                        {
+                            GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        }
+                        else
+                        {
+                            GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        } 
+
+
+
+
                     }
                     else if (ended_state >= 1)
                     {
@@ -269,13 +303,1965 @@ public class MainCameraScr : MonoBehaviour
                     }
                     else
                     {
+                       
+
                         mission_obj.SetActive(true);
+                        if (StageSelectManager.ST_OWNER_NUMBER == "2_2")
+                        {
+                            // 2-2
+                            if (PlayerPrefs.GetInt("2_2_1") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_2_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_2_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "2_3")
+                        {
+                            // 2-3
+                            if (PlayerPrefs.GetInt("2_3_1") != 0)
+                            {
+                                Debug.Log("aaiueo");
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                           
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_3_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_3_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "2_4")
+                        {
+                            // 2-4
+                            if (PlayerPrefs.GetInt("2_4_1") != 0)
+                            {
+                                Debug.Log("aaiueo");
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_4_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_4_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "2_5")
+                        {
+                            // 2-5
+                            if (PlayerPrefs.GetInt("2_5_1") != 0)
+                            {
+                                Debug.Log("aaiueo");
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                               
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_5_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_5_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "2_6")
+                        {
+                            // 2-6
+                            if (PlayerPrefs.GetInt("2_6_1") != 0)
+                            {
+                                Debug.Log("aaiueo");
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_6_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_6_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "2_7")
+                        {
+                            // 2-7
+                            if (PlayerPrefs.GetInt("2_7_1") != 0)
+                            {
+                               
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_7_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_7_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "2_8")
+                        {
+                            // 2-8
+                            if (PlayerPrefs.GetInt("2_8_1") != 0)
+                            {
+                                
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_8_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_8_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "2_9")
+                        {
+                            // 2-9
+                            if (PlayerPrefs.GetInt("2_9_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_9_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_9_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "2_10")
+                        {
+                            // 2-10
+                            if (PlayerPrefs.GetInt("2_10_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_10_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("2_10_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_1")
+                        {
+                            // 3-1
+                            if (PlayerPrefs.GetInt("3_1_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_1_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_1_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_2")
+                        {
+                            // 3-2
+                            if (PlayerPrefs.GetInt("3_2_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_2_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_2_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_3")
+                        {
+                            // 3-3
+                            if (PlayerPrefs.GetInt("3_3_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_3_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_3_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_4")
+                        {
+                            // 3-4
+                            if (PlayerPrefs.GetInt("3_4_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_4_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_4_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_5")
+                        {
+                            // 3-5
+                            if (PlayerPrefs.GetInt("3_5_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_5_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_5_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_6")
+                        {
+                            // 3-6
+                            if (PlayerPrefs.GetInt("3_6_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_6_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_6_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_7")
+                        {
+                            // 3-7
+                            if (PlayerPrefs.GetInt("3_7_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_7_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_7_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_8")
+                        {
+                            // 3-8
+                            if (PlayerPrefs.GetInt("3_8_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_8_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_8_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_9")
+                        {
+                            // 3-9
+                            if (PlayerPrefs.GetInt("3_9_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_9_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_9_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "3_10")
+                        {
+                            // 3-10
+                            if (PlayerPrefs.GetInt("3_10_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_10_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("3_10_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_1")
+                        {
+                            // 4-1
+                            if (PlayerPrefs.GetInt("4_1_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_1_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_1_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_2")
+                        {
+                            // 4-2
+                            if (PlayerPrefs.GetInt("4_2_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_2_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_2_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_3")
+                        {
+                            // 4-3
+                            if (PlayerPrefs.GetInt("4_3_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_3_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_3_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_4")
+                        {
+                            // 4-4
+                            if (PlayerPrefs.GetInt("4_4_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_4_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_4_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_5")
+                        {
+                            // 4-5
+                            if (PlayerPrefs.GetInt("4_5_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_5_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_5_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_6")
+                        {
+                            // 4-6
+                            if (PlayerPrefs.GetInt("4_6_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_6_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_6_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_7")
+                        {
+                            // 4-7
+                            if (PlayerPrefs.GetInt("4_7_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_7_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_7_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_8")
+                        {
+                            // 4-8
+                            if (PlayerPrefs.GetInt("4_8_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_8_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_8_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_8")
+                        {
+                            // 4-8
+                            if (PlayerPrefs.GetInt("4_8_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_8_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_8_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_9")
+                        {
+                            // 4-9
+                            if (PlayerPrefs.GetInt("4_9_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_9_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_9_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "4_10")
+                        {
+                            // 4-10
+                            if (PlayerPrefs.GetInt("4_10_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_10_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("4_10_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_1")
+                        {
+                            // 5-1
+                            if (PlayerPrefs.GetInt("5_1_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_1_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_1_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_2")
+                        {
+                            // 5-2
+                            if (PlayerPrefs.GetInt("5_2_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_2_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_2_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_3")
+                        {
+                            // 5-3
+                            if (PlayerPrefs.GetInt("5_3_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_3_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_3_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_4")
+                        {
+                            // 5-4
+                            if (PlayerPrefs.GetInt("5_4_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_4_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_4_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_5")
+                        {
+                            //5-5
+                            if (PlayerPrefs.GetInt("5_5_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_5_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_5_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_6")
+                        {
+                            // 5-6
+                            if (PlayerPrefs.GetInt("5_6_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_6_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_6_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_7")
+                        {
+                            // 5-7
+                            if (PlayerPrefs.GetInt("5_7_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_7_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_6_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_8")
+                        {
+                            // 5-8
+                            if (PlayerPrefs.GetInt("5_8_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_8_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_8_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_9")
+                        {
+                            // 5-9
+                            if (PlayerPrefs.GetInt("5_9_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_9_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_9_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                        if (StageSelectManager.ST_OWNER_NUMBER == "5_10")
+                        {
+                            // 5-10
+                            if (PlayerPrefs.GetInt("5_10_1") != 0)
+                            {
+
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_10_2") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+
+                            if (PlayerPrefs.GetInt("5_10_3") != 0)
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                            }
+                            else
+                            {
+                                GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                            }
+                        }
+
+                       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     
+
+
+
+                     
+
+
+                     
+
+                     
+
+                        //// 2-4
+                        //if (PlayerPrefs.GetInt("2_4_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_4_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_4_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+
+                        //// 2-5
+                        //if (PlayerPrefs.GetInt("2_5_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_5_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_5_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-6
+                        //if (PlayerPrefs.GetInt("2_6_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_6_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_6_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-7
+                        //if (PlayerPrefs.GetInt("2_7_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_7_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_7_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-7
+                        //if (PlayerPrefs.GetInt("2_7_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_7_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_7_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-8
+                        //if (PlayerPrefs.GetInt("2_8_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_8_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_8_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-9
+                        //if (PlayerPrefs.GetInt("2_9_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_9_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_9_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+
+                        //// 2-10
+                        //if (PlayerPrefs.GetInt("2_10_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_10_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_10_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 3-1
+                        //if (PlayerPrefs.GetInt("3_1_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("3_1_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("3_1_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+
+
+                        //// 2-5
+                        //if (PlayerPrefs.GetInt("2_5_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_5_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_5_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-6
+                        //if (PlayerPrefs.GetInt("2_6_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_6_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_6_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-7
+                        //if (PlayerPrefs.GetInt("2_7_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_7_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_7_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-8
+                        //if (PlayerPrefs.GetInt("2_8_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_8_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_8_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-9
+                        //if (PlayerPrefs.GetInt("2_9_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_9_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_9_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 2-10
+                        //if (PlayerPrefs.GetInt("2_10_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_10_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("2_10_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //// 3-1
+                        //if (PlayerPrefs.GetInt("3_1_1") != 0)
+                        //{
+                        //    Debug.Log("aaiueo");
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_1").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("3_1_2") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_2").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //}
+
+                        //if (PlayerPrefs.GetInt("3_1_3") != 0)
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                        //}
+                        //else
+                        //{
+                        //    GameObject.Find("Common/Canvas/missiton_start/Start_3").gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                        //} 
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                     
 
                     }
                 }
                 else
                 {
+
                     mission_obj.SetActive(true);
+
+                
+                    
 
                 }
                 //manual_0.SetActive(true);
@@ -441,7 +2427,7 @@ public class MainCameraScr : MonoBehaviour
                         if (st != "1")
                         {
                             GetComponent<Sound_Manager>().Question_SE();
-                            Debug.Log("iiiii");
+                            //Debug.Log("iiiii");
                             GameObject.Find("Question").SetActive(false);
                             GameObject.Find("Common/Canvas/Tutorial").SetActive(true);
                             GameObject.Find("Common/Canvas/pause_black/Retry").SetActive(false);
@@ -467,7 +2453,7 @@ public class MainCameraScr : MonoBehaviour
                             if (st_1 == "1")
                             {
                                 GetComponent<Sound_Manager>().Question_SE();
-                                Debug.Log("bbbbbbbbbbbbb");
+                                //Debug.Log("bbbbbbbbbbbbb");
 
 
                                 manual[temp_save - 1].SetActive(true);
@@ -498,7 +2484,7 @@ public class MainCameraScr : MonoBehaviour
                     {
                         if (manual[temp_save - 1].activeSelf)
                         {
-                            Debug.Log("ポーズ解除");
+                            //Debug.Log("ポーズ解除");
                             manual[temp_save - 1].SetActive(false);
                         }
                         pause_freeze_flag = false;
@@ -669,7 +2655,7 @@ public class MainCameraScr : MonoBehaviour
                     //                    Color circle_color = circle.GetComponent<SpriteRenderer>().color;
                     movePos = AppUtil.GetTouchWorldPosition(Camera.main);
                     sub = movePos - startPos;
-                    Debug.Log(sub.magnitude);
+                    //Debug.Log(sub.magnitude);
                     arrow.transform.localScale = new Vector3(10.0f, sub.magnitude / 2, .0f);
 
 
@@ -962,9 +2948,9 @@ public class MainCameraScr : MonoBehaviour
                     {
                         //0.5より小さいと射出されない
                         touch_time = Time.time - touch_time;
-                        Debug.Log(touch_time);
+                        //Debug.Log(touch_time);
 
-                        if (touch_time < 0.3f)
+                        if (touch_time < 0.1f)
                         {
                             //number_count += 1;
                             end_flag = true;
@@ -1065,7 +3051,7 @@ public class MainCameraScr : MonoBehaviour
 
                             //プレイヤーのアドフォースから　ベロシティマグ二で引っ張る強さを計算している
                             color.a = 1.0f;
-                            Debug.Log(color);
+                            //Debug.Log(color);
 
 
                             if (color_true == new Color(0.51f, 0.54f, 1.0f, 1.0f))

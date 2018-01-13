@@ -190,7 +190,7 @@ public class Player_Collision : MonoBehaviour {
             }
             if(item_count >= 1)
             {
-                Debug.Log("uiguegugueguf");
+                //Debug.Log("uiguegugueguf");
                 GetComponent<Sound_Manager>().Obstance_SE();
             }
 
