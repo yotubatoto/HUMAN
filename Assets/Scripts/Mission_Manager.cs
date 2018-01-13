@@ -65,6 +65,8 @@ public class Mission_Manager : MonoBehaviour
     public int state = 0;
     private float bug_time = 0.0f;
     public Text turn_current;
+    public GameObject left;
+    public GameObject right;
     // Use this for initialization
     void Start()
     {
@@ -75,7 +77,7 @@ public class Mission_Manager : MonoBehaviour
             clear_flag = false;
         }
         //ヌルでないとき成立する
-        Debug.Log("PlayerPrefsmdayo" + PlayerPrefs.GetInt("3_1" + "star"));
+        //Debug.Log("PlayerPrefsmdayo" + PlayerPrefs.GetInt("3_1" + "star"));
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "1_1")
         {
             LIMIT_TURN = int.Parse(LIMITE[0]);
@@ -138,7 +140,7 @@ public class Mission_Manager : MonoBehaviour
 
         if (StageSelectManager.ST_OWNER_NUMBER != null && StageSelectManager.ST_OWNER_NUMBER == "2_1")
         {
-            Debug.Log("iiiiiiiiiiiiiiiiii");
+            //Debug.Log("iiiiiiiiiiiiiiiiii");
             goal_trun.GetComponent<Text>().text = GOAL_TURN[0];
             clear_goal_turn.GetComponent<Text>().text = goal_trun.GetComponent<Text>().text.ToString();
             //LIMIT_TURN = LIMITE[]
@@ -569,7 +571,7 @@ public class Mission_Manager : MonoBehaviour
         }
 
 
-        Debug.Log("B:" + block_number + " G:" + gimic_number);
+        //Debug.Log("B:" + block_number + " G:" + gimic_number);
 
         //打ち出した後打数内でクリアできなかった場合
         if (GetComponent<MainCameraScr>().main_move_state == 0)
@@ -643,6 +645,16 @@ public class Mission_Manager : MonoBehaviour
                 //				clear_text.enabled = true;
                 Color c = clear_text.color;
                 c.a += 1.0f * Time.deltaTime;
+                if (left.gameObject.activeSelf == true)
+                {
+                    left.gameObject.transform.position = new Vector3(-1000.0f, 1000.0f, 1000.0f);
+                }
+                if (right.gameObject.activeSelf == true)
+                {
+                    right.gameObject.transform.position = new Vector3(-1000.0f, 1000.0f, 1000.0f);
+                }
+             
+
 
                
                 GameObject.Find("pause").gameObject.GetComponent<Collider2D>().enabled = false;
@@ -650,6 +662,31 @@ public class Mission_Manager : MonoBehaviour
                 {
                     c.a = 1.0f;
                     clear_state = 1;
+/*
+                    int stage = int.Parse(StageSelectManager.ST_OWNER_NUMBER.Substring(0,1));
+                    int area;
+                    if(StageSelectManager.ST_OWNER_NUMBER.Length <= 3)
+                    {
+                        area = int.Parse(StageSelectManager.ST_OWNER_NUMBER.Substring(2,1));
+                    }
+                    else
+                    {
+                        area = int.Parse(StageSelectManager.ST_OWNER_NUMBER.Substring(2,2));
+                    }
+*/
+                    int misson_flg;
+
+                    misson_flg  = PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "_1");
+                    misson_flg |= Mission_1(int.Parse(goal_trun.GetComponent<Text>().text)) ? 1 : 0;
+                    PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER + "_1", misson_flg);
+
+                    misson_flg = PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "_2");
+                    misson_flg |= Mission_2() ? 1 : 0;
+                    PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER + "_2", misson_flg);
+
+                    misson_flg = PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "_3");
+                    misson_flg |= Mission_3(CLEAR_LAMP_LEVEL) ? 1 : 0;
+                    PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER + "_3", misson_flg);
                 }
                 clear_text.color = c;
             }
@@ -657,7 +694,7 @@ public class Mission_Manager : MonoBehaviour
             {
                 //ステージクリアしたら（ステージクリアのテキストが表示される時間）
                 clear_count += Time.deltaTime;
-                if (clear_count > 1.0f)
+                if (clear_count > 4.0f)
                 {
                     clear_state = 2;
                 }
@@ -696,25 +733,29 @@ public class Mission_Manager : MonoBehaviour
                     if (clear_once_flag == false)
                     {
                         clear_once_flag = true;
-                        if (Mission_1(CLEAR_LAMP_LEVEL))
+                        if (PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "_1") != 0
+                            || Mission_1(int.Parse(goal_trun.GetComponent<Text>().text)))
                         {
-                            star_obj[2].SetActive(true);
+                            star_obj[0].SetActive(true);
                             if (once_flag[0] == false)
                             {
                                 clear_number += 1;
                             }
                         }
-                        if (Mission_2(int.Parse(goal_trun.GetComponent<Text>().text)))
+                        if (PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "_2") != 0
+                            || Mission_2())
                         {
-                            star_obj[0].SetActive(true);
+                            star_obj[1].SetActive(true);
                             if (once_flag[1] == false)
                             {
                                 clear_number += 1;
                             }
                         }
-                        if (Mission_3())
+                        if (PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "_3") != 0
+                            || Mission_3(CLEAR_LAMP_LEVEL))
                         {
-                            star_obj[1].SetActive(true);
+                           
+                            star_obj[2].SetActive(true);
                             if (once_flag[2] == false)
                             {
                                 clear_number += 1;
@@ -726,7 +767,7 @@ public class Mission_Manager : MonoBehaviour
                     if (clear_number >= PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "star"))
                     {
                         PlayerPrefs.SetInt(StageSelectManager.ST_OWNER_NUMBER + "star", clear_number);
-                        Debug.Log("PlayerPrefsmdayo" + PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "star"));
+                        //Debug.Log("PlayerPrefsmdayo" + PlayerPrefs.GetInt(StageSelectManager.ST_OWNER_NUMBER + "star"));
                     }
                 }
                 else
@@ -781,7 +822,7 @@ public class Mission_Manager : MonoBehaviour
                 //fade.color = c;
                 //TouchInfo info = AppUtil.GetTouch();
 
-                Debug.Log("yeeeh");
+                //Debug.Log("yeeeh");
                 clear_pop.SetActive(false);
                 string st = StageSelectManager.ST_OWNER_NUMBER;
                 // 1_1の一番後ろの文字列を抽出してる 1 tail = 1
@@ -811,8 +852,8 @@ public class Mission_Manager : MonoBehaviour
                     }
                     Result_obj.gameObject.SetActive(true);
                     Vector3 retry_pos = GameObject.Find("Common/Canvas/result_black 1/Retry_result").GetComponent<RectTransform>().transform.localPosition;
-                    retry_pos.x = 362.0f;
-                    retry_pos.y = -155.0f;
+                    //retry_pos.x = 362.0f;
+                    //retry_pos.y = -155.0f;
                     GameObject.Find("Common/Canvas/result_black 1/Retry_result").GetComponent<RectTransform>().transform.localPosition = retry_pos;
 
                     Vector3 select_pos = GameObject.Find("Common/Canvas/result_black 1/Stage_Select_result").GetComponent<RectTransform>().transform.localPosition;
@@ -851,31 +892,30 @@ public class Mission_Manager : MonoBehaviour
         return false;
     }
 
-   public bool Mission_1(int clear)
+   public bool Mission_3(int clear)
     {
-
-
-        bool _flag = false;
         for (int i = 0; i < mainSource.right_count; i++)
         {
             if (mainSource.right_obj[i].GetComponent<Wall_Gimic>().not_count < clear)
             {
-                _flag = true;
+                return false;
             }
         }
-        if (_flag == false)
-        {
-            return true;
-        }
-        return false;
+
+        return true;
+        //if (_flag == false)
+        //{
+        //    return true;
+        //}
+        //return false;
     }
 
-   public bool Mission_2(int n)
+   public bool Mission_1(int n)
     {
         //int temp = Camera.main.GetComponent<Manager>().shot_state -1;
         //int temp = 
         // nが１の場合
-        Debug.Log("++++++++++++"+GetComponent<Manager>().shot_state);
+        //Debug.Log("++++++++++++"+GetComponent<Manager>().shot_state);
         int t = LIMIT_TURN - int.Parse(turn_current.text);
       
         if (t <= n)
@@ -885,7 +925,7 @@ public class Mission_Manager : MonoBehaviour
         return false;
     }
 
-   public bool Mission_3()
+   public bool Mission_2()
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("Small_Block");
         //GameObject[] obj_2 = GameObject.FindGameObjectsWithTag("Big_Block");
@@ -929,13 +969,13 @@ public class Mission_Manager : MonoBehaviour
         {
             
 
-            Debug.Log("ポーズ");
+            //Debug.Log("ポーズ");
             GameObject.Find("Common/Canvas/pause").GetComponent<CircleCollider2D>().enabled = false;
             int a = 0;
             GameObject.Find("Trun_Current").gameObject.GetComponent<Text>().text = a.ToString();
             GameObject.Find("turn_flame").GetComponent<Image>().enabled = false;
             GameObject.Find("Turn_Number").GetComponent<Text>().enabled = false;
-            Debug.Log("打数でクリアできなかった");
+            //Debug.Log("打数でクリアできなかった");
             gameOver_obj.SetActive(true);
 
 
@@ -981,7 +1021,7 @@ public class Mission_Manager : MonoBehaviour
 
         if (collition2d != null)
         {
-            Debug.Log(collition2d.gameObject.name);
+            //Debug.Log(collition2d.gameObject.name);
             if (collition2d.gameObject.name == "retry" && game_over_barrage_flag == false)
             {
 
@@ -1015,13 +1055,12 @@ public class Mission_Manager : MonoBehaviour
     {
         Collider2D collition2d = Physics2D.OverlapPoint(Input.mousePosition);
 
-
         if (collition2d != null)
         {
-            Debug.Log(collition2d.gameObject.name);
+            //Debug.Log("当たっているオブジェクトの名前："+collition2d.gameObject.name);
             if (collition2d.gameObject.name == "Retry_result" &&  clear_barrage_flag == false)
             {
-                Debug.Log(StageSelectManager.ST_OWNER_NUMBER);
+                //Debug.Log(StageSelectManager.ST_OWNER_NUMBER);
 
                 //SceneManager.LoadScene("Stage_" + StageSelectManager.ST_OWNER_NUMBER + "_Scene");
                 Camera.main.GetComponent<Now_Loading>().LoadNextScene();
@@ -1034,12 +1073,16 @@ public class Mission_Manager : MonoBehaviour
             }
             if (collition2d.gameObject.name == "Stage_Select_result" && clear_barrage_flag == false)
             {
-
                 Camera.main.GetComponent<Now_Loading>().Load_NextScene_Title();
+
                 GetComponent<Sound_Manager>().Stage_Choice_SE();
+
                 clear_barrage_flag = true;
+
                 GameObject.Find("Now_Loading").GetComponent<Image>().enabled = true;
+
                 GameObject.Find("Now_load_back").GetComponent<Image>().enabled = true;
+
             }
             if (collition2d.gameObject.name == "Next_Stage" && clear_barrage_flag == false)
             {

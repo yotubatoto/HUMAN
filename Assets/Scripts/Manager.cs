@@ -643,7 +643,7 @@ public class Manager : MonoBehaviour
                     trun_alfa -= 5.0f * Time.deltaTime;
                     GameObject.Find("turn_flame").GetComponent<Image>().color =
                                 new Color(1.0f, 1.0f, 1.0f, trun_alfa);
-                    Debug.Log("ijij");
+                    //Debug.Log("ijij");
 
 
                     GameObject.Find("Turn_Number").GetComponent<Text>().color =
