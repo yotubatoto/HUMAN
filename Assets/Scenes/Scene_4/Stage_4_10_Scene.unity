@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1835,6 +1835,31 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -100
       objectReference: {fileID: 0}
+    - target: {fileID: 198961498619644096, guid: d38ac71ff001556459ad3ca74a329359,
+        type: 2}
+      propertyPath: UVModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198961498619644096, guid: d38ac71ff001556459ad3ca74a329359,
+        type: 2}
+      propertyPath: randomSeed
+      value: 1728815885
+      objectReference: {fileID: 0}
+    - target: {fileID: 198961498619644096, guid: d38ac71ff001556459ad3ca74a329359,
+        type: 2}
+      propertyPath: NoiseModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198961498619644096, guid: d38ac71ff001556459ad3ca74a329359,
+        type: 2}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198961498619644096, guid: d38ac71ff001556459ad3ca74a329359,
+        type: 2}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d38ac71ff001556459ad3ca74a329359, type: 2}
   m_IsPrefabParent: 0
@@ -2172,8 +2197,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 821948421}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.065, y: -0.093, z: 0.3192033}
-  m_LocalScale: {x: 6.659634, y: 6.6758404, z: 5.163546}
+  m_LocalPosition: {x: -0.024, y: -0.093, z: 0.3192033}
+  m_LocalScale: {x: 6.665807, y: 6.6758404, z: 5.163546}
   m_Children: []
   m_Father: {fileID: 817490242}
   m_RootOrder: 1
@@ -2610,7 +2635,7 @@ Transform:
   - {fileID: 323927923}
   - {fileID: 381985141}
   m_Father: {fileID: 924078570}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &897490807
 Prefab:
@@ -2703,8 +2728,8 @@ Transform:
   - {fileID: 817490242}
   - {fileID: 1845265704}
   - {fileID: 1133611267}
-  - {fileID: 1905597302}
   - {fileID: 875275548}
+  - {fileID: 1905597302}
   - {fileID: 605109303}
   - {fileID: 1431928210}
   - {fileID: 794801527}
